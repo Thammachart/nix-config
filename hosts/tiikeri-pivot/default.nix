@@ -4,7 +4,7 @@
   imports =
     [
       ./hardware-configuration.nix
-      ./custom-hw.nix
+      ./fs.nix
       ./display-manager.nix
     ];
 
