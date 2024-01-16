@@ -128,6 +128,10 @@
     firefox
     htop
     vscodium
+    wlr-randr
+    nwg-displays
+    nwg-look
+    nwg-bar
   ];
 
   services.dbus.enable = true;
