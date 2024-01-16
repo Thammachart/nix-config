@@ -5,7 +5,15 @@
     [
       ./hardware-configuration.nix
       ./custom-hw.nix
+      ./display-manager.nix
     ];
+
+  # Define a user account. Don't forget to set a password with ‘passwd’.
+  users.users.thammachart = {
+     isNormalUser = true;
+     extraGroups = [ "wheel" "network" "audio" "video" "storage" ];
+     packages = with pkgs; [];
+  };
 
   boot = {
     kernelPackages = pkgs.linuxPackages_zen;
@@ -15,13 +23,29 @@
     };
   };
 
-  networking = {
-    hostName = "tiikeri-pivot";
-    networkmanager.enable = true;  # Easiest to use and most distros use this by default.
+  nix = {
+    # Enable Flakes and the new command-line tool
+    settings.experimental-features = [ "nix-command" "flakes" ];
+
+    gc = {
+      automatic = lib.mkDefault true;
+      dates = lib.mkDefault "weekly";
+      options = lib.mkDefault "--delete-older-than 7d";
+    };
   };
 
-  # Set your time zone.
-  time.timeZone = "Asia/Bangkok";
+  networking = {
+    hostName = "tiikeri-pivot";
+    networkmanager.enable = true;
+  };
+
+  nixpkgs = {
+    config.allowUnfree = true;
+  };
+
+  time = {
+    timeZone = "Asia/Bangkok";
+  };
 
   # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
@@ -31,8 +55,33 @@
   #   useXkbConfig = true; # use xkb.options in tty.
   # };
 
-  # Enable Flakes and the new command-line tool
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  fonts = {
+    packages = with pkgs; [
+      # icon fonts
+      material-design-icons
+
+      # normal fonts
+      noto-fonts
+      noto-fonts-cjk
+      noto-fonts-emoji
+
+      # nerdfonts
+      (nerdfonts.override {fonts = ["CascadiaCode" "FiraCode" "JetBrainsMono"];})
+    ];
+
+    # use fonts specified by user rather than default ones
+    enableDefaultPackages = false;
+
+    # user defined fonts
+    # the reason there's Noto Color Emoji everywhere is to override DejaVu's
+    # B&W emojis that would sometimes show instead of some Color emojis
+    fontconfig.defaultFonts = {
+      serif = ["Noto Serif" "Noto Color Emoji"];
+      sansSerif = ["Noto Sans" "Noto Color Emoji"];
+      monospace = ["JetBrainsMono Nerd Font" "Noto Color Emoji"];
+      emoji = ["Noto Color Emoji"];
+    };
+  };
 
   # Configure keymap in X11
   # services.xserver.xkb.layout = "us";
@@ -43,6 +92,7 @@
 
   # Enable sound.
   sound.enable = true;
+  hardware.pulseaudio.enable = false;
   services.pipewire = {
     enable = true;
     alsa.enable = true;
@@ -54,17 +104,8 @@
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
 
-  # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.thammachart = {
-     isNormalUser = true;
-     extraGroups = [ "wheel" "network" "audio" "video" "storage" ];
-     packages = with pkgs; [];
-  };
-
   security.polkit.enable = true;
 
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
   environment.systemPackages = with pkgs; [
     vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     neovim
@@ -86,6 +127,7 @@
     mako # notification system developed by swaywm maintainer
     firefox
     htop
+    vscodium
   ];
 
   services.dbus.enable = true;
@@ -95,7 +137,6 @@
     extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
   };
 
-  # enable sway window manager
   programs.sway = {
     enable = true;
     wrapperFeatures.gtk = true;

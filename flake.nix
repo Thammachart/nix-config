@@ -11,7 +11,7 @@
     };
   };
 
-  outputs = { self, nixpkgs, home-manager, ...}@inputs: {
+  outputs = { self, nixpkgs, home-manager, ... }@inputs: {
     nixosConfigurations = {
       "tiikeri-pivot" = nixpkgs.lib.nixosSystem {
         system = "X86_64-linux";
