@@ -132,6 +132,8 @@
     nwg-displays
     nwg-look
     nwg-bar
+    keepassxc
+    syncthing
   ];
 
   services.dbus.enable = true;
