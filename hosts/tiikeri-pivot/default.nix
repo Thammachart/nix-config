@@ -5,7 +5,7 @@
     [
       ./hardware-configuration.nix
       ./fs.nix
-      ./display-manager.nix
+      ./login-manager.nix
     ];
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
@@ -134,6 +134,7 @@
     nwg-bar
     keepassxc
     syncthing
+    lxqt.pcmanfm-qt
   ];
 
   services.dbus.enable = true;
