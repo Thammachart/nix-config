@@ -4,7 +4,7 @@
   imports =
     [
       ./hardware-configuration.nix
-      ./fs.nix
+      ./custom-hardware-configuration.nix
       ./login-manager.nix
     ];
 
@@ -64,6 +64,8 @@
       noto-fonts
       noto-fonts-cjk
       noto-fonts-emoji
+      liberation_ttf
+      inter
 
       # nerdfonts
       (nerdfonts.override {fonts = ["CascadiaCode" "FiraCode" "JetBrainsMono"];})
@@ -112,12 +114,17 @@
     wget
     git
     foot
+    geany
+    pavucontrol
     dbus   # make dbus-update-activation-environment available in the path
     wayland
+    xwayland
     xdg-utils # for opening default programs when clicking links
+    lsd
     glib # gsettings
     dracula-theme # gtk theme
-    gnome3.adwaita-icon-theme  # default gnome cursors
+    papirus-icon-theme
+    waybar
     swaylock
     swayidle
     grim # screenshot functionality
@@ -135,6 +142,7 @@
     keepassxc
     syncthing
     lxqt.pcmanfm-qt
+    lxqt.lximage-qt
   ];
 
   services.dbus.enable = true;
