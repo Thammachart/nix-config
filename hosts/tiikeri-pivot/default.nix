@@ -12,7 +12,7 @@
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.thammachart = {
      isNormalUser = true;
-     extraGroups = [ "wheel" "network" "audio" "video" "storage" ];
+     extraGroups = [ "wheel" "network" "audio" "video" "storage" "input" ];
      packages = with pkgs; [];
   };
 

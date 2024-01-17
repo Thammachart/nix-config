@@ -3,8 +3,10 @@
   services.greetd = {
     enable = true;
     settings = {
-      command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --remember-session --user-menu";
-      user = "greeter";
+      default_session = {
+        command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --remember-session --user-menu";
+        user = "greeter";
+      };
     };
   };
 }

@@ -2,6 +2,7 @@
 
 let
   wl-envs = pkgs.writeText "wayland-enablement" ''
+    export NIXOS_OZONE_WL=1
     export XDG_SESSION_TYPE=wayland
     export MOZ_ENABLE_WAYLAND=1
     export QT_QPA_PLATFORM=wayland
@@ -23,7 +24,7 @@ let
     export QT_QPA_PLATFORMTHEME=qt5ct
 
     exec systemd-cat --identifier=sway sway $@
-  ''
+  '';
 
   sway-custom = pkgs.writeTextFile {
     name = "sway-custom.desktop";
