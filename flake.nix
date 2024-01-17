@@ -17,6 +17,18 @@
         system = "X86_64-linux";
         modules = [
 	        ./hosts/tiikeri-pivot
+
+          home-manager.nixosModules.home-manager {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+
+            home-manager.extraSpecialArgs = { 
+              inherit inputs;
+              isPersonal = true;
+              isDesktop = true;
+            };
+            home-manager.users.thammachart = import ./home;
+          }
 	      ];
       };
     };

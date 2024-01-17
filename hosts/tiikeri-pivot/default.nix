@@ -113,7 +113,10 @@
     neovim
     wget
     git
+    zsh
     foot
+    gomplate
+    neofetch
     geany
     pavucontrol
     dbus   # make dbus-update-activation-environment available in the path
@@ -160,6 +163,10 @@
   programs.neovim = {
     enable = true;
     defaultEditor = true;
+  };
+
+  programs.xwayland = {
+    enable = true;
   };
 
   # Copy the NixOS configuration file and link it from the resulting system

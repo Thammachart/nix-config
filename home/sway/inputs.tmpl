@@ -1,0 +1,17 @@
+{{ if not (contains "Desktop" .chezmoi.hostname) -}}
+input "type:touchpad" {
+  natural_scroll enabled
+  tap enabled
+  pointer_accel -0.1
+}
+{{ end -}}
+input "type:pointer" {
+  accel_profile "flat"
+  pointer_accel -0.1
+}
+input "type:keyboard" {
+  repeat_rate 39
+  repeat_delay 250
+  xkb_layout us,th
+  xkb_options grp:win_space_toggle
+}

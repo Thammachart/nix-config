@@ -1,0 +1,33 @@
+# Status Bar
+exec systemd-cat -t waybar waybar -c ~/.config/waybar/sway.json -s ~/.config/waybar/sway.css
+
+# PolicyKit GUI Agent
+exec /usr/lib/polkit-kde-authentication-agent-1
+
+# Notification
+exec mako
+
+{{- if (eq .linux.general.terminal "footclient") }}
+exec foot --server
+{{ end }}
+
+# Wallpapers
+# exec ~/.azotebg
+
+{{ if (eq .linux.general.launcher "nwg-drawer" ) }}
+# nwg-drawer cache
+exec_always nwg-drawer -r -nofs
+{{ end }}
+
+# Display Color Temperature
+exec systemd-cat -t wlsunset wlsunset -S 06:30 -s 18:30 -d 1800 -t 4000 -T 6500
+
+# NetworkManager System tray
+exec nm-applet --indicator
+
+# Idle Handling
+# exec swayidle -w \
+#          timeout 300 '$locker' \
+#          timeout 360 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
+#          timeout 600 'systemctl suspend' resume 'swaymsg "output * dpms on"' \
+#          before-sleep '$locker'
