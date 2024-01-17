@@ -1,9 +1,9 @@
 include variables
 include outputs
-include workspaces
-include autostart
+#include workspaces
+#include autostart
 include theme
-include inputs
+#include inputs
 
 ### Key bindings
 #
@@ -164,8 +164,5 @@ bindsym XF86AudioLowerVolume exec pamixer -d 2
 
 focus_follows_mouse no
 
-
 for_window [class=".*"] inhibit_idle fullscreen
 for_window [app_id=".*"] inhibit_idle fullscreen
-
-include /etc/sway/config.d/*

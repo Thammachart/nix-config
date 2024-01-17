@@ -2,7 +2,7 @@
 
 {
   imports = [
-    # ./sway
+    ./sway
   ];
 
   # Home Manager needs a bit of information about you and the
@@ -11,7 +11,8 @@
     username = "thammachart";
     homeDirectory = "/home/thammachart";
 
-    home.pointerCursor = {
+
+    pointerCursor = {
       name = "Adwaita";
       package = pkgs.gnome.adwaita-icon-theme;
       size = 24;
@@ -30,6 +31,31 @@
     # the Home Manager release notes for a list of state version
     # changes in each release.
     stateVersion = "23.11";
+  };
+
+  gtk = {
+    enable = true;
+    font = {
+      name = "Ubuntu";
+      size = 12;
+    };
+    iconTheme.name = "Papirus-Dark";
+    theme = {
+      name = "Catppuccin-Macchiato-Compact-Pink-Dark";
+      package = pkgs.catppuccin-gtk.override {
+        accents = [ "pink" ];
+        size = "compact";
+        tweaks = [ "rimless" "black" ];
+        variant = "macchiato";
+      };
+    };
+  };
+
+  qt = {
+    enable = true;
+
+    platformTheme = "qtct";
+    style.name = "kvantum";
   };
 
   # Let Home Manager install and manage itself.

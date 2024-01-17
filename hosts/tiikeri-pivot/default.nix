@@ -6,6 +6,7 @@
       ./hardware-configuration.nix
       ./custom-hardware-configuration.nix
       ./login-manager.nix
+      ../../packages/sway-custom.nix
     ];
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
@@ -65,6 +66,7 @@
       noto-fonts-cjk
       noto-fonts-emoji
       liberation_ttf
+      ubuntu_font_family
       inter
 
       # nerdfonts
@@ -79,7 +81,7 @@
     # B&W emojis that would sometimes show instead of some Color emojis
     fontconfig.defaultFonts = {
       serif = ["Noto Serif" "Noto Color Emoji"];
-      sansSerif = ["Noto Sans" "Noto Color Emoji"];
+      sansSerif = ["Ubuntu" "Noto Sans" "Noto Color Emoji"];
       monospace = ["JetBrainsMono Nerd Font" "Noto Color Emoji"];
       emoji = ["Noto Color Emoji"];
     };
@@ -113,6 +115,7 @@
     neovim
     wget
     git
+    greetd.tuigreet
     zsh
     foot
     gomplate
@@ -122,10 +125,11 @@
     dbus   # make dbus-update-activation-environment available in the path
     wayland
     xwayland
+    qt6.qtwayland
+    libsForQt5.qt5.qtwayland
     xdg-utils # for opening default programs when clicking links
     lsd
     glib # gsettings
-    dracula-theme # gtk theme
     papirus-icon-theme
     waybar
     swaylock
@@ -146,6 +150,7 @@
     syncthing
     lxqt.pcmanfm-qt
     lxqt.lximage-qt
+    qalculate-gtk
   ];
 
   services.dbus.enable = true;
