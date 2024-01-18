@@ -2,14 +2,14 @@
 
 
 let
-  launch-sway = pkgs.writeScriptBin "launch-sway" ''
-    #! ${pkgs.bash}/bin/sh
+  wl-enable = import ./wl-enable.nix { pkgs = pkgs; };
 
-    source ${pkgs.wl-envs}
+  launch-sway = pkgs.writeScriptBin "launch-sway" ''
+    source ${wl-enable}
 
     export XDG_SESSION_DESKTOP=sway
     export XDG_CURRENT_DESKTOP=sway
-    export QT_QPA_PLATFORMTHEME=qt4ct
+    export QT_QPA_PLATFORMTHEME=qt5ct
 
     exec systemd-cat --identifier=sway sway $@
   '';
@@ -26,7 +26,5 @@ let
     '';
   };
 in {
-  imports = [ ./wl-enable.nix ];
-
   environment.systemPackages = [ launch-sway ];
 }

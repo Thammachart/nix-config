@@ -12,7 +12,7 @@
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.thammachart = {
      isNormalUser = true;
-     extraGroups = [ "wheel" "network" "audio" "video" "storage" "input" ];
+     extraGroups = [ "wheel" "network" "networkmanager" "audio" "video" "storage" "input" ];
      packages = with pkgs; [];
   };
 
@@ -86,6 +86,7 @@
       monospace = ["JetBrainsMono Nerd Font" "Noto Color Emoji"];
       emoji = ["Noto Color Emoji"];
     };
+    fontconfig.localConf = '''';
   };
 
   # Configure keymap in X11
@@ -141,11 +142,11 @@
     fuzzel
     mako # notification system developed by swaywm maintainer
     firefox
+    chromium
     htop
     vscodium
     wlr-randr
     nwg-displays
-    nwg-look
     nwg-bar
     keepassxc
     syncthing
@@ -176,6 +177,10 @@
   };
 
   programs.steam = {
+    enable = true;
+  };
+
+  programs.gamemode = {
     enable = true;
   };
 

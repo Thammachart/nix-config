@@ -13,6 +13,5 @@ let
     export _JAVA_AWT_WM_NONREPARENTING=1
     export NO_AT_BRIDGE=1
   '';
-in {
-  environment.systemPackages = [ wl-envs ];
-}
+in 
+  wl-envs
