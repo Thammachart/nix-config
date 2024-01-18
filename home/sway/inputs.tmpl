@@ -1,4 +1,4 @@
-{{ if not (contains "Desktop" .chezmoi.hostname) -}}
+{{ if not .isDesktop -}}
 input "type:touchpad" {
   natural_scroll enabled
   tap enabled

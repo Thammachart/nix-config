@@ -1,8 +1,10 @@
-{ pkgs, config, ... }:
+{ pkgs, ... }:
 
+let
+  config = import ./config.nix;
+in
 {
   imports = [
-    ./config.nix
     ./sway
   ];
 

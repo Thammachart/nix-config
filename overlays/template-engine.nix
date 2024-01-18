@@ -1,7 +1,7 @@
-{ pkgs, ... }:
-{
-  templateFile = name: template: data:
-    pkgs.stdenv.mkDerivation {
+{ lib, ... }:
+
+  name: template: data:
+    lib.mkDerivation {
 
       name = "${name}";
 
@@ -24,4 +24,4 @@
         cp rendered_file $out
       '';
     };
-}
+

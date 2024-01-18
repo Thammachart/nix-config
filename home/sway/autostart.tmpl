@@ -7,7 +7,7 @@ exec systemd-cat -t waybar waybar -c ~/.config/waybar/sway.json -s ~/.config/way
 # Notification
 exec mako
 
-{{- if (eq .terminal "footclient") }}
+{{ if (eq .terminal "footclient") }}
 exec foot --server
 {{ end }}
 

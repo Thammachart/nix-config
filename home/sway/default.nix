@@ -1,11 +1,12 @@
-{ pkgs, config, settings, username, ...  }:
+{ pkgs, templateFile, isDesktop, ...  }:
 
 let
-  t = import ../../packages/template-engine.nix {pkgs = pkgs;};
+  config = import ../config.nix;
 in
 {
   home.file.".config/sway/config".source = ./config;
-  home.file.".config/sway/variables".source = t.templateFile "sway-vars-${config.username}" ./variables.tmpl config.homeSettings;
-  home.file.".config/autostart".source = t.templateFile "sway-autostart-${config.username}" ./autostart.tmpl config.homeSettings;
+  home.file.".config/sway/variables".source = templateFile "sway-vars-${config.username}" ./variables.tmpl config.homeSettings;
+  home.file.".config/sway/autostart".source = templateFile "sway-autostart-${config.username}" ./autostart.tmpl config.homeSettings;
+  home.file.".config/sway/inputs".source = templateFile "sway-inputs-${config.username}" ./inputs.tmpl { isDesktop = isDesktop; };
   home.file.".config/sway/theme".source = ./theme;
 }
