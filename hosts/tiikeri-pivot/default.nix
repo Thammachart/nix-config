@@ -134,6 +134,7 @@
     glib # gsettings
     papirus-icon-theme
     waybar
+    wlsunset
     swaylock
     swayidle
     grim # screenshot functionality

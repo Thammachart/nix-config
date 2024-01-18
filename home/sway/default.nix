@@ -1,12 +1,11 @@
-{ pkgs, config, ...  }:
+{ pkgs, config, settings, username, ...  }:
 
 let
-  settings = {
-    browser = "firefox";
-  }; in
+  t = import ../../packages/template-engine.nix {pkgs = pkgs;};
+in
 {
-  imports = [ ../../packages/template-engine.nix ];
   home.file.".config/sway/config".source = ./config;
-  home.file.".config/sway/variables".source = templatefile "sway-vars" ./variables.tmpl settings;
+  home.file.".config/sway/variables".source = t.templateFile "sway-vars-${config.username}" ./variables.tmpl config.homeSettings;
+  home.file.".config/autostart".source = t.templateFile "sway-autostart-${config.username}" ./autostart.tmpl config.homeSettings;
   home.file.".config/sway/theme".source = ./theme;
 }

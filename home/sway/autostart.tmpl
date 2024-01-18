@@ -2,19 +2,19 @@
 exec systemd-cat -t waybar waybar -c ~/.config/waybar/sway.json -s ~/.config/waybar/sway.css
 
 # PolicyKit GUI Agent
-exec /usr/lib/polkit-kde-authentication-agent-1
+#exec /usr/lib/polkit-kde-authentication-agent-1
 
 # Notification
 exec mako
 
-{{- if (eq .linux.general.terminal "footclient") }}
+{{- if (eq .terminal "footclient") }}
 exec foot --server
 {{ end }}
 
 # Wallpapers
 # exec ~/.azotebg
 
-{{ if (eq .linux.general.launcher "nwg-drawer" ) }}
+{{ if (eq .launcher "nwg-drawer" ) }}
 # nwg-drawer cache
 exec_always nwg-drawer -r -nofs
 {{ end }}

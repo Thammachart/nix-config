@@ -1,9 +1,11 @@
+{ pkgs, ... }:
+{
   templateFile = name: template: data:
     pkgs.stdenv.mkDerivation {
 
       name = "${name}";
 
-      nativeBuildInpts = [ pkgs.gomplate ];
+      buildInputs = [ pkgs.gomplate ];
 
       # Pass Json as file to avoid escaping
       passAsFile = [ "jsonData" ];
@@ -14,10 +16,12 @@
       phases = [ "buildPhase" "installPhase" ];
 
       buildPhase = ''
-        ${pkgs.gomplate}/bin/gomplate -d d=$jsonDataPath -f ${template} -o rendered_file
+        cat $jsonDataPath
+        ${pkgs.gomplate}/bin/gomplate -c .="file://''${jsonDataPath}?type=application/json" -f ${template} -o rendered_file
       '';
 
       installPhase = ''
         cp rendered_file $out
       '';
     };
+}

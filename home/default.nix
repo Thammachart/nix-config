@@ -1,16 +1,14 @@
-{ config, pkgs, ... }:
+{ pkgs, config, ... }:
 
 {
   imports = [
+    ./config.nix
     ./sway
   ];
 
-  # Home Manager needs a bit of information about you and the
-  # paths it should manage.
   home = {
-    username = "thammachart";
-    homeDirectory = "/home/thammachart";
-
+    username = "${config.username}";
+    homeDirectory = "/home/${config.username}";
 
     pointerCursor = {
       name = "Adwaita";
