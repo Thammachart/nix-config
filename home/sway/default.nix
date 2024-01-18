@@ -1,7 +1,8 @@
-{ pkgs, templateFile, isDesktop, ...  }:
+{ pkgs, isDesktop, ...  }:
 
 let
   config = import ../config.nix;
+  templateFile = import ../utils/template-engine.nix {pkgs=pkgs;};
 in
 {
   home.file.".config/sway/config".source = ./config;

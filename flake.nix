@@ -11,13 +11,13 @@
     };
   };
 
-  outputs = { nixpkgs, home-manager, ... }@inputs: {
+  outputs = { self, nixpkgs, home-manager }@inputs: {
     nixosConfigurations = {
       "tiikeri-pivot" = nixpkgs.lib.nixosSystem {
         system = "X86_64-linux";
+
         modules = [
 	        ./hosts/tiikeri-pivot
-          (args: { nixpkgs.overlays = import ./overlays args })
 
           home-manager.nixosModules.home-manager {
             home-manager.useGlobalPkgs = true;

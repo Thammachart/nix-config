@@ -1,11 +1,9 @@
-{ lib, ... }:
-
+{ pkgs }:
   name: template: data:
-    lib.mkDerivation {
-
+    pkgs.stdenv.mkDerivation {
       name = "${name}";
 
-      buildInputs = [ pkgs.gomplate ];
+      buildInputs = [ nixpkgs.gomplate ];
 
       # Pass Json as file to avoid escaping
       passAsFile = [ "jsonData" ];
@@ -17,11 +15,11 @@
 
       buildPhase = ''
         cat $jsonDataPath
-        ${pkgs.gomplate}/bin/gomplate -c .="file://''${jsonDataPath}?type=application/json" -f ${template} -o rendered_file
+        ${nixpkgs.gomplate}/bin/gomplate -c .="file://''${jsonDataPath}?type=application/json" -f ${template} -o rendered_file
       '';
 
       installPhase = ''
         cp rendered_file $out
       '';
-    };
+    }
 
