@@ -39,6 +39,7 @@
     hostName = "tiikeri-pivot";
     networkmanager.enable = true;
   };
+  systemd.services.NetworkManager-wait-online.enable = false;
 
   nixpkgs = {
     config.allowUnfree = true;
@@ -171,6 +172,10 @@
   };
 
   programs.xwayland = {
+    enable = true;
+  };
+
+  programs.steam = {
     enable = true;
   };
 
