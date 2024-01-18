@@ -3,7 +3,7 @@
     pkgs.stdenv.mkDerivation {
       name = "${name}";
 
-      buildInputs = [ nixpkgs.gomplate ];
+      buildInputs = [ pkgs.gomplate ];
 
       # Pass Json as file to avoid escaping
       passAsFile = [ "jsonData" ];
@@ -15,7 +15,7 @@
 
       buildPhase = ''
         cat $jsonDataPath
-        ${nixpkgs.gomplate}/bin/gomplate -c .="file://''${jsonDataPath}?type=application/json" -f ${template} -o rendered_file
+        ${pkgs.gomplate}/bin/gomplate -c .="file://''${jsonDataPath}?type=application/json" -f ${template} -o rendered_file
       '';
 
       installPhase = ''

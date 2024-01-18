@@ -1,8 +1,8 @@
-{ pkgs, templateFile, isDesktop, ...  }:
+{ pkgs, isDesktop, homeConfig, ...  }:
 
 let
-  config = import ../config.nix;
+  templateFile = import ../../utils/template-engine.nix {pkgs=pkgs;};
 in
 {
-  home.file.".config/foot/foot.ini".source = templateFile "foot-ini-${config.username}" ./foot.ini.tmpl config.homeSettings;
+  home.file.".config/foot/foot.ini".source = templateFile "foot-ini-${homeConfig.username}" ./foot.ini.tmpl homeConfig.homeSettings;
 }

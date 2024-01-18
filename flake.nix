@@ -27,6 +27,7 @@
               inherit inputs;
               isPersonal = true;
               isDesktop = true;
+              homeConfig = import ./home/config.nix;
             };
             home-manager.users.thammachart = import ./home;
           }

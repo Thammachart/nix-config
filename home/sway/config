@@ -1,9 +1,9 @@
 include variables
 include outputs
-#include workspaces
-#include autostart
+include workspaces
+include autostart
 include theme
-#include inputs
+include inputs
 
 ### Key bindings
 #

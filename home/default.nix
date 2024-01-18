@@ -6,6 +6,7 @@ in
 {
   imports = [
     ./sway
+    ./foot
   ];
 
   home = {
