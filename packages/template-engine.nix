@@ -1,4 +1,3 @@
-{ 
   templateFile = name: template: data:
     pkgs.stdenv.mkDerivation {
 
@@ -22,5 +21,3 @@
         cp rendered_file $out
       '';
     };
-}
-
