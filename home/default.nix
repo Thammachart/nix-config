@@ -7,6 +7,7 @@ in
   imports = [
     ./sway
     ./foot
+    ./mpv
   ];
 
   home = {
