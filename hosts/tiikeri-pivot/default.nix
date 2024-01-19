@@ -154,9 +154,14 @@
     lxqt.pcmanfm-qt
     lxqt.lximage-qt
     qalculate-gtk
+    cinnamon.nemo
+    mpv
+    gnome.gnome-system-monitor
+    gnome.gnome-disk-utility
   ];
 
   services.dbus.enable = true;
+  services.udisks2.enable = true;
   xdg.portal = {
     enable = true;
     wlr.enable = true;
