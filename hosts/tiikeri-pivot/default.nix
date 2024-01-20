@@ -158,6 +158,13 @@
     mpv
     gnome.gnome-system-monitor
     gnome.gnome-disk-utility
+    mate.atril
+    protonup-qt
+    xorg.xprop
+    xdotool
+    xorg.xwininfo
+    yad
+    unzip
   ];
 
   services.dbus.enable = true;
