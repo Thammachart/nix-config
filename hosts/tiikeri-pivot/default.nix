@@ -193,10 +193,10 @@
   programs.steam = {
     enable = true;
 
-    # unset TZ var to force Proton to correctly set timezone according to Linux System Timezone: https://github.com/NixOS/nixpkgs/issues/279893#issuecomment-1883875778
+    # unset TZ env var to force Proton to correctly set timezone according to Linux System Timezone: https://github.com/NixOS/nixpkgs/issues/279893#issuecomment-1883875778
     package = pkgs.steam-small.override {
       extraProfile = ''
-      unset TZ
+      unset TZ;
       '';
     };
   };

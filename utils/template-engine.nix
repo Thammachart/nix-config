@@ -14,7 +14,6 @@
       phases = [ "buildPhase" "installPhase" ];
 
       buildPhase = ''
-        cat $jsonDataPath
         ${pkgs.gomplate}/bin/gomplate -c .="file://''${jsonDataPath}?type=application/json" -f ${template} -o rendered_file
       '';
 

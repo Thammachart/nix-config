@@ -16,7 +16,12 @@
   outputs = { self, nixpkgs, nixpkgs-unstable, home-manager, ... }@inputs: 
   let
     defaultSystem = "x86_64-linux";
-    pkgs-unstable = import nixpkgs-unstable { system = defaultSystem; };
+    pkgs = import nixpkgs { system = defaultSystem; };
+    pkgs-unstable = import nixpkgs-unstable { 
+      system = defaultSystem;
+      allowUnfree = true;
+    };
+    templateFile = import ./utils/template-engine { inherit pkgs; };
   in
   {
     nixosConfigurations = {
@@ -25,6 +30,7 @@
 
         specialArgs = {
           inherit pkgs-unstable;
+          inherit templateFile;
         };
 
         modules = [
@@ -37,6 +43,7 @@
             home-manager.extraSpecialArgs = { 
               inherit inputs;
               inherit pkgs-unstable;
+              inherit templateFile;
 
               isPersonal = true;
               isDesktop = true;

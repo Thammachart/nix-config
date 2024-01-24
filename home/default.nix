@@ -8,6 +8,7 @@ in
     ./sway
     ./foot
     ./mpv
+    ./waybar
   ];
 
   home = {

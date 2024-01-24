@@ -1,8 +1,5 @@
-{ pkgs, homeConfig, isDesktop, ...  }:
+{ pkgs, templateFile, homeConfig, isDesktop, ...  }:
 
-let
-  templateFile = import ../../utils/template-engine.nix {pkgs=pkgs;};
-in
 {
   home.file.".config/sway/config".source = ./config;
   home.file.".config/sway/variables".source = templateFile "sway-vars-${homeConfig.username}" ./variables.tmpl homeConfig.homeSettings;
