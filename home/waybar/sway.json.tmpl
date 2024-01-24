@@ -6,7 +6,7 @@
   "modules-center": ["sway/window"],
   "modules-right": [
     "idle_inhibitor", "custom/notification", "pulseaudio", "sway/language",
-    {{ if not (contains "Desktop" .chezmoi.hostname) -}}
+    {{ if not .isDesktop -}}
     "backlight", 
     "battery", 
     {{ end -}}
@@ -118,6 +118,6 @@
   },
   "custom/power": {
     "format": "",
-    "on-click": "{{ .linux.general.powermenu }}"
+    "on-click": "{{ .powermenu }}"
   }
 }

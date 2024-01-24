@@ -13,7 +13,7 @@
     "custom/notification",
     "pulseaudio",
     "hyprland/language",
-    {{ if not (contains "Desktop" .chezmoi.hostname) -}}
+    {{ if not .isDesktop -}}
     "backlight", 
     "battery", 
     {{ end -}}
@@ -69,6 +69,6 @@
   },
   "custom/power": {
     "format": "",
-    "on-click": "{{ .linux.general.powermenu }}"
+    "on-click": "{{ .powermenu }}"
   }
 }

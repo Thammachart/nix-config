@@ -16,12 +16,15 @@
   outputs = { self, nixpkgs, nixpkgs-unstable, home-manager, ... }@inputs: 
   let
     defaultSystem = "x86_64-linux";
-    pkgs = import nixpkgs { system = defaultSystem; };
+    pkgs = import nixpkgs { 
+      system = defaultSystem; 
+      allowUnfree = true; 
+    };
     pkgs-unstable = import nixpkgs-unstable { 
       system = defaultSystem;
       allowUnfree = true;
     };
-    templateFile = import ./utils/template-engine { inherit pkgs; };
+    templateFile = import ./utils/template-engine.nix { inherit pkgs; };
   in
   {
     nixosConfigurations = {
