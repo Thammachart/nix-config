@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, pkgs-unstable, ... }:
 
 {
   imports =
@@ -17,7 +17,7 @@
   };
 
   boot = {
-    kernelPackages = pkgs.linuxPackages_zen;
+    kernelPackages = pkgs-unstable.linuxPackages_zen;
     loader = {
       systemd-boot.enable = true;
       efi.canTouchEfiVariables = true;
@@ -145,7 +145,6 @@
     firefox
     chromium
     htop
-    vscodium
     wlr-randr
     nwg-displays
     nwg-bar
@@ -175,6 +174,8 @@
     extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
   };
 
+  programs.dconf.enable = true;
+
   programs.sway = {
     enable = true;
     wrapperFeatures.gtk = true;
@@ -191,6 +192,13 @@
 
   programs.steam = {
     enable = true;
+
+    # unset TZ var to force Proton to correctly set timezone according to Linux System Timezone: https://github.com/NixOS/nixpkgs/issues/279893#issuecomment-1883875778
+    package = pkgs.steam-small.override {
+      extraProfile = ''
+      unset TZ
+      '';
+    };
   };
 
   programs.gamemode = {

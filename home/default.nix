@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, pkgs-unstable, ... }:
 
 let
   config = import ./config.nix;
@@ -58,6 +58,11 @@ in
 
     platformTheme = "qtct";
     style.name = "kvantum";
+  };
+
+  programs.vscode = {
+    enable = true;
+    package = pkgs-unstable.vscodium;
   };
 
   # Let Home Manager install and manage itself.
