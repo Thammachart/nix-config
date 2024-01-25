@@ -165,6 +165,7 @@
     xorg.xwininfo
     yad
     unzip
+    networkmanagerapplet
   ];
 
   services.dbus.enable = true;

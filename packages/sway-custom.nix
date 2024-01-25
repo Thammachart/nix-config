@@ -2,7 +2,7 @@
 
 
 let
-  wl-enable = import ./wl-enable.nix { pkgs = pkgs; };
+  wl-enable = import ./wl-enable.nix { inherit pkgs; };
 
   launch-sway = pkgs.writeScriptBin "launch-sway" ''
     source ${wl-enable}
