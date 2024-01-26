@@ -5,3 +5,7 @@ update-flake:
 
 rebuild:
 	sudo nixos-rebuild switch --flake .
+
+gc:
+	sudo nix store gc --debug
+	sudo nix-collect-garbage --delete-old

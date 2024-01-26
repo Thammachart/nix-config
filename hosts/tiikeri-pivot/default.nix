@@ -166,6 +166,7 @@
     yad
     unzip
     networkmanagerapplet
+    libva-utils
   ];
 
   services.dbus.enable = true;
