@@ -3,7 +3,7 @@
     pkgs.stdenv.mkDerivation {
       name = "${name}";
 
-      buildInputs = [ pkgs.gomplate ];
+      nativeBuildInputs = [ pkgs.gomplate ];
 
       # Pass Json as file to avoid escaping
       passAsFile = [ "jsonData" ];
