@@ -1,0 +1,22 @@
+[
+  {
+    "label": "Logout",
+    "exec": "swaymsg exit",
+    "icon": "{{ .nwg-bar-path }}/share/nwg-bar/images/system-log-out.svg"
+  },
+  {
+    "label": "Suspend",
+    "exec": "systemctl suspend",
+    "icon": "{{ .nwg-bar-path }}/share/nwg-bar/images/system-lock-screen.svg"
+  },
+  {
+    "label": "Reboot",
+    "exec": "systemctl reboot",
+    "icon": "{{ .nwg-bar-path }}/share/nwg-bar/images/system-reboot.svg"
+  },
+  {
+    "label": "Shutdown",
+    "exec": "systemctl -i poweroff",
+    "icon": "{{ .nwg-bar-path }}/share/nwg-bar/images/system-shutdown.svg"
+  }
+]

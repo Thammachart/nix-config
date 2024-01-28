@@ -9,6 +9,7 @@ in
     ./foot
     ./mpv
     ./waybar
+    ./nwg-bar
   ];
 
   home = {
