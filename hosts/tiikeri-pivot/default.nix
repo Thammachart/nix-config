@@ -143,7 +143,6 @@
     wl-clipboard # wl-copy and wl-paste for copy/paste from stdin / stdout
     fuzzel
     mako # notification system developed by swaywm maintainer
-    firefox
     chromium
     htop
     wlr-randr
@@ -190,6 +189,10 @@
   };
 
   programs.xwayland = {
+    enable = true;
+  };
+
+  programs.firefox = {
     enable = true;
   };
 
