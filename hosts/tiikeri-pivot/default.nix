@@ -166,6 +166,7 @@
     unzip
     networkmanagerapplet
     libva-utils
+    qbittorrent
   ];
 
   services.dbus.enable = true;
