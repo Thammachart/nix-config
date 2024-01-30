@@ -13,6 +13,9 @@
   users.users.thammachart = {
      isNormalUser = true;
      extraGroups = [ "wheel" "network" "networkmanager" "audio" "video" "storage" "input" ];
+
+     shell = pkgs-unstable.nushell;
+
      packages = with pkgs; [];
   };
 
@@ -156,7 +159,6 @@
     cinnamon.nemo
     mpv
     gnome.gnome-system-monitor
-    gnome.gnome-disk-utility
     mate.atril
     protonup-qt
     xorg.xprop
@@ -167,14 +169,26 @@
     networkmanagerapplet
     libva-utils
     qbittorrent
-  ];
+    swaybg
+    waypaper
+  ] ++ [];
 
   services.dbus.enable = true;
+
   services.udisks2.enable = true;
+
   xdg.portal = {
     enable = true;
     wlr.enable = true;
     extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+  };
+
+  services.gnome.gnome-keyring = {
+    enable = true;
+  };
+
+  programs.gnome-disks = {
+    enable = true;
   };
 
   programs.dconf.enable = true;

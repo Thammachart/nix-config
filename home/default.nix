@@ -16,6 +16,7 @@ in
     username = "${config.username}";
     homeDirectory = "/home/${config.username}";
 
+
     pointerCursor = {
       name = "Adwaita";
       package = pkgs.gnome.adwaita-icon-theme;
@@ -35,6 +36,11 @@ in
     # the Home Manager release notes for a list of state version
     # changes in each release.
     stateVersion = "23.11";
+  };
+
+  xdg.userDirs = {
+    enable = true;
+    createDirectories = true;
   };
 
   gtk = {
@@ -65,6 +71,9 @@ in
   programs.vscode = {
     enable = true;
     package = pkgs-unstable.vscodium;
+  };
+
+  programs.nushell = {
   };
 
   # Let Home Manager install and manage itself.
