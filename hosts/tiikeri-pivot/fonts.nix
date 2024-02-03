@@ -1,5 +1,6 @@
-{pkgs, ...}:
+{ pkgs, pkgs-unstable, ... }:
 {
+  pkgs.overlays = [ import ../../overlays/fontconfig.nix { inherit pkgs; inherit pkgs-unstable; } ];
   fonts = {
     packages = with pkgs; [
       # icon fonts
@@ -25,11 +26,14 @@
     # B&W emojis that would sometimes show instead of some Color emojis
     fontconfig.defaultFonts = {
       serif = ["Noto Serif" "Noto Color Emoji"];
-      sansSerif = ["Inter" "Ubuntu" "Noto Sans" "Noto Color Emoji"];
+      sansSerif = ["Inter Display" "Ubuntu" "Noto Sans" "Noto Color Emoji"];
       monospace = ["JetBrainsMono NFP" "Noto Color Emoji"];
       emoji = ["Noto Color Emoji"];
     };
     fontconfig.localConf = ''
+    <?xml version="1.0"?>
+    <!DOCTYPE fontconfig SYSTEM "urn:fontconfig:fonts.dtd">
+    <fontconfig>
       <match target="pattern">
         <test name="family">
           <string>Segoe UI</string>
@@ -68,6 +72,17 @@
           <string>Liberation Sans</string>
         </edit>
       </match>
+
+      <match target="font">
+        <test name="family" compare="eq" ignore-blanks="true">
+          <string>Inter Display</string>
+        </test>
+        <edit name="fontfeatures" mode="append">
+          <string>ss02</string>
+          <string>ss03</string>
+        </edit>
+      </match>
+    </fontconfig>
     '';
   };
 
