@@ -25,6 +25,5 @@ let
     Type=Application
     '';
   };
-in {
-  environment.systemPackages = [ launch-sway ];
-}
+in 
+  launch-sway

@@ -46,7 +46,7 @@ in
   gtk = {
     enable = true;
     font = {
-      name = "Ubuntu";
+      name = "Inter Display";
       size = 12;
     };
     iconTheme.name = "Papirus-Dark";

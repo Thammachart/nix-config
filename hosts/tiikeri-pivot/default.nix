@@ -1,13 +1,17 @@
 { config, lib, pkgs, pkgs-unstable, ... }:
 
+let
+  launch-sway = import ../../packages/sway-custom.nix { inherit pkgs; };
+in
 {
   imports =
     [
       ./hardware-configuration.nix
       ./custom-hardware-configuration.nix
+      ./fonts.nix
       ./login-manager.nix
-      ../../packages/sway-custom.nix
     ];
+
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.thammachart = {
@@ -19,7 +23,12 @@
      packages = with pkgs; [];
   };
 
+  systemd.package = pkgs-unstable.systemd;
+
   boot = {
+    kernel.sysctl = {
+      "kernel.sysrq" = 1;
+    };
     kernelPackages = pkgs-unstable.linuxPackages_zen;
     loader = {
       systemd-boot.enable = true;
@@ -59,38 +68,6 @@
   #   keyMap = "us";
   #   useXkbConfig = true; # use xkb.options in tty.
   # };
-
-  fonts = {
-    packages = with pkgs; [
-      # icon fonts
-      material-design-icons
-
-      # normal fonts
-      noto-fonts
-      noto-fonts-cjk
-      noto-fonts-emoji
-      liberation_ttf
-      ubuntu_font_family
-      inter
-
-      # nerdfonts
-      (nerdfonts.override {fonts = ["CascadiaCode" "FiraCode" "JetBrainsMono"];})
-    ];
-
-    # use fonts specified by user rather than default ones
-    enableDefaultPackages = false;
-
-    # user defined fonts
-    # the reason there's Noto Color Emoji everywhere is to override DejaVu's
-    # B&W emojis that would sometimes show instead of some Color emojis
-    fontconfig.defaultFonts = {
-      serif = ["Noto Serif" "Noto Color Emoji"];
-      sansSerif = ["Ubuntu" "Noto Sans" "Noto Color Emoji"];
-      monospace = ["JetBrainsMono Nerd Font" "Noto Color Emoji"];
-      emoji = ["Noto Color Emoji"];
-    };
-    fontconfig.localConf = '''';
-  };
 
   # Configure keymap in X11
   # services.xserver.xkb.layout = "us";
@@ -171,6 +148,8 @@
     qbittorrent
     swaybg
     waypaper
+    nvd
+    launch-sway
   ] ++ [];
 
   services.dbus.enable = true;
@@ -224,6 +203,14 @@
 
   programs.gamemode = {
     enable = true;
+  };
+
+  virtualisation.docker = {
+    enable = true;
+    enableOnBoot = false;
+
+    package = pkgs-unstable.docker;
+    storageDriver = "btrfs";
   };
 
   # Copy the NixOS configuration file and link it from the resulting system
