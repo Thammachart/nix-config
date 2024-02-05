@@ -1,6 +1,5 @@
 { pkgs, pkgs-unstable, ... }:
 {
-  pkgs.overlays = [ import ../../overlays/fontconfig.nix { inherit pkgs; inherit pkgs-unstable; } ];
   fonts = {
     packages = with pkgs; [
       # icon fonts
@@ -78,8 +77,6 @@
           <string>Inter Display</string>
         </test>
         <edit name="fontfeatures" mode="append">
-          <string>ss02</string>
-          <string>ss03</string>
         </edit>
       </match>
     </fontconfig>

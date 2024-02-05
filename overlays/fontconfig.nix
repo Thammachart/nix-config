@@ -1,4 +1,4 @@
-{ pkgs, pkgs-unstable, ... }:
+{ pkgs-unstable, ... }:
 (final: prev: {
   fontconfig = pkgs-unstable.fontconfig;
 })
