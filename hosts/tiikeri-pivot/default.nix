@@ -112,6 +112,7 @@ in
     xdg-utils # for opening default programs when clicking links
     lsd
     glib # gsettings
+    yaru-theme
     papirus-icon-theme
     waybar
     wlsunset
@@ -149,6 +150,8 @@ in
     waypaper
     nvd
     launch-sway
+    media-downloader
+    yt-dlp
   ] ++ [];
 
   services.dbus.enable = true;

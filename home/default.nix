@@ -46,18 +46,14 @@ in
   gtk = {
     enable = true;
     font = {
-      name = "Inter Display";
+      name = config.fonts.latin.ui;
       size = 12;
     };
-    iconTheme.name = "Papirus-Dark";
+    iconTheme = {
+      name = "Papirus-Dark";
+    };
     theme = {
-      name = "Catppuccin-Macchiato-Compact-Pink-Dark";
-      package = pkgs.catppuccin-gtk.override {
-        accents = [ "pink" ];
-        size = "compact";
-        tweaks = [ "rimless" "black" ];
-        variant = "macchiato";
-      };
+      name = "Yaru-dark";
     };
   };
 
