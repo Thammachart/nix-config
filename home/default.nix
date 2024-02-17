@@ -73,6 +73,16 @@ in
   programs.nushell = {
   };
 
+  programs.git = {
+    enable = true;
+    userName = "Thammachart";
+    userEmail = "1731496+Thammachart@users.noreply.github.com";
+
+    includes = [
+      { path = "~/gitalias.txt"; }
+    ];
+  };
+
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 }
