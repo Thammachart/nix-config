@@ -10,6 +10,7 @@ in
     ./mpv
     ./waybar
     ./nwg-bar
+    ./fuzzel
   ];
 
   home = {
@@ -46,7 +47,7 @@ in
   gtk = {
     enable = true;
     font = {
-      name = config.fonts.latin.ui;
+      name = config.homeSettings.fonts.latin.ui;
       size = 12;
     };
     iconTheme = {

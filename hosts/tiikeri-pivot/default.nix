@@ -22,7 +22,7 @@ in
      packages = with pkgs; [];
   };
 
-  systemd.package = pkgs-unstable.systemd;
+  # systemd.package = pkgs-unstable.systemd;
 
   boot = {
     kernel.sysctl = {
@@ -152,6 +152,8 @@ in
     launch-sway
     media-downloader
     yt-dlp
+    glxinfo
+    ripgrep
   ] ++ [];
 
   services.dbus.enable = true;
