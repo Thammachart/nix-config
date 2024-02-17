@@ -18,11 +18,15 @@
     defaultSystem = "x86_64-linux";
     pkgs = import nixpkgs { 
       system = defaultSystem; 
-      allowUnfree = true; 
+      config = {
+        allowUnfree = true;
+      };
     };
     pkgs-unstable = import nixpkgs-unstable { 
       system = defaultSystem;
-      allowUnfree = true;
+      config = {
+        allowUnfree = true;
+      };
     };
     templateFile = import ./utils/template-engine.nix { inherit pkgs; };
   in
@@ -39,7 +43,9 @@
         modules = [
 	        ./hosts/tiikeri-pivot
 
-          import ./overlays/mesa.nix {inherit pkgs-unstable}
+          # {
+          #   nixpkgs.overlays = [ (import ./overlays/mesa.nix { inherit pkgs-unstable; }) ];
+          # }
 
           home-manager.nixosModules.home-manager {
             home-manager.useGlobalPkgs = true;
