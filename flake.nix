@@ -13,7 +13,7 @@
     };
   };
 
-  outputs = { self, nixpkgs, nixpkgs-stable, home-manager, ... }@inputs: 
+  outputs = { self, nixpkgs, nixpkgs-stable, home-manager, ... } @ inputs: 
   let
     defaultSystem = "x86_64-linux";
     pkgs = import nixpkgs { 
@@ -40,6 +40,9 @@
           inherit pkgs-stable;
           inherit templateFile;
           inherit configData;
+
+          isPersonal = true;
+          isDesktop = true;
         };
 
         modules = [
@@ -55,13 +58,14 @@
               inherit templateFile;
               inherit configData;
 
-              isPersonal = true;
-              isDesktop = true;
+              isPersonal = specialArgs.isPersonal;
+              isDesktop = specialArgs.isDesktop;
             };
-            home-manager.users.thammachart = import ./home;
+            home-manager.users."${configData.username}" = import ./home;
           }
 	      ];
       };
+      "leopardi-orbit" = nixpkgs.kib.nixosSystem rec {};
     };
   };
 }
