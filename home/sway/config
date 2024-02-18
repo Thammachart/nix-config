@@ -159,7 +159,7 @@ bindsym XF86AudioRaiseVolume exec pamixer -i 2
 bindsym XF86AudioLowerVolume exec pamixer -d 2
 
 # bar {
-#    swaybar_command waybar
+#    swaybar_command swaybar
 # }
 
 focus_follows_mouse no

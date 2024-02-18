@@ -1,4 +1,4 @@
-{ config, lib, pkgs, pkgs-unstable, ... }:
+{ config, lib, pkgs, pkgs-stable, ... }:
 
 {
   boot.initrd.kernelModules = [ "amdgpu" ];
@@ -39,5 +39,5 @@
   };
 
   # Force radv
-  environment.variables.AMD_VULKAN_ICD = "RADV";
+  # environment.variables.AMD_VULKAN_ICD = "RADV";
 }

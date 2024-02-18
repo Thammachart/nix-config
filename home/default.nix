@@ -1,4 +1,4 @@
-{ pkgs, pkgs-unstable, ... }:
+{ pkgs, pkgs-stable, ... }:
 
 let
   config = import ./config.nix;
@@ -67,7 +67,7 @@ in
 
   programs.vscode = {
     enable = true;
-    package = pkgs-unstable.vscodium;
+    package = pkgs.vscodium;
   };
 
   programs.nushell = {

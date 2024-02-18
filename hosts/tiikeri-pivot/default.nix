@@ -1,4 +1,4 @@
-{ config, lib, pkgs, pkgs-unstable, ... }:
+{ config, lib, pkgs, pkgs-stable, ... }:
 
 let
   launch-sway = import ../../packages/sway-custom.nix { inherit pkgs; };
@@ -17,18 +17,18 @@ in
      isNormalUser = true;
      extraGroups = [ "wheel" "network" "networkmanager" "audio" "video" "storage" "input" ];
 
-     shell = pkgs-unstable.nushell;
+     shell = pkgs.nushell;
 
      packages = with pkgs; [];
   };
 
-  # systemd.package = pkgs-unstable.systemd;
+  # systemd.package = pkgs-stable.systemd;
 
   boot = {
     kernel.sysctl = {
       "kernel.sysrq" = 1;
     };
-    kernelPackages = pkgs-unstable.linuxPackages_zen;
+    kernelPackages = pkgs.linuxPackages_zen;
     loader = {
       systemd-boot.enable = true;
       efi.canTouchEfiVariables = true;
@@ -104,6 +104,7 @@ in
     neofetch
     geany
     pavucontrol
+    libnotify
     dbus   # make dbus-update-activation-environment available in the path
     wayland
     xwayland
@@ -154,6 +155,7 @@ in
     yt-dlp
     glxinfo
     ripgrep
+    flameshot
   ] ++ [];
 
   services.dbus.enable = true;
@@ -197,8 +199,10 @@ in
   programs.steam = {
     enable = true;
 
-    # unset TZ env var to force Proton to correctly set timezone according to Linux System Timezone: https://github.com/NixOS/nixpkgs/issues/279893#issuecomment-1883875778
-    package = pkgs.steam-small.override {
+    # Unsetting TZ env means 2 conflicting things:
+    # - Proton and games themselves will use correct timezone, corresponding to Linux System Timezone: https://github.com/NixOS/nixpkgs/issues/279893#issuecomment-1883875778
+    # - Steam itself will show incorrect timezone (always defaulted to UTC) in gameoverlay: https://github.com/ValveSoftware/steam-for-linux/issues/10057
+    package = pkgs.steam.override {
       extraProfile = ''
       unset TZ;
       '';
@@ -213,7 +217,7 @@ in
     enable = true;
     enableOnBoot = false;
 
-    package = pkgs-unstable.docker;
+    package = pkgs.docker;
     storageDriver = "btrfs";
   };
 
