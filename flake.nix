@@ -65,7 +65,7 @@
           }
 	      ];
       };
-      "leopardi-orbit" = nixpkgs.kib.nixosSystem rec {};
+      "majava-orbit" = nixpkgs.kib.nixosSystem rec {};
     };
   };
 }
