@@ -57,7 +57,6 @@
 
               isPersonal = true;
               isDesktop = true;
-              homeConfig = import ./home/configData.nix;
             };
             home-manager.users.thammachart = import ./home;
           }

@@ -1,5 +1,5 @@
-{ pkgs, templateFile, isDesktop, homeConfig, ...  }:
+{ pkgs, templateFile, isDesktop, configData, ...  }:
 
 {
-  home.file.".config/foot/foot.ini".source = templateFile "foot-ini-${homeConfig.username}" ./foot.ini.tmpl homeConfig.homeSettings;
+  home.file.".config/foot/foot.ini".source = templateFile "foot-ini-${configData.username}" ./foot.ini.tmpl configData.homeSettings;
 }

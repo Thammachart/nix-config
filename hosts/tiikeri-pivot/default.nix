@@ -54,7 +54,7 @@ in
   systemd.services.NetworkManager-wait-online.enable = false;
 
   nixpkgs = {
-    configData.allowUnfree = true;
+    config.allowUnfree = true;
   };
 
   time = {
