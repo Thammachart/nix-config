@@ -1,4 +1,4 @@
-{ config, lib, pkgs, pkgs-stable, ... }:
+{ config, lib, pkgs, pkgs-stable, configData, ... }:
 
 let
   launch-sway = import ../../packages/sway-custom.nix { inherit pkgs; };
@@ -13,7 +13,7 @@ in
     ];
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.thammachart = {
+  users.users."${configData.username}" = {
      isNormalUser = true;
      extraGroups = [ "wheel" "network" "networkmanager" "audio" "video" "storage" "input" ];
 
@@ -29,6 +29,7 @@ in
       "kernel.sysrq" = 1;
     };
     kernelPackages = pkgs.linuxPackages_zen;
+    kernelParams = ["quiet"];
     loader = {
       systemd-boot.enable = true;
       efi.canTouchEfiVariables = true;
@@ -53,7 +54,7 @@ in
   systemd.services.NetworkManager-wait-online.enable = false;
 
   nixpkgs = {
-    config.allowUnfree = true;
+    configData.allowUnfree = true;
   };
 
   time = {
@@ -136,6 +137,7 @@ in
     qalculate-gtk
     cinnamon.nemo
     mpv
+    xfce.parole
     gnome.gnome-system-monitor
     mate.atril
     protonup-qt
@@ -155,7 +157,9 @@ in
     yt-dlp
     glxinfo
     ripgrep
-    flameshot
+    go
+    rustup
+    fnm
   ] ++ [];
 
   services.dbus.enable = true;
@@ -176,7 +180,23 @@ in
     enable = true;
   };
 
-  programs.dconf.enable = true;
+  programs.dconf = { 
+    enable = true;
+    profiles = {
+      user.databases = [
+        {
+          settings = with lib.gvariant; {
+            "org/gnome/desktop/privacy" = {
+              recent-files-max-age = mkInt32 0;
+              remember-recent-files  = mkBoolean false;
+              remove-old-trash-files = mkBoolean true;
+              old-files-age = mkUint32 14;
+            };
+          };
+        }
+      ];
+    };
+  };
 
   programs.sway = {
     enable = true;

@@ -1,8 +1,5 @@
-{ pkgs, pkgs-stable, ... }:
+{ pkgs, pkgs-stable, configData, ... }:
 
-let
-  config = import ./config.nix;
-in
 {
   imports = [
     ./sway
@@ -14,8 +11,8 @@ in
   ];
 
   home = {
-    username = "${config.username}";
-    homeDirectory = "/home/${config.username}";
+    username = "${configData.username}";
+    homeDirectory = "/home/${configData.username}";
 
 
     pointerCursor = {
@@ -47,7 +44,7 @@ in
   gtk = {
     enable = true;
     font = {
-      name = config.homeSettings.fonts.latin.ui;
+      name = configData.homeSettings.fonts.latin.ui;
       size = 12;
     };
     iconTheme = {

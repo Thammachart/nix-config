@@ -28,6 +28,7 @@
         allowUnfree = true;
       };
     };
+    configData = import ./config-data.nix;
     templateFile = import ./utils/template-engine.nix { inherit pkgs; };
   in
   {
@@ -38,6 +39,7 @@
         specialArgs = {
           inherit pkgs-stable;
           inherit templateFile;
+          inherit configData;
         };
 
         modules = [
@@ -51,10 +53,11 @@
               inherit inputs;
               inherit pkgs-stable;
               inherit templateFile;
+              inherit configData;
 
               isPersonal = true;
               isDesktop = true;
-              homeConfig = import ./home/config.nix;
+              homeConfig = import ./home/configData.nix;
             };
             home-manager.users.thammachart = import ./home;
           }

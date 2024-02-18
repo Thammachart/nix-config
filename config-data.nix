@@ -1,5 +1,6 @@
 {
   username = "thammachart";
+
   homeSettings = {
     terminal = "footclient";
     browser = "firefox";
