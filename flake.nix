@@ -32,74 +32,38 @@
     templateFile = import ./utils/template-engine.nix { inherit pkgs; };
   in
   {
-    nixosConfigurations = {
-      "tiikeri-pivot" = nixpkgs.lib.nixosSystem rec {
-        system = defaultSystem;
+    nixosConfigurations = builtins.mapAttrs (name: value: nixpkgs.lib.nixosSystem {
+      system = defaultSystem;
 
-        specialArgs = {
-          inherit pkgs-stable;
-          inherit templateFile;
-          inherit configData;
+      specialArgs = {
+        inherit pkgs-stable;
+        inherit templateFile;
+        inherit configData;
 
-          isPersonal = true;
-          isDesktop = true;
-          hostName = "tiikeri-pivot";
-        };
-
-        modules = [
-	        ./hosts/tiikeri-pivot
-
-          home-manager.nixosModules.home-manager {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-
-            home-manager.extraSpecialArgs = { 
-              inherit inputs;
-              inherit pkgs-stable;
-              inherit templateFile;
-              inherit configData;
-
-              isPersonal = specialArgs.isPersonal;
-              isDesktop = specialArgs.isDesktop;
-            };
-            home-manager.users."${configData.username}" = import ./home;
-          }
-	      ];
+        inherit (value) isPersonal;
+        inherit (value) isDesktop;
+        hostName = name;
       };
 
-      "hevonen-orbit" = nixpkgs.lib.nixosSystem rec {
-        system = defaultSystem;
+      modules = [
+        ./hosts/${name}
 
-        specialArgs = {
-          inherit pkgs-stable;
-          inherit templateFile;
-          inherit configData;
+        home-manager.nixosModules.home-manager {
+          home-manager.useGlobalPkgs = true;
+          home-manager.useUserPackages = true;
 
-          isPersonal = false;
-          isDesktop = false;
-          hostName = "hevonen-orbit";
-        };
-
-        modules = [
-          ./hosts/hevonen-orbit
-
-          home-manager.nixosModules.home-manager {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-
-            home-manager.extraSpecialArgs = { 
-              inherit inputs;
-              inherit pkgs-stable;
-              inherit templateFile;
-              inherit configData;
-
-              isPersonal = specialArgs.isPersonal;
-              isDesktop = specialArgs.isDesktop;
-            };
-            home-manager.users."${configData.username}" = import ./home;
-          }
-        ];
-      };
-    };
+          home-manager.extraSpecialArgs = { 
+            inherit inputs;
+            inherit pkgs-stable;
+            inherit templateFile;
+            inherit configData;
+        
+            inherit (value) isPersonal;
+            inherit (value) isDesktop;
+          };
+          home-manager.users."${configData.username}" = import ./home;
+        }
+      ];
+    }) configData.hosts;
   };
 }

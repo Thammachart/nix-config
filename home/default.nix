@@ -76,7 +76,7 @@
     userEmail = "1731496+Thammachart@users.noreply.github.com";
 
     includes = [
-      { path = "~/gitalias.txt"; }
+      { path = "~/.config/git/gitalias.txt"; }
     ];
   };
 

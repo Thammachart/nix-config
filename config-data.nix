@@ -16,4 +16,15 @@
       };
     };
   };
+
+  hosts = {
+    "tiikeri-pivot" = {
+      isPersonal = true;
+      isDesktop = true;
+    };
+    "hevonen-orbit" = {
+      isPersonal = false;
+      isDesktop = false;
+    };
+  };
 }

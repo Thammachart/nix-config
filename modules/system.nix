@@ -4,15 +4,10 @@ let
   launch-sway = import ../packages/sway-custom.nix { inherit pkgs; };
 in
 {
-  imports =
-    [
-      ./hardware-configuration.nix
-      ./custom-hardware-configuration.nix
-
-      ./fonts.nix
-      ./display-manager.nix
-    ];
-
+  imports = [
+    ./fonts.nix
+    ./display-manager.nix
+  ];
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users."${configData.username}" = {
      isNormalUser = true;
