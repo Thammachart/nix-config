@@ -43,6 +43,7 @@
 
           isPersonal = true;
           isDesktop = true;
+          hostName = "tiikeri-pivot";
         };
 
         modules = [
@@ -65,7 +66,40 @@
           }
 	      ];
       };
-      "majava-orbit" = nixpkgs.kib.nixosSystem rec {};
+
+      "hevonen-orbit" = nixpkgs.lib.nixosSystem rec {
+        system = defaultSystem;
+
+        specialArgs = {
+          inherit pkgs-stable;
+          inherit templateFile;
+          inherit configData;
+
+          isPersonal = false;
+          isDesktop = false;
+          hostName = "hevonen-orbit";
+        };
+
+        modules = [
+          ./hosts/hevonen-orbit
+
+          home-manager.nixosModules.home-manager {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+
+            home-manager.extraSpecialArgs = { 
+              inherit inputs;
+              inherit pkgs-stable;
+              inherit templateFile;
+              inherit configData;
+
+              isPersonal = specialArgs.isPersonal;
+              isDesktop = specialArgs.isDesktop;
+            };
+            home-manager.users."${configData.username}" = import ./home;
+          }
+        ];
+      };
     };
   };
 }
