@@ -1,4 +1,4 @@
-{ pkgs, pkgs-stable, configData, ... }:
+{ pkgs, pkgs-stable, configData, gitalias, ... }:
 
 {
   imports = [
@@ -76,7 +76,7 @@
     userEmail = "1731496+Thammachart@users.noreply.github.com";
 
     includes = [
-      { path = "~/.config/git/gitalias.txt"; }
+      { path = "${gitalias}/gitalias.txt"; }
     ];
   };
 

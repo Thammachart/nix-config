@@ -153,9 +153,6 @@ in
     yt-dlp
     glxinfo
     ripgrep
-    go
-    rustup
-    fnm
   ];
 
   services.dbus.enable = true;

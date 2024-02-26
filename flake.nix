@@ -11,9 +11,14 @@
       url = "github:nix-community/home-manager/master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    gitalias = {
+      url = "github:GitAlias/gitalias/main";
+      flake = false;
+    };
   };
 
-  outputs = { self, nixpkgs, nixpkgs-stable, home-manager, ... } @ inputs: 
+  outputs = { self, nixpkgs, nixpkgs-stable, home-manager, gitalias, ... } @ inputs: 
   let
     defaultSystem = "x86_64-linux";
     pkgs = import nixpkgs { 
@@ -57,6 +62,8 @@
             inherit pkgs-stable;
             inherit templateFile;
             inherit configData;
+
+            inherit gitalias;
         
             inherit (value) isPersonal;
             inherit (value) isDesktop;
