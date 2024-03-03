@@ -14,8 +14,8 @@ let
     exec systemd-cat --identifier=sway sway $@
   '';
 
-  sway-custom = pkgs.writeTextFile {
-    name = "sway-custom.desktop";
+  sway-custom-raw = pkgs.writeTextFile {
+    name = "sway-custom-desktop-entries";
     destination = "/share/wayland-sessions/sway-custom.desktop";
     text = ''
     [Desktop Entry]
@@ -25,5 +25,12 @@ let
     Type=Application
     '';
   };
+
+  sway-custom-desktop-entry = sway-custom-raw.overrideAttrs {
+    passthru.providedSessions = ["sway-custom"];
+  };
 in 
-  launch-sway
+  { 
+    inherit launch-sway;
+    inherit sway-custom-desktop-entry;
+  }

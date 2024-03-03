@@ -1,8 +1,5 @@
 { config, lib, pkgs, pkgs-stable, configData, isPersonal, isDesktop, hostName, ... }:
 
-let
-  launch-sway = import ../packages/sway-custom.nix { inherit pkgs; };
-in
 {
   imports = [
     ./fonts.nix
@@ -148,7 +145,6 @@ in
     swaybg
     waypaper
     nvd
-    launch-sway
     media-downloader
     yt-dlp
     glxinfo

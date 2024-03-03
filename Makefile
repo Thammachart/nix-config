@@ -9,3 +9,6 @@ rebuild:
 gc:
 	sudo nix store gc --debug
 	sudo nix-collect-garbage --delete-old
+
+diff:
+	nix profile diff-closures --profile /nix/var/nix/profiles/system
