@@ -173,6 +173,8 @@
     yt-dlp
     glxinfo
     ripgrep
+    xdg-user-dirs
+    busybox
   ];
 
   services.dbus.enable = true;

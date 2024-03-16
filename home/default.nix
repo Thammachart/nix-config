@@ -68,9 +68,6 @@
     package = pkgs.vscodium;
   };
 
-  programs.nushell = {
-  };
-
   programs.git = {
     enable = true;
     userName = "Thammachart";
