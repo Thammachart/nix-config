@@ -21,7 +21,7 @@
     kernel.sysctl = {
       "kernel.sysrq" = 1;
     };
-    kernelPackages = pkgs.linuxPackages_zen;
+    kernelPackages = pkgs.linuxPackages_xanmod_latest;
     kernelParams = ["quiet"];
     loader = {
       systemd-boot.enable = true;
@@ -88,6 +88,7 @@
   environment.systemPackages = with pkgs; [
     vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     neovim
+    helix
     wget
     gnumake
     git
@@ -102,7 +103,6 @@
     vulkan-tools
     dbus   # make dbus-update-activation-environment available in the path
     wayland
-    xwayland
     qt6.qtwayland
     libsForQt5.qt5.qtwayland
     xdg-utils # for opening default programs when clicking links
@@ -118,8 +118,13 @@
     slurp # screenshot functionality
     wl-clipboard # wl-copy and wl-paste for copy/paste from stdin / stdout
     fuzzel
-    mako # notification system developed by swaywm maintainer
-    chromium
+    fnott
+    (chromium.override {
+      commandLineArgs = [
+        "--password-store=gnome-libsecret"
+        "--gtk-version=4"
+      ];
+    })
     htop
     wlr-randr
     nwg-displays
@@ -144,7 +149,6 @@
     qbittorrent
     swaybg
     waypaper
-    nvd
     media-downloader
     yt-dlp
     glxinfo
@@ -216,6 +220,7 @@
     #   unset TZ;
     #   '';
     # };
+    package = pkgs.steam;
   };
 
   programs.gamemode = {
