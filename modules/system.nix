@@ -175,6 +175,7 @@
     ripgrep
     xdg-user-dirs
     busybox
+    lshw
   ];
 
   services.dbus.enable = true;
