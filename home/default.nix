@@ -8,6 +8,7 @@
     ./waybar
     ./nwg-bar
     ./fuzzel
+    ./nushell
   ];
 
   home = {
