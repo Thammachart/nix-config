@@ -12,9 +12,11 @@ in
       ../../modules/system.nix
     ];
 
-    users.users."${configData.username}".extraGroups = ["docker"];
+  boot.kernelPackages = pkgs.linuxPackages_zen;
 
-    environment.systemPackages = [
-      gcloud
-    ];
+  users.users."${configData.username}".extraGroups = ["docker"];
+
+  environment.systemPackages = [
+    gcloud
+  ];
 }

@@ -21,7 +21,7 @@
     kernel.sysctl = {
       "kernel.sysrq" = 1;
     };
-    kernelPackages = pkgs.linuxPackages_xanmod_latest;
+    kernelPackages = lib.mkDefault pkgs.linuxPackages_xanmod_latest;
     kernelParams = ["quiet"];
     loader = {
       systemd-boot.enable = true;
@@ -91,7 +91,6 @@
   services.pipewire = {
     enable = true;
     alsa.enable = true;
-    alsa.support32Bit = true;
     pulse.enable = true;
     jack.enable = true;
   };

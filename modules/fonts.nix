@@ -18,8 +18,6 @@
       (nerdfonts.override {fonts = ["CascadiaCode" "FiraCode" "JetBrainsMono"];})
     ];
 
-    fontDir.enable = true;
-
     # use fonts specified by user rather than default ones
     enableDefaultPackages = false;
 
@@ -35,8 +33,6 @@
         monospace = ["JetBrainsMono NFP" "Noto Color Emoji"];
         emoji = ["Noto Color Emoji"];
       };
-
-      cache32Bit = true;
 
       antialias = true;
       hinting = {
