@@ -7,6 +7,8 @@
 
     nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-23.11";
 
+    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
+
     home-manager = {
       url = "github:nix-community/home-manager/master";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -18,7 +20,7 @@
     };
   };
 
-  outputs = { self, nixpkgs, nixpkgs-stable, home-manager, gitalias, ... } @ inputs: 
+  outputs = { self, nixpkgs, nixpkgs-stable, nixos-hardware, home-manager, gitalias, ... } @ inputs: 
   let
     defaultSystem = "x86_64-linux";
     pkgs = import nixpkgs { 
@@ -42,6 +44,7 @@
 
       specialArgs = {
         inherit pkgs-stable;
+        inherit nixos-hardware;
         inherit templateFile;
         inherit configData;
 
