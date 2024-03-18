@@ -178,6 +178,7 @@
     xdg-user-dirs
     busybox
     lshw
+    just
   ];
 
   services.dbus.enable = true;
