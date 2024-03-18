@@ -179,6 +179,7 @@
     busybox
     lshw
     just
+    starship
   ];
 
   services.dbus.enable = true;
