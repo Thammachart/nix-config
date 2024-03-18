@@ -846,3 +846,6 @@ $env.config = {
         }
     ]
 }
+
+alias ll = ls -al
+alias g = git
