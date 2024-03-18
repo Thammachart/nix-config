@@ -18,6 +18,10 @@ in
 
   services.tlp.enable = true;
 
+  environment.sessionVariables = {
+    DEVSHELLS_PATH = "$HOME/shobshop-projects/common-dev-shells";
+  };
+
   environment.systemPackages = [
     gcloud
     pkgs.gh
