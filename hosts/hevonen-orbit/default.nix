@@ -20,5 +20,6 @@ in
 
   environment.systemPackages = [
     gcloud
+    pkgs.gh
   ];
 }
