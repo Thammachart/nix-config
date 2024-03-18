@@ -153,6 +153,8 @@
     syncthing
     lxqt.pcmanfm-qt
     lxqt.lximage-qt
+    lxqt.lxqt-archiver
+    p7zip
     qalculate-gtk
     cinnamon.nemo
     mpv
