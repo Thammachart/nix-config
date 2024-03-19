@@ -7,11 +7,21 @@ $git_status\
 $nodejs\
 $rust\
 $golang\
-$php\
+$nix_shell\
 [](fg:#212736 bg:#1d2230)\
 $character"""
 
-right_format = """$cmd_duration"""
+right_format = """
+$status\
+$cmd_duration"""
+
+add_newline = false
+
+[status]
+disabled = false
+symbol = ""
+success_symbol = ""
+format = "[$symbol$status]"
 
 [directory]
 style = "fg:#e3e5e5 bg:#2a7505"
@@ -48,3 +58,13 @@ format = '[[ $symbol ($version) ](fg:#769ff0 bg:#212736)]($style)'
 symbol = ""
 style = "bg:#212736"
 format = '[[ $symbol ($version) ](fg:#769ff0 bg:#212736)]($style)'
+
+[cmd_duration]
+format = '󱦟 [$duration](bold yellow)'
+
+[nix_shell]
+disabled = false
+impure_msg = '[impure shell](bold red)'
+pure_msg = '[pure shell](bold green)'
+unknown_msg = '[unknown shell](bold yellow)'
+format = 'via [☃️ $state( \($name\))](bold blue) '
