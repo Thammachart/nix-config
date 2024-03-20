@@ -130,7 +130,6 @@
     glib # gsettings
     yaru-theme
     papirus-icon-theme
-    waybar
     wlsunset
     swaylock
     swayidle
