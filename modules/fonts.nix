@@ -83,6 +83,16 @@
           </edit>
         </match>
 
+        <match target="pattern">
+          <test qual="any" name="family">
+            <string>ui-monospace</string>
+          </test>
+
+          <edit name="family" mode="prepend" binding="strong">
+            <string>CaskaydiaCove NFP</string>
+          </edit>
+        </match>
+
         <match target="font">
           <test name="family" compare="eq" ignore-blanks="true">
             <string>Inter Display</string>
