@@ -179,6 +179,7 @@
     lshw
     just
     starship
+    cmatrix
   ];
 
   services.dbus.enable = true;
