@@ -89,7 +89,7 @@
           </test>
 
           <edit name="family" mode="prepend" binding="strong">
-            <string>CaskaydiaCove NFP</string>
+            <string>JetBrainsMono NFP</string>
           </edit>
         </match>
 
