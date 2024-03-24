@@ -158,11 +158,11 @@ bindsym XF86AudioMute exec pamixer -t
 bindsym XF86AudioRaiseVolume exec pamixer -i 2
 bindsym XF86AudioLowerVolume exec pamixer -d 2
 
-bar {
-   position top
-   swaybar_command swaybar
-   status_command ~/.config/sway/status.sh
-}
+# bar {
+#    position top
+#    swaybar_command swaybar
+#    status_command ~/.config/sway/status.sh
+# }
 
 focus_follows_mouse no
 
