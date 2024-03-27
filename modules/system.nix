@@ -21,7 +21,7 @@
     kernel.sysctl = {
       "kernel.sysrq" = 1;
     };
-    kernelPackages = lib.mkDefault pkgs.linuxPackages_xanmod_latest;
+    kernelPackages = lib.mkDefault pkgs.linuxPackages_zen;
     kernelParams = ["quiet"];
     loader = {
       systemd-boot.enable = true;
@@ -126,7 +126,6 @@
     qt6.qtwayland
     libsForQt5.qt5.qtwayland
     xdg-utils # for opening default programs when clicking links
-    lsd
     glib # gsettings
     yaru-theme
     papirus-icon-theme
