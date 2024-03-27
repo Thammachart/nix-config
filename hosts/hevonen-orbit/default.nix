@@ -25,5 +25,6 @@ in
   environment.systemPackages = [
     gcloud
     pkgs.gh
+    pkgs.rustdesk
   ];
 }
