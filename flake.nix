@@ -3,17 +3,24 @@
   description = "Thammachart's NixOS Flake";
   inputs = {
 
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-23.11";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 
-    nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-23.11";
+
+    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 
     home-manager = {
-      url = "github:nix-community/home-manager/release-23.11";
+      url = "github:nix-community/home-manager/master";
       inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    gitalias = {
+      url = "github:GitAlias/gitalias/main";
+      flake = false;
     };
   };
 
-  outputs = { self, nixpkgs, nixpkgs-unstable, home-manager, ... }@inputs: 
+  outputs = { self, nixpkgs, nixpkgs-stable, nixos-hardware, home-manager, gitalias, ... } @ inputs: 
   let
     defaultSystem = "x86_64-linux";
     pkgs = import nixpkgs { 
@@ -22,48 +29,51 @@
         allowUnfree = true;
       };
     };
-    pkgs-unstable = import nixpkgs-unstable { 
+    pkgs-stable = import nixpkgs-stable { 
       system = defaultSystem;
       config = {
         allowUnfree = true;
       };
     };
+    configData = import ./config-data.nix;
     templateFile = import ./utils/template-engine.nix { inherit pkgs; };
   in
   {
-    nixosConfigurations = {
-      "tiikeri-pivot" = nixpkgs.lib.nixosSystem rec {
-        system = defaultSystem;
+    nixosConfigurations = builtins.mapAttrs (name: value: nixpkgs.lib.nixosSystem {
+      system = defaultSystem;
 
-        specialArgs = {
-          inherit pkgs-unstable;
-          inherit templateFile;
-        };
+      specialArgs = {
+        inherit pkgs-stable;
+        inherit nixos-hardware;
+        inherit templateFile;
+        inherit configData;
 
-        modules = [
-	        ./hosts/tiikeri-pivot
-
-          # {
-          #   nixpkgs.overlays = [ (import ./overlays/mesa.nix { inherit pkgs-unstable; }) ];
-          # }
-
-          home-manager.nixosModules.home-manager {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-
-            home-manager.extraSpecialArgs = { 
-              inherit inputs;
-              inherit pkgs-unstable;
-              inherit templateFile;
-
-              isPersonal = true;
-              isDesktop = true;
-              homeConfig = import ./home/config.nix;
-            };
-            home-manager.users.thammachart = import ./home;
-          }
-	      ];
+        inherit (value) isPersonal;
+        inherit (value) isDesktop;
+        hostName = name;
       };
-    };
+
+      modules = [
+        ./hosts/${name}
+
+        home-manager.nixosModules.home-manager {
+          home-manager.useGlobalPkgs = true;
+          home-manager.useUserPackages = true;
+
+          home-manager.extraSpecialArgs = { 
+            inherit inputs;
+            inherit pkgs-stable;
+            inherit templateFile;
+            inherit configData;
+
+            inherit gitalias;
+        
+            inherit (value) isPersonal;
+            inherit (value) isDesktop;
+          };
+          home-manager.users."${configData.username}" = import ./home;
+        }
+      ];
+    }) configData.hosts;
   };
 }

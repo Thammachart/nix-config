@@ -159,10 +159,14 @@ bindsym XF86AudioRaiseVolume exec pamixer -i 2
 bindsym XF86AudioLowerVolume exec pamixer -d 2
 
 # bar {
-#    swaybar_command waybar
+#    position top
+#    swaybar_command swaybar
+#    status_command ~/.config/sway/status.sh
 # }
 
 focus_follows_mouse no
 
 for_window [class=".*"] inhibit_idle fullscreen
 for_window [app_id=".*"] inhibit_idle fullscreen
+
+include /etc/sway/config.d/*

@@ -1,5 +1,6 @@
 {
   username = "thammachart";
+
   homeSettings = {
     terminal = "footclient";
     browser = "firefox";
@@ -13,6 +14,17 @@
         ui_monospace = "JetBrainsMono NFP";
         terminal_monospace = "CaskaydiaCove NFP";
       };
+    };
+  };
+
+  hosts = {
+    "tiikeri-pivot" = {
+      isPersonal = true;
+      isDesktop = true;
+    };
+    "hevonen-orbit" = {
+      isPersonal = false;
+      isDesktop = false;
     };
   };
 }

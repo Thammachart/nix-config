@@ -1,8 +1,5 @@
-{ pkgs, pkgs-unstable, ... }:
+{ pkgs, pkgs-stable, configData, gitalias, ... }:
 
-let
-  config = import ./config.nix;
-in
 {
   imports = [
     ./sway
@@ -11,11 +8,12 @@ in
     ./waybar
     ./nwg-bar
     ./fuzzel
+    ./nushell
   ];
 
   home = {
-    username = "${config.username}";
-    homeDirectory = "/home/${config.username}";
+    username = "${configData.username}";
+    homeDirectory = "/home/${configData.username}";
 
 
     pointerCursor = {
@@ -47,7 +45,7 @@ in
   gtk = {
     enable = true;
     font = {
-      name = config.homeSettings.fonts.latin.ui;
+      name = configData.homeSettings.fonts.latin.ui;
       size = 12;
     };
     iconTheme = {
@@ -67,10 +65,7 @@ in
 
   programs.vscode = {
     enable = true;
-    package = pkgs-unstable.vscodium;
-  };
-
-  programs.nushell = {
+    package = pkgs.vscodium;
   };
 
   programs.git = {
@@ -79,7 +74,7 @@ in
     userEmail = "1731496+Thammachart@users.noreply.github.com";
 
     includes = [
-      { path = "~/gitalias.txt"; }
+      { path = "${gitalias}/gitalias.txt"; }
     ];
   };
 
