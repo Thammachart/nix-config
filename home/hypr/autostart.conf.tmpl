@@ -8,7 +8,7 @@ exec-once = nwg-panel -c hyprland.json
 
 exec-once = swaync
 
-{{- if (eq .linux.general.terminal "footclient") }}
+{{ if (eq .terminal "footclient") }}
 exec-once = foot --server
 {{ end }}
 

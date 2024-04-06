@@ -9,7 +9,6 @@ let
 
     export XDG_SESSION_DESKTOP=sway
     export XDG_CURRENT_DESKTOP=sway
-    export QT_QPA_PLATFORMTHEME=qt5ct
 
     exec systemd-cat --identifier=sway sway $@
   '';
