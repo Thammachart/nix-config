@@ -14,13 +14,18 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    hy3 = {
+      url = "github:outfoxxed/hy3?ref=hl0.37.1";
+      inputs.hyprland.follows = "nixpkgs";
+    };
+
     gitalias = {
       url = "github:GitAlias/gitalias/main";
       flake = false;
     };
   };
 
-  outputs = { self, nixpkgs, nixpkgs-stable, nixos-hardware, home-manager, gitalias, ... } @ inputs: 
+  outputs = { self, nixpkgs, nixpkgs-stable, nixos-hardware, home-manager, gitalias, hy3, ... } @ inputs: 
   let
     defaultSystem = "x86_64-linux";
     pkgs = import nixpkgs { 
@@ -65,6 +70,7 @@
             inherit pkgs-stable;
             inherit templateFile;
             inherit configData;
+            inherit hy3;
 
             inherit gitalias;
         
