@@ -15,4 +15,7 @@ in
   };
 
   services.xserver.displayManager.sessionPackages = [ sway-custom.sway-custom-desktop-entry ];
+  security.pam.services.greetd = {
+    enableGnomeKeyring = true;
+  };
 }

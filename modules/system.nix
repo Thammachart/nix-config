@@ -144,6 +144,7 @@
         "--gtk-version=4"
       ];
     })
+    ags
     htop
     wlr-randr
     nwg-displays
@@ -198,10 +199,6 @@
     extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
   };
 
-  services.gnome.gnome-keyring = {
-    enable = true;
-  };
-
   programs.gnome-disks = {
     enable = true;
   };
@@ -227,6 +224,10 @@
   programs.sway = {
     enable = true;
     wrapperFeatures.gtk = true;
+  };
+
+  programs.hyprland = {
+    enable = true;
   };
 
   programs.neovim = {
