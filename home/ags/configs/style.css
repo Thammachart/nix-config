@@ -22,6 +22,10 @@ label {
   font-weight: bold;
 }
 
+.workspaces button {
+  border-bottom: 3px dashed transparent;
+}
+
 .workspaces button.focused {
   border-bottom: 3px solid @theme_selected_bg_color;
 }

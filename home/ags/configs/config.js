@@ -6,7 +6,7 @@ const battery = await Service.import("battery")
 const systemtray = await Service.import("systemtray")
 
 const date = Variable("", {
-  poll: [1000, 'date "+%H:%M:%S %b %e."'],
+  poll: [30000, 'date "+%H:%M %b %e"'],
 })
 
 // widgets can be only assigned as a child in one container
@@ -84,39 +84,26 @@ function Media() {
 }
 
 
-function Volume() {
-  const icons = {
-    101: "overamplified",
-    67: "high",
-    34: "medium",
-    1: "low",
-    0: "muted",
-  }
+function VolumeIndicator(type = 'speaker') {
+  const audioStream = audio[type];
 
-  function getIcon() {
-    const icon = audio.speaker.is_muted ? 0 : [101, 67, 34, 1, 0].find(
-      threshold => threshold <= audio.speaker.volume * 100)
+  return Widget.Button({
+    onClicked: () => audioStream.is_muted = !audioStream.is_muted,
+    onScrollUp: () => audioStream.volume = Math.min(1.0, audioStream.volume + 0.05),
+    onScrollDown: () => audioStream.volume = Math.max(0.0, audioStream.volume - 0.05),
+    child: Widget.Icon().hook(audio, self => {
+      const vol = audioStream.is_muted ? 0.0 : audioStream.volume * 100;
+      const icon = [
+        [101, 'overamplified'],
+        [67, 'high'],
+        [34, 'medium'],
+        [1, 'low'],
+        [0, 'muted'],
+      ].find(([threshold]) => threshold <= vol)?.[1];
 
-    return `audio-volume-${icons[icon]}-symbolic`
-  }
-
-  const icon = Widget.Icon({
-    icon: Utils.watch(getIcon(), audio.speaker, getIcon),
-  })
-
-  const slider = Widget.Slider({
-    hexpand: true,
-    draw_value: false,
-    on_change: ({ value }) => audio.speaker.volume = value,
-    setup: self => self.hook(audio.speaker, () => {
-      self.value = audio.speaker.volume || 0
-    }),
-  })
-
-  return Widget.Box({
-    class_name: "volume",
-    css: "min-width: 180px",
-    children: [icon, slider],
+      self.icon = type === 'speaker' ? `audio-volume-${icon}-symbolic` : `audio-input-microphone-${icon}-symbolic`;
+      self.tooltip_text = `Volume ${Math.floor(vol)}%`;
+    }, `${type}-changed`),
   })
 }
 
@@ -162,7 +149,6 @@ function Left() {
     spacing: 8,
     children: [
       Workspaces(),
-      ClientTitle(),
     ],
   })
 }
@@ -171,7 +157,7 @@ function Center() {
   return Widget.Box({
     spacing: 8,
     children: [
-      Media(),
+      ClientTitle(),
       Notification(),
     ],
   })
@@ -182,8 +168,8 @@ function Right() {
     hpack: "end",
     spacing: 8,
     children: [
-      Volume(),
-      BatteryLabel(),
+      VolumeIndicator('speaker'),
+      VolumeIndicator('microphone'),
       Clock(),
       SysTray(),
     ],
@@ -191,7 +177,7 @@ function Right() {
 }
 
 function Bar(monitor = 0) {
-  return Widget.Window({
+  const window = Widget.Window({
     name: `bar-${monitor}`, // name has to be unique
     class_name: "bar",
     monitor,
@@ -203,6 +189,8 @@ function Bar(monitor = 0) {
       end_widget: Right(),
     }),
   })
+
+  return window;
 }
 
 App.config({

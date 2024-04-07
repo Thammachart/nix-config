@@ -197,6 +197,11 @@
     interval = "weekly";
   };
 
+  services.journald.extraConfig = ''
+  SystemMaxUse=1G
+  MaxRetentionSec=2week
+  '';
+
   xdg.portal = {
     enable = true;
     wlr.enable = true;
