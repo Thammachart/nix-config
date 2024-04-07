@@ -14,9 +14,19 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    hyprland = {
+      url = "github:hyprwm/Hyprland";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     hy3 = {
-      url = "github:outfoxxed/hy3?ref=hl0.37.1";
-      inputs.hyprland.follows = "nixpkgs";
+      url = "github:outfoxxed/hy3";
+      inputs.hyprland.follows = "hyprland";
+    };
+
+    ags = {
+      url = "github:Aylur/ags";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     gitalias = {
@@ -25,7 +35,7 @@
     };
   };
 
-  outputs = { self, nixpkgs, nixpkgs-stable, nixos-hardware, home-manager, gitalias, hy3, ... } @ inputs: 
+  outputs = { self, nixpkgs, nixpkgs-stable, nixos-hardware, home-manager, gitalias, ... } @ inputs: 
   let
     defaultSystem = "x86_64-linux";
     pkgs = import nixpkgs { 
@@ -48,7 +58,7 @@
       system = defaultSystem;
 
       specialArgs = {
-        inherit pkgs-stable;
+        inherit inputs;
         inherit nixos-hardware;
         inherit templateFile;
         inherit configData;
@@ -67,10 +77,8 @@
 
           home-manager.extraSpecialArgs = { 
             inherit inputs;
-            inherit pkgs-stable;
             inherit templateFile;
             inherit configData;
-            inherit hy3;
 
             inherit gitalias;
         

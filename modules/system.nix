@@ -1,4 +1,4 @@
-{ config, lib, pkgs, pkgs-stable, configData, isPersonal, isDesktop, hostName, ... }:
+{ config, inputs, lib, pkgs, pkgs-stable, configData, isPersonal, isDesktop, hostName, ... }:
 
 {
   imports = [
@@ -30,8 +30,12 @@
   };
 
   nix = {
-    # Enable Flakes and the new command-line tool
-    settings.experimental-features = [ "nix-command" "flakes" ];
+    settings = {
+      experimental-features = [ "nix-command" "flakes" ];
+
+      substituters = ["https://hyprland.cachix.org"];
+      trusted-public-keys = ["hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="];
+    };
 
     gc = {
       automatic = lib.mkDefault true;
@@ -228,6 +232,7 @@
 
   programs.hyprland = {
     enable = true;
+    package = inputs.hyprland.packages.${pkgs.system}.hyprland;
   };
 
   programs.neovim = {

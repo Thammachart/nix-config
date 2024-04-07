@@ -1,12 +1,9 @@
-exec-once = ~/.azotebg-hyprland
-
 exec-once = systemd-cat -t waybar waybar -c ~/.config/waybar/hyprland.json -s ~/.config/waybar/hyprland.css
 
-exec-once = /usr/lib/polkit-kde-authentication-agent-1
+# Notification
+exec fnott
 
-exec-once = nwg-panel -c hyprland.json
-
-exec-once = swaync
+# exec-once = /usr/lib/polkit-kde-authentication-agent-1
 
 {{ if (eq .terminal "footclient") }}
 exec-once = foot --server
