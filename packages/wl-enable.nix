@@ -6,6 +6,7 @@ let
     export XDG_SESSION_TYPE=wayland
     export MOZ_ENABLE_WAYLAND=1
     export QT_QPA_PLATFORM=wayland
+    export QT_QPA_PLATFORMTHEME=qt6ct
     export CLUTTER_BACKEND=wayland
     export ECORE_EVAS_ENGINE=wayland-egl
     export ELM_ENGINE=wayland_egl

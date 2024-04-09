@@ -19,7 +19,8 @@
 
   boot = {
     kernel.sysctl = {
-      "kernel.sysrq" = 1;
+      "kernel.sysrq" = lib.mkDefault 1;
+      "vm.max_map_count" = 1048576;
     };
     kernelPackages = lib.mkDefault pkgs.linuxPackages_zen;
     kernelParams = ["quiet"];

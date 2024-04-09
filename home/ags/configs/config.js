@@ -158,7 +158,6 @@ function Center() {
     spacing: 8,
     children: [
       ClientTitle(),
-      Notification(),
     ],
   })
 }
