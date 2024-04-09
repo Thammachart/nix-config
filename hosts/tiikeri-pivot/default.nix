@@ -10,5 +10,6 @@
   environment.systemPackages = [
     pkgs.signal-desktop
     pkgs.protonup-qt
+    pkgs.librewolf
   ];
 }

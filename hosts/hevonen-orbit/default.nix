@@ -27,5 +27,6 @@ in
     pkgs.gh
     pkgs.rustdesk
     pkgs.google-cloud-sql-proxy
+    pkgs.firefox-devedition
   ];
 }
