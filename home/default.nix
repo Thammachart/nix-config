@@ -3,7 +3,6 @@
 {
   imports = [
     ./sway
-    ./hypr
     ./foot
     ./mpv
     ./waybar
