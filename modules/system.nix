@@ -200,6 +200,10 @@
   MaxRetentionSec=2week
   '';
 
+  services.gnome.gnome-keyring = {
+    enable = true;
+  };
+
   xdg.portal = {
     enable = true;
     wlr.enable = true;

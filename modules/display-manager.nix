@@ -1,8 +1,7 @@
 { pkgs, sway-custom, config, ... }:
 let
   sway-custom = import ../packages/sway-custom.nix { inherit pkgs; };
-  hyprland-custom = import ../packages/hyprland-custom.nix { inherit pkgs; };
-  desktopSessions = config.services.xserver.displayManager.sessionData.desktops;
+  desktopSessions = config.services.displayManager.sessionData.desktops;
 in
 {
   services.greetd = {
@@ -15,8 +14,9 @@ in
     };
   };
 
-  services.xserver.displayManager.sessionPackages = [ sway-custom.sway-custom-desktop-entry hyprland-custom.hyprland-custom-desktop-entry ];
-  security.pam.services.greetd = {
-    enableGnomeKeyring = true;
+  services.displayManager = {
+    enable = true;
+    execCmd = config.systemd.services.greetd.serviceConfig.ExecStart;
+    sessionPackages = [ sway-custom.sway-custom-desktop-entry ];
   };
 }
