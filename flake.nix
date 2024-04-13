@@ -5,7 +5,7 @@
 
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 
-    nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-23.11";
+    # nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-23.11";
 
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 
@@ -35,17 +35,11 @@
     };
   };
 
-  outputs = { self, nixpkgs, nixpkgs-stable, nixos-hardware, home-manager, gitalias, ... } @ inputs: 
+  outputs = { self, nixpkgs, nixos-hardware, home-manager, gitalias, ... } @ inputs: 
   let
     defaultSystem = "x86_64-linux";
     pkgs = import nixpkgs { 
       system = defaultSystem; 
-      config = {
-        allowUnfree = true;
-      };
-    };
-    pkgs-stable = import nixpkgs-stable { 
-      system = defaultSystem;
       config = {
         allowUnfree = true;
       };
