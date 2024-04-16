@@ -146,7 +146,6 @@
         "--gtk-version=4"
       ];
     })
-    ags
     htop
     wlr-randr
     nwg-displays
