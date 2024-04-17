@@ -209,6 +209,12 @@
     extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
   };
 
+  programs.gnupg = {
+    agent = {
+      enable = true;
+    };
+  };
+
   programs.gnome-disks = {
     enable = true;
   };
