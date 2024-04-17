@@ -6,7 +6,7 @@
     browser = "firefox";
     editor = "geany";
     launcher = "fuzzel";
-    locker = "swaylock -f -c 000000";
+    locker = "swaylock -f -c 089966";
     powermenu = "nwg-bar -t ~/.config/nwg-bar/exit-bar/bar.json -s ~/.config/nwg-bar/exit-bar/style.css";
 
     fonts = {
