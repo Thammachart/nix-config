@@ -119,6 +119,7 @@
     foot
     gomplate
     neofetch
+    vscodium
     geany
     pavucontrol
     libnotify
@@ -157,10 +158,17 @@
     lxqt.lxqt-archiver
     p7zip
     qalculate-gtk
-    cinnamon.nemo
     mpv
-    gnome.gnome-system-monitor
+    mate.caja
+    mate.mate-system-monitor
     mate.atril
+
+    libsForQt5.qt5ct
+    qt6Packages.qt6ct
+    qt6Packages.qtstyleplugin-kvantum
+    libsForQt5.qtstyleplugin-kvantum
+
+    procs
     xorg.xprop
     xdotool
     xorg.xwininfo

@@ -56,16 +56,8 @@
     };
   };
 
-  qt = {
-    enable = true;
-
-    platformTheme = "qtct";
-    style.name = "kvantum";
-  };
-
-  programs.vscode = {
-    enable = true;
-    package = pkgs.vscodium;
+  xdg.configFile = {
+    "Kvantum/kvantum.kvconfig".text = "[General]\ntheme=KvArcDark";
   };
 
   programs.git = {
