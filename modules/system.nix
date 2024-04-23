@@ -159,7 +159,8 @@
     p7zip
     qalculate-gtk
     mpv
-    mate.caja
+
+    cinnamon.nemo-with-extensions
     mate.mate-system-monitor
     mate.atril
 
