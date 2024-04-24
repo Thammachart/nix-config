@@ -125,17 +125,14 @@
     libnotify
     vulkan-tools
     dbus   # make dbus-update-activation-environment available in the path
-    wayland
-    qt6.qtwayland
-    libsForQt5.qt5.qtwayland
+
     xdg-utils # for opening default programs when clicking links
     glib # gsettings
     yaru-theme
     papirus-icon-theme
     waybar
     wlsunset
-    swaylock
-    swayidle
+
     grim # screenshot functionality
     slurp # screenshot functionality
     wl-clipboard # wl-copy and wl-paste for copy/paste from stdin / stdout
@@ -160,14 +157,21 @@
     qalculate-gtk
     mpv
 
-    cinnamon.nemo-with-extensions
-    mate.mate-system-monitor
-    mate.atril
+    gnome.nautilus
+    gnome.gnome-system-monitor
 
-    libsForQt5.qt5ct
+    # cinnamon.nemo-with-extensions
+    # mate.mate-system-monitor
+    # mate.atril
+
+    # libsForQt5.qt5.qtwayland
+    # libsForQt5.qt5ct
+    # libsForQt5.qtstyleplugin-kvantum
+
+    kdePackages.qtwayland
+    kdePackages.qtsvg
     qt6Packages.qt6ct
     qt6Packages.qtstyleplugin-kvantum
-    libsForQt5.qtstyleplugin-kvantum
 
     procs
     xorg.xprop
@@ -178,7 +182,6 @@
     networkmanagerapplet
     libva-utils
     qbittorrent
-    swaybg
     waypaper
     media-downloader
     yt-dlp
@@ -191,6 +194,10 @@
     starship
     cmatrix
   ];
+
+  qt = {
+    enable = true;
+  };
 
   services.dbus.enable = true;
 
@@ -216,6 +223,17 @@
     enable = true;
     wlr.enable = true;
     extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+    config = {
+      sway = {
+        default = [
+          "gtk"
+          "wlr"
+        ];
+        "org.freedesktop.impl.portal.Secret" = [
+          "gnome-keyring"
+        ];
+      };
+    };
   };
 
   programs.gnupg = {
@@ -225,6 +243,14 @@
   };
 
   programs.gnome-disks = {
+    enable = true;
+  };
+
+  programs.file-roller = {
+    enable = true;
+  };
+
+  programs.evince = {
     enable = true;
   };
 
@@ -240,6 +266,9 @@
               remove-old-trash-files = mkBoolean true;
               old-files-age = mkUint32 14;
             };
+            "org/gnome/desktop/interface" = {
+              color-scheme = mkString "prefer-dark";
+            };
           };
         }
       ];
@@ -249,13 +278,8 @@
   programs.sway = {
     enable = true;
     wrapperFeatures.gtk = true;
-    extraPackages = with pkgs; [ swaylock swayidle ];
+    extraPackages = with pkgs; [ swaylock swayidle swaybg ];
   };
-
-  # programs.hyprland = {
-  #   enable = true;
-  #   package = inputs.hyprland.packages.${pkgs.system}.hyprland;
-  # };
 
   programs.neovim = {
     enable = true;
