@@ -118,7 +118,7 @@
     zsh
     foot
     gomplate
-    neofetch
+    fastfetch
     vscodium
     geany
     pavucontrol
