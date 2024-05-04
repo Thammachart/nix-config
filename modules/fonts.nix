@@ -15,7 +15,8 @@
       inter
 
       # nerdfonts
-      (nerdfonts.override {fonts = ["CascadiaCode" "FiraCode" "JetBrainsMono"];})
+      cascadia-code
+      (nerdfonts.override {fonts = ["FiraCode" "JetBrainsMono"];})
     ];
 
     fontDir = {

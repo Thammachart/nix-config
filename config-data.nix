@@ -13,7 +13,7 @@
       latin = {
         ui = "Inter Display";
         ui_monospace = "JetBrainsMono NFP";
-        terminal_monospace = "CaskaydiaCove NFP";
+        terminal_monospace = "Cascadia Mono NF";
       };
     };
   };
