@@ -160,7 +160,6 @@
     qalculate-gtk
     mpv
 
-    gnome.nautilus
     gnome.gnome-system-monitor
 
     # cinnamon.nemo-with-extensions
@@ -196,6 +195,8 @@
     just
     starship
     cmatrix
+
+    librewolf
   ];
 
   qt = {

@@ -12,11 +12,7 @@ in
       ../../modules/system.nix
     ];
 
-  boot.kernelPackages = pkgs.linuxPackages_zen;
-
   users.users."${configData.username}".extraGroups = ["docker"];
-
-  services.tlp.enable = true;
 
   environment.sessionVariables = {
     DEVSHELLS_PATH = "$HOME/shobshop-projects/common-dev-shells";
@@ -25,7 +21,7 @@ in
   environment.systemPackages = [
     gcloud
     pkgs.gh
-    pkgs.rustdesk
+    pkgs.rustdesk-flutter
     pkgs.google-cloud-sql-proxy
     pkgs.firefox-devedition
   ];
