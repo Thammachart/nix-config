@@ -8,6 +8,7 @@
     chaotic = {
       url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
       inputs.nixpkgs.follows = "nixpkgs";
+      inputs.home-manager.follows = "home-manager";
     };
 
     # nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-23.11";

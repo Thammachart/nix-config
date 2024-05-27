@@ -43,7 +43,9 @@
         "flake-compat": "flake-compat",
         "flake-schemas": "flake-schemas",
         "flake-utils": "flake-utils",
-        "home-manager": "home-manager",
+        "home-manager": [
+          "home-manager"
+        ],
         "jovian": "jovian",
         "jujutsu": "jujutsu",
         "niri": "niri",
@@ -256,27 +258,6 @@
       }
     },
     "home-manager": {
-      "inputs": {
-        "nixpkgs": [
-          "chaotic",
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1716736760,
-        "narHash": "sha256-h3RmnNknKYtVA+EvUSra6QAwfZjC2q1G8YA7W0gat8Y=",
-        "owner": "nix-community",
-        "repo": "home-manager",
-        "rev": "5d151429e1e79107acf6d06dcc5ace4e642ec239",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nix-community",
-        "repo": "home-manager",
-        "type": "github"
-      }
-    },
-    "home-manager_2": {
       "inputs": {
         "nixpkgs": [
           "nixpkgs"
@@ -506,7 +487,7 @@
       "inputs": {
         "chaotic": "chaotic",
         "gitalias": "gitalias",
-        "home-manager": "home-manager_2",
+        "home-manager": "home-manager",
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs"
       }
