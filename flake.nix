@@ -5,6 +5,11 @@
 
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 
+    chaotic = {
+      url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     # nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-23.11";
 
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
@@ -35,7 +40,7 @@
     };
   };
 
-  outputs = { self, nixpkgs, nixos-hardware, home-manager, gitalias, ... } @ inputs: 
+  outputs = { self, nixpkgs, nixos-hardware, chaotic, home-manager, gitalias, ... } @ inputs: 
   let
     defaultSystem = "x86_64-linux";
     pkgs = import nixpkgs { 
@@ -64,6 +69,8 @@
 
       modules = [
         ./hosts/${name}
+        
+        chaotic.nixosModules.default
 
         home-manager.nixosModules.home-manager {
           home-manager.useGlobalPkgs = true;

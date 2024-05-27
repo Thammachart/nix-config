@@ -22,11 +22,12 @@
       "kernel.sysrq" = lib.mkDefault 1;
       "vm.max_map_count" = 1048576;
     };
-    kernelPackages = lib.mkDefault pkgs.linuxPackages_zen;
+    kernelPackages = lib.mkDefault pkgs.linuxPackages_cachyos-lto;
     kernelParams = ["quiet"];
     loader = {
       systemd-boot.enable = true;
       efi.canTouchEfiVariables = true;
+      timeout = 3;
     };
   };
 
@@ -63,7 +64,7 @@
         };
     };
   };
-
+  
   nixpkgs = {
     config.allowUnfree = true;
   };
@@ -216,6 +217,12 @@
   SystemMaxUse=1G
   MaxRetentionSec=2week
   '';
+  
+  services.ananicy = {
+    enable = true;
+    package = pkgs.ananicy-cpp;
+    rulesProvider = pkgs.ananicy-rules-cachyos;
+  };
 
   services.gnome.gnome-keyring = {
     enable = true;
