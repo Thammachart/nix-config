@@ -1,11 +1,11 @@
 { config, lib, pkgs, pkgs-stable, nixos-hardware, modulesPath, ... }:
 
 {
-  imports = [
-    nixos-hardware.nixosModules.lenovo-thinkpad-p14s-amd-gen2
-  ];
+  # imports = [
+  #   nixos-hardware.nixosModules.lenovo-thinkpad-p14s-amd-gen2
+  # ];
 
-  boot.initrd.kernelModules = [];
+  boot.initrd.kernelModules = [ "amdgpu" ];
 
   fileSystems."/".options = [ "noatime" "commit=120" "compress=zstd:1" "space_cache=v2" "subvol=@" ];
 
