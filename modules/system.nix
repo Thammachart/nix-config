@@ -122,6 +122,7 @@
     fastfetch
     vscodium
     geany
+    brave
     pavucontrol
     libnotify
     vulkan-tools
