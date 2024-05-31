@@ -7,8 +7,8 @@
 
     chaotic = {
       url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.home-manager.follows = "home-manager";
+      # inputs.nixpkgs.follows = "nixpkgs";
+      # inputs.home-manager.follows = "home-manager";
     };
 
     # nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-23.11";
@@ -19,21 +19,6 @@
       url = "github:nix-community/home-manager/master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    # hyprland = {
-    #   url = "github:hyprwm/Hyprland?ref=v0.38.1";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
-
-    # hy3 = {
-    #   url = "github:outfoxxed/hy3";
-    #   inputs.hyprland.follows = "hyprland";
-    # };
-
-    # ags = {
-    #   url = "github:Aylur/ags";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
 
     gitalias = {
       url = "github:GitAlias/gitalias/main";
