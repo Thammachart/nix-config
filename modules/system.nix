@@ -201,6 +201,11 @@
   qt = {
     enable = true;
   };
+  
+  services.emacs = {
+    enable = true;
+    package = pkgs.emacs29-pgtk;
+  };
 
   services.dbus.enable = true;
 
