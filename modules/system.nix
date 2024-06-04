@@ -308,6 +308,15 @@
 
     storageDriver = "btrfs";
   };
+  
+  services.zram-generator = {
+    enable = true;
+    settings = {
+      zram0 = {
+        zram-size = "ram / 2";
+      };
+    };
+  };
 
   # Copy the NixOS configuration file and link it from the resulting system
   # (/run/current-system/configuration.nix). This is useful in case you
