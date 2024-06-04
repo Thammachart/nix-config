@@ -155,19 +155,18 @@
     lxqt.pcmanfm-qt
     lxqt.lximage-qt
     lxqt.lxqt-archiver
+    lxqt.qps
     p7zip
     qalculate-gtk
     mpv
 
-    gnome.gnome-system-monitor
-
-    # cinnamon.nemo-with-extensions
     # mate.mate-system-monitor
-    # mate.atril
+    mate.atril
 
     # libsForQt5.qt5.qtwayland
     # libsForQt5.qt5ct
     # libsForQt5.qtstyleplugin-kvantum
+    # kdePackages.okular
 
     kdePackages.qtwayland
     kdePackages.qtsvg
@@ -184,8 +183,6 @@
     libva-utils
     qbittorrent
     waypaper
-    media-downloader
-    yt-dlp
     glxinfo
     ripgrep
     xdg-user-dirs
@@ -260,14 +257,6 @@
     enable = true;
   };
 
-  programs.file-roller = {
-    enable = true;
-  };
-
-  programs.evince = {
-    enable = true;
-  };
-
   programs.dconf = { 
     enable = true;
     profiles = {
@@ -311,24 +300,6 @@
   programs.direnv = {
     enable = true;
     nix-direnv.enable = true;
-  };
-
-  programs.steam = {
-    enable = isPersonal;
-
-    # Unsetting TZ env means 2 conflicting things:
-    # - Proton and games themselves will use correct timezone, corresponding to Linux System Timezone: https://github.com/NixOS/nixpkgs/issues/279893#issuecomment-1883875778
-    # - Steam itself will show incorrect timezone (always defaulted to UTC) in gameoverlay: https://github.com/ValveSoftware/steam-for-linux/issues/10057
-    # package = pkgs.steam-small.override {
-    #   extraProfile = ''
-    #   unset TZ;
-    #   '';
-    # };
-    package = pkgs.steam;
-  };
-
-  programs.gamemode = {
-    enable = isPersonal;
   };
 
   virtualisation.docker = {
