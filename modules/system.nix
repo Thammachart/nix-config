@@ -130,8 +130,12 @@
 
     xdg-utils # for opening default programs when clicking links
     glib # gsettings
+
     yaru-theme
+    # sweet
     papirus-icon-theme
+    catppuccin-cursors.mochaGreen
+
     waybar
     wlsunset
 
@@ -193,6 +197,7 @@
     cmatrix
 
     librewolf
+    
   ];
 
   qt = {

@@ -17,13 +17,13 @@
 
 
     pointerCursor = {
-      name = "Adwaita";
-      package = pkgs.gnome.adwaita-icon-theme;
+      # name = "Adwaita";
+      # package = pkgs.gnome.adwaita-icon-theme;
+
+      name = "catppuccin-mocha-green-cursors";
+      package = pkgs.catppuccin-cursors.mochaGreen;
       size = 24;
-      x11 = {
-        enable = true;
-        defaultCursor = "Adwaita";
-      };
+      gtk.enable = true;
     };
 
     # This value determines the Home Manager release that your
@@ -53,6 +53,7 @@
     };
     theme = {
       name = "Yaru-dark";
+      package = pkgs.yaru-theme;
     };
   };
 
