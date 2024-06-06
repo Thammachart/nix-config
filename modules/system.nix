@@ -134,7 +134,7 @@
     yaru-theme
     # sweet
     papirus-icon-theme
-    catppuccin-cursors.mochaGreen
+    catppuccin-cursors.latteBlue
 
     waybar
     wlsunset

@@ -20,7 +20,7 @@
       # name = "Adwaita";
       # package = pkgs.gnome.adwaita-icon-theme;
 
-      name = "catppuccin-mocha-green-cursors";
+      name = "catppuccin-latte-blue-cursors";
       package = pkgs.catppuccin-cursors.mochaGreen;
       size = 24;
       gtk.enable = true;
