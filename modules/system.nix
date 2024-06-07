@@ -134,7 +134,7 @@
     yaru-theme
     # sweet
     papirus-icon-theme
-    catppuccin-cursors.latteBlue
+    capitaine-cursors-themed
 
     waybar
     wlsunset
@@ -176,6 +176,9 @@
     kdePackages.qtsvg
     qt6Packages.qt6ct
     qt6Packages.qtstyleplugin-kvantum
+    
+    # element-desktop
+    fluffychat
 
     procs
     xorg.xprop
