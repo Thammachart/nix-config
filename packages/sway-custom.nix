@@ -19,7 +19,7 @@ let
     text = ''
     [Desktop Entry]
     Name=Sway (Custom)
-    Comment=An i2-compatible Wayland compositor with env vars
+    Comment=An i3-compatible Wayland compositor with env vars
     Exec=${launch-sway}/bin/launch-sway
     Type=Application
     '';

@@ -134,7 +134,6 @@
     yaru-theme
     # sweet
     papirus-icon-theme
-    capitaine-cursors-themed
 
     waybar
     wlsunset

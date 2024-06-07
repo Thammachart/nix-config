@@ -17,12 +17,9 @@
 
 
     pointerCursor = {
-      # name = "Adwaita";
-      # package = pkgs.gnome.adwaita-icon-theme;
-
-      name = "Capitaine Cursors";
-      package = pkgs.capitaine-cursors-themed;
-      size = 32;
+      name = "Yaru";
+      package = pkgs.yaru-theme;
+      size = 24;
       gtk.enable = true;
     };
 
