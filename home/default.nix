@@ -1,4 +1,4 @@
-{ pkgs, pkgs-stable, configData, gitalias, ... }:
+{ pkgs, pkgs-stable, configData, gitalias, isPersonal, ... }:
 
 {
   imports = [
@@ -14,7 +14,6 @@
   home = {
     username = "${configData.username}";
     homeDirectory = "/home/${configData.username}";
-
 
     pointerCursor = {
       name = "Yaru";
@@ -66,6 +65,28 @@
     includes = [
       { path = "${gitalias}/gitalias.txt"; }
     ];
+  };
+  
+  programs.aria2 = {
+    enable = isPersonal;
+    settings = {
+      allow-overwrite = true;
+      log = "";
+      console-log-level = "notice";
+      file-allocation = "falloc";
+      
+      summary-interval = 120;
+
+      enable-rpc = true;
+      rpc-secure = false;
+      rpc-listen-all = false;
+      rpc-listen-port = 6801;
+      
+      max-concurrent-downloads = 2;
+      max-connection-per-server = 1;
+      
+      dir = "/data/sda1/Times/High";
+    };
   };
 
   # Let Home Manager install and manage itself.

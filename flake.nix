@@ -10,6 +10,11 @@
       # inputs.nixpkgs.follows = "nixpkgs";
       # inputs.home-manager.follows = "home-manager";
     };
+    
+    agenix = {
+      url = "github:ryantm/agenix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     # nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-23.11";
 
@@ -26,7 +31,7 @@
     };
   };
 
-  outputs = { self, nixpkgs, nixos-hardware, chaotic, home-manager, gitalias, ... } @ inputs: 
+  outputs = { self, nixpkgs, nixos-hardware, chaotic, home-manager, agenix, gitalias, ... } @ inputs: 
   let
     defaultSystem = "x86_64-linux";
     pkgs = import nixpkgs { 
@@ -54,10 +59,11 @@
       };
 
       modules = [
-        ./hosts/${name}
-        
+        agenix.nixosModules.default
         chaotic.nixosModules.default
 
+        ./hosts/${name}
+        
         home-manager.nixosModules.home-manager {
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
@@ -74,6 +80,7 @@
           };
           home-manager.users."${configData.username}" = import ./home;
         }
+
       ];
     }) configData.hosts;
   };

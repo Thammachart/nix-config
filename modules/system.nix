@@ -1,4 +1,4 @@
-{ config, inputs, lib, pkgs, pkgs-stable, configData, isPersonal, isDesktop, hostName, ... }:
+{ config, inputs, lib, pkgs, configData, isPersonal, isDesktop, hostName, ... }:
 
 {
   imports = [
@@ -166,7 +166,7 @@
     # mate.mate-system-monitor
     mate.atril
 
-    # libsForQt5.qt5.qtwayland
+    libsForQt5.qt5.qtwayland
     # libsForQt5.qt5ct
     # libsForQt5.qtstyleplugin-kvantum
     # kdePackages.okular
@@ -200,6 +200,14 @@
 
     librewolf
     
+    yubikey-manager
+    yubikey-manager-qt
+    cryptsetup
+    opensc
+  ];
+  
+  age.identityPaths = [
+    "/etc/ssh/ssh_host_ed25519_key"
   ];
 
   qt = {
@@ -210,6 +218,10 @@
     enable = true;
     package = pkgs.emacs29-pgtk;
   };
+
+  # services.pcscd = {
+  #   enable = true;
+  # };
 
   services.dbus.enable = true;
 
