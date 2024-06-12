@@ -16,6 +16,7 @@
 
       # nerdfonts
       cascadia-code
+      _0xproto
       (nerdfonts.override {fonts = ["FiraCode" "JetBrainsMono"];})
     ];
 
