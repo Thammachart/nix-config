@@ -7,6 +7,7 @@ in
 {
   imports =
     [
+      ./secrets.nix
       ./hardware-configuration.nix
       ./custom-hardware-configuration.nix
       ../../modules/system.nix

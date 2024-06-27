@@ -31,7 +31,7 @@
     };
     
     nix-secrets = {
-      url = "git+file:///home/thammachart/nix-secrets";
+      url = "git+file:///data/nix-secrets?shallow=1&ref=main";
       flake = false;
     };
   };

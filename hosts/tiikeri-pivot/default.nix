@@ -2,7 +2,7 @@
 {
   imports =
     [
-      ./secrets/nix
+      ./secrets.nix
       ./hardware-configuration.nix
       ./custom-hardware-configuration.nix
       ../../modules/system.nix
