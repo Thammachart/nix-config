@@ -15,8 +15,6 @@
      packages = with pkgs; [];
   };
 
-  # systemd.package = pkgs-stable.systemd;
-
   boot = {
     kernel.sysctl = {
       "kernel.sysrq" = lib.mkDefault 1;
@@ -28,6 +26,9 @@
       systemd-boot.enable = true;
       efi.canTouchEfiVariables = true;
       timeout = 3;
+    };
+    tmp = {
+      cleanOnBoot = true;
     };
   };
 
@@ -89,8 +90,10 @@
   # services.printing.enable = true;
 
   # Enable sound.
-  sound.enable = true;
+  sound.enable = false;
   hardware.pulseaudio.enable = false;
+  
+  security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
     alsa.enable = true;
@@ -115,7 +118,10 @@
     wget
     gnumake
     git
-    greetd.tuigreet
+
+    age
+    sops
+
     zsh
     foot
     gomplate
@@ -162,7 +168,7 @@
     p7zip
     qalculate-gtk
     mpv
-
+    
     # mate.mate-system-monitor
     mate.atril
 
@@ -206,10 +212,6 @@
     opensc
   ];
   
-  age.identityPaths = [
-    "/etc/ssh/ssh_host_ed25519_key"
-  ];
-
   qt = {
     enable = true;
   };
@@ -265,11 +267,10 @@
       };
     };
   };
-
-  programs.gnupg = {
-    agent = {
-      enable = true;
-    };
+  
+  chaotic.scx = {
+    enable = false;
+    scheduler = lib.mkDefault "scx_rustland";
   };
 
   programs.gnome-disks = {
@@ -335,6 +336,22 @@
         zram-size = "ram / 2";
       };
     };
+  };
+  
+  services.openssh.hostKeys = [
+    {
+      path = "/etc/ssh/ssh_host_ed25519_key";
+      type = "ed25519";
+    }
+  ];
+  
+  sops = {
+    age = {
+      sshKeyPaths = [ "/etc/ssh/ssh_host_ed25519_key" ];
+      keyFile = "/var/lib/sops-nix/host.txt";
+      generateKey = true;
+    };
+
   };
 
   # Copy the NixOS configuration file and link it from the resulting system

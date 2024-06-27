@@ -2,6 +2,7 @@
 {
   imports =
     [
+      ./secrets/nix
       ./hardware-configuration.nix
       ./custom-hardware-configuration.nix
       ../../modules/system.nix
@@ -13,6 +14,8 @@
 
     pkgs.media-downloader
     pkgs.yt-dlp
+    
+    pkgs.cryptomator
   ];
 
   programs.steam = {

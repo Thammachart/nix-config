@@ -11,8 +11,8 @@
       # inputs.home-manager.follows = "home-manager";
     };
     
-    agenix = {
-      url = "github:ryantm/agenix";
+    sops-nix = {
+      url = "github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -29,9 +29,14 @@
       url = "github:GitAlias/gitalias/main";
       flake = false;
     };
+    
+    nix-secrets = {
+      url = "git+file:///home/thammachart/nix-secrets";
+      flake = false;
+    };
   };
 
-  outputs = { self, nixpkgs, nixos-hardware, chaotic, home-manager, agenix, gitalias, ... } @ inputs: 
+  outputs = { self, nixpkgs, nixos-hardware, chaotic, home-manager, sops-nix, nix-secrets, gitalias, ... } @ inputs: 
   let
     defaultSystem = "x86_64-linux";
     pkgs = import nixpkgs { 
@@ -52,6 +57,7 @@
         inherit nixos-hardware;
         inherit templateFile;
         inherit configData;
+        inherit nix-secrets;
 
         inherit (value) isPersonal;
         inherit (value) isDesktop;
@@ -59,8 +65,9 @@
       };
 
       modules = [
-        agenix.nixosModules.default
         chaotic.nixosModules.default
+
+        sops-nix.nixosModules.sops
 
         ./hosts/${name}
         
@@ -72,12 +79,18 @@
             inherit inputs;
             inherit templateFile;
             inherit configData;
+            inherit nix-secrets;
 
             inherit gitalias;
         
             inherit (value) isPersonal;
             inherit (value) isDesktop;
           };
+          
+          home-manager.sharedModules = [
+            sops-nix.homeManagerModules.sops
+          ];
+
           home-manager.users."${configData.username}" = import ./home;
         }
 

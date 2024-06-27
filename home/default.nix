@@ -71,16 +71,17 @@
     enable = isPersonal;
     settings = {
       allow-overwrite = true;
-      log = "";
+      # log = "-";
       console-log-level = "notice";
-      file-allocation = "falloc";
+      # file-allocation = "falloc";
       
-      summary-interval = 120;
+      # summary-interval = 120;
 
       enable-rpc = true;
       rpc-secure = false;
       rpc-listen-all = false;
-      rpc-listen-port = 6801;
+      rpc-listen-port = 6802;
+      rpc-allow-origin-all = true;
       
       max-concurrent-downloads = 2;
       max-connection-per-server = 1;

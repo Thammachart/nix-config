@@ -23,11 +23,9 @@
       options = [ "noatime" "commit=120" "compress=zstd" "space_cache=v2" "autodefrag" ];
     };
 
-  hardware.opengl = {
+  hardware.graphics = {
     enable = true;
-
-    driSupport = true;
-    driSupport32Bit = true;
+    enable32Bit = true;
 
     extraPackages = with pkgs; [
       amdvlk

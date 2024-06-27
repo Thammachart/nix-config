@@ -1,4 +1,7 @@
-{ pkgs, pkgs-stable, config, ... }:
+{ pkgs, pkgs-stable, config, configData, ... }:
+let
+  fontConfigData = configData.homeSettings.fonts;
+in
 {
   fonts = {
     packages = with pkgs; [
@@ -17,6 +20,7 @@
       # nerdfonts
       cascadia-code
       _0xproto
+      geist-font
       (nerdfonts.override {fonts = ["FiraCode" "JetBrainsMono"];})
     ];
 
@@ -35,8 +39,8 @@
 
       defaultFonts = {
         serif = ["Noto Serif" "Noto Serif CJK JP" "Noto Color Emoji"];
-        sansSerif = ["Inter Display" "Ubuntu" "Noto Sans" "Noto Sans CJK JP" "Noto Color Emoji"];
-        monospace = ["JetBrainsMono NFP" "Noto Color Emoji"];
+        sansSerif = [fontConfigData.latin.ui "Ubuntu" "Noto Sans" "Noto Sans CJK JP" "Noto Color Emoji"];
+        monospace = [fontConfigData.latin.ui_monospace fontConfigData.latin.terminal_monospace "JetBrainsMono NFP" "Noto Color Emoji"];
         emoji = ["Noto Color Emoji"];
       };
 
@@ -73,7 +77,7 @@
             <string>Menlo</string>
           </test>
           <edit binding="same" mode="assign" name="family">
-            <string>JetBrainsMono NFP</string>
+            <string>${fontConfigData.latin.ui_monospace}</string>
           </edit>
         </match>
 
@@ -83,7 +87,7 @@
           </test>
 
           <edit name="family" mode="prepend" binding="strong">
-            <string>Inter Display</string>
+            <string>${fontConfigData.latin.ui}</string>
             <string>Ubuntu</string>
             <string>Liberation Sans</string>
           </edit>
@@ -95,7 +99,7 @@
           </test>
 
           <edit name="family" mode="prepend" binding="strong">
-            <string>JetBrainsMono NFP</string>
+            <string>${fontConfigData.latin.ui_monospace}</string>
           </edit>
         </match>
 
