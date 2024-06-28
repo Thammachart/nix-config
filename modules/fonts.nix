@@ -21,7 +21,7 @@ in
       cascadia-code
       _0xproto
       geist-font
-      (nerdfonts.override {fonts = ["FiraCode" "JetBrainsMono"];})
+      (nerdfonts.override {fonts = ["CascadiaMono" "JetBrainsMono"];})
     ];
 
     fontDir = {
@@ -68,7 +68,7 @@ in
             <string>Consolas</string>
           </test>
           <edit binding="same" mode="assign" name="family">
-            <string>CaskaydiaCove NFP</string>
+            <string>Cascadia Mono</string>
           </edit>
         </match>
 
