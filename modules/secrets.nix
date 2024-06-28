@@ -1,4 +1,4 @@
-{config, ...}:
+{config, nix-secrets, ...}:
 {
   sops = {
     age = {
@@ -25,6 +25,6 @@
   };
 
   environment.etc = {
-    "xdg/nix.conf".source = config.sops.templates."nix.conf".path;
+    "xdg/nix/nix.conf".source = config.sops.templates."nix.conf".path;
   };
 }
