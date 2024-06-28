@@ -2,6 +2,7 @@
 
 {
   imports = [
+    ./secrets.nix
     ./fonts.nix
     ./display-manager.nix
   ];
@@ -344,34 +345,6 @@
       type = "ed25519";
     }
   ];
-  
-  sops = {
-    age = {
-      # sshKeyPaths = [ "/etc/ssh/ssh_host_ed25519_key" ];
-      keyFile = "/var/lib/sops-nix/host.txt";
-      generateKey = true;
-    };
-
-    secrets = {
-      github_access_token = {
-        key = "access_token";
-        sopsFile = "${nix-secrets}/_common/github.yml";
-      };
-    };
-
-    templates."nix.conf" = {
-      content = ''
-      access-tokens = github.com=${config.sops.placeholder.github_access_token}
-      '';
-      mode = "0440";
-      owner = "root";
-      group = "root";
-    };
-  };
-
-  environment.etc = {
-    "xdg/nix.conf".source = config.sops.templates."nix.conf".path;
-  };
 
   # Copy the NixOS configuration file and link it from the resulting system
   # (/run/current-system/configuration.nix). This is useful in case you
