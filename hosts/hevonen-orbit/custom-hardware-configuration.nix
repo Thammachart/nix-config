@@ -15,7 +15,7 @@
 
   fileSystems."/boot".options = [ "noatime" ];
 
-  hardware.opengl = {
+  hardware.graphics = {
     enable = true;
   };
 }
