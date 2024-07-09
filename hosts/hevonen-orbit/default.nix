@@ -14,7 +14,7 @@ in
       ../../modules/system.nix
     ];
     
-  boot.kernelPackages = pkgs.linuxPackage_zen;
+  boot.kernelPackages = pkgs.linuxPackages_zen;
 
   users.users."${configData.username}".extraGroups = ["docker"];
 
