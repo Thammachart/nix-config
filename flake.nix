@@ -22,6 +22,11 @@
     };
 
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
+    
+    auto-cpufreq = {
+      url = "github:AdnanHodzic/auto-cpufreq";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     home-manager = {
       url = "github:nix-community/home-manager/master";
@@ -39,7 +44,7 @@
     };
   };
 
-  outputs = { self, nixpkgs, disko, nixos-hardware, chaotic, home-manager, sops-nix, nix-secrets, gitalias, ... } @ inputs: 
+  outputs = { self, nixpkgs, disko, nixos-hardware, auto-cpufreq, chaotic, home-manager, sops-nix, nix-secrets, gitalias, ... } @ inputs: 
   let
     defaultSystem = "x86_64-linux";
     pkgs = import nixpkgs { 
@@ -73,6 +78,8 @@
         disko.nixosModules.disko
 
         sops-nix.nixosModules.sops
+        
+        auto-cpufreq.nixosModules.default
 
         ./hosts/${name}
         
