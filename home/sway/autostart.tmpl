@@ -1,9 +1,6 @@
 # Status Bar
 exec systemd-cat -t waybar waybar -c ~/.config/waybar/sway.json -s ~/.config/waybar/sway.css
 
-# PolicyKit GUI Agent
-#exec /usr/lib/polkit-kde-authentication-agent-1
-
 # Notification
 exec fnott
 
@@ -32,3 +29,5 @@ exec swayidle -w \
          timeout 300 '{{ .locker }}' \
          timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
          before-sleep '{{ .locker }}'
+
+exec systemctl --user start lxqt-policykit

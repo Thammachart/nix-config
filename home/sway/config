@@ -1,3 +1,5 @@
+include /etc/sway/config.d/*
+
 include variables
 include outputs
 include workspaces
@@ -168,5 +170,3 @@ focus_follows_mouse no
 
 for_window [class=".*"] inhibit_idle fullscreen
 for_window [app_id=".*"] inhibit_idle fullscreen
-
-include /etc/sway/config.d/*

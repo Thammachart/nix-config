@@ -16,7 +16,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-23.11";
+    disko = {
+      url = "github:nix-community/disko";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 
@@ -36,7 +39,7 @@
     };
   };
 
-  outputs = { self, nixpkgs, nixos-hardware, chaotic, home-manager, sops-nix, nix-secrets, gitalias, ... } @ inputs: 
+  outputs = { self, nixpkgs, disko, nixos-hardware, chaotic, home-manager, sops-nix, nix-secrets, gitalias, ... } @ inputs: 
   let
     defaultSystem = "x86_64-linux";
     pkgs = import nixpkgs { 
@@ -66,6 +69,8 @@
 
       modules = [
         chaotic.nixosModules.default
+        
+        disko.nixosModules.disko
 
         sops-nix.nixosModules.sops
 

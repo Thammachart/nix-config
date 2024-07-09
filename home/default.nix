@@ -1,4 +1,4 @@
-{ pkgs, pkgs-stable, configData, gitalias, isPersonal, ... }:
+{ pkgs, configData, gitalias, isPersonal, ... }:
 
 {
   imports = [
@@ -30,7 +30,7 @@
     # You can update Home Manager without changing this value. See
     # the Home Manager release notes for a list of state version
     # changes in each release.
-    stateVersion = "23.11";
+    stateVersion = "24.05";
   };
 
   xdg.userDirs = {
@@ -89,6 +89,12 @@
       dir = "/data/sda1/Times/High";
     };
   };
+  
+  # home.file.".local/share/dbus-1/services/org.freedesktop.secrets.service".text = ''
+  # [D-BUS Service]
+  # Name=org.freedesktop.secrets
+  # Exec=${pkgs.keepassxc}/bin/keepassxc
+  # '';
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;

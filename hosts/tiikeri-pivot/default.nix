@@ -14,8 +14,11 @@
 
     pkgs.media-downloader
     pkgs.yt-dlp
-    
-    pkgs.cryptomator
+
+    pkgs.xivlauncher
+
+    pkgs.qbittorrent
+    # pkgs.cryptomator
   ];
 
   programs.steam = {

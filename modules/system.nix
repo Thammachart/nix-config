@@ -52,18 +52,19 @@
   systemd.services.NetworkManager-wait-online.enable = false;
 
   systemd.user.services = {
-    polkit-gnome-authentication-agent-1 = {
-      description = "polkit-gnome-authentication-agent-1";
+    lxqt-policykit = {
+      enable = true;
+      description = "lxqt-policykit";
       wantedBy = [ "graphical-session.target" ];
       wants = [ "graphical-session.target" ];
       after = [ "graphical-session.target" ];
       serviceConfig = {
-          Type = "simple";
-          ExecStart = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
-          Restart = "on-failure";
-          RestartSec = 1;
-          TimeoutStopSec = 10;
-        };
+        Type = "simple";
+        ExecStart = "${pkgs.lxqt.lxqt-policykit}/bin/lxqt-policykit-agent";
+        Restart = "on-failure";
+        RestartSec = 1;
+        TimeoutStopSec = 10;
+      };
     };
   };
   
@@ -119,6 +120,7 @@
     wget
     gnumake
     git
+    bat
 
     age
     sops
@@ -170,8 +172,8 @@
     qalculate-gtk
     mpv
     
-    # mate.mate-system-monitor
-    mate.atril
+    # PDF Viewer
+    zathura
 
     libsForQt5.qt5.qtwayland
     # libsForQt5.qt5ct
@@ -190,11 +192,9 @@
     xorg.xprop
     xdotool
     xorg.xwininfo
-    yad
     unzip
     networkmanagerapplet
     libva-utils
-    qbittorrent
     waypaper
     glxinfo
     ripgrep
@@ -205,12 +205,10 @@
     starship
     cmatrix
 
-    librewolf
-    
     yubikey-manager
     yubikey-manager-qt
     cryptsetup
-    opensc
+    # opensc
   ];
   
   qt = {
@@ -258,10 +256,7 @@
     extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
     config = {
       sway = {
-        default = [
-          "gtk"
-          "wlr"
-        ];
+        default = [ "gtk" "wlr" ];
         "org.freedesktop.impl.portal.Secret" = [
           "gnome-keyring"
         ];
@@ -367,6 +362,6 @@
   # and migrated your data accordingly.
   #
   # For more information, see `man configuration.nix` or https://nixos.org/manual/nixos/stable/options#opt-system.stateVersion .
-  system.stateVersion = "23.11"; # Did you read the comment?
+  system.stateVersion = "24.05"; # Did you read the comment?
 
 }
