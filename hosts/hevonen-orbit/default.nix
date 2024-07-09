@@ -13,6 +13,8 @@ in
       ./custom-hardware-configuration.nix
       ../../modules/system.nix
     ];
+    
+  boot.kernelPackages = pkgs.linuxPackage_zen;
 
   users.users."${configData.username}".extraGroups = ["docker"];
 
