@@ -61,6 +61,11 @@
     enable = true;
     userName = "Thammachart";
     userEmail = "1731496+Thammachart@users.noreply.github.com";
+    extraConfig = {
+      merge = {
+        log = 100;
+      };
+    };
 
     includes = [
       { path = "${gitalias}/gitalias.txt"; }

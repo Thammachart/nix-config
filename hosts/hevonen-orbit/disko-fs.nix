@@ -25,14 +25,12 @@
                 type = "luks";
                 name = "crypted-nixos";
 
-                # disable settings.keyFile if you want to use interactive password entry
                 settings = {
-                  # keyFile = "/tmp/secret.key";
                   allowDiscards = true;
                   fallbackToPassword = true;
                   bypassWorkqueues = true;
+                  crypttabExtraOpts = ["fido2-device=auto"];
                 };
-                # additionalKeyFiles = [ "/tmp/additionalSecret.key" ];
                 
                 extraFormatArgs = [
                   "--type luks2"
