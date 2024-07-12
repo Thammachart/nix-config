@@ -58,7 +58,7 @@
   in
   {
     nixosConfigurations = builtins.mapAttrs (name: value: nixpkgs.lib.nixosSystem {
-      system = defaultSystem;
+      system = value.system or defaultSystem;
 
       specialArgs = {
         inherit inputs;
