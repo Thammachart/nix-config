@@ -137,6 +137,7 @@
     fastfetch
     vscodium
     geany
+    lapce
     brave
     pavucontrol
     libnotify
