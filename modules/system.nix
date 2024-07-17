@@ -91,8 +91,6 @@
   # Enable CUPS to print documents.
   # services.printing.enable = true;
 
-  # Enable sound.
-  sound.enable = false;
   hardware.pulseaudio.enable = false;
   
   security.rtkit.enable = true;
