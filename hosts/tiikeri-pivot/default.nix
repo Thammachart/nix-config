@@ -19,6 +19,8 @@
     pkgs.xivlauncher
 
     pkgs.qbittorrent
+    
+    pkgs.heroic
     # pkgs.cryptomator
   ];
 
