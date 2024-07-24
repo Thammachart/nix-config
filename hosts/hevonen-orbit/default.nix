@@ -28,6 +28,7 @@ in
     pkgs.rustdesk-flutter
     pkgs.google-cloud-sql-proxy
     pkgs.firefox-devedition
+    pkgs.cloudflared
   ];
   
   programs.auto-cpufreq = {
@@ -48,5 +49,4 @@ in
       };
     };
   };
-
 }
