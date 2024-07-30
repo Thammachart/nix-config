@@ -29,6 +29,7 @@ in
     pkgs.google-cloud-sql-proxy
     pkgs.firefox-devedition
     pkgs.cloudflared
+    pkgs.filezilla
   ];
   
   programs.auto-cpufreq = {
