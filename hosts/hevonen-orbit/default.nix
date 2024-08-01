@@ -14,7 +14,7 @@ in
       ../../modules/system.nix
     ];
     
-  boot.kernelPackages = pkgs.linuxPackages_cachyos-lto;
+  boot.kernelPackages = pkgs.linuxPackages_zen;
 
   users.users."${configData.username}".extraGroups = ["docker"];
 
