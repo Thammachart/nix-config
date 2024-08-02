@@ -30,6 +30,7 @@ in
     pkgs.firefox-devedition
     pkgs.cloudflared
     pkgs.filezilla
+    pkgs.jwt-cli
   ];
   
   programs.auto-cpufreq = {
