@@ -14,7 +14,7 @@ in
       ../../modules/system.nix
     ];
     
-  boot.kernelPackages = pkgs.linuxPackages_zen;
+  boot.kernelPackages = pkgs.linuxPackages_cachyos-lto;
 
   users.users."${configData.username}".extraGroups = ["docker"];
 
@@ -31,7 +31,14 @@ in
     pkgs.cloudflared
     pkgs.filezilla
     pkgs.jwt-cli
+    pkgs.cloudflare-warp
+    pkgs.curlie
+    pkgs.caddy
   ];
+  
+  services.cloudflare-warp = {
+    enable = true;
+  };
   
   programs.auto-cpufreq = {
     enable = false;
