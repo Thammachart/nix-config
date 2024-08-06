@@ -214,6 +214,8 @@
     yubikey-manager-qt
     cryptsetup
     # opensc
+    
+    zed-editor
   ];
   
   qt = {
