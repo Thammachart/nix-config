@@ -9,7 +9,7 @@ let
 
     export XDG_SESSION_DESKTOP=hyprland
     export XDG_CURRENT_DESKTOP=hyprland
-
+    
     exec systemd-cat --identifier=hyprland Hyprland $@
   '';
 

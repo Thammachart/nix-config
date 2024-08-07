@@ -2,6 +2,7 @@
 
 {
   imports = [
+    ./hypr
     ./sway
     ./foot
     ./mpv

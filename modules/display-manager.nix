@@ -1,6 +1,7 @@
 { pkgs, sway-custom, config, configData, ... }:
 let
-  sway-custom = import ../packages/sway-custom.nix { inherit pkgs; };
+  # sway-custom = import ../packages/sway-custom.nix { inherit pkgs; };
+  hyprland-custom = import ../packages/hyprland-custom.nix { inherit pkgs; };
   desktopSessions = config.services.displayManager.sessionData.desktops;
 in
 {
@@ -13,7 +14,7 @@ in
       };
       
       initial_session = {
-        command = "${sway-custom.launch-sway}/bin/launch-sway";
+        command = "${hyprland-custom.launch-hyprland}/bin/launch-hyprland";
         user = configData.username;
       };
     };
@@ -22,6 +23,6 @@ in
   services.displayManager = {
     enable = true;
     execCmd = config.systemd.services.greetd.serviceConfig.ExecStart;
-    sessionPackages = [ sway-custom.sway-custom-desktop-entry ];
+    sessionPackages = [ hyprland-custom.hyprland-custom-desktop-entry ];
   };
 }

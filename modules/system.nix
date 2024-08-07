@@ -264,9 +264,11 @@
     config = {
       sway = {
         default = [ "gtk" "wlr" ];
-        "org.freedesktop.impl.portal.Secret" = [
-          "gnome-keyring"
-        ];
+        "org.freedesktop.impl.portal.Secret" = [ "gnome-keyring" ];
+      };
+      hyprland = {
+        default = [ "hyprland" ];
+        "org.freedesktop.impl.portal.Secret" = [ "gnome-keyring" ];
       };
     };
   };
@@ -305,6 +307,11 @@
     enable = true;
     wrapperFeatures.gtk = true;
     extraPackages = with pkgs; [ swaylock swayidle swaybg ];
+  };
+  
+  programs.hyprland = {
+    enable = true;
+    xwayland.enable = true;
   };
 
   programs.neovim = {
