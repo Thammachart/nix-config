@@ -29,7 +29,7 @@
                   allowDiscards = true;
                   fallbackToPassword = true;
                   bypassWorkqueues = true;
-                  crypttabExtraOpts = ["fido2-device=auto"];
+                  crypttabExtraOpts = ["fido2-device=auto" "token-timeout=10"];
                 };
                 
                 extraFormatArgs = [
