@@ -1,2 +1,0 @@
-# systemd-cat -t waybar waybar -c ~/.config/waybar/sway.json -s ~/.config/waybar/sway.css
-riverctl spawn 'systemd-cat -t kanshi kanshi'

@@ -1,0 +1,10 @@
+# systemd-cat -t waybar waybar -c ~/.config/waybar/sway.json -s ~/.config/waybar/sway.css
+riverctl spawn 'systemd-cat -t kanshi kanshi'
+
+{{ if (eq .terminal "footclient") }}
+riverctl spawn 'foot --server'
+{{ end }}
+
+riverctl spwan 'systemd-cat -t wlsunset wlsunset -S 06:30 -s 18:30 -d 1800 -t 4000 -T 6500'
+riverctl spwan 'nm-applet --indicator'
+riverctl spawn 'systemctl --user start lxqt-policykit'

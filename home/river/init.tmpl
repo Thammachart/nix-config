@@ -13,14 +13,14 @@ source $HOME/.config/river/autostart
 # Note: the "$mod" modifier is also known as Logo, GUI, Windows, Mod4, etc.
 
 # $mod+Return to start an instance of foot (https://codeberg.org/dnkl/foot)
-riverctl map normal $mod Return spawn foot
-riverctl map normal $mod D spawn fuzzel
+riverctl map normal $mod Return spawn $terminal
+riverctl map normal $mod D spawn $launcher
 
 # $mod+Q to close the focused view
 riverctl map normal $mod+Shift Q close
 
 # $mod+Shift+E to exit river
-riverctl map normal $mod+Shift E exit
+riverctl map normal $mod+Shift E $powermenu
 
 # $mod+J and $mod+K to focus the next/previous view in the layout stack
 riverctl map normal $mod J focus-view next
