@@ -1,0 +1,15 @@
+{{ if not .isDesktop -}}
+touchpad="touchpad-*"
+riverctl input $touchpad natural-scroll enabled
+riverctl input $touchpad tap enabled
+riverctl input $touchpad pointer-accel -0.1
+{{ end -}}
+
+pointer="pointer-*"
+riverctl input $pointer accel-profile flat
+riverctl input $pointer pointer-accel -0.1
+
+riverctl set-repeat 39 250
+riverctl keyboard-layout \
+  -options grp:alt_shift_toggle \
+  us,th
