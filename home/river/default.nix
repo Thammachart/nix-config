@@ -1,9 +1,7 @@
 { pkgs, templateFile, configData, isDesktop, ...  }:
 
 {
-  imports = [
-    ../kanshi
-  ];
+  home.file.".config/river/autostart".source = ./autostart;
   home.file.".config/river/variables".source = ./variables;
 
   wayland.windowManager.river = {

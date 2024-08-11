@@ -3,6 +3,7 @@
 {
   imports = [
     # ./hypr
+    ./kanshi
     ./sway
     ./river
     ./foot

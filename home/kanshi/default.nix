@@ -1,11 +1,4 @@
 {pkgs, ...}:
 {
-  services.kanshi = {
-    enable = true;
-    settings = [
-      {
-        output.scale = 1.5;
-      }
-    ];
-  };
+  home.file.".config/kanshi/config".source = ./config;
 }

@@ -165,8 +165,8 @@
     })
     htop
     wlr-randr
+    kanshi
     nwg-displays
-    nwg-bar
     keepassxc
     syncthing
     lxqt.pcmanfm-qt
@@ -316,7 +316,7 @@
   programs.river = {
     enable = true;
     xwayland.enable = true;
-    extraPackages = with pkgs; [];
+    extraPackages = with pkgs; [ kanshi ];
   };
 
   programs.hyprland = {
