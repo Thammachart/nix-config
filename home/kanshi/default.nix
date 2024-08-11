@@ -1,4 +1,4 @@
-{pkgs, ...}:
+{pkgs, hostName, ...}:
 {
-  home.file.".config/kanshi/config".source = ./config;
+  home.file.".config/kanshi/config".source = ./${hostName};
 }

@@ -10,7 +10,7 @@
       # inputs.nixpkgs.follows = "nixpkgs";
       # inputs.home-manager.follows = "home-manager";
     };
-    
+
     sops-nix = {
       url = "github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -22,7 +22,7 @@
     };
 
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
-    
+
     auto-cpufreq = {
       url = "github:AdnanHodzic/auto-cpufreq";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -37,18 +37,18 @@
       url = "github:GitAlias/gitalias/main";
       flake = false;
     };
-    
+
     nix-secrets = {
       url = "git+file:///data/nix-secrets?shallow=1&ref=main";
       flake = false;
     };
   };
 
-  outputs = { self, nixpkgs, disko, nixos-hardware, auto-cpufreq, chaotic, home-manager, sops-nix, nix-secrets, gitalias, ... } @ inputs: 
+  outputs = { self, nixpkgs, disko, nixos-hardware, auto-cpufreq, chaotic, home-manager, sops-nix, nix-secrets, gitalias, ... } @ inputs:
   let
     defaultSystem = "x86_64-linux";
-    pkgs = import nixpkgs { 
-      system = defaultSystem; 
+    pkgs = import nixpkgs {
+      system = defaultSystem;
       config = {
         allowUnfree = true;
       };
@@ -74,31 +74,32 @@
 
       modules = [
         chaotic.nixosModules.default
-        
+
         disko.nixosModules.disko
 
         sops-nix.nixosModules.sops
-        
+
         auto-cpufreq.nixosModules.default
 
         ./hosts/${name}
-        
+
         home-manager.nixosModules.home-manager {
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
 
-          home-manager.extraSpecialArgs = { 
+          home-manager.extraSpecialArgs = {
             inherit inputs;
             inherit templateFile;
             inherit configData;
             inherit nix-secrets;
 
             inherit gitalias;
-        
+
             inherit (value) isPersonal;
             inherit (value) isDesktop;
+            hostName = name;
           };
-          
+
           home-manager.sharedModules = [
             sops-nix.homeManagerModules.sops
           ];
