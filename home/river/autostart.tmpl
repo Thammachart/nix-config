@@ -1,8 +1,13 @@
+# Output Management using kanshi
+riverctl spawn 'systemd-cat -t kanshi kanshi'
+
 # Layout Management for River
 rivertile -view-padding 3 -outer-padding 3 &
 
-# systemd-cat -t waybar waybar -c ~/.config/waybar/sway.json -s ~/.config/waybar/sway.css
-riverctl spawn 'systemd-cat -t kanshi kanshi'
+riverctl spawn 'systemd-cat -t waybar waybar -c ~/.config/waybar/river.json -s ~/.config/waybar/river.css'
+
+# Notification
+exec fnott
 
 {{ if (eq .terminal "footclient") }}
 riverctl spawn 'foot --server'

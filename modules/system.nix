@@ -167,6 +167,7 @@
     wlr-randr
     kanshi
     nwg-displays
+    nwg-bar
     keepassxc
     syncthing
     lxqt.pcmanfm-qt
@@ -197,6 +198,7 @@
     xorg.xprop
     xdotool
     xorg.xwininfo
+    xkb-switch
     unzip
     networkmanagerapplet
     libva-utils

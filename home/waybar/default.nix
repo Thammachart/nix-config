@@ -9,4 +9,7 @@ in
 
   home.file.".config/waybar/hyprland.css".source = templateFile "waybar-hyprland-css-${configData.username}" ./hyprland.css.tmpl settings;
   home.file.".config/waybar/hyprland.json".source = templateFile "waybar-hyprland-json-${configData.username}" ./hyprland.json.tmpl settings;
+
+  home.file.".config/waybar/river.css".source = templateFile "waybar-river-css-${configData.username}" ./river.css.tmpl settings;
+  home.file.".config/waybar/river.json".source = templateFile "waybar-river-json-${configData.username}" ./river.json.tmpl settings;
 }
