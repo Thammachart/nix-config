@@ -1,4 +1,4 @@
-{}:
+{ pkgs }:
 
 let
   wl-envs = pkgs.writeText "wl-enable" ''

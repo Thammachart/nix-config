@@ -1,9 +1,9 @@
 { pkgs, config, configData, ... }:
 let
-  cmp-custom = import ../packages/compositor-custom.nix;
+  cmp-customize = import ../packages/compositor-custom.nix;
   desktopSessions = config.services.displayManager.sessionData.desktops;
 
-  cmp = cmp-custom { pkgs = pkgs: cmp = "river"};
+  compositor = cmp-customize { inherit pkgs; cmp = "river"; };
 in
 {
   services.greetd = {
@@ -15,7 +15,7 @@ in
       };
 
       initial_session = {
-        command = "${cmp-custom.launch}/bin/launch";
+        command = "${compositor.launch}/bin/launch";
         user = configData.username;
       };
     };
@@ -24,6 +24,6 @@ in
   services.displayManager = {
     enable = true;
     execCmd = config.systemd.services.greetd.serviceConfig.ExecStart;
-    sessionPackages = [ sway-custom.sway-custom-desktop-entry ];
+    sessionPackages = [ compositor.custom-desktop-entry ];
   };
 }

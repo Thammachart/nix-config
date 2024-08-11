@@ -2,8 +2,9 @@
 
 {
   imports = [
-    ./hypr
+    # ./hypr
     ./sway
+    ./river
     ./foot
     ./mpv
     ./waybar
@@ -72,7 +73,7 @@
       { path = "${gitalias}/gitalias.txt"; }
     ];
   };
-  
+
   programs.aria2 = {
     enable = isPersonal;
     settings = {
@@ -80,7 +81,7 @@
       # log = "-";
       console-log-level = "notice";
       # file-allocation = "falloc";
-      
+
       # summary-interval = 120;
 
       enable-rpc = true;
@@ -88,14 +89,14 @@
       rpc-listen-all = false;
       rpc-listen-port = 6802;
       rpc-allow-origin-all = true;
-      
+
       max-concurrent-downloads = 2;
       max-connection-per-server = 1;
-      
+
       dir = "/data/sda1/Times/High";
     };
   };
-  
+
   # home.file.".local/share/dbus-1/services/org.freedesktop.secrets.service".text = ''
   # [D-BUS Service]
   # Name=org.freedesktop.secrets

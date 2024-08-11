@@ -67,7 +67,7 @@
       };
     };
   };
-  
+
   nixpkgs = {
     config.allowUnfree = true;
   };
@@ -92,7 +92,7 @@
   # services.printing.enable = true;
 
   hardware.pulseaudio.enable = false;
-  
+
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
@@ -100,9 +100,9 @@
     pulse.enable = true;
     jack.enable = true;
   };
-  
+
   hardware.bluetooth = {
-    enable = true;   
+    enable = true;
     powerOnBoot = false;
   };
   services.blueman.enable = true;
@@ -176,7 +176,7 @@
     p7zip
     qalculate-gtk
     mpv
-    
+
     # PDF Viewer
     zathura
 
@@ -189,7 +189,7 @@
     kdePackages.qtsvg
     qt6Packages.qt6ct
     qt6Packages.qtstyleplugin-kvantum
-    
+
     # element-desktop
     fluffychat
 
@@ -214,14 +214,14 @@
     yubikey-manager-qt
     cryptsetup
     # opensc
-    
+
     zed-editor
   ];
-  
+
   qt = {
     enable = true;
   };
-  
+
   services.emacs = {
     enable = true;
     package = pkgs.emacs29-pgtk;
@@ -246,7 +246,7 @@
   SystemMaxUse=1G
   MaxRetentionSec=2week
   '';
-  
+
   services.ananicy = {
     enable = false;
     package = pkgs.ananicy-cpp;
@@ -266,13 +266,17 @@
         default = [ "gtk" "wlr" ];
         "org.freedesktop.impl.portal.Secret" = [ "gnome-keyring" ];
       };
+      river = {
+        default = [ "gtk" "wlr" ];
+        "org.freedesktop.impl.portal.Secret" = [ "gnome-keyring" ];
+      };
       hyprland = {
         default = [ "hyprland" ];
         "org.freedesktop.impl.portal.Secret" = [ "gnome-keyring" ];
       };
     };
   };
-  
+
   chaotic.scx = {
     enable = false;
     scheduler = lib.mkDefault "scx_rustland";
@@ -282,7 +286,7 @@
     enable = true;
   };
 
-  programs.dconf = { 
+  programs.dconf = {
     enable = true;
     profiles = {
       user.databases = [
@@ -308,9 +312,15 @@
     wrapperFeatures.gtk = true;
     extraPackages = with pkgs; [ swaylock swayidle swaybg ];
   };
-  
-  programs.hyprland = {
+
+  programs.river = {
     enable = true;
+    xwayland.enable = true;
+    extraPackages = with pkgs; [];
+  };
+
+  programs.hyprland = {
+    enable = false;
     xwayland.enable = true;
   };
 
@@ -338,7 +348,7 @@
 
     storageDriver = "btrfs";
   };
-  
+
   services.zram-generator = {
     enable = true;
     settings = {
@@ -347,7 +357,7 @@
       };
     };
   };
-  
+
   services.openssh.hostKeys = [
     {
       path = "/etc/ssh/ssh_host_ed25519_key";

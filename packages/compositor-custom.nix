@@ -1,9 +1,9 @@
-{ pkgs, cmp, cmp-exec }:
+{ pkgs, cmp, cmp-exec0 ? null }:
 
 let
   wl-enable = import ./wl-enable.nix { inherit pkgs; };
 
-  cmp-exec = if cmp-exec then cmp-exec else cmp
+  cmp-exec = if cmp-exec0 != null then cmp-exec0 else cmp;
 
   launch = pkgs.writeScriptBin "launch" ''
     source ${wl-enable}
