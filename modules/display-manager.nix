@@ -1,8 +1,9 @@
-{ pkgs, sway-custom, config, configData, ... }:
+{ pkgs, config, configData, ... }:
 let
-  # sway-custom = import ../packages/sway-custom.nix { inherit pkgs; };
-  hyprland-custom = import ../packages/hyprland-custom.nix { inherit pkgs; };
+  cmp-custom = import ../packages/compositor-custom.nix;
   desktopSessions = config.services.displayManager.sessionData.desktops;
+
+  cmp = cmp-custom { pkgs = pkgs: cmp = "river"};
 in
 {
   services.greetd = {
@@ -12,9 +13,9 @@ in
         command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --remember-session --user-menu --sessions ${desktopSessions}/share/wayland-sessions";
         user = "greeter";
       };
-      
+
       initial_session = {
-        command = "${hyprland-custom.launch-hyprland}/bin/launch-hyprland";
+        command = "${cmp-custom.launch}/bin/launch";
         user = configData.username;
       };
     };
@@ -23,6 +24,6 @@ in
   services.displayManager = {
     enable = true;
     execCmd = config.systemd.services.greetd.serviceConfig.ExecStart;
-    sessionPackages = [ hyprland-custom.hyprland-custom-desktop-entry ];
+    sessionPackages = [ sway-custom.sway-custom-desktop-entry ];
   };
 }

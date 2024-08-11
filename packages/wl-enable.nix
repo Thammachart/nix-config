@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{}:
 
 let
   wl-envs = pkgs.writeText "wl-enable" ''
@@ -14,5 +14,5 @@ let
     export _JAVA_AWT_WM_NONREPARENTING=1
     export NO_AT_BRIDGE=1
   '';
-in 
+in
   wl-envs
