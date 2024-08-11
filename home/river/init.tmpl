@@ -2,25 +2,15 @@ source $HOME/.config/river/variables
 source $HOME/.config/river/inputs
 source $HOME/.config/river/autostart
 
-# This is the example configuration file for river.
-#
-# If you wish to edit this, you will probably want to copy it to
-# $XDG_CONFIG_HOME/river/init or $HOME/.config/river/init first.
-#
-# See the river(1), riverctl(1), and rivertile(1) man pages for complete
-# documentation.
-
-# Note: the "$mod" modifier is also known as Logo, GUI, Windows, Mod4, etc.
-
 # $mod+Return to start an instance of foot (https://codeberg.org/dnkl/foot)
-riverctl map normal $mod Return spawn $terminal
-riverctl map normal $mod D spawn $launcher
+riverctl map normal $mod Return spawn "$terminal"
+riverctl map normal $mod D spawn "$launcher"
 
 # $mod+Q to close the focused view
 riverctl map normal $mod+Shift Q close
 
 # $mod+Shift+E to exit river
-riverctl map normal $mod+Shift E $powermenu
+riverctl map normal $mod+Shift E "$powermenu"
 
 # $mod+J and $mod+K to focus the next/previous view in the layout stack
 riverctl map normal $mod J focus-view next
@@ -127,7 +117,7 @@ riverctl map passthrough $mod F11 enter-mode normal
 for mode in normal locked
 do
     # Eject the optical drive (well if you still have one that is)
-    riverctl map $mode None XF86Eject spawn 'eject -T'
+    # riverctl map $mode None XF86Eject spawn 'eject -T'
 
     # Control pulse audio volume with pamixer (https://github.com/cdemoulins/pamixer)
     riverctl map $mode None XF86AudioRaiseVolume  spawn 'pamixer -i 5'
@@ -150,9 +140,6 @@ riverctl background-color 0x002b36
 riverctl border-color-focused 0x93a1a1
 riverctl border-color-unfocused 0x586e75
 
-# Set keyboard repeat rate
-riverctl set-repeat 50 300
-
 # Make all views with an app-id that starts with "float" and title "foo" start floating.
 riverctl rule-add -app-id 'float*' -title 'foo' float
 
@@ -162,4 +149,3 @@ riverctl rule-add -app-id "bar" csd
 # Set the default layout generator to be rivertile and start it.
 # River will send the process group of the init executable SIGTERM on exit.
 riverctl default-layout rivertile
-rivertile -view-padding 3 -outer-padding 3 &
