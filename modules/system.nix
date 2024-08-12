@@ -165,6 +165,7 @@
     })
     htop
     wlr-randr
+    wlopm
     kanshi
     nwg-displays
     nwg-bar

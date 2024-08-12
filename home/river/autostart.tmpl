@@ -7,7 +7,7 @@ rivertile -view-padding 3 -outer-padding 3 &
 riverctl spawn 'systemd-cat -t waybar waybar -c ~/.config/waybar/river.json -s ~/.config/waybar/river.css'
 
 # Notification
-exec fnott
+riverctl spawn 'fnott'
 
 {{ if (eq .terminal "footclient") }}
 riverctl spawn 'foot --server'
@@ -16,3 +16,10 @@ riverctl spawn 'foot --server'
 riverctl spawn 'systemd-cat -t wlsunset wlsunset -S 06:30 -s 18:30 -d 1800 -t 4000 -T 6500'
 riverctl spawn 'nm-applet --indicator'
 riverctl spawn 'systemctl --user start lxqt-policykit'
+
+riverctl
+
+riverctl spawn "swayidle -w \
+         timeout 300 '{{ .locker }}' \
+         timeout 600 'wlopm --off *' resume 'wlopm --on *' \
+         before-sleep '{{ .locker }}'"

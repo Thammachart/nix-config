@@ -1,7 +1,7 @@
 * {
   border: none;
   border-radius: 0;
-  font-family: {{ .fonts.latin.terminal_monospace }}, sans-serif;
+  font-family: {{ .fonts.latin.ui }}, sans-serif;
   font-size: 12px;
   min-height: 0;
 }
@@ -15,20 +15,20 @@ window#waybar {
 window#waybar.hidden {
   opacity: 0.0;
 }
-/* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
-#workspaces button {
+
+#tags button {
   padding: 0 5px;
   background: transparent;
   color: #ffffff;
   border-bottom: 3px solid transparent;
 }
 
-#workspaces button.focused {
+#tags button.focused {
   background: #64727D;
   border-bottom: 3px solid #ffffff;
 }
 
-#workspaces button.urgent {
+#tags button.urgent {
   background-color: #eb4d4b;
 }
 
