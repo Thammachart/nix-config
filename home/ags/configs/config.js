@@ -45,7 +45,7 @@ function Clock() {
 }
 
 
-// we don't need dunst or any other notification daemon
+// we don't need fnott or any other notification daemon
 // because the Notifications module is a notification daemon itself
 function Notification() {
   const popups = notifications.bind("popups")

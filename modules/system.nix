@@ -156,7 +156,7 @@
     slurp # screenshot functionality
     wl-clipboard # wl-copy and wl-paste for copy/paste from stdin / stdout
     fuzzel
-    dunst
+    fnott
     (chromium.override {
       commandLineArgs = [
         "--password-store=gnome-libsecret"

@@ -2,7 +2,7 @@
 exec systemd-cat -t waybar waybar -c ~/.config/waybar/sway.json -s ~/.config/waybar/sway.css
 
 # Notification
-exec dunst
+exec fnott
 
 {{ if (eq .terminal "footclient") }}
 exec foot --server

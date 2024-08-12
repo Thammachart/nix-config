@@ -3,6 +3,7 @@
 {
   imports = [
     # ./hypr
+    ./fnott
     ./kanshi
     ./sway
     ./river
