@@ -7,7 +7,7 @@ rivertile -view-padding 3 -outer-padding 3 &
 riverctl spawn 'systemd-cat -t waybar waybar -c ~/.config/waybar/river.json -s ~/.config/waybar/river.css'
 
 # Notification
-riverctl spawn 'fnott'
+riverctl spawn 'dunst'
 
 {{ if (eq .terminal "footclient") }}
 riverctl spawn 'foot --server'

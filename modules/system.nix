@@ -156,7 +156,7 @@
     slurp # screenshot functionality
     wl-clipboard # wl-copy and wl-paste for copy/paste from stdin / stdout
     fuzzel
-    fnott
+    dunst
     (chromium.override {
       commandLineArgs = [
         "--password-store=gnome-libsecret"
@@ -199,7 +199,6 @@
     xorg.xprop
     xdotool
     xorg.xwininfo
-    xkb-switch
     unzip
     networkmanagerapplet
     libva-utils
