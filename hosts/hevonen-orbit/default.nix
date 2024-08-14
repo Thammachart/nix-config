@@ -1,5 +1,5 @@
 { pkgs, config, configData, ... }:
-let 
+let
   gcloud = pkgs.google-cloud-sdk.withExtraComponents( with pkgs.google-cloud-sdk.components; [
     gke-gcloud-auth-plugin
   ]);
@@ -13,7 +13,7 @@ in
       ./custom-hardware-configuration.nix
       ../../modules/system.nix
     ];
-    
+
   boot.kernelPackages = pkgs.linuxPackages_cachyos-lto;
 
   users.users."${configData.username}".extraGroups = ["docker"];
@@ -27,19 +27,18 @@ in
     pkgs.gh
     pkgs.rustdesk-flutter
     pkgs.google-cloud-sql-proxy
-    pkgs.firefox-devedition
-    pkgs.cloudflared
     pkgs.filezilla
     pkgs.jwt-cli
-    pkgs.cloudflare-warp
+    pkgs.netbird
+    pkgs.netbird-ui
     pkgs.curlie
     pkgs.caddy
   ];
-  
-  services.cloudflare-warp = {
+
+  services.netbird = {
     enable = true;
   };
-  
+
   programs.auto-cpufreq = {
     enable = false;
     settings = {
@@ -51,7 +50,7 @@ in
       battery = {
         governor = "powersave";
         turbo = "auto";
-        
+
         enable_thresholds = true;
         start_threshold = 20;
         stop_threshold = 80;
