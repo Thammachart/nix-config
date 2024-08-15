@@ -135,7 +135,6 @@
     fastfetch
     vscodium
     geany
-    lapce
     brave
     pavucontrol
     libnotify
@@ -218,6 +217,10 @@
     # opensc
 
     zed-editor
+
+    pinta
+
+    netbird
   ];
 
   qt = {
@@ -225,8 +228,16 @@
   };
 
   services.emacs = {
-    enable = true;
+    enable = false;
     package = pkgs.emacs29-pgtk;
+  };
+
+  services.netbird = {
+    tunnels.shobshop0 = {};
+  };
+
+  systemd.services."netbird-shobshop0" = {
+    wantedBy = lib.mkForce [];
   };
 
   # services.pcscd = {

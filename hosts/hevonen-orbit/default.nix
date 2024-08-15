@@ -29,15 +29,9 @@ in
     pkgs.google-cloud-sql-proxy
     pkgs.filezilla
     pkgs.jwt-cli
-    pkgs.netbird
-    pkgs.netbird-ui
     pkgs.curlie
     pkgs.caddy
   ];
-
-  services.netbird = {
-    enable = true;
-  };
 
   programs.auto-cpufreq = {
     enable = false;
