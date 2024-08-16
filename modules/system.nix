@@ -125,6 +125,7 @@
     gnumake
     git
     bat
+    doggo
 
     age
     sops
@@ -233,7 +234,13 @@
   };
 
   services.netbird = {
-    tunnels.shobshop0 = {};
+    tunnels.shobshop0 = {
+      environment = {
+        NB_INTERFACE_NAME = "wt-shobshop0";
+        NB_ADMIN_URL = "https://netbird.shobshop.co:443";
+        NB_MANAGEMENT_URL = "https://netbird.shobshop.co:33073";
+      };
+    };
   };
 
   systemd.services."netbird-shobshop0" = {
