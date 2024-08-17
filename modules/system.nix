@@ -1,5 +1,7 @@
 { config, inputs, lib, pkgs, configData, isPersonal, isDesktop, hostName, nix-secrets, ... }:
-
+let
+  fhspkg = import ../packages/fhs.nix { inherit pkgs; inherit config; inherit lib; };
+in
 {
   imports = [
     ./secrets.nix
@@ -127,6 +129,8 @@
     bat
     doggo
 
+    fhspkg.fhs
+
     age
     sops
 
@@ -134,7 +138,7 @@
     foot
     gomplate
     fastfetch
-    vscodium
+    vscodium-fhs
     geany
     brave
     pavucontrol
