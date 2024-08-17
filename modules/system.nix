@@ -129,7 +129,7 @@ in
     bat
     doggo
 
-    fhspkg.fhs
+    fhspkg
 
     age
     sops

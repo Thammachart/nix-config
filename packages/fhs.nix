@@ -1,6 +1,7 @@
 { pkgs, config, lib, ... }:
-{
-  fhs = (let base = pkgs.appimageTools.defaultFhsEnvArgs; in
+let
+  base = pkgs.appimageTools.defaultFhsEnvArgs;
+  fhs = (
     pkgs.buildFHSUserEnv (base // {
     name = "fhs";
     targetPkgs = pkgs: (
@@ -9,14 +10,17 @@
       # Therefore, we need to add them manually.
       #
       # pkgs.appimageTools provides basic packages required by most software.
-      (base.targetPkgs pkgs) ++ with pkgs; [
+      (base.targetPkgs pkgs) ++
+      (with pkgs; [
         pkg-config
         ncurses
+        nushell
         # Feel free to add more packages here if needed.
-      ]
+      ])
     );
     profile = "export FHS=1";
-    runScript = "bash";
+    runScript = "nu";
     extraOutputsToInstall = ["dev"];
   }));
-}
+in
+  fhs
