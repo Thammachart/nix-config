@@ -14,7 +14,7 @@
 
   systemd.user.services = {
     "lxqt-policykit" = {
-      enable = false;
+      enable = true;
       description = "lxqt-policykit";
       wantedBy = [ "user-system-ready.target" ];
 
