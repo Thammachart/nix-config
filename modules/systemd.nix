@@ -1,61 +1,66 @@
-{ config, lib, pkgs }:
+{ config, lib, pkgs, ... }:
 {
   systemd.services.NetworkManager-wait-online.enable = false;
 
+  systemd.services."netbird-shobshop0" = {
+    wantedBy = lib.mkForce [];
+  };
+
+  systemd.user.targets = {
+    "user-system-ready" = {
+      description = "Custom systemd target to signify system being ready for user";
+    };
+  };
+
   systemd.user.services = {
-    lxqt-policykit = {
-      enable = true;
+    "lxqt-policykit" = {
+      enable = false;
       description = "lxqt-policykit";
-      wantedBy = [ "graphical-session.target" ];
-      wants = [ "graphical-session.target" ];
-      after = [ "graphical-session.target" ];
+      wantedBy = [ "user-system-ready.target" ];
+
+      after = [ "xdg-desktop-portal.service" "polkit.service" "graphical.target" ];
+
       serviceConfig = {
-        Type = "simple";
+        Type = "exec";
         ExecStart = "${pkgs.lxqt.lxqt-policykit}/bin/lxqt-policykit-agent";
         Restart = "on-failure";
         RestartSec = 1;
         TimeoutStopSec = 10;
       };
     };
-  };
 
-  systemd.services."netbird-shobshop0" = {
-    wantedBy = lib.mkForce [];
-  };
-
-  systemd.user.services = {
     "kwalletd" = {
-      wantedBy = [ "default.target" ];
-      after = [ "graphical.target" ];
+      wantedBy = [ "user-system-ready.target" ];
+
+      after = [ "xdg-desktop-portal.service" "graphical.target" ];
 
       unitConfig = {
-        ConditionEnvironment = "DISPLAY";
         StartLimitInterval = 5;
       };
 
       serviceConfig = {
         Type = "exec";
         Restart = "on-failure";
-        RestartSec = "2s";
+        RestartSec = "1s";
         ExecStart = "${pkgs.kdePackages.kwallet}/bin/kwalletd6";
         # BusName = "org.kde.kwalletd6";
       };
     };
 
     "nm-applet" = {
-      wantedBy = [ "default.target" ];
-      upholds = [ "kwalletd.service" "NetworkManager.service" ];
-      after = [ "graphical.target" "kwalletd.service" "NetworkManager.service" ];
+      wantedBy = [ "user-system-ready.target" ];
+
+      wants = [ "kwalletd.service" "NetworkManager.service" ];
+      after = [ "xdg-desktop-portal.service" "graphical.target" "kwalletd.service" "NetworkManager.service" ];
 
       unitConfig = {
-        ConditionEnvironment = "DISPLAY";
         StartLimitInterval = 5;
       };
 
       serviceConfig = {
         Type = "exec";
         Restart = "on-failure";
-        RestartSec = "2s";
+        RestartSec = "1s";
         ExecStart = "${pkgs.networkmanagerapplet}/bin/nm-applet";
       };
     };

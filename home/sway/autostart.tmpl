@@ -14,15 +14,12 @@ exec foot --server
 # Display Color Temperature
 exec systemd-cat -t wlsunset wlsunset -S 06:30 -s 18:30 -d 1800 -t 4000 -T 6500
 
-# NetworkManager System tray
-# exec nm-applet --indicator
-
 # https://github.com/swaywm/sway/wiki#gtk-applications-take-20-seconds-to-start
 # exec dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK
-
-exec systemctl --user start lxqt-policykit
 
 exec swayidle -w \
          timeout 300 '{{ .locker }}' \
          timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
          before-sleep '{{ .locker }}'
+
+exec systemctl start --user user-system-ready.target
