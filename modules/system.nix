@@ -5,6 +5,7 @@ in
 {
   imports = [
     ./secrets.nix
+    ./systemd.nix
     ./fonts.nix
     ./display-manager.nix
   ];
@@ -50,24 +51,6 @@ in
   networking = {
     hostName = hostName;
     networkmanager.enable = true;
-  };
-  systemd.services.NetworkManager-wait-online.enable = false;
-
-  systemd.user.services = {
-    lxqt-policykit = {
-      enable = true;
-      description = "lxqt-policykit";
-      wantedBy = [ "graphical-session.target" ];
-      wants = [ "graphical-session.target" ];
-      after = [ "graphical-session.target" ];
-      serviceConfig = {
-        Type = "simple";
-        ExecStart = "${pkgs.lxqt.lxqt-policykit}/bin/lxqt-policykit-agent";
-        Restart = "on-failure";
-        RestartSec = 1;
-        TimeoutStopSec = 10;
-      };
-    };
   };
 
   nixpkgs = {
@@ -193,6 +176,7 @@ in
 
     kdePackages.qtwayland
     kdePackages.qtsvg
+    kdePackages.kwalletmanager
     qt6Packages.qt6ct
     qt6Packages.qtstyleplugin-kvantum
 
@@ -204,7 +188,6 @@ in
     xdotool
     xorg.xwininfo
     unzip
-    networkmanagerapplet
     libva-utils
     waypaper
     glxinfo
@@ -247,15 +230,9 @@ in
     };
   };
 
-  systemd.services."netbird-shobshop0" = {
-    wantedBy = lib.mkForce [];
+  services.dbus = {
+    enable = true;
   };
-
-  # services.pcscd = {
-  #   enable = true;
-  # };
-
-  services.dbus.enable = true;
 
   services.udisks2.enable = true;
 
@@ -277,10 +254,6 @@ in
     rulesProvider = pkgs.ananicy-rules-cachyos;
   };
 
-  services.gnome.gnome-keyring = {
-    enable = true;
-  };
-
   xdg.portal = {
     enable = true;
     wlr.enable = true;
@@ -288,15 +261,12 @@ in
     config = {
       sway = {
         default = [ "gtk" "wlr" ];
-        "org.freedesktop.impl.portal.Secret" = [ "gnome-keyring" ];
       };
       river = {
         default = [ "gtk" "wlr" ];
-        "org.freedesktop.impl.portal.Secret" = [ "gnome-keyring" ];
       };
       hyprland = {
         default = [ "hyprland" ];
-        "org.freedesktop.impl.portal.Secret" = [ "gnome-keyring" ];
       };
     };
   };
