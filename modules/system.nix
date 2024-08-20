@@ -180,9 +180,6 @@ in
     qt6Packages.qt6ct
     qt6Packages.qtstyleplugin-kvantum
 
-    # element-desktop
-    fluffychat
-
     procs
     xorg.xprop
     xdotool
