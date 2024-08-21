@@ -176,9 +176,33 @@ in
 
     kdePackages.qtwayland
     kdePackages.qtsvg
-    kdePackages.kwalletmanager
     qt6Packages.qt6ct
     qt6Packages.qtstyleplugin-kvantum
+
+    # kdePackages.kcoreaddons
+    # kdePackages.frameworkintegration
+    # kdePackages.plasma-workspace
+    # kdePackages.kde-cli-tools
+    # kdePackages.breeze
+
+    kdePackages.kwalletmanager
+
+    # kdePackages.kirigami
+    # kdePackages.kirigami-addons
+    # kdePackages.kservice
+    # kdePackages.dolphin
+    # kdePackages.dolphin-plugins
+    # kdePackages.libplasma
+    # kdePackages.kfilemetadata
+    # kdePackages.kimageformats
+    # kdePackages.kio # provides helper service + a bunch of other stuff
+    # kdePackages.kio-admin # managing files as admin
+    # kdePackages.kio-extras # stuff for MTP, AFC, etc
+    # kdePackages.kio-fuse
+    # kdePackages.kquickcharts
+    # kdePackages.plasma-systemmonitor
+    # kdePackages.ksystemstats
+    # kdePackages.libksysguard
 
     procs
     xorg.xprop
@@ -229,6 +253,11 @@ in
 
   services.dbus = {
     enable = true;
+  };
+
+  services.gvfs = {
+    enable = true;
+    package = pkgs.gvfs;
   };
 
   services.udisks2.enable = true;
