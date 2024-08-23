@@ -53,6 +53,10 @@ in
     networkmanager.enable = true;
   };
 
+  services.resolved = {
+    enable = true;
+  };
+
   nixpkgs = {
     config.allowUnfree = true;
   };
