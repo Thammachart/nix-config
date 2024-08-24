@@ -20,12 +20,13 @@ in
   };
 
   boot = {
+    initrd.systemd.enable = true;
     kernel.sysctl = {
       "kernel.sysrq" = lib.mkDefault 1;
       "vm.max_map_count" = 1048576;
     };
     kernelPackages = lib.mkDefault pkgs.linuxPackages_cachyos-lto;
-    kernelParams = ["quiet"];
+    kernelParams = [];
     loader = {
       systemd-boot.enable = true;
       efi.canTouchEfiVariables = true;

@@ -27,11 +27,10 @@
 
                 settings = {
                   allowDiscards = true;
-                  fallbackToPassword = true;
                   bypassWorkqueues = true;
                   crypttabExtraOpts = ["fido2-device=auto" "token-timeout=10"];
                 };
-                
+
                 extraFormatArgs = [
                   "--type luks2"
                   "--use-random"
