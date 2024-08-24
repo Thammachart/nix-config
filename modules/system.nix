@@ -21,19 +21,31 @@ in
 
   boot = {
     initrd.systemd.enable = true;
+    initrd.verbose = false;
     kernel.sysctl = {
       "kernel.sysrq" = lib.mkDefault 1;
       "vm.max_map_count" = 1048576;
     };
     kernelPackages = lib.mkDefault pkgs.linuxPackages_cachyos-lto;
-    kernelParams = [];
+    kernelParams = [ "splash" ];
     loader = {
       systemd-boot.enable = true;
       efi.canTouchEfiVariables = true;
-      timeout = 3;
+      timeout = 0;
     };
     tmp = {
       cleanOnBoot = true;
+    };
+
+    plymouth = {
+      enable = lib.mkDefault false;
+      theme = "square_hud";
+      themePackages = with pkgs; [
+        # By default we would install all themes
+        (adi1090x-plymouth-themes.override {
+          selected_themes = [ "square_hud" ];
+        })
+      ];
     };
   };
 

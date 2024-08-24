@@ -3,6 +3,10 @@
 {
   boot.initrd.kernelModules = [ "amdgpu" ];
 
+  boot.plymouth = {
+    enable = true;
+  };
+
   hardware.graphics = {
     enable = true;
     enable32Bit = true;
