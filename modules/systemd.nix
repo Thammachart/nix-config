@@ -1,6 +1,6 @@
 { config, lib, pkgs, ... }:
 {
-  systemd.services.NetworkManager-wait-online.enable = false;
+  systemd.services."NetworkManager-wait-online".enable = true;
 
   systemd.services."netbird-shobshop0" = {
     wantedBy = lib.mkForce [];
@@ -50,7 +50,8 @@
     "nm-applet" = {
       wantedBy = [ "user-system-ready.target" ];
 
-      wants = [ "kwalletd.service" "NetworkManager.service" ];
+      wants = [ "kwalletd.service" ];
+      # requires = [ "NetworkManager.service" ];
       after = [ "xdg-desktop-portal.service" "graphical.target" "kwalletd.service" "NetworkManager.service" ];
 
       unitConfig = {
