@@ -247,6 +247,8 @@ in
     pinta
 
     netbird
+
+    devenv
   ];
 
   qt = {

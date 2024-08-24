@@ -17,6 +17,8 @@ in
       ubuntu_font_family
       inter
 
+      monaspace
+
       # nerdfonts
       cascadia-code
       _0xproto
@@ -108,6 +110,20 @@ in
             <string>Inter Display</string>
           </test>
           <edit name="fontfeatures" mode="append">
+            <string>calt on</string>
+            <string>dlig on</string>
+          </edit>
+        </match>
+        <match target="font">
+          <test name="family" compare="contains" ignore-blanks="true">
+            <string>Monaspace</string>
+          </test>
+          <edit name="fontfeatures" mode="append">
+            <string>ss03</string>
+            <string>ss04</string>
+            <string>ss07</string>
+            <string>liga</string>
+            <string>calt</string>
           </edit>
         </match>
       </fontconfig>
