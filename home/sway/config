@@ -33,7 +33,7 @@ include inputs
     bindsym --to-code $mod+Alt+l exec $locker
 
     # Power Menu
-    bindsym --to-code $mod+Shift+e exec $powermenu
+    bindsym --to-code $mod+Shift+Delete exec $powermenu
 #
 # Moving around:
 #

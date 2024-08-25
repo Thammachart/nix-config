@@ -114,6 +114,12 @@ in
 
   security.polkit.enable = true;
 
+  security.sudo-rs = {
+    enable = true;
+    wheelNeedsPassword = false;
+    execWheelOnly = true;
+  };
+
   security.doas = {
     enable = true;
     wheelNeedsPassword = false;
@@ -161,12 +167,6 @@ in
     wl-clipboard # wl-copy and wl-paste for copy/paste from stdin / stdout
     fuzzel
     mako
-    (chromium.override {
-      commandLineArgs = [
-        "--password-store=gnome-libsecret"
-        "--gtk-version=4"
-      ];
-    })
     htop
     wlr-randr
     wlopm
@@ -339,6 +339,9 @@ in
             };
             "org/gnome/desktop/interface" = {
               color-scheme = mkString "prefer-dark";
+            };
+            "org/gnome/nm-applet" = {
+              disable-connected-notifications = mkBoolean true;
             };
           };
         }

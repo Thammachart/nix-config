@@ -40,8 +40,8 @@ in
       enable = true;
 
       defaultFonts = {
-        serif = ["Noto Serif" "Noto Serif CJK JP" "Noto Color Emoji"];
-        sansSerif = [fontConfigData.latin.ui "Ubuntu" "Noto Sans" "Noto Sans CJK JP" "Noto Color Emoji"];
+        serif = ["Noto Serif" "Noto Serif Thai" "Noto Serif CJK JP" "Noto Color Emoji"];
+        sansSerif = [fontConfigData.latin.ui "Noto Sans Thai" "Ubuntu" "Noto Sans" "Noto Sans CJK JP" "Noto Color Emoji"];
         monospace = [fontConfigData.latin.ui_monospace fontConfigData.latin.terminal_monospace "JetBrainsMono NFP" "Noto Color Emoji"];
         emoji = ["Noto Color Emoji"];
       };

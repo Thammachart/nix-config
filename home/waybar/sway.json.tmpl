@@ -7,9 +7,10 @@
   "modules-right": [
     "idle_inhibitor", "pulseaudio", "sway/language",
     {{ if not .isDesktop -}}
-    "backlight", 
-    "battery", 
+    "backlight",
+    "battery",
     {{ end -}}
+    "privacy",
     "clock", "tray", "custom/power"
   ],
   "sway/mode": {
@@ -37,10 +38,30 @@
   },
   "clock": {
     "interval": 60,
-    "format": "{:%H:%M}",
-    "format-alt": "{:%Y-%m-%d}",
+    "format": "{:%R}",
+    "format-alt": "{:%F}",
     "max-length": 25,
-    "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
+    "tooltip-format": "<tt><small>{calendar}</small></tt>",
+    "calendar": {
+      "mode"          : "year",
+      "mode-mon-col"  : 3,
+      "weeks-pos"     : "right",
+      "on-scroll"     : 1,
+      "format": {
+        "months":     "<span color='#ffead3'><b>{}</b></span>",
+        "days":       "<span color='#ecc6d9'><b>{}</b></span>",
+        "weeks":      "<span color='#99ffdd'><b>W{}</b></span>",
+        "weekdays":   "<span color='#ffcc66'><b>{}</b></span>",
+        "today":      "<span color='#ff6699'><b><u>{}</u></b></span>"
+      }
+    },
+    "actions": {
+      "on-click-right": "mode",
+      "on-click-forward": "tz_up",
+      "on-click-backward": "tz_down",
+      "on-scroll-up": "shift_up",
+      "on-scroll-down": "shift_down"
+    }
   },
   "cpu": {
     "format": "{usage}% ",
@@ -99,6 +120,23 @@
   "sway/language": {
     "format": "{}",
     "on-click": "swaymsg input type:keyboard xkb_switch_layout next",
+  },
+  "privacy": {
+  	"icon-spacing": 4,
+  	"icon-size": 12,
+  	"transition-duration": 250,
+  	"modules": [
+  		{
+  			"type": "screenshare",
+  			"tooltip": true,
+  			"tooltip-icon-size": 16
+  		},
+  		{
+  			"type": "audio-in",
+  			"tooltip": true,
+  			"tooltip-icon-size": 16
+  		}
+  	]
   },
   "custom/notification": {
     "tooltip": false,

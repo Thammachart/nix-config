@@ -1,12 +1,12 @@
 * {
   border: none;
   border-radius: 0;
-  font-family: {{ .fonts.latin.ui }}, sans-serif;
   font-size: 12px;
   min-height: 0;
 }
 
 window#waybar {
+  font-family: {{ .fonts.latin.terminal_monospace }}, sans-serif;
   background: rgba(43, 48, 59, 0.5);
   border-bottom: 3px solid rgba(100, 114, 125, 0.5);
   color: #ffffff;
@@ -37,7 +37,11 @@ window#waybar.hidden {
   border-bottom: 3px solid #ffffff;
 }
 
-#clock, #battery, #cpu, #memory, #temperature, #backlight, #network, #pulseaudio, #custom-media, #tray, #mode, #idle_inhibitor {
+#window {
+  font-family: sans-serif;
+}
+
+#clock, #battery, #cpu, #memory, #temperature, #backlight, #network, #pulseaudio, #custom-media, #tray, #mode, #privacy, #idle_inhibitor {
   padding: 0 10px;
   margin: 0 5px;
 }
@@ -62,7 +66,7 @@ window#waybar.hidden {
 }
 
 #clock {
-  background-color: #64727D;
+  background-color: #015958;
 }
 
 #battery {
@@ -114,26 +118,13 @@ window#waybar.hidden {
 }
 
 #pulseaudio {
-  background: #f1c40f;
-  color: #000000;
+  background: #64727D;
+  color: #ffffff;
 }
 
 #pulseaudio.muted {
   background: #90b1b1;
   color: #2a5c45;
-}
-
-#custom-media {
-  background: #66cc99;
-  color: #2a5c45;
-}
-
-.custom-spotify {
-  background: #66cc99;
-}
-
-.custom-vlc {
-  background: #ffa000;
 }
 
 #temperature {
@@ -145,6 +136,7 @@ window#waybar.hidden {
 }
 
 #tray {
+  font-family: sans-serif;
   background-color: #2980b9;
 }
 
@@ -155,4 +147,8 @@ window#waybar.hidden {
 #idle_inhibitor.activated {
   background-color: #ecf0f1;
   color: #2d3436;
+}
+
+#privacy {
+  background-color: #F26F63;
 }
