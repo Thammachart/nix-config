@@ -4,7 +4,7 @@
   boot.initrd.kernelModules = [ "amdgpu" ];
 
   boot.plymouth = {
-    enable = true;
+    enable = false;
   };
 
   hardware.graphics = {
