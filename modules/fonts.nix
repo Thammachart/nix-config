@@ -13,13 +13,14 @@ in
       noto-fonts-cjk-sans
       noto-fonts-cjk-serif
       noto-fonts-color-emoji
+      inter
       liberation_ttf
       ubuntu_font_family
-      inter
 
       monaspace
 
       # nerdfonts
+      jetbrains-mono
       cascadia-code
       _0xproto
       geist-font
@@ -59,6 +60,15 @@ in
         <match target="pattern">
           <test name="family">
             <string>Segoe UI</string>
+          </test>
+          <edit binding="same" mode="assign" name="family">
+            <string>system</string>
+          </edit>
+        </match>
+
+        <match target="pattern">
+          <test name="family">
+            <string>Helvetica</string>
           </test>
           <edit binding="same" mode="assign" name="family">
             <string>system</string>
@@ -114,6 +124,7 @@ in
             <string>dlig on</string>
           </edit>
         </match>
+
         <match target="font">
           <test name="family" compare="contains" ignore-blanks="true">
             <string>Monaspace</string>
