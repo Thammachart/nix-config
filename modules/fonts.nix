@@ -120,8 +120,6 @@ in
             <string>Inter Display</string>
           </test>
           <edit name="fontfeatures" mode="append">
-            <string>calt on</string>
-            <string>dlig on</string>
           </edit>
         </match>
 
