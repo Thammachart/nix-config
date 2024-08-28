@@ -1,10 +1,10 @@
 { config, lib, pkgs, ... }:
 {
-  systemd.services."NetworkManager-wait-online".enable = true;
+  imports = [
+    ./netbird.nix
+  ];
 
-  systemd.services."netbird-shobshop0" = {
-    wantedBy = lib.mkForce [];
-  };
+  systemd.services."NetworkManager-wait-online".enable = true;
 
   systemd.user.targets = {
     "user-system-ready" = {

@@ -135,6 +135,8 @@ in
     bat
     doggo
 
+    openssl
+
     fhspkg
 
     age
@@ -260,15 +262,15 @@ in
     package = pkgs.emacs29-pgtk;
   };
 
-  services.netbird = {
-    tunnels.shobshop0 = {
-      environment = {
-        NB_INTERFACE_NAME = "wt-shobshop0";
-        NB_ADMIN_URL = "https://netbird.shobshop.co:443";
-        NB_MANAGEMENT_URL = "https://netbird.shobshop.co:33073";
-      };
-    };
-  };
+  # services.netbird = {
+  #   tunnels.shobshop0 = {
+  #     environment = {
+  #       NB_INTERFACE_NAME = config.sops.placeholders.shobshop_netbird_interface_name;
+  #       NB_ADMIN_URL = config.sops.placeholders.shobshop_netbird_admin_url;
+  #       NB_MANAGEMENT_URL = config.sops.placeholders.shobshop_netbird_management_url;
+  #     };
+  #   };
+  # };
 
   services.dbus = {
     enable = true;

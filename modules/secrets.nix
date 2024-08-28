@@ -12,6 +12,11 @@
         key = "access_token";
         sopsFile = "${nix-secrets}/_common/github.yml";
       };
+
+      shobshop_netbird_env = {
+        format = "binary";
+        sopsFile = "${nix-secrets}/shobshop/netbird.env";
+      };
     };
 
     templates."nix.conf" = {

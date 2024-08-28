@@ -33,6 +33,10 @@ in
     pkgs.caddy
   ];
 
+  security.pki.certificateFiles = [
+    config.sops.secrets.shobshop_internal_ca_cert.path
+  ];
+
   programs.auto-cpufreq = {
     enable = false;
     settings = {
