@@ -1,4 +1,4 @@
-{ pkgs, config, configData, ... }:
+{ pkgs, config, configData, nix-secrets, ... }:
 let
   gcloud = pkgs.google-cloud-sdk.withExtraComponents( with pkgs.google-cloud-sdk.components; [
     gke-gcloud-auth-plugin
@@ -33,9 +33,14 @@ in
     pkgs.caddy
   ];
 
-  security.pki.certificateFiles = [
-    config.sops.secrets.shobshop_internal_ca_cert.path
-  ];
+  # sops.secrets.shobshop_internal_ca_cert = {
+  #   format = "binary";
+  #   sopsFile = "${nix-secrets}/shobshop/ca.crt";
+  # };
+
+  # security.pki.certificateFiles = [
+  #   config.sops.secrets.shobshop_internal_ca_cert.path
+  # ];
 
   programs.auto-cpufreq = {
     enable = false;

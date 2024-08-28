@@ -6,10 +6,10 @@ in
 {
   systemd.services."${name}" = let
     environment = {
-      NB_INTERFACE_NAME = "wt-${name}";
+      NB_INTERFACE_NAME = "nb-shobshop0";
       NB_CONFIG = "/var/lib/${name}/config.json";
       NB_LOG_FILE = "console";
-      NB_WIREGUARD_PORT = 51820;
+      NB_WIREGUARD_PORT = "51820";
       NB_DAEMON_ADDR = "unix:///var/run/${name}/sock";
     };
   in
@@ -17,12 +17,12 @@ in
     after = [ "network.target" ];
     wantedBy = [];
 
-    path = with pkgs; [ systemd ];
+    path = with pkgs; [ openresolv ];
 
     inherit environment;
 
     serviceConfig = {
-      EnvironmentFile = config.sops.secrets.shobshop_netbird_env.path;
+      EnvironmentFile = [ config.sops.secrets.shobshop_netbird_env.path ];
       ExecStart = "${pkg}/bin/netbird service run";
       Restart = "always";
       RuntimeDirectory = name;
