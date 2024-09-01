@@ -36,17 +36,6 @@ in
     tmp = {
       cleanOnBoot = true;
     };
-
-    plymouth = {
-      enable = lib.mkDefault false;
-      theme = "square_hud";
-      themePackages = with pkgs; [
-        # By default we would install all themes
-        (adi1090x-plymouth-themes.override {
-          selected_themes = [ "square_hud" ];
-        })
-      ];
-    };
   };
 
   nix = {
@@ -63,11 +52,34 @@ in
 
   networking = {
     hostName = hostName;
-    networkmanager.enable = true;
+    networkmanager = {
+      enable = true;
+    };
+    resolvconf = {
+      enable = true;
+      # useLocalResolver = true;
+      extraConfig = ''
+      unbound_restart='${config.services.unbound.package}/bin/unbound-control reload'
+      unbound_conf=/etc/unbound/resolvconf.conf
+      '';
+    };
   };
 
-  services.resolved = {
+  services.unbound = {
     enable = true;
+    group = "networkmanager";
+    resolveLocalQueries = true;
+    localControlSocketPath = "/run/unbound/unbound.ctl";
+    settings = {
+      include = "/etc/unbound/resolvconf.conf";
+      server = {
+        private-domain = ["intranet" "internal" "private" "corp" "home" "lan"];
+        domain-insecure = ["intranet" "internal" "private" "corp" "home" "lan"];
+
+       	unblock-lan-zones = true;
+       	insecure-lan-zones = true;
+      };
+    };
   };
 
   nixpkgs = {
@@ -251,6 +263,8 @@ in
     netbird
 
     devenv
+    mission-center
+    bottom
   ];
 
   qt = {

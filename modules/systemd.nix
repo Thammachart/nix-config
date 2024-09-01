@@ -4,7 +4,7 @@
     ./netbird.nix
   ];
 
-  systemd.services."NetworkManager-wait-online".enable = true;
+  systemd.services."NetworkManager-wait-online".enable = false;
 
   systemd.user.targets = {
     "user-system-ready" = {
@@ -15,7 +15,6 @@
   systemd.user.services = {
     "lxqt-policykit" = {
       enable = true;
-      description = "lxqt-policykit";
       wantedBy = [ "user-system-ready.target" ];
 
       after = [ "xdg-desktop-portal.service" "polkit.service" "graphical.target" ];
@@ -34,34 +33,29 @@
 
       after = [ "xdg-desktop-portal.service" "graphical.target" ];
 
-      unitConfig = {
-        StartLimitInterval = 5;
-      };
+      aliases = [ "secret-provider.service" ];
 
       serviceConfig = {
-        Type = "exec";
+        Type = "dbus";
         Restart = "on-failure";
-        RestartSec = "1s";
+        RestartSec = 1;
         ExecStart = "${pkgs.kdePackages.kwallet}/bin/kwalletd6";
-        # BusName = "org.kde.kwalletd6";
+        ExecStartPost = "${pkgs.libsecret}/bin/secret-tool search att1 val1";
+        BusName = "org.freedesktop.secrets";
       };
     };
 
     "nm-applet" = {
       wantedBy = [ "user-system-ready.target" ];
 
-      wants = [ "kwalletd.service" ];
+      wants = [ "secret-provider.service" ];
       # requires = [ "NetworkManager.service" ];
-      after = [ "xdg-desktop-portal.service" "graphical.target" "kwalletd.service" "NetworkManager.service" ];
-
-      unitConfig = {
-        StartLimitInterval = 5;
-      };
+      after = [ "xdg-desktop-portal.service" "graphical.target" "secret-provider.service" "NetworkManager.service" ];
 
       serviceConfig = {
         Type = "exec";
         Restart = "on-failure";
-        RestartSec = "1s";
+        RestartSec = 1;
         ExecStart = "${pkgs.networkmanagerapplet}/bin/nm-applet";
       };
     };
