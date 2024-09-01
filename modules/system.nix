@@ -168,6 +168,7 @@ in
 
     # PDF Viewer
     zathura
+    mate.atril
 
     libsForQt5.qt5.qtwayland
     # libsForQt5.qt5ct
@@ -244,16 +245,6 @@ in
     enable = false;
     package = pkgs.emacs29-pgtk;
   };
-
-  # services.netbird = {
-  #   tunnels.shobshop0 = {
-  #     environment = {
-  #       NB_INTERFACE_NAME = config.sops.placeholders.shobshop_netbird_interface_name;
-  #       NB_ADMIN_URL = config.sops.placeholders.shobshop_netbird_admin_url;
-  #       NB_MANAGEMENT_URL = config.sops.placeholders.shobshop_netbird_management_url;
-  #     };
-  #   };
-  # };
 
   services.dbus = {
     enable = true;

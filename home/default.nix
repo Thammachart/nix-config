@@ -99,12 +99,6 @@
     };
   };
 
-  # home.file.".local/share/dbus-1/services/org.freedesktop.secrets.service".text = ''
-  # [D-BUS Service]
-  # Name=org.freedesktop.secrets
-  # Exec=${pkgs.keepassxc}/bin/keepassxc
-  # '';
-
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 }
