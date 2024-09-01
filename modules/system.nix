@@ -5,6 +5,7 @@ in
 {
   imports = [
     ./secrets.nix
+    ./network.nix
     ./systemd.nix
     ./fonts.nix
     ./display-manager.nix
@@ -47,38 +48,6 @@ in
       automatic = lib.mkDefault true;
       dates = lib.mkDefault "weekly";
       options = lib.mkDefault "--delete-older-than 7d";
-    };
-  };
-
-  networking = {
-    hostName = hostName;
-    networkmanager = {
-      enable = true;
-    };
-    resolvconf = {
-      enable = true;
-      # useLocalResolver = true;
-      extraConfig = ''
-      unbound_restart='${config.services.unbound.package}/bin/unbound-control reload'
-      unbound_conf=/etc/unbound/resolvconf.conf
-      '';
-    };
-  };
-
-  services.unbound = {
-    enable = true;
-    group = "networkmanager";
-    resolveLocalQueries = true;
-    localControlSocketPath = "/run/unbound/unbound.ctl";
-    settings = {
-      include = "/etc/unbound/resolvconf.conf";
-      server = {
-        private-domain = ["intranet" "internal" "private" "corp" "home" "lan"];
-        domain-insecure = ["intranet" "internal" "private" "corp" "home" "lan"];
-
-       	unblock-lan-zones = true;
-       	insecure-lan-zones = true;
-      };
     };
   };
 
