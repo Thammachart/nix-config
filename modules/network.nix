@@ -6,23 +6,23 @@
       enable = true;
     };
     resolvconf = {
-      # enable = true;
-      # package = lib.mkForce pkgs.systemd;
+      enable = true;
+      package = lib.mkForce pkgs.systemd;
       # useLocalResolver = true;
-      extraConfig = ''
-      unbound_restart='/run/current-system/systemd/bin/systemctl reload --no-block unbound.service 2> /dev/null'
-      unbound_conf=/etc/unbound/resolvconf.conf
-      '';
+      # extraConfig = ''
+      # unbound_restart='/run/current-system/systemd/bin/systemctl reload --no-block unbound.service 2> /dev/null'
+      # unbound_conf=/etc/unbound/resolvconf.conf
+      # '';
     };
   };
 
-  # services.resolved = {
-  #   enable = true;
-  #   fallbackDns = [ "1.0.0.1" "1.1.1.1" ];
-  # };
+  services.resolved = {
+    enable = true;
+    fallbackDns = [ "1.0.0.1" "1.1.1.1" "2606:4700:4700::1111" "2606:4700:4700::1001" ];
+  };
 
   services.unbound = {
-    enable = true;
+    enable = false;
     group = "networkmanager";
     resolveLocalQueries = true;
     settings = {
