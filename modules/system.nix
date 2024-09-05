@@ -164,6 +164,8 @@ in
     lxqt.qps
     p7zip
     qalculate-gtk
+    imv
+    swayimg
     mpv
 
     # PDF Viewer

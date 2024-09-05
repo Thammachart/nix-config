@@ -21,7 +21,6 @@
     pkgs.qbittorrent
 
     pkgs.heroic
-    pkgs.proton-ge-custom
     # pkgs.cryptomator
   ];
 
