@@ -16,11 +16,11 @@
     pkgs.media-downloader
     pkgs.yt-dlp
 
-    pkgs.xivlauncher
+    # pkgs.xivlauncher
 
     pkgs.qbittorrent
 
-    pkgs.heroic
+    # pkgs.heroic
     # pkgs.cryptomator
   ];
 
