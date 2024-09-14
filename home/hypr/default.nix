@@ -1,4 +1,4 @@
-{ pkgs, templateFile, configData, isDesktop, ...  }:
+{ pkgs, templateFile, configData, ...  }:
 
 {
   home.file.".config/hypr/variables.conf".source = templateFile "hyprland-vars-${configData.username}" ./variables.conf.tmpl configData.homeSettings;

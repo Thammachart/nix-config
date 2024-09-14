@@ -1,4 +1,4 @@
-{ pkgs, templateFile, isDesktop, configData, ...  }:
+{ pkgs, templateFile, configData, ...  }:
 
 let
   settings = { nwgbarPath = pkgs.nwg-bar.outPath; };

@@ -1,4 +1,4 @@
-{config, pkgs, nix-secrets, ...}:
+{config, pkgs, nix-secrets, conditions, ...}:
 let
   name = "netbird-shobshop0";
   pkg = pkgs.netbird;
@@ -14,6 +14,7 @@ in
     };
   in
   {
+    enable = conditions.graphicalUser;
     after = [ "network.target" ];
     wantedBy = [];
 

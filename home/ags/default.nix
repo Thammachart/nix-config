@@ -1,10 +1,10 @@
-{ pkgs, inputs, templateFile, configData, isDesktop, ...  }:
+{ pkgs, inputs, templateFile, configData, conditions, ...  }:
 
 {
   imports = [ inputs.ags.homeManagerModules.default ];
 
   programs.ags = {
-    enable = true;
+    enable = conditions.graphicalUser;
 
     # null or path, leave as null if you don't want hm to manage the config
     configDir = ./configs;

@@ -1,5 +1,5 @@
 
-{ pkgs, templateFile, isDesktop, configData, ...  }:
+{ pkgs, templateFile, configData, ...  }:
 
 {
   programs = {

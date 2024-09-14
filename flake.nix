@@ -2,8 +2,9 @@
 {
   description = "Thammachart's NixOS Flake";
   inputs = {
-
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixpkgs = {
+      url = "github:NixOS/nixpkgs/nixos-unstable";
+    };
 
     chaotic = {
       url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
@@ -44,7 +45,7 @@
     };
   };
 
-  outputs = { self, nixpkgs, disko, nixos-hardware, auto-cpufreq, chaotic, home-manager, sops-nix, nix-secrets, gitalias, ... } @ inputs:
+  outputs = { self, nixpkgs, ... } @ inputs:
   let
     defaultSystem = "x86_64-linux";
     pkgs = import nixpkgs {
@@ -57,33 +58,42 @@
     templateFile = import ./utils/template-engine.nix { inherit pkgs; };
   in
   {
-    nixosConfigurations = builtins.mapAttrs (name: value: nixpkgs.lib.nixosSystem {
-      system = value.system or defaultSystem;
+    nixosConfigurations = builtins.mapAttrs (n: v:
+    let
+      conditions = rec {
+        isPersonal = builtins.elem "personal" v.tags;
+        isDesktop = builtins.elem "desktop" v.tags;
+        isLaptop = builtins.elem "laptop" v.tags;
+        isServer = builtins.elem "server" v.tags;
+        graphicalUser = (isDesktop || isLaptop) && !isServer;
+      };
+    in
+    nixpkgs.lib.nixosSystem {
+      system = v.system or defaultSystem;
 
       specialArgs = {
         inherit inputs;
-        inherit nixos-hardware;
+        inherit (inputs) nixos-hardware;
         inherit templateFile;
         inherit configData;
-        inherit nix-secrets;
+        inherit (inputs) nix-secrets;
 
-        inherit (value) isPersonal;
-        inherit (value) isDesktop;
-        hostName = name;
+        inherit conditions;
+        hostName = n;
       };
 
       modules = [
-        chaotic.nixosModules.default
+        inputs.chaotic.nixosModules.default
 
-        disko.nixosModules.disko
+        inputs.disko.nixosModules.disko
 
-        sops-nix.nixosModules.sops
+        inputs.sops-nix.nixosModules.sops
 
-        auto-cpufreq.nixosModules.default
+        # inputs.auto-cpufreq.nixosModules.default
 
-        ./hosts/${name}
+        ./hosts/${n}
 
-        home-manager.nixosModules.home-manager {
+        inputs.home-manager.nixosModules.home-manager {
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
 
@@ -91,17 +101,16 @@
             inherit inputs;
             inherit templateFile;
             inherit configData;
-            inherit nix-secrets;
+            inherit (inputs) nix-secrets;
 
-            inherit gitalias;
+            inherit (inputs) gitalias;
 
-            inherit (value) isPersonal;
-            inherit (value) isDesktop;
-            hostName = name;
+            inherit conditions;
+            hostName = n;
           };
 
           home-manager.sharedModules = [
-            sops-nix.homeManagerModules.sops
+            inputs.sops-nix.homeManagerModules.sops
           ];
 
           home-manager.users."${configData.username}" = import ./home;

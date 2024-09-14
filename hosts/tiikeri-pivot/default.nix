@@ -1,4 +1,7 @@
-{config, pkgs, isPersonal, ...}:
+{config, pkgs, conditions, ...}:
+let
+  shouldEnable = conditions.isPersonal;
+in
 {
   imports =
     [
@@ -25,7 +28,7 @@
   ];
 
   programs.steam = {
-    enable = isPersonal;
+    enable = shouldEnable;
 
     # Unsetting TZ env means 2 conflicting things:
     # - Proton and games themselves will use correct timezone, corresponding to Linux System Timezone: https://github.com/NixOS/nixpkgs/issues/279893#issuecomment-1883875778
@@ -39,7 +42,7 @@
   };
 
   programs.gamemode = {
-    enable = isPersonal;
+    enable = shouldEnable;
   };
 
 }

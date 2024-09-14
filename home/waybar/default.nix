@@ -1,7 +1,7 @@
-{ pkgs, templateFile, configData, isDesktop, ...  }:
+{ pkgs, templateFile, configData, conditions, ...  }:
 
 let
-  settings = configData.homeSettings // { inherit isDesktop; };
+  settings = configData.homeSettings // { inherit conditions; };
 in
 {
   home.file.".config/waybar/sway.css".source = templateFile "waybar-sway-css-${configData.username}" ./sway.css.tmpl settings;

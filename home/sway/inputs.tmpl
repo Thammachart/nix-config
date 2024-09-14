@@ -1,4 +1,4 @@
-{{ if not .isDesktop -}}
+{{ if .conditions.isLaptop -}}
 input "type:touchpad" {
   natural_scroll enabled
   tap enabled

@@ -20,16 +20,13 @@
 
   hosts = {
     "tiikeri-pivot" = {
-      isPersonal = true;
-      isDesktop = true;
-    };
-    "hevonen-orbit" = {
-      isPersonal = false;
-      isDesktop = false;
+      tags = ["personal" "desktop"];
     };
     "kenguru-pivot" = {
-      isPersonal = true;
-      isDesktop = false;
+      tags = ["personal" "server" "laptop"];
+    };
+    "hevonen-orbit" = {
+      tags = ["work" "laptop"];
     };
   };
 }

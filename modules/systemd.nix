@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, conditions, ... }:
 {
   imports = [
     ./netbird.nix
@@ -14,7 +14,7 @@
 
   systemd.user.services = {
     "lxqt-policykit" = {
-      enable = true;
+      enable = conditions.graphicalUser;
       wantedBy = [ "user-system-ready.target" ];
 
       after = [ "xdg-desktop-portal.service" "polkit.service" "graphical.target" ];
@@ -29,6 +29,8 @@
     };
 
     "kwalletd" = {
+      enable = conditions.graphicalUser;
+
       wantedBy = [ "user-system-ready.target" ];
 
       after = [ "xdg-desktop-portal.service" "graphical.target" ];
@@ -46,6 +48,7 @@
     };
 
     "nm-applet" = {
+      enable = conditions.graphicalUser;
       wantedBy = [ "user-system-ready.target" ];
 
       wants = [ "secret-provider.service" ];

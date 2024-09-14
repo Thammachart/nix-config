@@ -1,4 +1,4 @@
-{ pkgs, configData, gitalias, isPersonal, ... }:
+{ pkgs, lib, configData, conditions, gitalias, ... }:
 
 {
   imports = [
@@ -19,7 +19,7 @@
     username = "${configData.username}";
     homeDirectory = "/home/${configData.username}";
 
-    pointerCursor = {
+    pointerCursor = lib.mkIf conditions.graphicalUser {
       name = "Yaru";
       package = pkgs.yaru-theme;
       size = 24;
@@ -43,7 +43,7 @@
   };
 
   gtk = {
-    enable = true;
+    enable = conditions.graphicalUser;
     font = {
       name = configData.homeSettings.fonts.latin.ui;
       size = 12;
@@ -77,7 +77,7 @@
   };
 
   programs.aria2 = {
-    enable = isPersonal;
+    enable = conditions.isPersonal;
     settings = {
       allow-overwrite = true;
       # log = "-";

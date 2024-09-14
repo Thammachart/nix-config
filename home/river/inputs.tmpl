@@ -1,4 +1,4 @@
-{{ if not .isDesktop -}}
+{{ if .conditions.isLaptop -}}
 touchpad="touchpad-*"
 riverctl input $touchpad natural-scroll enabled
 riverctl input $touchpad tap enabled

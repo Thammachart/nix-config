@@ -1,4 +1,4 @@
-{ config, inputs, lib, pkgs, configData, isPersonal, isDesktop, hostName, nix-secrets, ... }:
+{ config, inputs, lib, pkgs, configData, conditions , hostName, nix-secrets, ... }:
 let
   fhspkg = import ../packages/fhs.nix { inherit pkgs; inherit config; inherit lib; };
 in
@@ -21,7 +21,7 @@ in
   };
 
   boot = {
-    initrd.systemd.enable = true;
+    initrd.systemd.enable = lib.mkDefault (conditions.isLaptop && !conditions.isServer);
     initrd.verbose = false;
     kernel.sysctl = {
       "kernel.sysrq" = lib.mkDefault 1;
@@ -59,39 +59,23 @@ in
     timeZone = "Asia/Bangkok";
   };
 
-  # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
-  # console = {
-  #   font = "Lat2-Terminus16";
-  #   keyMap = "us";
-  #   useXkbConfig = true; # use xkb.options in tty.
-  # };
-
-  # Configure keymap in X11
-  # services.xserver.xkb.layout = "us";
-  # services.xserver.xkb.options = "eurosign:e,caps:escape";
-
-  # Enable CUPS to print documents.
-  # services.printing.enable = true;
 
   hardware.pulseaudio.enable = false;
 
-  security.rtkit.enable = true;
+  security.rtkit.enable = conditions.graphicalUser;
   services.pipewire = {
-    enable = true;
+    enable = conditions.graphicalUser;
     alsa.enable = true;
     pulse.enable = true;
     jack.enable = true;
   };
 
   hardware.bluetooth = {
-    enable = true;
+    enable = lib.mkDefault conditions.graphicalUser;
     powerOnBoot = false;
   };
-  services.blueman.enable = true;
-
-  # Enable touchpad support (enabled default in most desktopManager).
-  # services.xserver.libinput.enable = true;
+  services.blueman.enable = lib.mkDefault conditions.graphicalUser;
 
   security.polkit.enable = true;
 
@@ -107,62 +91,58 @@ in
   };
 
   environment.systemPackages = with pkgs; [
-    vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-    neovim
-    helix
-    wget
-    gnumake
-    git
-    bat
+    vim helix
+    curl wget
+    xdg-user-dirs
+    busybox bash zsh
+    gnumake git fastfetch gomplate
+    bat ripgrep
     doggo
-
     openssl
-
     fhspkg
+    unzip p7zip
+    htop bottom procs
+    dbus
+    age sops
+    devenv
 
-    age
-    sops
+    just
+    lshw
+    starship
+    cmatrix
+    yubikey-manager
 
-    zsh
+    ] ++ lib.optionals (conditions.graphicalUser) [
+
     foot
-    gomplate
-    fastfetch
-    vscodium-fhs
-    geany
+    xdg-utils
     brave
     pavucontrol
     libnotify
     vulkan-tools
-    dbus   # make dbus-update-activation-environment available in the path
 
-    xdg-utils # for opening default programs when clicking links
-    glib # gsettings
+    vscodium-fhs zed-editor geany
 
-    yaru-theme
-    # sweet
-    papirus-icon-theme
+    glib
 
+    yaru-theme papirus-icon-theme
+
+    syncthing
     waybar
     wlsunset
 
-    grim # screenshot functionality
-    slurp # screenshot functionality
-    wl-clipboard # wl-copy and wl-paste for copy/paste from stdin / stdout
+    grim slurp
+    wl-clipboard
+
     fuzzel
     mako
-    htop
-    wlr-randr
-    wlopm
-    kanshi
-    nwg-displays
+    wlr-randr wlopm kanshi nwg-displays
     nwg-bar
     keepassxc
-    syncthing
     lxqt.pcmanfm-qt
     lxqt.lximage-qt
     lxqt.lxqt-archiver
     lxqt.qps
-    p7zip
     qalculate-gtk
     imv
     swayimg
@@ -207,40 +187,19 @@ in
     # kdePackages.ksystemstats
     # kdePackages.libksysguard
 
-    procs
+    mission-center
+
     xorg.xprop
-    xdotool
-    xorg.xwininfo
-    unzip
     libva-utils
     waypaper
     glxinfo
-    ripgrep
-    xdg-user-dirs
-    busybox
-    lshw
-    just
-    starship
-    cmatrix
-
-    yubikey-manager
     yubikey-manager-qt
-    cryptsetup
-    # opensc
-
-    zed-editor
-
     pinta
-
     netbird
-
-    devenv
-    mission-center
-    bottom
   ];
 
   qt = {
-    enable = true;
+    enable = lib.mkDefault conditions.graphicalUser;
   };
 
   services.emacs = {
@@ -253,7 +212,7 @@ in
   };
 
   services.gvfs = {
-    enable = true;
+    enable = lib.mkDefault conditions.graphicalUser;
     package = pkgs.gvfs;
   };
 
@@ -278,7 +237,7 @@ in
   };
 
   xdg.portal = {
-    enable = true;
+    enable = lib.mkDefault conditions.graphicalUser;
     wlr.enable = true;
     extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
     config = {
@@ -300,11 +259,11 @@ in
   };
 
   programs.gnome-disks = {
-    enable = true;
+    enable = lib.mkDefault conditions.graphicalUser;
   };
 
   programs.dconf = {
-    enable = true;
+    enable = lib.mkDefault conditions.graphicalUser;
     profiles = {
       user.databases = [
         {
@@ -328,13 +287,13 @@ in
   };
 
   programs.sway = {
-    enable = true;
+    enable = lib.mkDefault conditions.graphicalUser;
     wrapperFeatures.gtk = true;
     extraPackages = with pkgs; [ swaylock swayidle swaybg ];
   };
 
   programs.river = {
-    enable = true;
+    enable = lib.mkDefault conditions.graphicalUser;
     xwayland.enable = true;
     extraPackages = with pkgs; [ kanshi ];
   };
@@ -344,17 +303,17 @@ in
     xwayland.enable = true;
   };
 
-  programs.neovim = {
-    enable = true;
-    defaultEditor = true;
-  };
-
   programs.xwayland = {
-    enable = true;
+    enable = lib.mkDefault conditions.graphicalUser;
   };
 
   programs.firefox = {
+    enable = lib.mkDefault conditions.graphicalUser;
+  };
+
+  programs.neovim = {
     enable = true;
+    defaultEditor = true;
   };
 
   programs.direnv = {

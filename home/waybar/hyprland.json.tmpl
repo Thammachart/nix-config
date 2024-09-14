@@ -13,9 +13,9 @@
     "custom/notification",
     "pulseaudio",
     "hyprland/language",
-    {{ if not .isDesktop -}}
-    "backlight", 
-    "battery", 
+    {{ if .conditions.isLaptop -}}
+    "backlight",
+    "battery",
     {{ end -}}
     "clock",
     "tray",
