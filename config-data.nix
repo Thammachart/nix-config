@@ -27,5 +27,9 @@
       isPersonal = false;
       isDesktop = false;
     };
+    "kenguru-pivot" = {
+      isPersonal = true;
+      isDesktop = false;
+    };
   };
 }
