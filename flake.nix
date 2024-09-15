@@ -62,6 +62,7 @@
     let
       conditions = rec {
         isPersonal = builtins.elem "personal" v.tags;
+        isWork = builtins.elem "work" v.tags;
         isDesktop = builtins.elem "desktop" v.tags;
         isLaptop = builtins.elem "laptop" v.tags;
         isServer = builtins.elem "server" v.tags;

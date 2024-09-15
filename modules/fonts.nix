@@ -1,9 +1,9 @@
-{ pkgs, pkgs-stable, config, configData, ... }:
+{ pkgs, lib, conditions, config, configData, ... }:
 let
   fontConfigData = configData.homeSettings.fonts;
 in
 {
-  fonts = {
+  fonts = lib.mkIf conditions.graphicalUser {
     packages = with pkgs; [
       # icon fonts
       material-design-icons

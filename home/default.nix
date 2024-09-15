@@ -57,7 +57,7 @@
     };
   };
 
-  xdg.configFile = {
+  xdg.configFile = lib.mkIf conditions.graphicalUser {
     "Kvantum/kvantum.kvconfig".text = "[General]\ntheme=KvArcDark";
   };
 
@@ -77,7 +77,7 @@
   };
 
   programs.aria2 = {
-    enable = conditions.isPersonal;
+    enable = (conditions.isPersonal && !conditions.isServer);
     settings = {
       allow-overwrite = true;
       # log = "-";

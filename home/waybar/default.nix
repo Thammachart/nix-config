@@ -1,9 +1,9 @@
-{ pkgs, templateFile, configData, conditions, ...  }:
+{ pkgs, lib, templateFile, configData, conditions, ...  }:
 
 let
   settings = configData.homeSettings // { inherit conditions; };
 in
-{
+lib.mkIf conditions.graphicalUser {
   home.file.".config/waybar/sway.css".source = templateFile "waybar-sway-css-${configData.username}" ./sway.css.tmpl settings;
   home.file.".config/waybar/sway.json".source = templateFile "waybar-sway-json-${configData.username}" ./sway.json.tmpl settings;
 

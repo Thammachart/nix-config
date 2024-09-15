@@ -1,6 +1,6 @@
-{ pkgs, templateFile, configData, conditions, ...  }:
+{ pkgs, lib, templateFile, configData, conditions, ...  }:
 
-{
+lib.mkIf conditions.graphicalUser {
   home.file.".config/sway/config".source = ./config;
   home.file.".config/sway/variables".source = templateFile "sway-vars-${configData.username}" ./variables.tmpl configData.homeSettings;
   home.file.".config/sway/autostart".source = templateFile "sway-autostart-${configData.username}" ./autostart.tmpl configData.homeSettings;

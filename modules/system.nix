@@ -112,7 +112,7 @@ in
     cmatrix
     yubikey-manager
 
-    ] ++ lib.optionals (conditions.graphicalUser) [
+    ] ++ lib.optionals conditions.graphicalUser [
 
     foot
     xdg-utils
@@ -196,7 +196,7 @@ in
     yubikey-manager-qt
     pinta
     netbird
-  ];
+  ] ++ lib.optionals conditions.isWork [];
 
   qt = {
     enable = lib.mkDefault conditions.graphicalUser;
@@ -295,7 +295,7 @@ in
   programs.river = {
     enable = lib.mkDefault conditions.graphicalUser;
     xwayland.enable = true;
-    extraPackages = with pkgs; [ kanshi ];
+    extraPackages = with pkgs; [];
   };
 
   programs.hyprland = {

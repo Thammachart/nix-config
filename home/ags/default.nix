@@ -1,6 +1,6 @@
-{ pkgs, inputs, templateFile, configData, conditions, ...  }:
+{ pkgs, lib, inputs, templateFile, configData, conditions, ...  }:
 
-{
+lib.mkIf conditions.graphicalUser {
   imports = [ inputs.ags.homeManagerModules.default ];
 
   programs.ags = {
