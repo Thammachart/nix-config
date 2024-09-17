@@ -7,6 +7,8 @@ include autostart
 include theme
 include inputs
 
+output * bg #4e5850 solid_color
+
 ### Key bindings
 #
 # Basics:
