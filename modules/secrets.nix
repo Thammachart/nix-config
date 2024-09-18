@@ -1,4 +1,4 @@
-{config, nix-secrets, ...}:
+{config, lib, conditions, nix-secrets, ...}:
 {
   sops = {
     age = {
@@ -13,7 +13,7 @@
         sopsFile = "${nix-secrets}/_common/github.yml";
       };
 
-      shobshop_netbird_env = {
+      shobshop_netbird_env = lib.mkIf (!conditions.isServer) {
         format = "binary";
         sopsFile = "${nix-secrets}/shobshop/netbird.env";
       };
