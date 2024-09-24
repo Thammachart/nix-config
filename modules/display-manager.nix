@@ -1,11 +1,11 @@
-{ pkgs, config, configData, ... }:
+{ pkgs, lib, config, conditions, configData, ... }:
 let
   cmp-customize = import ../packages/compositor-custom.nix;
   desktopSessions = config.services.displayManager.sessionData.desktops;
 
   compositor = cmp-customize { inherit pkgs; cmp = "sway"; };
 in
-{
+lib.mkIf conditions.graphicalUser {
   services.greetd = {
     enable = true;
     settings = {
