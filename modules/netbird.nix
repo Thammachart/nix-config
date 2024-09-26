@@ -1,9 +1,9 @@
-{config, pkgs, nix-secrets, conditions, ...}:
+{config, lib, pkgs, nix-secrets, conditions, ...}:
 let
   name = "netbird-shobshop0";
   pkg = pkgs.netbird;
 in
-{
+lib.mkIf conditions.graphicalUser {
   systemd.services."${name}" = let
     environment = {
       NB_INTERFACE_NAME = "nb-shobshop0";
@@ -14,7 +14,7 @@ in
     };
   in
   {
-    enable = conditions.graphicalUser;
+    enable = true;
     after = [ "network.target" ];
     wantedBy = [];
 

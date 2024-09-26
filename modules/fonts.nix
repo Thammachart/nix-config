@@ -2,8 +2,8 @@
 let
   fontConfigData = configData.homeSettings.fonts;
 in
-{
-  fonts = lib.mkIf conditions.graphicalUser {
+lib.mkIf conditions.graphicalUser {
+  fonts = {
     packages = with pkgs; [
       # icon fonts
       material-design-icons
