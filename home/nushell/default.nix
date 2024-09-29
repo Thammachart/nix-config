@@ -1,5 +1,4 @@
-
-{ pkgs, templateFile, configData, ...  }:
+{ pkgs, lib, conditions, templateFile, configData, ...  }:
 
 {
   programs = {
@@ -8,6 +7,13 @@
 
       configFile.source = ./config.nu;
       envFile.source = ./env.nu;
+
+      loginFile = lib.mkIf conditions.isServer ''
+        if (tty) == "/dev/tty1" {
+          setterm -blank 5
+        }
+      '';
+
     };
 
     starship = {
