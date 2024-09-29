@@ -1,4 +1,4 @@
-{ config, lib, pkgs, configData, hostName, ... }:
+{ config, lib, conditions, pkgs, configData, hostName, ... }:
 {
   networking = {
     hostName = hostName;
@@ -35,5 +35,14 @@
        	insecure-lan-zones = true;
       };
     };
+  };
+
+  services.openssh = lib.mkIf conditions.isServer {
+    enable = true;
+    banner = "${hostName} via ssh!";
+  };
+
+  services.tailscale = lib.mkIf (!conditions.isWork) {
+    enable = true;
   };
 }
