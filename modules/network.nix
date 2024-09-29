@@ -39,7 +39,7 @@
 
   services.openssh = lib.mkIf conditions.isServer {
     enable = true;
-    banner = "${hostName} via ssh!";
+    banner = "${hostName} via ssh!\n";
   };
 
   services.tailscale = lib.mkIf (!conditions.isWork) {
