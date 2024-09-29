@@ -28,7 +28,7 @@ in
       "vm.max_map_count" = 1048576;
     };
     kernelPackages = lib.mkDefault pkgs.linuxPackages_cachyos-lto;
-    kernelParams = [ "quiet" "rd.systemd.show_status=false" "rd.udev.log_level=3" "udev.log_priority=3" ];
+    kernelParams = [ "quiet" "rd.systemd.show_status=false" "rd.udev.log_level=3" "udev.log_priority=3" ] ++ lib.optionals conditions.isServer [ "consoleblank=120" ];
     loader = {
       systemd-boot.enable = true;
       efi.canTouchEfiVariables = true;
