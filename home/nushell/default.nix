@@ -8,11 +8,7 @@
       configFile.source = ./config.nu;
       envFile.source = ./env.nu;
 
-      loginFile = if conditions.isServer then ''
-        if (tty) == "/dev/tty1" {
-          setterm -blank 5
-        }
-      '' else null;
+      loginFile.source = lib.mkIf conditions.isServer ./login.nu;
 
     };
 
