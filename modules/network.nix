@@ -45,4 +45,6 @@
   services.tailscale = lib.mkIf (!conditions.isWork) {
     enable = true;
   };
+
+  systemd.services.tailscaled.wantedBy = if (!conditions.isServer && config.systemd.services.tailscaled != {}) then (lib.mkForce []) else [];
 }
