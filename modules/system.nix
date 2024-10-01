@@ -323,7 +323,7 @@ in
 
   virtualisation.docker = {
     enable = true;
-    enableOnBoot = false;
+    enableOnBoot = conditions.isServer;
 
     storageDriver = "btrfs";
   };
