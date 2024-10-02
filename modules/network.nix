@@ -4,6 +4,10 @@
     hostName = hostName;
     networkmanager = {
       enable = true;
+      connectionConfig = {
+        mdns = 1;
+        llmnr = 0;
+      };
     };
     resolvconf = {
       enable = true;
@@ -18,6 +22,7 @@
 
   services.resolved = {
     enable = true;
+    llmnr = "false";
     fallbackDns = [ "1.0.0.1" "1.1.1.1" "2606:4700:4700::1111" "2606:4700:4700::1001" ];
   };
 
