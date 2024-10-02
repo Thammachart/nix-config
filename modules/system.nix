@@ -344,6 +344,18 @@ in
     }
   ];
 
+  services.syncthing = {
+    enable = conditions.isServer;
+    guiAddress = "0.0.0.0:8384";
+    overrideDevices = false;
+    settings = {
+      folders.personal = {
+        id = "personal";
+        path = "~/Syncthing/Personal";
+      };
+    };
+  };
+
   services.logind.lidSwitch = if conditions.isServer then "lock" else "suspend";
 
   # Copy the NixOS configuration file and link it from the resulting system
