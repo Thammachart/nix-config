@@ -29,6 +29,8 @@
     '';
   };
 
+  services.avahi.enable = true;
+
   services.unbound = {
     enable = false;
     group = "networkmanager";
