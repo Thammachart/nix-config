@@ -346,6 +346,7 @@ in
 
   services.syncthing = {
     enable = conditions.isServer;
+    openDefaultPorts = true;
     guiAddress = "0.0.0.0:8384";
     overrideDevices = false;
     settings = {
