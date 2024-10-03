@@ -347,14 +347,10 @@ in
   services.syncthing = {
     enable = conditions.isServer;
     openDefaultPorts = true;
-    guiAddress = "0.0.0.0:8384";
+    guiAddress = "127.0.0.1:8384";
     overrideDevices = false;
-    settings = {
-      folders.personal = {
-        id = "personal";
-        path = "~/Syncthing/Personal";
-      };
-    };
+    overrideFolders = false;
+    settings = {};
   };
 
   services.logind.lidSwitch = if conditions.isServer then "lock" else "suspend";
