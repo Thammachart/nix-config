@@ -14,7 +14,7 @@ in
     };
     resolvconf = {
       enable = true;
-      package = if (isClient && config.services.resolved.enable) then lib.mkForce pkgs.systemd else pkgs.openresolv;
+      package = if (isClient && config.services.resolved.enable) then lib.mkForce pkgs.systemd else lib.mkDefault pkgs.openresolv;
       # useLocalResolver = true;
       # extraConfig = ''
       # unbound_restart='/run/current-system/systemd/bin/systemctl reload --no-block unbound.service 2> /dev/null'
