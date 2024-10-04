@@ -1,4 +1,7 @@
 { config, lib, conditions, pkgs, configData, hostName, ... }:
+let
+  isClient = (!conditions.isServer);
+in
 {
   networking = {
     hostName = hostName;
@@ -11,7 +14,7 @@
     };
     resolvconf = {
       enable = true;
-      package = lib.mkForce pkgs.systemd;
+      package = if (isClient && config.services.resolved.enable) then lib.mkForce pkgs.systemd else pkgs.openresolv;
       # useLocalResolver = true;
       # extraConfig = ''
       # unbound_restart='/run/current-system/systemd/bin/systemctl reload --no-block unbound.service 2> /dev/null'
@@ -20,16 +23,15 @@
     };
   };
 
-  services.resolved = {
+  services.resolved = lib.mkIf isClient {
     enable = true;
     llmnr = "false";
     fallbackDns = [ "1.0.0.1" "1.1.1.1" "2606:4700:4700::1111" "2606:4700:4700::1001" ];
-    extraConfig = ''
-    MulticastDNS=true
-    '';
   };
 
-  services.avahi.enable = true;
+  services.avahi = {
+    enable = true;
+  };
 
   services.unbound = {
     enable = false;
@@ -56,5 +58,5 @@
     enable = true;
   };
 
-  systemd.services.tailscaled.wantedBy = if (!conditions.isServer && config.systemd.services.tailscaled != {}) then (lib.mkForce []) else [];
+  systemd.services.tailscaled.wantedBy = if (isClient && config.systemd.services.tailscaled != {}) then (lib.mkForce []) else [];
 }
