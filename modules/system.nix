@@ -355,6 +355,10 @@ in
 
   services.adguardhome = {
     enable = conditions.isServer;
+    openFirewall = true;
+    settings = {
+      dhcp.enabled = true;
+    };
   };
 
   services.logind.lidSwitch = if conditions.isServer then "lock" else "suspend";
