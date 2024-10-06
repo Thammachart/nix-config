@@ -353,6 +353,10 @@ in
     settings = {};
   };
 
+  services.adguardhome = {
+    enable = conditions.isServer;
+  };
+
   services.logind.lidSwitch = if conditions.isServer then "lock" else "suspend";
 
   # Copy the NixOS configuration file and link it from the resulting system
