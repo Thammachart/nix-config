@@ -23,7 +23,7 @@ in
     };
 
     firewall = {
-      allowedUDPPorts = if conditions.isServer then [ 67 ] else [];
+      allowedUDPPorts = if conditions.isServer then [ 53 67 ] else [];
     };
   };
 
