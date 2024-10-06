@@ -21,6 +21,10 @@ in
       # unbound_conf=/etc/unbound/resolvconf.conf
       # '';
     };
+
+    firewall = {
+      allowedUDPPorts = if conditions.isServer then [ 67 ] else [];
+    };
   };
 
   services.resolved = lib.mkIf isClient {
