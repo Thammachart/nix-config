@@ -187,8 +187,6 @@ in
     # kdePackages.ksystemstats
     # kdePackages.libksysguard
 
-    mission-center
-
     xorg.xprop
     libva-utils
     waypaper
