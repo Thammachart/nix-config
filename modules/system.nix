@@ -194,6 +194,9 @@ in
     yubikey-manager-qt
     pinta
     netbird
+
+    obsidian
+    logseq
   ] ++ lib.optionals conditions.isWork [];
 
   qt = {
