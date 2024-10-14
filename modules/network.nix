@@ -7,10 +7,6 @@ in
     hostName = hostName;
     networkmanager = {
       enable = true;
-      connectionConfig = {
-        mdns = 1;
-        llmnr = 0;
-      };
     };
     resolvconf = {
       enable = true;
