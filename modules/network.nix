@@ -19,7 +19,8 @@ in
     };
 
     firewall = {
-      allowedUDPPorts = if conditions.isServer then [ 53 67 ] else [];
+      allowedTCPPorts = if config.services.adguardhome.enable then [ 53 ] else [];
+      allowedUDPPorts = if config.services.adguardhome.enable then [ 53 67 ] else [];
     };
   };
 
