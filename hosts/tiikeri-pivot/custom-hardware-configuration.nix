@@ -12,11 +12,11 @@
     enable32Bit = true;
 
     extraPackages = with pkgs; [
-      amdvlk
+      # amdvlk
     ];
 
     extraPackages32 = with pkgs.pkgsi686Linux; [
-      amdvlk
+      # amdvlk
     ];
   };
 
