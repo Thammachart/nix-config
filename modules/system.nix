@@ -354,14 +354,6 @@ in
     settings = {};
   };
 
-  services.adguardhome = {
-    enable = conditions.isServer;
-    openFirewall = true;
-    settings = {
-      dhcp.enabled = true;
-    };
-  };
-
   services.logind.lidSwitch = if conditions.isServer then "lock" else "suspend";
 
   # Copy the NixOS configuration file and link it from the resulting system
