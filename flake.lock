@@ -20,6 +20,23 @@
         "type": "github"
       }
     },
+    "betterfox": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1727376228,
+        "narHash": "sha256-s54Y6Ix7W942T+TIwGudoqDzUHifMBJOU9AWqpqIKl4=",
+        "owner": "yokoffing",
+        "repo": "Betterfox",
+        "rev": "ab5ede0fef39f02f0ef2bd119879226e3ab71f9f",
+        "type": "github"
+      },
+      "original": {
+        "owner": "yokoffing",
+        "ref": "main",
+        "repo": "Betterfox",
+        "type": "github"
+      }
+    },
     "chaotic": {
       "inputs": {
         "flake-schemas": "flake-schemas",
@@ -265,6 +282,7 @@
     "root": {
       "inputs": {
         "auto-cpufreq": "auto-cpufreq",
+        "betterfox": "betterfox",
         "chaotic": "chaotic",
         "disko": "disko",
         "gitalias": "gitalias",

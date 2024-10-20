@@ -34,6 +34,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    betterfox = {
+      url = "github:yokoffing/Betterfox/main";
+      flake = false;
+    };
+
     gitalias = {
       url = "github:GitAlias/gitalias/main";
       flake = false;
@@ -77,6 +82,7 @@
         inherit (inputs) nixos-hardware;
         inherit templateFile;
         inherit configData;
+        inherit  (inputs) betterfox;
         inherit (inputs) nix-secrets;
 
         inherit conditions;
@@ -102,6 +108,7 @@
             inherit inputs;
             inherit templateFile;
             inherit configData;
+            inherit  (inputs) betterfox;
             inherit (inputs) nix-secrets;
 
             inherit (inputs) gitalias;

@@ -1,4 +1,4 @@
-{ config, inputs, lib, pkgs, configData, conditions , hostName, nix-secrets, ... }:
+{ config, inputs, lib, pkgs, configData, conditions , hostName, nix-secrets, betterfox, ... }:
 let
   fhspkg = import ../packages/fhs.nix { inherit pkgs; inherit config; inherit lib; };
 in
@@ -120,6 +120,7 @@ in
     pavucontrol
     libnotify
     vulkan-tools
+    firedragon
 
     vscodium-fhs zed-editor geany
 
@@ -201,11 +202,6 @@ in
 
   qt = {
     enable = lib.mkDefault conditions.graphicalUser;
-  };
-
-  services.emacs = {
-    enable = false;
-    package = pkgs.emacs29-pgtk;
   };
 
   services.dbus = {
