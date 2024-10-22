@@ -197,7 +197,6 @@ in
     netbird
 
     obsidian
-    logseq
   ] ++ lib.optionals conditions.isWork [];
 
   qt = {
