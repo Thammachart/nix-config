@@ -120,7 +120,6 @@ in
     pavucontrol
     libnotify
     vulkan-tools
-    firedragon
 
     vscodium-fhs zed-editor geany
 
@@ -160,14 +159,14 @@ in
 
     kdePackages.qtwayland
     kdePackages.qtsvg
-    qt6Packages.qt6ct
-    qt6Packages.qtstyleplugin-kvantum
+    kdePackages.qt6ct
+    kdePackages.qtstyleplugin-kvantum
 
     # kdePackages.kcoreaddons
     # kdePackages.frameworkintegration
     # kdePackages.plasma-workspace
     # kdePackages.kde-cli-tools
-    # kdePackages.breeze
+    kdePackages.breeze
 
     kdePackages.kwalletmanager
 
