@@ -59,7 +59,13 @@ in
     timeZone = "Asia/Bangkok";
   };
 
-  i18n.defaultLocale = "en_US.UTF-8";
+  i18n = {
+    defaultLocale = "en_SG.UTF-8";
+    extraLocaleSettings = {
+      # https://metacpan.org/dist/DateTime-Locale/view/lib/DateTime/Locale/en_CA.pod
+      LC_TIME = "en_CA.UTF-8";
+    };
+  };
 
   hardware.pulseaudio.enable = false;
 
