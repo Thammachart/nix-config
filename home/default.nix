@@ -3,6 +3,7 @@
 {
   imports = [
     # ./hypr
+    ./firefox.nix
     ./mako
     ./kanshi
     ./sway
@@ -59,72 +60,6 @@
 
   xdg.configFile = lib.mkIf conditions.graphicalUser {
     "Kvantum/kvantum.kvconfig".text = "[General]\ntheme=KvArcDark";
-  };
-
-  programs.firefox = {
-    enable = conditions.graphicalUser;
-    profiles.default = {
-      id = 0;
-      isDefault = true;
-
-      extraConfig = builtins.concatStringsSep "\n" [
-        (builtins.readFile "${betterfox}/Fastfox.js")
-      ];
-
-      settings = {
-        "browser.ctrlTab.sortByRecentlyUsed" = false;
-        "browser.translations.neverTranslateLanguages" = "th";
-        "privacy.clearOnShutdown.history" = false;
-        "devtools.chrome.enabled" = true;
-        "browser.tabs.crashReporting.sendReport" = false;
-
-        "gfx.webrender.all" = true;
-        "media.ffmpeg.vaapi.enabled" = true;
-        "widget.dmabuf.force-enabled" = true;
-        "media.av1.enabled" = false;
-
-        "privacy.donottrackheader.enabled" = true;
-        "privacy.trackingprotection.enabled" = true;
-        "privacy.trackingprotection.socialtracking.enabled" = true;
-        "privacy.userContext.enabled" = true;
-        "privacy.userContext.ui.enabled" = true;
-
-        "app.normandy.enabled" = false;
-        "app.shield.optoutstudies.enabled" = false;
-
-        "browser.send_pings" = false;
-
-        "beacon.enabled" = false;
-        "device.sensors.enabled" = false;
-        "geo.enabled" = false;
-
-        "network.dns.echconfig.enabled" = true;
-
-        "toolkit.telemetry.archive.enabled" = false;
-        "toolkit.telemetry.enabled" = false;
-        "toolkit.telemetry.server" = "";
-        "toolkit.telemetry.unified" = false;
-
-        "extensions.webcompat-reporter.enabled" = false;
-        "datareporting.policy.dataSubmissionEnabled" = false;
-        "datareporting.healthreport.uploadEnabled" = false;
-        "browser.ping-centre.telemetry" = false;
-        "browser.urlbar.eventTelemetry.enabled" = false;
-
-        "extensions.pocket.enabled" = false;
-        "extensions.abuseReport.enabled" = false;
-        "extensions.formautofill.creditCards.enabled" = false;
-        "identity.fxaccounts.enabled" = false;
-        "identity.fxaccounts.toolbar.enabled" = false;
-        "identity.fxaccounts.pairing.enabled" = false;
-        "identity.fxaccounts.commands.enabled" = false;
-        "browser.contentblocking.report.lockwise.enabled" = false;
-        "browser.uitour.enabled" = false;
-        "browser.newtabpage.activity-stream.showSponsored" = false;
-        "browser.newtabpage.activity-stream.showSponsoredTopSites" = false;
-      };
-
-    };
   };
 
   programs.git = {
