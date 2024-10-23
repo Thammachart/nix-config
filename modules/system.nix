@@ -62,8 +62,8 @@ in
   i18n = {
     defaultLocale = "en_SG.UTF-8";
     extraLocaleSettings = {
-      # https://metacpan.org/dist/DateTime-Locale/view/lib/DateTime/Locale/en_CA.pod
-      LC_TIME = "en_CA.UTF-8";
+      # https://metacpan.org/dist/DateTime-Locale/view/lib/DateTime/Locale/en_IE.pod
+      LC_TIME = "en_IE.UTF-8";
     };
   };
 
