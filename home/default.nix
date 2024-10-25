@@ -70,6 +70,9 @@
       merge = {
         log = 100;
       };
+      init = {
+        branch = "main";
+      };
     };
 
     includes = [
