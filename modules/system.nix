@@ -1,6 +1,6 @@
 { config, inputs, lib, pkgs, configData, conditions , hostName, nix-secrets, betterfox, ... }:
 let
-  fhspkg = import ../packages/fhs.nix { inherit pkgs; inherit config; inherit lib; };
+  pulumi-single = import ../packages/pulumi.nix { inherit pkgs; };
 in
 {
   imports = [
@@ -105,7 +105,6 @@ in
     bat ripgrep
     doggo
     openssl
-    fhspkg
     unzip p7zip
     htop bottom procs
     dbus
@@ -117,6 +116,8 @@ in
     starship
     cmatrix
     yubikey-manager
+
+    pulumi-single
 
     ] ++ lib.optionals conditions.graphicalUser [
 
@@ -199,10 +200,9 @@ in
     glxinfo
     yubikey-manager-qt
     pinta
+  ] ++ lib.optionals conditions.isWork [
     netbird
-
-    obsidian
-  ] ++ lib.optionals conditions.isWork [];
+  ];
 
   qt = {
     enable = lib.mkDefault conditions.graphicalUser;

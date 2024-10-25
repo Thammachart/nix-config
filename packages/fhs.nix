@@ -1,8 +1,6 @@
 { pkgs, config, lib, ... }:
 let
-  base = pkgs.appimageTools.defaultFhsEnvArgs;
-  fhs = (
-    pkgs.buildFHSUserEnv (base // {
+  fhs = pkgs.buildFHSEnv {
     name = "fhs";
     targetPkgs = pkgs: (
       # pkgs.buildFHSUserEnv provides only a minimal FHS environment,
@@ -21,6 +19,6 @@ let
     profile = "export FHS=1";
     runScript = "nu";
     extraOutputsToInstall = ["dev"];
-  }));
+  };
 in
   fhs

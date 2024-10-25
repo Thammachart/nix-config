@@ -28,7 +28,6 @@ in
     pkgs.rustdesk-flutter
     pkgs.google-cloud-sql-proxy
     pkgs.filezilla
-    pkgs.jwt-cli
     pkgs.curlie
     pkgs.caddy
   ];
