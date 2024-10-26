@@ -1,6 +1,5 @@
 { config, inputs, lib, pkgs, configData, conditions , hostName, nix-secrets, betterfox, ... }:
 let
-  pulumi-single = import ../packages/pulumi.nix { inherit pkgs; };
 in
 {
   imports = [
@@ -116,8 +115,6 @@ in
     starship
     cmatrix
     yubikey-manager
-
-    pulumi-single
 
     ] ++ lib.optionals conditions.graphicalUser [
 
