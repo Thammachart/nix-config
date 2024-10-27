@@ -240,7 +240,7 @@ in
     extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
     config = {
       sway = {
-        default = [ "gtk" "wlr" ];
+        default = lib.mkForce [ "gtk" "wlr" ];
       };
       river = {
         default = [ "gtk" "wlr" ];
