@@ -25,6 +25,7 @@ in
   environment.systemPackages = [
     gcloud
     pkgs.gh
+    pkgs.dbeaver-bin
     pkgs.rustdesk-flutter
     pkgs.google-cloud-sql-proxy
     pkgs.filezilla
