@@ -22,11 +22,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
-
-    auto-cpufreq = {
-      url = "github:AdnanHodzic/auto-cpufreq";
-      inputs.nixpkgs.follows = "nixpkgs";
+    nixos-hardware = {
+      url = "github:NixOS/nixos-hardware/master";
     };
 
     home-manager = {
@@ -95,8 +92,6 @@
         inputs.disko.nixosModules.disko
 
         inputs.sops-nix.nixosModules.sops
-
-        # inputs.auto-cpufreq.nixosModules.default
 
         ./hosts/${n}
 
