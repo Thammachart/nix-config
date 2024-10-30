@@ -22,16 +22,17 @@ in
     DEVSHELLS_PATH = "$HOME/shobshop-projects/common-dev-shells";
   };
 
-  environment.systemPackages = [
+  environment.systemPackages = (with pkgs; [
     gcloud
-    pkgs.gh
-    pkgs.dbeaver-bin
-    pkgs.rustdesk-flutter
-    pkgs.google-cloud-sql-proxy
-    pkgs.filezilla
-    pkgs.curlie
-    pkgs.caddy
-  ];
+    doctl
+    gh
+    dbeaver-bin
+    rustdesk-flutter
+    google-cloud-sql-proxy
+    filezilla
+    curlie
+    caddy
+  ]);
 
   # sops.secrets.shobshop_internal_ca_cert = {
   #   format = "binary";
