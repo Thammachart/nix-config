@@ -158,7 +158,6 @@ in
 
     libsForQt5.qt5.qtwayland
     # libsForQt5.qt5ct
-    # libsForQt5.qtstyleplugin-kvantum
     # kdePackages.okular
 
     kdePackages.qtwayland
@@ -170,7 +169,7 @@ in
     # kdePackages.frameworkintegration
     # kdePackages.plasma-workspace
     # kdePackages.kde-cli-tools
-    kdePackages.breeze
+    # kdePackages.breeze
 
     kdePackages.kwalletmanager
 
@@ -216,7 +215,7 @@ in
 
   services.udisks2.enable = true;
 
-  services.fwupd.enable = true;
+  services.fwupd.enable = conditions.isLaptop;
 
   services.fstrim = {
     enable = true;

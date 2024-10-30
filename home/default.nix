@@ -58,9 +58,9 @@
     };
   };
 
-  xdg.configFile = lib.mkIf conditions.graphicalUser {
-    "Kvantum/kvantum.kvconfig".text = "[General]\ntheme=KvArcDark";
-  };
+  # xdg.configFile = lib.mkIf conditions.graphicalUser {
+  #   "Kvantum/kvantum.kvconfig".text = "[General]\ntheme=KvArcDark";
+  # };
 
   programs.git = {
     enable = true;
