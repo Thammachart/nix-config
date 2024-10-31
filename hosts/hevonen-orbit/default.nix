@@ -25,12 +25,10 @@ in
   environment.systemPackages = (with pkgs; [
     gcloud
     doctl
-    gh
     dbeaver-bin
     rustdesk-flutter
     google-cloud-sql-proxy
     filezilla
-    curlie
     caddy
   ]);
 

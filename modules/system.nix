@@ -116,6 +116,9 @@ in
     cmatrix
     yubikey-manager
 
+    gh
+    curlie
+
     ] ++ lib.optionals conditions.graphicalUser [
 
     foot
