@@ -709,6 +709,8 @@ $env.config = {
     ]
 }
 
+alias vi = nvim
+alias vim = nvim
 alias l = ls -al
 alias ll = l
 alias g = git

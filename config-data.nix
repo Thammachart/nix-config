@@ -2,7 +2,7 @@
   username = "thammachart";
 
   homeSettings = {
-    terminal = "alacritty msg create-window";
+    terminal = "footclient";
     browser = "firefox";
     editor = "geany";
     launcher = "fuzzel";

@@ -1,16 +1,10 @@
-{ pkgs, lib, conditions, templateFile, configData, catppuccin-alacritty, ...  }:
+{ pkgs, lib, config, conditions, templateFile, configData, catppuccin-alacritty, ...  }:
 lib.mkIf conditions.graphicalUser {
-  programs.script-directory = {
-    enable = true;
-    settings = {
-      SD_ROOT = "${config.home.homeDirectory}/.sd";
-      SD_EDITOR = "hx";
-      SD_CAT = "bat";
-    };
-  };
-
   home.file.".sd/alacritty-reset" = {
-    text = "";
+    text = ''
+    #!/bin/sh
+    echo -e "\ec" > $_TTY
+    '';
     executable = true;
   };
 }

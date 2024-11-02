@@ -4,7 +4,7 @@
   imports = [
     # ./hypr
     ./sd
-    ./alacritty
+    ./foot
     ./firefox.nix
     ./mako
     ./kanshi
