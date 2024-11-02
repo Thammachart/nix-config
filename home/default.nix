@@ -1,8 +1,10 @@
-{ pkgs, lib, configData, conditions, betterfox, gitalias, ... }:
+{ pkgs, lib, config, configData, conditions, gitalias, ... }:
 
 {
   imports = [
     # ./hypr
+    ./sd
+    ./alacritty
     ./firefox.nix
     ./mako
     ./kanshi
@@ -70,7 +72,7 @@
         log = 100;
       };
       init = {
-        branch = "main";
+        defaultBranch = "main";
       };
     };
 

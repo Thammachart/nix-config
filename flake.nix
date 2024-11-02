@@ -31,6 +31,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    catppuccin-alacritty = {
+      url = "github:catppuccin/alacritty/main";
+      flake = false;
+    };
+
     betterfox = {
       url = "github:yokoffing/Betterfox/main";
       flake = false;
@@ -79,7 +84,6 @@
         inherit (inputs) nixos-hardware;
         inherit templateFile;
         inherit configData;
-        inherit  (inputs) betterfox;
         inherit (inputs) nix-secrets;
 
         inherit conditions;
@@ -103,7 +107,8 @@
             inherit inputs;
             inherit templateFile;
             inherit configData;
-            inherit  (inputs) betterfox;
+            inherit (inputs) betterfox;
+            inherit (inputs) catppuccin-alacritty;
             inherit (inputs) nix-secrets;
 
             inherit (inputs) gitalias;
