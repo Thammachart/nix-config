@@ -4,10 +4,6 @@ exec systemd-cat -t waybar waybar -c ~/.config/waybar/sway.json -s ~/.config/way
 # Notification
 exec systemd-cat -t mako mako
 
-{{ if (eq .terminal "footclient") }}
-exec foot --server
-{{ end }}
-
 # Wallpapers
 exec waypaper --restore
 

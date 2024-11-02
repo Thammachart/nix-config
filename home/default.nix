@@ -8,7 +8,6 @@
     ./kanshi
     ./sway
     ./river
-    ./foot
     ./mpv
     ./waybar
     ./nwg-bar

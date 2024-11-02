@@ -13,6 +13,20 @@
   };
 
   systemd.user.services = {
+    "alacritty-daemon" = {
+      enable = conditions.graphicalUser;
+      wantedBy = [ "user-system-ready.target" ];
+      after = [ "graphical.target" ];
+
+      serviceConfig = {
+        Type = "exec";
+        ExecStart = "${pkgs.alacritty}/bin/alacritty --daemon";
+        Restart = "on-failure";
+        RestartSec = 1;
+        TimeoutStopSec = 10;
+      };
+    };
+
     "lxqt-policykit" = {
       enable = conditions.graphicalUser;
       wantedBy = [ "user-system-ready.target" ];

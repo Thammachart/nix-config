@@ -122,6 +122,7 @@ in
     ] ++ lib.optionals conditions.graphicalUser [
 
     foot
+    alacritty
     xdg-utils
     brave
     pavucontrol
