@@ -289,6 +289,7 @@ in
 
   programs.sway = {
     enable = lib.mkDefault conditions.graphicalUser;
+    package = pkgs.sway_git;
     wrapperFeatures.gtk = true;
     extraPackages = with pkgs; [ swaylock swayidle swaybg ];
   };
