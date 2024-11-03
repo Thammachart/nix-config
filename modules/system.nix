@@ -114,7 +114,7 @@ in
     lshw
     starship
     cmatrix
-    yubikey-manager
+    # yubikey-manager
 
     gh
     curlie
@@ -198,7 +198,7 @@ in
     libva-utils
     waypaper
     glxinfo
-    yubikey-manager-qt
+    # yubikey-manager-qt
     pinta
   ] ++ lib.optionals conditions.isWork [
     netbird
@@ -289,7 +289,7 @@ in
 
   programs.sway = {
     enable = lib.mkDefault conditions.graphicalUser;
-    package = pkgs.sway_git;
+    package = pkgs.sway;
     wrapperFeatures.gtk = true;
     extraPackages = with pkgs; [ swaylock swayidle swaybg ];
   };
