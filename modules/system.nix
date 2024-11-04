@@ -96,7 +96,7 @@ in
   };
 
   environment.systemPackages = with pkgs; [
-    vim helix
+    vim helix kakoune
     curl wget
     xdg-user-dirs
     busybox bash zsh

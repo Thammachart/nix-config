@@ -31,6 +31,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    catppuccin-foot = {
+      url = "github:catppuccin/foot/main";
+      flake = false;
+    };
+
     catppuccin-alacritty = {
       url = "github:catppuccin/alacritty/main";
       flake = false;
@@ -108,6 +113,7 @@
             inherit templateFile;
             inherit configData;
             inherit (inputs) betterfox;
+            inherit (inputs) catppuccin-foot;
             inherit (inputs) catppuccin-alacritty;
             inherit (inputs) nix-secrets;
 
