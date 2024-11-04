@@ -26,7 +26,7 @@ in
     gcloud
     doctl
     dbeaver-bin
-    rustdesk-flutter
+    # rustdesk-flutter
     google-cloud-sql-proxy
     filezilla
     caddy
