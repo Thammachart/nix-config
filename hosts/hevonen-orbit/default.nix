@@ -27,6 +27,7 @@ in
     doctl
     dbeaver-bin
     # rustdesk-flutter
+    bruno
     google-cloud-sql-proxy
     filezilla
     caddy
