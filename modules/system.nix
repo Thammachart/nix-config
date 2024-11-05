@@ -1,5 +1,6 @@
 { config, inputs, lib, pkgs, configData, conditions , hostName, nix-secrets, betterfox, ... }:
 let
+  foot-with-patches = import ../packages/foot { inherit pkgs; };
 in
 {
   imports = [
@@ -121,7 +122,7 @@ in
 
     ] ++ lib.optionals conditions.graphicalUser [
 
-    foot
+    foot-with-patches
     alacritty
     xdg-utils
     brave

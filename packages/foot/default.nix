@@ -1,4 +1,4 @@
-{lib, config, pkgs, ...}:
+{ pkgs, ... }:
 pkgs.foot.overrideAttrs (final: pre: {
   pname = "foot-with-patches";
 
