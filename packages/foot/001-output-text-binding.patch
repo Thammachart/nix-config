@@ -1,0 +1,103 @@
+From d0af0e9536a1e6d9946587c32cff75b0fd2a8cba Mon Sep 17 00:00:00 2001
+From: Mildred Ki'Lya <mildred-pub.git@mildred.fr>
+Date: Wed, 18 Jan 2023 01:06:15 +0100
+Subject: [PATCH] Implement output text binding
+
+---
+ config.c           | 8 +++++++-
+ doc/foot.ini.5.scd | 8 ++++++++
+ input.c            | 6 ++++++
+ key-binding.h      | 1 +
+ 4 files changed, 22 insertions(+), 1 deletion(-)
+
+diff --git a/config.c b/config.c
+index 2c18c27e..f4dfb622 100644
+--- a/config.c
++++ b/config.c
+@@ -2255,6 +2255,7 @@ parse_section_text_bindings(struct context *ctx)
+     uint8_t *data = xmalloc(key_len + 1);
+     size_t data_len = 0;
+     bool esc = false;
++    int action = BIND_ACTION_TEXT_BINDING;
+ 
+     for (size_t i = 0; i < key_len; i++) {
+         if (key[i] == '\\') {
+@@ -2268,6 +2269,11 @@ parse_section_text_bindings(struct context *ctx)
+         }
+ 
+         else if (esc) {
++            if (i == 1 && key[i] == 'o') {
++                esc = false;
++                action = BIND_ACTION_OUTPUT_TEXT_BINDING;
++                continue;
++            }
+             if (key[i] != 'x') {
+                 ctx->value = "";
+                 LOG_CONTEXTUAL_ERR("invalid escaped character: %c", key[i]);
+@@ -2306,7 +2312,7 @@ parse_section_text_bindings(struct context *ctx)
+         },
+     };
+ 
+-    if (!value_to_key_combos(ctx, BIND_ACTION_TEXT_BINDING, &aux,
++    if (!value_to_key_combos(ctx, action, &aux,
+                              &conf->bindings.key, KEY_BINDING))
+     {
+         goto err;
+diff --git a/doc/foot.ini.5.scd b/doc/foot.ini.5.scd
+index d41657fa..be9cc6bc 100644
+--- a/doc/foot.ini.5.scd
++++ b/doc/foot.ini.5.scd
+@@ -1000,6 +1000,10 @@ specify a character:
+ - Bytes (e.g. ESC) are written as two-digit hexadecimal numbers, with
+   a *\\x* prefix: *\\x1b*.
+ 
++If the text starts with the special escape sequence *\\o* then the text is not
++sent to the slave process input, but is processed by the terminal as if it was
++sent by the slave process.
++
+ Example: you would like to remap _Super+k_ to the _Up_ key.
+ 
+ The escape sequence for the Up key is _ESC [ A_ (without the
+@@ -1012,6 +1016,10 @@ Another example: to remap _Super+c_ to _Control+c_:
+ 
+ *\\x03 = Mod4+c*
+ 
++Other example: you want to clear the terminal on _Ctrl+Shift+l_
++
++*\o\x1bc = Control+Shift+l*
++
+ # SECTION: mouse-bindings
+ 
+ This section lets you override the default mouse bindings.
+diff --git a/input.c b/input.c
+index 79f9f927..190a6c0c 100644
+--- a/input.c
++++ b/input.c
+@@ -349,6 +349,12 @@ execute_binding(struct seat *seat, struct terminal *term,
+         return true;
+     }
+ 
++    case BIND_ACTION_OUTPUT_TEXT_BINDING:
++        xassert(binding->aux->type == BINDING_AUX_TEXT);
++        vt_from_slave(term, binding->aux->text.data, binding->aux->text.len);
++        render_refresh(term);
++        return true;
++
+     case BIND_ACTION_TEXT_BINDING:
+         xassert(binding->aux->type == BINDING_AUX_TEXT);
+         term_to_slave(term, binding->aux->text.data, binding->aux->text.len);
+diff --git a/key-binding.h b/key-binding.h
+index 6e0a4883..7f953cc0 100644
+--- a/key-binding.h
++++ b/key-binding.h
+@@ -37,6 +37,7 @@ enum bind_action_normal {
+     BIND_ACTION_SHOW_URLS_LAUNCH,
+     BIND_ACTION_SHOW_URLS_PERSISTENT,
+     BIND_ACTION_TEXT_BINDING,
++    BIND_ACTION_OUTPUT_TEXT_BINDING,
+     BIND_ACTION_PROMPT_PREV,
+     BIND_ACTION_PROMPT_NEXT,
+     BIND_ACTION_UNICODE_INPUT,
+-- 
+2.39.0
+
