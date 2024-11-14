@@ -25,7 +25,7 @@ in
   environment.systemPackages = (with pkgs; [
     gcloud
     doctl
-    dbeaver-bin
+    pgadmin4-desktopmode
     # rustdesk-flutter
     bruno
     google-cloud-sql-proxy
