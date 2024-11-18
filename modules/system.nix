@@ -130,7 +130,9 @@ in
     libnotify
     vulkan-tools
 
-    vscodium-fhs zed-editor geany
+    vscodium-fhs
+    geany
+    #zed-editor
 
     glib
 
