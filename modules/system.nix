@@ -265,6 +265,10 @@ in
   programs.gnome-disks = {
     enable = lib.mkDefault conditions.graphicalUser;
   };
+  
+  programs.evince = {
+    enable = lib.mkDefault conditions.graphicalUser;
+  };
 
   programs.dconf = {
     enable = lib.mkDefault conditions.graphicalUser;
