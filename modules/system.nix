@@ -161,7 +161,7 @@ in
 
     # PDF Viewer
     zathura
-    mate.atril
+    foliate
 
     libsForQt5.qt5.qtwayland
     # libsForQt5.qt5ct
