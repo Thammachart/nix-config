@@ -23,6 +23,8 @@ in
 
     pkgs.qbittorrent
 
+    pkgs.ollama-rocm
+
     # pkgs.heroic
     # pkgs.cryptomator
   ];
