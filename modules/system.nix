@@ -257,15 +257,10 @@ in
     };
   };
 
-  chaotic.scx = {
-    enable = false;
-    scheduler = lib.mkDefault "scx_rustland";
-  };
-
   programs.gnome-disks = {
     enable = lib.mkDefault conditions.graphicalUser;
   };
-  
+
   programs.evince = {
     enable = lib.mkDefault conditions.graphicalUser;
   };
