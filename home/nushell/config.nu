@@ -714,5 +714,6 @@ alias vim = nvim
 alias l = ls -al
 alias ll = l
 alias g = git
+alias dc = docker compose
 
 alias ze = zeditor

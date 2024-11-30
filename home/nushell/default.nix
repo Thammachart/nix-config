@@ -9,7 +9,6 @@
       envFile.source = ./env.nu;
 
       loginFile.source = lib.mkIf conditions.isServer ./login.nu;
-
     };
 
     starship = {
