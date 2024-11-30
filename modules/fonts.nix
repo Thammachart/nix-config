@@ -18,13 +18,13 @@ lib.mkIf conditions.graphicalUser {
       ubuntu_font_family
 
       monaspace
-
-      # nerdfonts
       jetbrains-mono
       cascadia-code
       _0xproto
-      geist-font
-      (nerdfonts.override {fonts = ["CascadiaMono" "JetBrainsMono"];})
+
+      # nerdfonts
+      nerd-fonts.zed-mono
+      nerd-fonts.caskaydia-mono
     ];
 
     fontDir = {
