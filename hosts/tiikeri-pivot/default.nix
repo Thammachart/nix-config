@@ -44,4 +44,12 @@ in
   programs.gamemode = {
     enable = shouldEnable;
   };
+
+  services.ollama = {
+    enable = true;
+    acceleration = "rocm";
+    rocmOverrideGfx = "10.1.0";
+  };
+
+  systemd.services."ollama".wantedBy = lib.mkForce [];
 }
