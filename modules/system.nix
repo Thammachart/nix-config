@@ -22,7 +22,7 @@ in
 
   boot = {
     initrd.systemd.enable = lib.mkDefault (conditions.isLaptop && !conditions.isServer);
-    initrd.verbose = false;
+    # initrd.verbose = false;
     kernel.sysctl = {
       "kernel.sysrq" = lib.mkDefault 1;
       "vm.max_map_count" = 1048576;
