@@ -1,4 +1,4 @@
-{config, pkgs, conditions, ...}:
+{config, lib, pkgs, conditions, ...}:
 let
   shouldEnable = conditions.isPersonal;
 in
@@ -45,4 +45,11 @@ in
     enable = shouldEnable;
   };
 
+  services.ollama = {
+    enable = true;
+    acceleration = "rocm";
+    rocmOverrideGfx = "10.1.0";
+  };
+
+  systemd.services."ollama".wantedBy = lib.mkForce [];
 }
