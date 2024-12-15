@@ -39,6 +39,7 @@ in
     #   '';
     # };
     package = pkgs.steam;
+    extraCompatPackages = [ pkgs.proton-ge-bin ];
   };
 
   programs.gamemode = {
