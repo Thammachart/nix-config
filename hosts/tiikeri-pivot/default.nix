@@ -13,6 +13,8 @@ in
     ];
 
   environment.systemPackages = [
+    pkgs.alpaca
+
     pkgs.signal-desktop
     pkgs.protonup-qt
 
