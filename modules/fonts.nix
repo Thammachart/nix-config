@@ -16,6 +16,7 @@ lib.mkIf conditions.graphicalUser {
       inter
       liberation_ttf
       ubuntu_font_family
+      merriweather
 
       monaspace
       jetbrains-mono
