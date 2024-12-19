@@ -44,11 +44,11 @@
           };
         };
       };
-      
+
       secondary-nvme = {
         type = "disk";
         device = "/dev/nvme1n1";
-        
+
         content = {
           type = "gpt";
           partitions = {
@@ -59,26 +59,6 @@
                 format = "btrfs";
                 mountpoint = "/data/nvme1";
                 mountOptions = [ "noatime" "commit=120" "compress=zstd" ];
-              };
-            };
-          };
-        };
-      };
-
-      secondary-sda = {
-        type = "disk";
-        device = "/dev/sda";
-        
-        content = {
-          type = "gpt";
-          partitions = {
-            sda1 = {
-              size = "100%";
-              content = {
-                type = "filesystem";
-                format = "btrfs";
-                mountpoint = "/data/sda1";
-                mountOptions = [ "noatime" "commit=120" "compress=zstd" "autodefrag" ];
               };
             };
           };
