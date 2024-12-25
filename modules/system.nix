@@ -157,6 +157,7 @@ in
     qalculate-gtk
     imv
     swayimg
+    nomacs
     mpv
 
     # PDF Viewer
