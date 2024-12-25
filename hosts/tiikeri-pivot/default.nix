@@ -25,6 +25,8 @@ in
 
     pkgs.qbittorrent
 
+    pkgs.aria2
+
     # pkgs.heroic
     # pkgs.cryptomator
   ];

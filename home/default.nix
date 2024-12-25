@@ -81,29 +81,6 @@
     ];
   };
 
-  programs.aria2 = {
-    enable = (conditions.isPersonal && !conditions.isServer);
-    settings = {
-      allow-overwrite = true;
-      # log = "-";
-      console-log-level = "notice";
-      # file-allocation = "falloc";
-
-      # summary-interval = 120;
-
-      enable-rpc = true;
-      rpc-secure = false;
-      rpc-listen-all = false;
-      rpc-listen-port = 6802;
-      rpc-allow-origin-all = true;
-
-      max-concurrent-downloads = 2;
-      max-connection-per-server = 1;
-
-      dir = "/data/sda1/Times/High";
-    };
-  };
-
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 }
