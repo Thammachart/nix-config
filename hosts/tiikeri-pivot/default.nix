@@ -51,10 +51,10 @@ in
   };
 
   services.ollama = {
-    enable = true;
+    enable = false;
     acceleration = "rocm";
     rocmOverrideGfx = "10.1.0";
   };
 
-  systemd.services."ollama".wantedBy = lib.mkForce [];
+  # systemd.services."ollama".wantedBy = lib.mkForce [];
 }

@@ -150,10 +150,14 @@ in
     wlr-randr wlopm kanshi nwg-displays
     nwg-bar
     keepassxc
+
+    nautilus
+
     lxqt.pcmanfm-qt
     lxqt.lximage-qt
     lxqt.lxqt-archiver
     lxqt.qps
+
     qalculate-gtk
     imv
     swayimg
@@ -260,6 +264,11 @@ in
 
   programs.gnome-disks = {
     enable = lib.mkDefault conditions.graphicalUser;
+  };
+
+  programs.file-roller = {
+    enable = false;
+    # enable = lib.mkDefault conditions.graphicalUser;
   };
 
   programs.evince = {
