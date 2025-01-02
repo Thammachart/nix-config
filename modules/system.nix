@@ -255,8 +255,8 @@ in
       river = {
         default = [ "gtk" "wlr" ];
       };
-      hyprland = {
-        default = [ "hyprland" ];
+      Hyprland = {
+        default = [ "Hyprland" ];
       };
     };
   };

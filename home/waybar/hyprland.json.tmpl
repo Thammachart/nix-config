@@ -1,6 +1,7 @@
 {
-  "position": "top",
-  "height": 24,
+  "include": "~/.config/waybar/global.jsonc",
+  "position": "left",
+
   "modules-left": [
     "hyprland/workspaces",
     "hyprland/submap"
@@ -10,65 +11,21 @@
   ],
   "modules-right": [
     "idle_inhibitor",
-    "custom/notification",
     "pulseaudio",
     "hyprland/language",
     {{ if .conditions.isLaptop -}}
     "backlight",
     "battery",
     {{ end -}}
+    "privacy",
     "clock",
     "tray",
     "custom/power"
   ],
-  "clock": {
-    "interval": 20,
-    "format": "{:%H:%M}",
-    "format-alt": "{:%Y-%m-%d}",
-    "max-length": 25,
-    "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
-  },
-  "backlight": {
-    "format": "{percent}% {icon}",
-    "format-icons": ["", ""]
-  },
-  "battery": {
-    "states": {
-      "good": 80,
-      "warning": 30,
-      "critical": 15
-    },
-    "format": "{capacity}% {icon}",
-    "format-charging": "{capacity}% ",
-    "format-plugged": "{capacity}% ",
-    "format-alt": "{time} {icon}",
-    "format-full": "",
-    "format-icons": ["", "", "", "", ""]
-  },
   "hyprland/window": {
     "max-length": 50,
   },
   "hyprland/workspaces": {
     "format": "{id}"
-  },
-  "custom/notification": {
-    "tooltip": false,
-    "format": "{icon}",
-    "format-icons": {
-      "notification": "<span foreground='red'><sup></sup></span>",
-      "none": "",
-      "dnd-notification": "<span foreground='red'><sup></sup></span>",
-      "dnd-none": ""
-    },
-    "return-type": "json",
-    "exec-if": "which swaync-client",
-    "exec": "swaync-client -swb",
-    "on-click": "swaync-client -t -sw",
-    "on-click-right": "swaync-client -d -sw",
-    "escape": true
-  },
-  "custom/power": {
-    "format": "",
-    "on-click": "{{ .powermenu }}"
   }
 }
