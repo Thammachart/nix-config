@@ -1,6 +1,3 @@
-# See https://wiki.hyprland.org/Configuring/Keywords/ for more
-
-# Example binds, see https://wiki.hyprland.org/Configuring/Binds/ for more
 bind = $mainMod, code:36, exec, $term
 bind = $mainMod_SHIFT, code:24, killactive,
 bind = $mainMod_SHIFT, code:26, exec, $powermenu
@@ -16,11 +13,10 @@ bind = $mainMod_SHIFT, code:45, movewindow, u
 bind = $mainMod_SHIFT, code:44, movewindow, d
 
 # Move focus with mainMod + arrow keys
-bind = $mainMod, code:43, hy3:movefocus, l
-bind = $mainMod, code:46, hy3:movefocus, r
-bind = $mainMod, code:45, hy3:movefocus, u
-bind = $mainMod, code:44, hy3:movefocus, d
-bind = $mainMod, code:55, hy3:makegroup, opposite
+bind = $mainMod, code:43, movefocus, l
+bind = $mainMod, code:46, movefocus, r
+bind = $mainMod, code:45, movefocus, u
+bind = $mainMod, code:44, movefocus, d
 
 # Switch workspaces with mainMod + [0-9]
 bind = $mainMod, code:10, workspace, 1

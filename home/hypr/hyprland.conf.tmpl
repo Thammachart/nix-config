@@ -20,16 +20,12 @@ general {
 decoration {
   rounding = 0
 
-  drop_shadow = true
-  shadow_range = 2
-  shadow_render_power = 1
-  col.shadow = rgba(1a1a1aee)
+  shadow {
+    enabled = false
+  }
 
   blur {
     enabled = false
-    size = 3
-    passes = 1
-    new_optimizations = true
   }
 }
 
@@ -67,5 +63,6 @@ xwayland {
 }
 
 misc {
+  disable_autoreload = true
   disable_hyprland_logo = true
 }

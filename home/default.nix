@@ -2,14 +2,14 @@
 
 {
   imports = [
-    # ./hypr
+    ./hypr
     ./sd
     ./foot
     ./firefox.nix
     ./mako
     ./kanshi
     ./sway
-    ./river
+    # ./river
     ./mpv
     ./waybar
     ./nwg-bar
