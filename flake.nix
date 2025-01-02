@@ -72,6 +72,7 @@
   {
     nixosConfigurations = builtins.mapAttrs (n: v:
     let
+      currentSystem = v.system or defaultSystem;
       conditions = rec {
         isPersonal = builtins.elem "personal" v.tags;
         isWork = builtins.elem "work" v.tags;
@@ -82,7 +83,7 @@
       };
     in
     nixpkgs.lib.nixosSystem {
-      system = v.system or defaultSystem;
+      system = currentSystem;
 
       specialArgs = {
         inherit inputs;

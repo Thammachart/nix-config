@@ -30,7 +30,6 @@
 
     "kwalletd" = {
       enable = conditions.graphicalUser;
-
       wantedBy = [ "user-system-ready.target" ];
 
       after = [ "xdg-desktop-portal.service" "graphical.target" ];

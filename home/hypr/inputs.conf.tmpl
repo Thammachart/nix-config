@@ -1,0 +1,23 @@
+input {
+  # Keyboard
+  kb_layout = us,th
+  kb_variant =
+  kb_model =
+  kb_options = grp:ralt_rshift_toggle
+  kb_rules =
+
+  repeat_rate = 39
+  repeat_delay = 250
+
+  # Mouse
+  accel_profile = flat
+  sensitivity = -0.1
+  follow_mouse = 2
+
+  {{ if .conditions.isLaptop -}}
+  touchpad {
+    disable_while_typing = true
+    natural_scroll = true
+  }
+  {{ end -}}
+}

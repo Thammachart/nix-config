@@ -13,6 +13,8 @@ in
     ];
 
   environment.systemPackages = [
+    pkgs.btop
+
     pkgs.alpaca
 
     pkgs.signal-desktop

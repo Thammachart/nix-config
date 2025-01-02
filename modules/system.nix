@@ -123,7 +123,6 @@ in
     ] ++ lib.optionals conditions.graphicalUser [
 
     foot-with-patches
-    alacritty
     xdg-utils
     brave
     pavucontrol
@@ -307,13 +306,13 @@ in
   };
 
   programs.river = {
-    enable = lib.mkDefault conditions.graphicalUser;
+    enable = false;
     xwayland.enable = true;
     extraPackages = with pkgs; [];
   };
 
   programs.hyprland = {
-    enable = false;
+    enable = lib.mkDefault conditions.graphicalUser;
     xwayland.enable = true;
   };
 
