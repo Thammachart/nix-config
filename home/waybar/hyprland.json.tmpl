@@ -1,6 +1,7 @@
 {
   "include": "~/.config/waybar/global.jsonc",
-  "position": "left",
+  "position": "top",
+  "height": 24,
 
   "modules-left": [
     "hyprland/workspaces",
@@ -23,9 +24,20 @@
     "custom/power"
   ],
   "hyprland/window": {
-    "max-length": 50,
+    "icon": true,
+    "format": "{}",
   },
   "hyprland/workspaces": {
     "format": "{id}"
+  },
+  "hyprland/language": {
+    "format": "{}",
+    "format-en": "us",
+    "format-th": "th"
+  },
+  "pulseaudio/slider": {
+    "min": 0,
+    "max": 100,
+    "orientation": "vertical"
   }
 }

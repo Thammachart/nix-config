@@ -6,8 +6,6 @@ exec-once = systemd-cat -t mako mako
 
 exec-once = waypaper --restore
 
-exec-once = systemctl --user start lxqt-policykit
-
 {{ if (eq .terminal "footclient") }}
 exec-once = foot --server
 {{ end }}

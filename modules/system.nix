@@ -67,7 +67,7 @@ in
     };
   };
 
-  hardware.pulseaudio.enable = false;
+  services.pulseaudio.enable = false;
 
   security.rtkit.enable = conditions.graphicalUser;
   services.pipewire = {
