@@ -8,6 +8,8 @@ source = ~/.config/hypr/monitors.conf
 monitor=,preferred,auto,1
 
 general {
+  layout = master
+
   gaps_in = 3
   gaps_out = 3
   border_size = 3
@@ -54,8 +56,10 @@ dwindle {
 }
 
 master {
-  new_status = slave;
-  orientation = right
+  orientation = center
+
+  new_status = slave
+  mfact = 0.46
 }
 
 xwayland {

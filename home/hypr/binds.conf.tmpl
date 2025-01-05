@@ -7,16 +7,29 @@ bind = $mainMod, code:40, exec, $launcher
 bind = $mainMod, code:35, layoutmsg, togglesplit
 bind = $mainMod, code:41, fullscreen, 0
 
+# Move window, Vim-like
 bind = $mainMod_SHIFT, code:43, movewindow, l
 bind = $mainMod_SHIFT, code:46, movewindow, r
 bind = $mainMod_SHIFT, code:45, movewindow, u
 bind = $mainMod_SHIFT, code:44, movewindow, d
 
-# Move focus with mainMod + arrow keys
+# Move window, Arrow
+bind = $mainMod_SHIFT, code:113, movewindow, l
+bind = $mainMod_SHIFT, code:114, movewindow, r
+bind = $mainMod_SHIFT, code:111, movewindow, u
+bind = $mainMod_SHIFT, code:116, movewindow, d
+
+# Move focus, Vim-like
 bind = $mainMod, code:43, movefocus, l
 bind = $mainMod, code:46, movefocus, r
 bind = $mainMod, code:45, movefocus, u
 bind = $mainMod, code:44, movefocus, d
+
+# Move focus, Arrow
+bind = $mainMod, code:113, movefocus, l
+bind = $mainMod, code:114, movefocus, r
+bind = $mainMod, code:111, movefocus, u
+bind = $mainMod, code:116, movefocus, d
 
 # Switch workspaces with mainMod + [0-9]
 bind = $mainMod, code:10, workspace, 1
@@ -49,3 +62,6 @@ bind = $mainMod, mouse_up, workspace, e-1
 # Move/resize windows with mainMod + LMB/RMB and dragging
 bindm = $mainMod, mouse:272, movewindow
 bindm = $mainMod, mouse:273, resizewindow
+
+bind = $mainMod_SHIFT, code:51, movetoworkspace, special:$sc_ws
+bind = $mainMod, code:51, togglespecialworkspace, $sc_ws
