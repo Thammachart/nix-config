@@ -14,6 +14,7 @@ in
 
   environment.systemPackages = [
     pkgs.btop
+    pkgs.intel-gpu-tools
 
     pkgs.alpaca
 
@@ -52,11 +53,11 @@ in
     enable = shouldEnable;
   };
 
-  services.ollama = {
-    enable = false;
-    acceleration = "rocm";
-    rocmOverrideGfx = "10.1.0";
-  };
+  # services.ollama = {
+  #   enable = false;
+  #   acceleration = "rocm";
+  #   rocmOverrideGfx = "10.1.0";
+  # };
 
   # systemd.services."ollama".wantedBy = lib.mkForce [];
 }

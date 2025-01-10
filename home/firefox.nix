@@ -17,10 +17,10 @@
         "devtools.chrome.enabled" = true;
         "browser.tabs.crashReporting.sendReport" = false;
 
-        "gfx.webrender.all" = true;
-        "media.ffmpeg.vaapi.enabled" = true;
-        "widget.dmabuf.force-enabled" = true;
-        "media.av1.enabled" = false;
+        # "gfx.webrender.all" = true;
+        # "media.ffmpeg.vaapi.enabled" = true;
+        # "widget.dmabuf.force-enabled" = true;
+        # "media.av1.enabled" = false;
 
         "privacy.donottrackheader.enabled" = true;
         "privacy.trackingprotection.enabled" = true;
