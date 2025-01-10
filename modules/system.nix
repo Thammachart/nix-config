@@ -100,7 +100,7 @@ in
     vim helix kakoune
     curl wget
     xdg-user-dirs
-    busybox bash zsh
+    bash zsh
     gnumake git fastfetch gomplate
     bat ripgrep
     doggo
@@ -120,6 +120,9 @@ in
     gh
     curlie
 
+    psmisc
+    pciutils
+
     ] ++ lib.optionals conditions.graphicalUser [
 
     foot-with-patches
@@ -128,6 +131,7 @@ in
     pavucontrol
     libnotify
     vulkan-tools
+    wev
 
     vscodium-fhs
     geany

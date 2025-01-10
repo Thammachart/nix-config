@@ -14,6 +14,6 @@ lib.mkIf conditions.graphicalUser
     enable = true;
     # sourceFirst = false;
     extraConfig = builtins.readFile "${templateFile "hyprland-config-${configData.username}" ./hyprland.conf.tmpl configData.homeSettings}";
-    plugins = [ pkgs.hyprlandPlugins.hyprscroller ];
+    plugins = [ pkgs.hyprlandPlugins.hy3 ];
   };
 }

@@ -1,4 +1,4 @@
-{config, lib, pkgs, conditions, ...}:
+{config, lib, pkgs, conditions, configData, ...}:
 let
   shouldEnable = conditions.isPersonal;
 in
@@ -11,6 +11,8 @@ in
       ./custom-hardware-configuration.nix
       ../../modules/system.nix
     ];
+
+  users.users."${configData.username}".extraGroups = [ "docker" ];
 
   environment.systemPackages = [
     pkgs.btop
