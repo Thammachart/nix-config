@@ -18,8 +18,6 @@ in
     pkgs.btop
     pkgs.intel-gpu-tools
 
-    pkgs.alpaca
-
     pkgs.signal-desktop
     pkgs.protonup-qt
 
@@ -54,12 +52,4 @@ in
   programs.gamemode = {
     enable = shouldEnable;
   };
-
-  # services.ollama = {
-  #   enable = false;
-  #   acceleration = "rocm";
-  #   rocmOverrideGfx = "10.1.0";
-  # };
-
-  # systemd.services."ollama".wantedBy = lib.mkForce [];
 }
