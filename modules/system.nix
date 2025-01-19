@@ -328,6 +328,11 @@ in
     enable = lib.mkDefault conditions.graphicalUser;
   };
 
+  programs.thunderbird = {
+    enable = lib.mkDefault conditions.graphicalUser;
+    package = pkgs.thunderbird-latest;
+  };
+
   programs.neovim = {
     enable = true;
     defaultEditor = true;
