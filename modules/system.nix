@@ -87,13 +87,13 @@ in
 
   security.sudo-rs = {
     enable = true;
-    wheelNeedsPassword = false;
+    wheelNeedsPassword = lib.mkDefault false;
     execWheelOnly = true;
   };
 
   security.doas = {
-    enable = true;
-    wheelNeedsPassword = false;
+    enable = false;
+    wheelNeedsPassword = lib.mkDefault false;
   };
 
   environment.systemPackages = with pkgs; [

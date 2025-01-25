@@ -11,5 +11,7 @@
 
     boot.kernelPackages = pkgs.linuxPackages_latest;
 
-    users.users."${configData.username}".extraGroups = ["docker"];
+    security.sudo-rs = {
+      wheelNeedsPassword = true
+    };
 }
