@@ -12,6 +12,6 @@
     boot.kernelPackages = pkgs.linuxPackages_latest;
 
     security.sudo-rs = {
-      wheelNeedsPassword = true
+      wheelNeedsPassword = true;
     };
 }
