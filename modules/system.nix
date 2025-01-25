@@ -316,7 +316,7 @@ in
   };
 
   programs.hyprland = {
-    enable = lib.mkDefault conditions.graphicalUser;
+    enable = false;
     xwayland.enable = true;
   };
 
