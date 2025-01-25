@@ -3,7 +3,7 @@ let
   name = "netbird-shobshop0";
   pkg = pkgs.netbird;
 in
-lib.mkIf conditions.graphicalUser {
+lib.mkIf conditions.netbird {
   systemd.services."${name}" = let
     environment = {
       NB_INTERFACE_NAME = "nb-shobshop0";

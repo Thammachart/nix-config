@@ -20,13 +20,13 @@
 
   hosts = {
     "tiikeri-pivot" = {
-      tags = ["personal" "desktop"];
+      tags = ["personal" "desktop" ];
     };
     "kenguru-pivot" = {
       tags = ["personal" "laptop"];
     };
     "hevonen-orbit" = {
-      tags = ["work" "laptop"];
+      tags = ["work" "laptop" "netbird" ];
     };
   };
 }

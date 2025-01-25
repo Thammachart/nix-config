@@ -13,7 +13,7 @@
         sopsFile = "${nix-secrets}/_common/github.yml";
       };
 
-      shobshop_netbird_env = lib.mkIf (!conditions.isServer) {
+      shobshop_netbird_env = lib.mkIf (conditions.netbird) {
         format = "binary";
         sopsFile = "${nix-secrets}/shobshop/netbird.env";
       };
