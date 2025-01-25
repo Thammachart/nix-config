@@ -23,7 +23,7 @@
       tags = ["personal" "desktop"];
     };
     "kenguru-pivot" = {
-      tags = ["personal" "server" "laptop"];
+      tags = ["personal" "laptop"];
     };
     "hevonen-orbit" = {
       tags = ["work" "laptop"];
