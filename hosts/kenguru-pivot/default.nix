@@ -8,10 +8,4 @@
       ./custom-hardware-configuration.nix
       ../../modules/system.nix
     ];
-
-    boot.kernelPackages = pkgs.linuxPackages_latest;
-
-    security.sudo-rs = {
-      wheelNeedsPassword = true;
-    };
 }
