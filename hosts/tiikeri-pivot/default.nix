@@ -14,21 +14,22 @@ in
 
   users.users."${configData.username}".extraGroups = [ "docker" ];
 
-  environment.systemPackages = [
-    pkgs.btop
-    pkgs.intel-gpu-tools
+  environment.systemPackages = with pkgs; [
+    btop
+    intel-gpu-tools
 
-    pkgs.signal-desktop
-    pkgs.protonup-qt
+    signal-desktop
+    telegram-desktop
+    protonup-qt
 
-    pkgs.media-downloader
-    pkgs.yt-dlp
+    media-downloader
+    yt-dlp
 
     # pkgs.xivlauncher
 
-    pkgs.qbittorrent
+    qbittorrent
 
-    pkgs.aria2
+    aria2
 
     # pkgs.heroic
     # pkgs.cryptomator
