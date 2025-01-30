@@ -154,8 +154,6 @@ in
     nwg-bar
     keepassxc
 
-    nautilus
-
     lxqt.pcmanfm-qt
     lxqt.lximage-qt
     lxqt.lxqt-archiver
