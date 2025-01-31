@@ -132,6 +132,7 @@ in
     libnotify
     vulkan-tools
     wev
+    flameshot
 
     vscodium-fhs
     geany
@@ -150,7 +151,7 @@ in
 
     fuzzel
     mako
-    wlr-randr wlopm kanshi nwg-displays
+    wlr-randr wlopm nwg-displays shikane
     nwg-bar
     keepassxc
 
@@ -161,8 +162,8 @@ in
 
     qalculate-gtk
     imv
-    swayimg
-    nomacs
+    qview
+    photoqt
     mpv
 
     # PDF Viewer
@@ -265,11 +266,6 @@ in
 
   programs.gnome-disks = {
     enable = lib.mkDefault conditions.graphicalUser;
-  };
-
-  programs.file-roller = {
-    enable = false;
-    # enable = lib.mkDefault conditions.graphicalUser;
   };
 
   programs.evince = {
@@ -400,6 +396,6 @@ in
   # and migrated your data accordingly.
   #
   # For more information, see `man configuration.nix` or https://nixos.org/manual/nixos/stable/options#opt-system.stateVersion .
-  system.stateVersion = "24.05"; # Did you read the comment?
+  system.stateVersion = "24.11"; # Did you read the comment?
 
 }

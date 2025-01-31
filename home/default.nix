@@ -7,7 +7,6 @@
     ./foot
     ./firefox.nix
     ./mako
-    ./kanshi
     ./sway
     # ./river
     ./mpv
@@ -15,6 +14,7 @@
     ./nwg-bar
     ./fuzzel
     ./nushell
+    ./go
   ];
 
   home = {
@@ -36,7 +36,7 @@
     # You can update Home Manager without changing this value. See
     # the Home Manager release notes for a list of state version
     # changes in each release.
-    stateVersion = "24.05";
+    stateVersion = "24.11";
   };
 
   xdg.userDirs = {
@@ -54,7 +54,7 @@
       name = "Papirus-Dark";
     };
     theme = {
-      name = "Yaru-dark";
+      name = "Yaru-olive-dark";
       package = pkgs.yaru-theme;
     };
   };

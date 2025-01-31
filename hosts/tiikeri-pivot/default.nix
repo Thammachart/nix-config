@@ -19,7 +19,6 @@ in
     intel-gpu-tools
 
     signal-desktop
-    telegram-desktop
     protonup-qt
 
     media-downloader
