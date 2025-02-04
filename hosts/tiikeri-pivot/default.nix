@@ -22,6 +22,7 @@ in
     protonup-qt
 
     media-downloader
+    curl-impersonate
     yt-dlp
 
     # pkgs.xivlauncher
