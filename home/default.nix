@@ -67,6 +67,8 @@
     enable = true;
     userName = "Thammachart";
     userEmail = "1731496+Thammachart@users.noreply.github.com";
+
+    signing.format = "ssh";
     extraConfig = {
       merge = {
         log = 100;

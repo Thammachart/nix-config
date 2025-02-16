@@ -229,7 +229,16 @@ in
     package = pkgs.gvfs;
   };
 
-  services.udisks2.enable = true;
+  services.udisks2 = {
+    enable = true;
+    settings = {
+    	"mount_options.conf" = {
+		     defaults = {
+					   btrfs_defaults = "compress=zstd";
+			   };
+      };
+    };
+  };
 
   services.fwupd.enable = conditions.isLaptop;
 
