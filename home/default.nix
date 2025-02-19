@@ -5,6 +5,7 @@
     ./hypr
     ./sd
     ./foot
+    ./ghostty
     ./firefox.nix
     ./mako
     ./sway

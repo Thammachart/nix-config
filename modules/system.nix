@@ -127,6 +127,7 @@ in
     ] ++ lib.optionals conditions.graphicalUser [
 
     foot-with-patches
+    ghostty
     xdg-utils
     brave
     pavucontrol

@@ -36,11 +36,6 @@
       flake = false;
     };
 
-    catppuccin-alacritty = {
-      url = "github:catppuccin/alacritty/main";
-      flake = false;
-    };
-
     betterfox = {
       url = "github:yokoffing/Betterfox/main";
       flake = false;
