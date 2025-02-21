@@ -31,6 +31,9 @@ in
 
     aria2
 
+    gamescope
+    mangohud
+
     # pkgs.heroic
     # pkgs.cryptomator
   ];
