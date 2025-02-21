@@ -127,8 +127,9 @@ in
     ] ++ lib.optionals conditions.graphicalUser [
 
     foot-with-patches
-    ghostty
     xdg-utils
+    floorp
+    librewolf
     brave
     pavucontrol
     libnotify
@@ -354,6 +355,20 @@ in
     enableOnBoot = conditions.isServer;
 
     storageDriver = "btrfs";
+  };
+
+  virtualisation.containers = {
+    enable = true;
+    containersConf.settings = {
+      engine = {
+        compose_providers = [ "${pkgs.podman-compose}/bin/podman-compose" ];
+      };
+    };
+    storage.settings = {};
+  };
+
+  virtualisation.podman = {
+    enable = true;
   };
 
   services.zram-generator = {
