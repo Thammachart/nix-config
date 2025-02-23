@@ -138,7 +138,7 @@ in
 
     vscodium-fhs
     geany
-    zed-editor
+    # zed-editor
 
     glib
 
