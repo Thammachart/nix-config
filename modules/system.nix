@@ -138,7 +138,7 @@ in
 
     vscodium-fhs
     geany
-    # zed-editor
+    zed-editor
 
     glib
 
@@ -360,6 +360,7 @@ in
     enable = true;
     containersConf.settings = {
       engine = {
+        compose_warning_logs = false;
         compose_providers = [ "${pkgs.podman-compose}/bin/podman-compose" ];
       };
     };

@@ -714,5 +714,6 @@ alias l = ls -al
 alias ll = l
 alias g = git
 alias dc = docker compose
+alias pc = podman compose
 
 alias ze = zeditor
