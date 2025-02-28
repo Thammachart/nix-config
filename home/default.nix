@@ -55,7 +55,7 @@
       name = "Papirus-Dark";
     };
     theme = {
-      name = "Yaru-olive-dark";
+      name = "Yaru-prussiangreen-dark";
       package = pkgs.yaru-theme;
     };
   };
