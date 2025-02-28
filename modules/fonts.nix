@@ -17,6 +17,7 @@ lib.mkIf conditions.graphicalUser {
       liberation_ttf
       ubuntu_font_family
       merriweather
+      adwaita-fonts
 
       monaspace
       jetbrains-mono
