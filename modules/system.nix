@@ -128,7 +128,7 @@ in
     foot-with-patches
     xdg-utils
     floorp
-    librewolf
+    librewolf-bin
     brave
     pavucontrol
     libnotify
