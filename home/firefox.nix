@@ -1,6 +1,6 @@
 { pkgs, lib, configData, conditions, betterfox, ... }:
 {
-  programs.firefox = {
+  programs.floorp = {
     enable = conditions.graphicalUser;
     profiles.default = {
       id = 0;
@@ -16,12 +16,15 @@
         "privacy.clearOnShutdown.history" = false;
         "devtools.chrome.enabled" = true;
         "browser.tabs.crashReporting.sendReport" = false;
+        "general.smoothScroll" = false;
 
         # "gfx.webrender.all" = true;
         # "media.ffmpeg.vaapi.enabled" = true;
         # "widget.dmabuf.force-enabled" = true;
         # "media.av1.enabled" = false;
+        "media.hardware-video-decoding.force-enabled" = conditions.isLaptop;
 
+        "signon.rememberSignons" = false;
         "privacy.donottrackheader.enabled" = true;
         "privacy.trackingprotection.enabled" = true;
         "privacy.trackingprotection.socialtracking.enabled" = true;
@@ -62,6 +65,7 @@
         "browser.newtabpage.activity-stream.showSponsored" = false;
         "browser.newtabpage.activity-stream.showSponsoredTopSites" = false;
 
+        "browser.tabs.inTitlebar" = 0;
         "browser.tabs.hoverPreview.showThumbnails" = false;
       };
     };

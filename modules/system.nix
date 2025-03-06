@@ -128,7 +128,6 @@ in
     foot-with-patches
     xdg-utils
     floorp
-    librewolf-bin
     brave
     pavucontrol
     libnotify
@@ -330,9 +329,9 @@ in
     enable = lib.mkDefault conditions.graphicalUser;
   };
 
-  programs.firefox = {
-    enable = lib.mkDefault conditions.graphicalUser;
-  };
+  # programs.firefox = {
+  #   enable = lib.mkDefault conditions.graphicalUser;
+  # };
 
   programs.thunderbird = {
     enable = lib.mkDefault conditions.graphicalUser;
