@@ -15,7 +15,6 @@ in
   users.users."${configData.username}".extraGroups = [ "docker" ];
 
   environment.systemPackages = with pkgs; [
-    btop
     intel-gpu-tools
 
     signal-desktop

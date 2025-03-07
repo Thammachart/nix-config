@@ -97,6 +97,7 @@ in
   };
 
   environment.systemPackages = with pkgs; [
+    btop
     vim helix kakoune
     curl wget
     xdg-user-dirs
