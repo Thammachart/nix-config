@@ -8,7 +8,7 @@
   };
 
   chaotic.mesa-git = {
-    enable = true;
+    enable = false;
 
     extraPackages = with pkgs; [
       mesa_git.opencl intel-media-driver intel-ocl
