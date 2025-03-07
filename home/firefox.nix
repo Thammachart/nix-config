@@ -1,7 +1,16 @@
 { pkgs, lib, configData, conditions, betterfox, ... }:
 {
-  programs.floorp = {
+  programs.librewolf = {
     enable = conditions.graphicalUser;
+
+    settings = {
+      "webgl.disabled" = false;
+      "privacy.resistFingerprinting" = false;
+      "privacy.clearOnShutdown.history" = false;
+      "privacy.clearOnShutdown.cookies" = false;
+      "network.cookie.lifetimePolicy" = 0;
+    };
+
     profiles.default = {
       id = 0;
       isDefault = true;
@@ -22,7 +31,7 @@
         # "media.ffmpeg.vaapi.enabled" = true;
         # "widget.dmabuf.force-enabled" = true;
         # "media.av1.enabled" = false;
-        "media.hardware-video-decoding.force-enabled" = conditions.isLaptop;
+        # "media.hardware-video-decoding.force-enabled" = conditions.isLaptop;
 
         "signon.rememberSignons" = false;
         "privacy.donottrackheader.enabled" = true;

@@ -127,6 +127,8 @@ in
 
     foot-with-patches
     xdg-utils
+    firefox
+    librewolf
     floorp
     brave
     pavucontrol
@@ -328,10 +330,6 @@ in
   programs.xwayland = {
     enable = lib.mkDefault conditions.graphicalUser;
   };
-
-  # programs.firefox = {
-  #   enable = lib.mkDefault conditions.graphicalUser;
-  # };
 
   programs.thunderbird = {
     enable = lib.mkDefault conditions.graphicalUser;
