@@ -1,8 +1,6 @@
 include /etc/sway/config.d/*
 
 include variables
-include outputs
-include workspaces
 include autostart
 include theme
 include inputs
