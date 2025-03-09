@@ -102,8 +102,9 @@ in
     curl wget
     xdg-user-dirs
     bash zsh
-    gnumake git fastfetch gomplate
-    bat ripgrep
+    gnumake git
+    fastfetch gomplate
+    bat ripgrep fd
     doggo
     openssl
     unzip p7zip
@@ -111,6 +112,8 @@ in
     dbus
     age sops
     devenv
+
+    yazi
 
     just
     lshw

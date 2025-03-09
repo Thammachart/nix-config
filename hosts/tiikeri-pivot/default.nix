@@ -26,7 +26,7 @@ in
 
     # pkgs.xivlauncher
 
-    qbittorrent
+    qbittorrent-enhanced
 
     aria2
 

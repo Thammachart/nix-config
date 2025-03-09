@@ -8,4 +8,7 @@
       ./custom-hardware-configuration.nix
       ../../modules/system.nix
     ];
+  environment.systemPackages = with pkgs; [
+    qbittorrent-enhanced
+  ];
 }
