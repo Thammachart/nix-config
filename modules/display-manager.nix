@@ -14,7 +14,7 @@ lib.mkIf conditions.graphicalUser {
         user = "greeter";
       };
 
-      initial_session = {
+      initial_session = lib.mkIf (!conditions.isDesktop) {
         command = "${compositor.launch}/bin/launch";
         user = configData.username;
       };
