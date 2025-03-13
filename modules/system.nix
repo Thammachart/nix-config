@@ -131,7 +131,7 @@ in
 
     foot-with-patches
     xdg-utils
-    firefox
+    # firefox
     librewolf
     floorp
     brave
