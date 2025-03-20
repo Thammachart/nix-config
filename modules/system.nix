@@ -134,7 +134,11 @@ in
     # firefox
     librewolf
     floorp
-    brave
+    (brave.override {
+      commandLineArgs = [
+        "--password-store=gnome-libsecret"
+      ];
+    })
     pavucontrol
     libnotify
     vulkan-tools
@@ -162,6 +166,7 @@ in
     nwg-displays
     nwg-bar
     keepassxc
+    seahorse
 
     lxqt.pcmanfm-qt
     lxqt.lximage-qt
@@ -180,7 +185,6 @@ in
 
     libsForQt5.qt5.qtwayland
     # libsForQt5.qt5ct
-    # kdePackages.okular
 
     kdePackages.qtwayland
     kdePackages.qtsvg
@@ -193,7 +197,7 @@ in
     # kdePackages.kde-cli-tools
     # kdePackages.breeze
 
-    kdePackages.kwalletmanager
+    # kdePackages.kwalletmanager
 
     # kdePackages.kirigami
     # kdePackages.kirigami-addons
@@ -279,6 +283,10 @@ in
         default = [ "Hyprland" ];
       };
     };
+  };
+
+  services.gnome.gnome-keyring = {
+    enable = lib.mkDefault conditions.graphicalUser;
   };
 
   programs.gnome-disks = {

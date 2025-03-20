@@ -9,10 +9,10 @@ lib.mkIf conditions.graphicalUser {
   services.greetd = {
     enable = true;
     settings = {
-      default_session = {
-        command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --remember-session --user-menu --sessions ${desktopSessions}/share/wayland-sessions";
-        user = "greeter";
-      };
+      # default_session = {
+      #   command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --remember-session --user-menu --sessions ${desktopSessions}/share/wayland-sessions";
+      #   user = "greeter";
+      # };
 
       initial_session = lib.mkIf (!conditions.isDesktop) {
         command = "${compositor.launch}/bin/launch";
@@ -25,5 +25,9 @@ lib.mkIf conditions.graphicalUser {
     enable = true;
     execCmd = config.systemd.services.greetd.serviceConfig.ExecStart;
     sessionPackages = [ compositor.custom-desktop-entry ];
+  };
+
+  programs.regreet = {
+    enable = true;
   };
 }
