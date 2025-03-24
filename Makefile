@@ -1,4 +1,7 @@
-up: update-flake rebuild
+up: git update-flake rebuild
+
+git:
+	git pull --ff-only
 
 update-flake:
 	nix flake update
