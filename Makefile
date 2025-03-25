@@ -1,4 +1,4 @@
-up: git update-flake rebuild
+up: update-flake rebuild
 
 git:
 	git pull --ff-only
