@@ -29,5 +29,14 @@ lib.mkIf conditions.graphicalUser {
 
   programs.regreet = {
     enable = true;
+    font = {
+      name = "Adwaita Sans";
+      package = pkgs.adwaita-fonts;
+    };
+    settings = {
+      GTK = {
+        application_prefer_dark_theme = true;
+      };
+    };
   };
 }
