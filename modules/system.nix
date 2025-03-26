@@ -1,4 +1,4 @@
-{ config, inputs, lib, pkgs, configData, conditions , hostName, nix-secrets, betterfox, ... }:
+{ config, inputs, lib, pkgs, configData, conditions , hostName, nix-secrets, zen-browser, betterfox, ... }:
 let
   foot-with-patches = import ../packages/foot { inherit pkgs; };
 in
@@ -134,6 +134,7 @@ in
     # firefox
     librewolf
     floorp
+    zen-browser
     (brave.override {
       commandLineArgs = [
         "--password-store=gnome-libsecret"
