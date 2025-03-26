@@ -7,4 +7,12 @@ lib.mkIf conditions.graphicalUser {
     '';
     executable = true;
   };
+  
+  home.file.".sd/waybar-sway" = {
+    text = ''
+    #!/bin/sh
+    swaymsg 'exec systemd-cat -t waybar waybar -c ~/.config/waybar/sway.json -s ~/.config/waybar/sway.css'
+    '';
+    executable = true;
+  };
 }
