@@ -36,11 +36,6 @@
       flake = false;
     };
     
-    zen-browser = {
-      url = "github:0xc000022070/zen-browser-flake";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     betterfox = {
       url = "github:yokoffing/Betterfox/main";
       flake = false;
@@ -92,8 +87,6 @@
         inherit templateFile;
         inherit configData;
         inherit (inputs) nix-secrets;
-
-        zen-browser = inputs.zen-browser.packages."${currentSystem}".default;
 
         inherit conditions;
         hostName = n;

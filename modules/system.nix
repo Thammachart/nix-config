@@ -134,7 +134,6 @@ in
     # firefox
     librewolf
     floorp
-    zen-browser
     (brave.override {
       commandLineArgs = [
         "--password-store=gnome-libsecret"
