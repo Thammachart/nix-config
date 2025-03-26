@@ -91,7 +91,7 @@
         inherit conditions;
         hostName = n;
       };
-
+      
       modules = [
         inputs.chaotic.nixosModules.default
         # inputs.chaotic.nixosModules.nyx-cache
@@ -101,6 +101,8 @@
         inputs.disko.nixosModules.disko
 
         inputs.sops-nix.nixosModules.sops
+        
+        (import ./modules/overlays.nix)
 
         ./hosts/${n}
 

@@ -1,6 +1,7 @@
 { config, inputs, lib, pkgs, configData, conditions , hostName, nix-secrets, betterfox, ... }:
 let
   foot-with-patches = import ../packages/foot { inherit pkgs; };
+  vscodium-with-patches = import ../packages/vscodium { inherit pkgs; };
 in
 {
   imports = [
@@ -146,9 +147,9 @@ in
     wev
     flameshot
 
-    vscodium-fhs
+    vscodium-with-patches.fhs
     geany
-    # zed-editor
+    zed-editor
 
     glib
 
