@@ -1,10 +1,11 @@
-{ config, inputs, lib, pkgs, configData, conditions , hostName, nix-secrets, zen-browser, betterfox, ... }:
+{ config, inputs, lib, pkgs, configData, conditions , hostName, nix-secrets, betterfox, ... }:
 let
   foot-with-patches = import ../packages/foot { inherit pkgs; };
 in
 {
   imports = [
     ./secrets.nix
+    ./overlays.nix
     ./network.nix
     ./systemd.nix
     ./fonts.nix
