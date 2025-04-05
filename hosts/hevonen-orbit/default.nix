@@ -16,7 +16,7 @@ in
 
   boot.kernelPackages = pkgs.linuxPackages_cachyos-lto;
 
-  users.users."${configData.username}".extraGroups = ["docker"];
+  users.users."${configData.username}".extraGroups = [ "docker" "libvirtd" ];
 
   environment.sessionVariables = {
     DEVSHELLS_PATH = "$HOME/shobshop-projects/common-dev-shells";
@@ -34,6 +34,18 @@ in
     filezilla
     caddy
   ]);
+
+  programs.virt-manager = {
+    enable = true;
+  };
+
+  virtualisation.libvirtd = {
+    enable = true;
+  };
+
+  virtualisation.spiceUSBRedirection = {
+    enable = true;
+  };
 
   # sops.secrets.shobshop_internal_ca_cert = {
   #   format = "binary";
