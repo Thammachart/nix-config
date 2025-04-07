@@ -180,6 +180,7 @@ in
     imv
     qview
     photoqt
+    vlc
     mpv
 
     # PDF Viewer
