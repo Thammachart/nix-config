@@ -23,6 +23,7 @@ lib.mkIf conditions.graphicalUser {
       jetbrains-mono
       cascadia-code
       _0xproto
+      iosevka
 
       # nerdfonts
       nerd-fonts.zed-mono
