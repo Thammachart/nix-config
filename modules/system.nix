@@ -148,6 +148,9 @@ in
     wev
     flameshot
 
+    obsidian
+    logseq
+
     vscodium-with-patches.fhs
     geany
     zed-editor
