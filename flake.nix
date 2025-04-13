@@ -22,6 +22,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    auto-cpufreq = {
+      url = "github:AdnanHodzic/auto-cpufreq/master";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     nixos-hardware = {
       url = "github:NixOS/nixos-hardware/master";
     };
@@ -35,7 +40,7 @@
       url = "github:catppuccin/foot/main";
       flake = false;
     };
-    
+
     betterfox = {
       url = "github:yokoffing/Betterfox/main";
       flake = false;
@@ -91,7 +96,7 @@
         inherit conditions;
         hostName = n;
       };
-      
+
       modules = [
         inputs.chaotic.nixosModules.default
         # inputs.chaotic.nixosModules.nyx-cache
@@ -101,7 +106,9 @@
         inputs.disko.nixosModules.disko
 
         inputs.sops-nix.nixosModules.sops
-        
+
+        inputs.auto-cpufreq.nixosModules.default
+
         (import ./modules/overlays.nix)
 
         ./hosts/${n}

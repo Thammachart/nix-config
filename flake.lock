@@ -1,5 +1,26 @@
 {
   "nodes": {
+    "auto-cpufreq": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1744556841,
+        "narHash": "sha256-ZGSj/SEqoBBJiTW4FHj66mqGrVe6vVW8aa/8LIiuMaI=",
+        "owner": "AdnanHodzic",
+        "repo": "auto-cpufreq",
+        "rev": "f9b9fe42c90e176ec4104adcd3eb5e3b4d1823b6",
+        "type": "github"
+      },
+      "original": {
+        "owner": "AdnanHodzic",
+        "ref": "master",
+        "repo": "auto-cpufreq",
+        "type": "github"
+      }
+    },
     "betterfox": {
       "flake": false,
       "locked": {
@@ -158,11 +179,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1744498625,
-        "narHash": "sha256-pL52uCt9CUoTTmysGG91c2FeU7XUvpB7Cep6yon2vDk=",
+        "lastModified": 1744570807,
+        "narHash": "sha256-g07PYyZCIHVDLzRo8fllZRES7Nf9R8+xZwNJ7t0gt5s=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "db56335ca8942d86f2200664acdbd5b9212b26ad",
+        "rev": "cfa196c705a896372319249d757085876ab62448",
         "type": "github"
       },
       "original": {
@@ -285,6 +306,7 @@
     },
     "root": {
       "inputs": {
+        "auto-cpufreq": "auto-cpufreq",
         "betterfox": "betterfox",
         "catppuccin-foot": "catppuccin-foot",
         "chaotic": "chaotic",

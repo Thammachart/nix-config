@@ -56,22 +56,22 @@ in
   #   config.sops.secrets.shobshop_internal_ca_cert.path
   # ];
 
-  # programs.auto-cpufreq = {
-  #   enable = false;
-  #   settings = {
-  #     charger = {
-  #       governor = "performance";
-  #       turbo = "auto";
-  #     };
+  programs.auto-cpufreq = {
+    enable = true;
+    settings = {
+      charger = {
+        governor = "performance";
+        turbo = "auto";
+      };
 
-  #     battery = {
-  #       governor = "powersave";
-  #       turbo = "auto";
+      battery = {
+        governor = "powersave";
+        turbo = "auto";
 
-  #       enable_thresholds = true;
-  #       start_threshold = 20;
-  #       stop_threshold = 80;
-  #     };
-  #   };
-  # };
+        enable_thresholds = true;
+        start_threshold = 30;
+        stop_threshold = 80;
+      };
+    };
+  };
 }
