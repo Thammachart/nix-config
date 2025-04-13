@@ -26,7 +26,7 @@ in
   environment.systemPackages = with pkgs; [
     intel-gpu-tools
 
-    signal-desktop
+    signal-desktop-bin
     protonup-qt
 
     media-downloader
