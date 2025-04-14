@@ -5,6 +5,8 @@ let
 in
 lib.mkIf conditions.graphicalUser {
   home.file.".config/waybar/global.jsonc".source = templateFile "waybar-global-jsonc-${configData.username}" ./global.jsonc.tmpl settings;
+  home.file.".config/waybar/colors/everforest.css".source = ./colors/everforest.css;
+  home.file.".config/waybar/colors/everforest-light.css".source = ./colors/everforest-light.css;
 
   home.file.".config/waybar/sway.css".source = templateFile "waybar-sway-css-${configData.username}" ./sway.css.tmpl settings;
   home.file.".config/waybar/sway.json".source = templateFile "waybar-sway-json-${configData.username}" ./sway.json.tmpl settings;
