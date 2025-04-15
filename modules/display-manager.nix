@@ -3,7 +3,7 @@ let
   cmp-customize = import ../packages/compositor-custom.nix;
   desktopSessions = config.services.displayManager.sessionData.desktops;
 
-  compositor = cmp-customize { inherit pkgs; cmp = "sway"; };
+  compositor = cmp-customize { inherit pkgs; cmp = "Hyprland"; };
 in
 lib.mkIf conditions.graphicalUser {
   services.greetd = {

@@ -11,7 +11,7 @@ lib.mkIf conditions.graphicalUser
   #home.file.".config/hypr/workspaces.conf".text = "";
 
   wayland.windowManager.hyprland = {
-    enable = false;
+    enable = true;
     # sourceFirst = false;
     extraConfig = builtins.readFile "${templateFile "hyprland-config-${configData.username}" ./hyprland.conf.tmpl configData.homeSettings}";
     plugins = [ pkgs.hyprlandPlugins.hy3 ];

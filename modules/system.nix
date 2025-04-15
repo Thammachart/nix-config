@@ -269,12 +269,6 @@ in
   MaxRetentionSec=2week
   '';
 
-  services.ananicy = {
-    enable = false;
-    package = pkgs.ananicy-cpp;
-    rulesProvider = pkgs.ananicy-rules-cachyos;
-  };
-
   xdg.portal = {
     enable = lib.mkDefault conditions.graphicalUser;
     wlr.enable = true;
@@ -342,7 +336,7 @@ in
   };
 
   programs.hyprland = {
-    enable = false;
+    enable = true;
     xwayland.enable = true;
   };
 
