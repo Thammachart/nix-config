@@ -33,7 +33,7 @@ in
     curl-impersonate
     yt-dlp
 
-    # pkgs.xivlauncher
+    # xivlauncher
 
     qbittorrent-enhanced
 
@@ -42,8 +42,8 @@ in
     gamescope
     mangohud
 
-    # pkgs.heroic
-    # pkgs.cryptomator
+    # heroic
+    # cryptomator
   ];
 
   services.hardware.openrgb = {
