@@ -339,6 +339,14 @@ in
     xwayland.enable = true;
   };
 
+  programs.hyprlock = {
+    enable = config.programs.hyprland.enable;
+  };
+
+  services.hypridle = {
+    enable = config.programs.hyprland.enable;
+  };
+
   programs.xwayland = {
     enable = lib.mkDefault conditions.graphicalUser;
   };
