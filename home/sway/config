@@ -156,9 +156,9 @@ bindsym --to-code Shift+Alt+Print exec grim -g "$(slurp)" - | wl-copy -t image/p
 # capture the focused monitor to clipboard
 bindsym --to-code Shift+Control+Print exec grim -o $(swaymsg -t get_outputs | jq -r '.[] | select(.focused) | .name') - | wl-copy -t image/png
 
-bindsym --to-code XF86AudioMute exec pamixer -t
-bindsym --to-code XF86AudioRaiseVolume exec pamixer -i 2
-bindsym --to-code XF86AudioLowerVolume exec pamixer -d 2
+bindsym --to-code XF86AudioMute exec wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
+bindsym --to-code XF86AudioRaiseVolume exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+
+bindsym --to-code XF86AudioLowerVolume exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-
 
 # bar {
 #    position top

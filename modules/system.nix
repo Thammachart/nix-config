@@ -141,7 +141,6 @@ in
         "--password-store=gnome-libsecret"
       ];
     })
-    pamixer
     pavucontrol
     libnotify
     vulkan-tools
