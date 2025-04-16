@@ -24,11 +24,11 @@
     "betterfox": {
       "flake": false,
       "locked": {
-        "lastModified": 1740523396,
-        "narHash": "sha256-5fD8ffAyIgQYJ0Z/bMEpqf17YghVQNaK+giZ1Tyk6/Q=",
+        "lastModified": 1744820508,
+        "narHash": "sha256-oK8nP7mZ8Q6TNgCY/E7D5E28e7qaBHfE4tbdus7vusU=",
         "owner": "yokoffing",
         "repo": "Betterfox",
-        "rev": "6ef4cdbbe7bc3bb1d69a2291a25cc8841b39544a",
+        "rev": "efee1517792b7e10e8a1aa639a0f702157132f55",
         "type": "github"
       },
       "original": {
@@ -179,11 +179,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1744735751,
-        "narHash": "sha256-OPpfgL3qUIbQdbmp1/ZwnlsuTLooHN4or0EABnZTFRY=",
+        "lastModified": 1744820898,
+        "narHash": "sha256-gUldr3LtCm/OfEnbH6sFFlyyxqPMCsfMs2Ha+0fdPDs=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "db7738e67a101ad945abbcb447e1310147afaf1b",
+        "rev": "7ede02c32a729db0d6340bdb41d10e73ec511ca0",
         "type": "github"
       },
       "original": {
