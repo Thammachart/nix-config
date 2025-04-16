@@ -45,7 +45,7 @@ lib.mkIf conditions.graphicalUser {
 
       defaultFonts = {
         serif = ["Noto Serif" "Noto Serif Thai" "Noto Serif CJK JP" "Noto Color Emoji"];
-        sansSerif = [fontConfigData.latin.ui "Noto Sans Thai" "Ubuntu" "Noto Sans" "Noto Sans CJK JP" "Noto Color Emoji"];
+        sansSerif = [fontConfigData.latin.ui fontConfigData.thai.ui "Ubuntu" "Noto Sans" "Noto Sans CJK JP" "Noto Color Emoji"];
         monospace = [fontConfigData.latin.ui_monospace fontConfigData.latin.terminal_monospace "JetBrainsMono NFP" "Noto Color Emoji"];
         emoji = ["Noto Color Emoji"];
       };

@@ -15,6 +15,9 @@
         ui_monospace = "JetBrains Mono";
         terminal_monospace = "Cascadia Mono NF";
       };
+      thai = {
+        ui = "Noto Sans Thai Looped";
+      };
     };
   };
 
