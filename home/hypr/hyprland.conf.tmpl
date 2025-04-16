@@ -3,10 +3,6 @@ source = ~/.config/hypr/autostart.conf
 source = ~/.config/hypr/inputs.conf
 source = ~/.config/hypr/binds.conf
 
-source = ~/.config/hypr/monitors.conf
-
-monitor=,preferred,auto,1
-
 general {
   layout = hy3
 
@@ -20,7 +16,7 @@ general {
 }
 
 decoration {
-  rounding = 0
+  rounding = 3
 
   shadow {
     enabled = false
@@ -75,3 +71,5 @@ misc {
   disable_autoreload = true
   disable_hyprland_logo = true
 }
+
+windowrulev2 = idleinhibit fullscreen, class:.*
