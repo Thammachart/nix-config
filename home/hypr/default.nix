@@ -3,6 +3,8 @@
 lib.mkIf conditions.graphicalUser
 {
   home.file.".config/hypr/hypridle.conf".source = templateFile "hypridle-conf-${configData.username}" ./hypridle.conf.tmpl configData.homeSettings;
+  home.file.".config/hypr/hyprlock.conf".source = templateFile "hyprlock-conf-${configData.username}" ./hyprlock.conf.tmpl configData.homeSettings;
+
   home.file.".config/hypr/variables.conf".source = templateFile "hyprland-vars-${configData.username}" ./variables.conf.tmpl configData.homeSettings;
   home.file.".config/hypr/autostart.conf".source = templateFile "hyprland-autostart-${configData.username}" ./autostart.conf.tmpl configData.homeSettings;
   home.file.".config/hypr/inputs.conf".source = templateFile "hyprland-inputs-${configData.username}" ./inputs.conf.tmpl { inherit conditions; };
