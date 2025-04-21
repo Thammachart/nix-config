@@ -46,10 +46,6 @@ in
     # cryptomator
   ];
 
-  services.hardware.openrgb = {
-    enable = shouldEnable;
-  };
-
   programs.steam = {
     enable = shouldEnable;
 
