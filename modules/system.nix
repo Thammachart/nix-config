@@ -131,6 +131,9 @@ in
 
     ] ++ lib.optionals conditions.graphicalUser [
 
+    oo7
+    oo7-server
+
     foot-with-patches
     xdg-utils
     # firefox
@@ -271,7 +274,7 @@ in
   xdg.portal = {
     enable = lib.mkDefault conditions.graphicalUser;
     wlr.enable = true;
-    extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+    extraPortals = [ pkgs.xdg-desktop-portal-gtk pkgs.oo7-portal ];
     config = {
       sway = {
         default = lib.mkForce [ "gtk" "wlr" ];
@@ -281,6 +284,7 @@ in
       };
       Hyprland = {
         default = [ "Hyprland" ];
+        # "org.freedesktop.impl.portal.Secret" = [ "oo7-portal" ];
       };
     };
   };
