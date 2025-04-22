@@ -12,6 +12,7 @@ exec-once = waypaper --restore
 
 exec-once = systemd-cat -t wlsunset wlsunset -S 06:30 -s 18:30 -d 1800 -t 4000 -T 6500
 
-exec-once = systemd-cat -t shikane shikane --oneshot
+# Shikane (Server mode due to hyprland conflict)
+exec-once = systemd-cat -t shikane shikane
 
 exec-once = sleep 1 && systemctl start --user user-system-ready.target
