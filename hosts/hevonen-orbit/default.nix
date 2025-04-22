@@ -16,7 +16,7 @@ in
 
   boot.kernelPackages = pkgs.linuxPackages_cachyos-lto;
 
-  users.users."${configData.username}".extraGroups = [ "docker" "libvirtd" ];
+  users.users."${configData.username}".extraGroups = [ "docker" "libvirtd" "adbusers" "kvm" ];
 
   environment.sessionVariables = {
     DEVSHELLS_PATH = "$HOME/shobshop-projects/common-dev-shells";
@@ -44,6 +44,10 @@ in
   };
 
   virtualisation.spiceUSBRedirection = {
+    enable = true;
+  };
+
+  programs.adb = {
     enable = true;
   };
 
