@@ -339,7 +339,7 @@ in
   };
 
   programs.hyprland = {
-    enable = true;
+    enable = lib.mkDefault conditions.graphicalUser;
     xwayland.enable = true;
   };
 
