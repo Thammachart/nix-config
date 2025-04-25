@@ -33,6 +33,7 @@ in
     google-cloud-sql-proxy
     filezilla
     caddy
+    libreoffice-fresh
   ]);
 
   programs.virt-manager = {
