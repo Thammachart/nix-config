@@ -32,6 +32,7 @@ in
     media-downloader
     curl-impersonate
     yt-dlp
+    gallery-dl
 
     # xivlauncher
 
