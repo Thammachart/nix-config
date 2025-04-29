@@ -81,9 +81,18 @@ in
 
   hardware.bluetooth = {
     enable = lib.mkDefault conditions.graphicalUser;
-    powerOnBoot = false;
+    powerOnBoot = true;
+    settings = {
+      General = {
+        ControllerMode = "dual";
+        PairableTimeout = 120;
+      };
+    };
   };
-  services.blueman.enable = lib.mkDefault conditions.graphicalUser;
+
+  services.blueman = {
+    enable = lib.mkDefault conditions.graphicalUser;
+  };
 
   security.polkit.enable = true;
 
