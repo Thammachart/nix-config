@@ -252,6 +252,11 @@ in
     enable = true;
   };
 
+  services.scx = {
+    enable = lib.mkDefault conditions.graphicalUser;
+    scheduler = "scx_rustland";
+  };
+
   services.gvfs = {
     enable = lib.mkDefault conditions.graphicalUser;
     package = pkgs.gvfs;
