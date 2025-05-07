@@ -146,7 +146,7 @@ in
     foot-with-patches
     xdg-utils
     # firefox
-    librewolf
+    # librewolf
     floorp
     (brave.override {
       commandLineArgs = [
@@ -253,7 +253,7 @@ in
   };
 
   services.scx = {
-    enable = lib.mkDefault conditions.graphicalUser;
+    enable = false;
     scheduler = "scx_rustland";
   };
 

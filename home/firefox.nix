@@ -1,7 +1,7 @@
 { pkgs, lib, configData, conditions, betterfox, ... }:
 {
   programs.librewolf = {
-    enable = conditions.graphicalUser;
+    enable = false;
 
     settings = {
       "webgl.disabled" = false;
