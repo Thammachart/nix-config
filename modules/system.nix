@@ -115,7 +115,7 @@ in
     bash zsh
     gnumake git
     fastfetch gomplate
-    bat ripgrep fd
+    duf bat ripgrep fd
     doggo
     openssl
     unzip p7zip
