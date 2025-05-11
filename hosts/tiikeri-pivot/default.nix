@@ -43,6 +43,8 @@ in
     gamescope
     mangohud
 
+    protonmail-desktop
+
     # heroic
     # cryptomator
   ];
