@@ -148,6 +148,7 @@ in
     # firefox
     # librewolf
     floorp
+    qutebrowser
     (brave.override {
       commandLineArgs = [
         "--password-store=gnome-libsecret"
