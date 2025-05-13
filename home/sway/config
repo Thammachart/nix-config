@@ -20,6 +20,8 @@ output * bg #4e5850 solid_color
     # Start your launcher
     bindsym --to-code $mod+d exec $launcher
 
+    bindsym --to-code $mod+' exec $launcher
+
     # Drag floating windows by holding down $mod and left mouse button.
     # Resize them with right mouse button + $mod.
     # Despite the name, also works for non-floating windows.
