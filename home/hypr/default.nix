@@ -1,7 +1,6 @@
-{ pkgs, lib, conditions, templateFile, configData, ...  }:
+{ pkgs, osConfig, lib, conditions, templateFile, configData, ...  }:
 
-lib.mkIf conditions.graphicalUser
-{
+lib.mkIf osConfig.programs.hyprland.enable {
   home.file.".config/hypr/hypridle.conf".source = templateFile "hypridle-conf-${configData.username}" ./hypridle.conf.tmpl configData.homeSettings;
   home.file.".config/hypr/hyprlock.conf".source = templateFile "hyprlock-conf-${configData.username}" ./hyprlock.conf.tmpl configData.homeSettings;
 

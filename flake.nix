@@ -123,7 +123,6 @@
             inherit configData;
             inherit (inputs) betterfox;
             inherit (inputs) catppuccin-foot;
-            inherit (inputs) catppuccin-alacritty;
             inherit (inputs) nix-secrets;
 
             inherit (inputs) gitalias;
