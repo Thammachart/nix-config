@@ -18,9 +18,9 @@ output * bg #4e5850 solid_color
     bindsym --to-code $mod+Shift+Q kill
 
     # Start your launcher
-    bindsym --to-code $mod+d exec $launcher
+    bindsym --to-code $mod+d exec --no-startup-id $launcher
 
-    bindsym --to-code $mod+' exec $launcher
+    bindsym --to-code $mod+Apostrophe exec $browser
 
     # Drag floating windows by holding down $mod and left mouse button.
     # Resize them with right mouse button + $mod.
@@ -30,12 +30,15 @@ output * bg #4e5850 solid_color
     floating_modifier $mod normal
 
     # Reload the configuration file
-    bindsym --to-code $mod+Shift+C reload
+    # bindsym --to-code $mod+Shift+C reload
 
-    bindsym --to-code $mod+Alt+l exec $locker
+    # Toggle Bar Visibility
+    bindsym --to-code $mod+z exec --no-startup-id "killall -SIGUSR1 .waybar-wrapped"
+
+    bindsym --to-code $mod+Alt+l exec --no-startup-id $locker
 
     # Power Menu
-    bindsym --to-code $mod+Shift+Delete exec $powermenu
+    bindsym --to-code $mod+Shift+Delete exec --no-startup-id $powermenu
 #
 # Moving around:
 #
@@ -158,9 +161,9 @@ bindsym --to-code Shift+Alt+Print exec grim -g "$(slurp)" - | wl-copy -t image/p
 # capture the focused monitor to clipboard
 bindsym --to-code Shift+Control+Print exec grim -o $(swaymsg -t get_outputs | jq -r '.[] | select(.focused) | .name') - | wl-copy -t image/png
 
-bindsym --to-code XF86AudioMute exec wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
-bindsym --to-code XF86AudioRaiseVolume exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+
-bindsym --to-code XF86AudioLowerVolume exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-
+bindsym --to-code XF86AudioMute exec --no-startup-id wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
+bindsym --to-code XF86AudioRaiseVolume exec --no-startup-id wpctl set-volume @DEFAULT_AUDIO_SINK@ 2%+
+bindsym --to-code XF86AudioLowerVolume exec --no-startup-id wpctl set-volume @DEFAULT_AUDIO_SINK@ 2%-
 
 # bar {
 #    position top

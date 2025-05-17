@@ -11,4 +11,8 @@ client.unfocused        #88c0d0 #2e3440 #d8dee9 #4c566a   #4c566a
 client.urgent           #ebcb8b #ebcb8b #2e3440 #8fbcbb   #ebcb8b
 
 default_border pixel 3
-gaps inner 7
+gaps inner 2
+gaps outer 0
+
+font pango:monospace 10
+for_window [app_id=".*"] title_format "<span color='#ffffff'>%title</span>"
