@@ -117,6 +117,7 @@ in
     fastfetch gomplate
     duf bat ripgrep fd
     doggo
+    dive
     openssl
     unzip p7zip
     htop bottom procs
