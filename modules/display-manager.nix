@@ -14,10 +14,10 @@ lib.mkIf conditions.graphicalUser {
       #   user = "greeter";
       # };
 
-      initial_session = {
-        command = "${compositor.launch}/bin/launch";
-        user = configData.username;
-      };
+      # initial_session = {
+      #   command = "${compositor.launch}/bin/launch";
+      #   user = configData.username;
+      # };
     };
   };
 
