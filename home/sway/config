@@ -175,3 +175,8 @@ focus_follows_mouse no
 
 for_window [class=".*"] inhibit_idle fullscreen
 for_window [app_id=".*"] inhibit_idle fullscreen
+
+for_window [window_type="dialog"] floating enable
+for_window [window_role="dialog"] floating enable
+
+for_window [app_id="xdg-desktop-portal-gtk"] floating enable
