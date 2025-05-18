@@ -116,7 +116,7 @@ in
     gnumake git
     fastfetch gomplate
     duf bat ripgrep fd
-    doggo
+    gping doggo
     dive
     openssl
     unzip p7zip
