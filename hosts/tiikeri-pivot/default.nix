@@ -49,11 +49,6 @@ in
     # cryptomator
   ];
 
-  services.protonmail-bridge = {
-    enable = true;
-    path = [ pkgs.gnome-keyring ];
-  };
-
   programs.steam = {
     enable = shouldEnable;
 
