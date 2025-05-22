@@ -24,7 +24,7 @@ in
   };
 
   environment.systemPackages = with pkgs; [
-    intel-gpu-tools
+    nvtopPackages.intel
 
     signal-desktop-bin
     protonup-qt

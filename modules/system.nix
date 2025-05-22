@@ -289,17 +289,28 @@ in
 
   xdg.portal = {
     enable = lib.mkDefault conditions.graphicalUser;
-    wlr.enable = true;
+    xdgOpenUsePortal = false;
+    wlr = {
+      enable = true;
+    };
+    lxqt = {
+      enable = true;
+      styles = [
+        pkgs.kdePackages.qtstyleplugin-kvantum
+      ];
+    };
     extraPortals = [ pkgs.xdg-desktop-portal-gtk pkgs.oo7-portal ];
     config = {
       sway = {
-        default = lib.mkForce [ "gtk" "wlr" ];
+        default = lib.mkForce [ "wlr" "lxqt" ];
       };
       river = {
-        default = [ "gtk" "wlr" ];
+        default = [ "wlr" "gtk" ];
       };
       Hyprland = {
-        default = [ "Hyprland" ];
+        default = [ "hyprland" "lxqt" ];
+        "org.freedesktop.impl.portal.FileChooser" = [ "lxqt" ];
+        # "org.freedesktop.impl.portal.Secret" = [ "gnome-keyring" ];
         # "org.freedesktop.impl.portal.Secret" = [ "oo7-portal" ];
       };
     };
@@ -355,7 +366,7 @@ in
   };
 
   programs.hyprland = {
-    enable = false;
+    enable = lib.mkDefault conditions.graphicalUser;
     xwayland.enable = true;
   };
 

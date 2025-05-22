@@ -3,7 +3,7 @@ let
   cmp-customize = import ../packages/compositor-custom.nix;
   desktopSessions = config.services.displayManager.sessionData.desktops;
 
-  compositor = cmp-customize { inherit pkgs; cmp = "sway"; };
+  compositor = cmp-customize { inherit pkgs; cmp = "Hyprland"; };
 in
 lib.mkIf conditions.graphicalUser {
   services.greetd = {
@@ -30,8 +30,8 @@ lib.mkIf conditions.graphicalUser {
   programs.regreet = {
     enable = true;
     font = {
-      name = "Inter Display";
-      package = pkgs.inter;
+      name = "Adwaita Sans";
+      package = pkgs.adwaita-fonts;
     };
     settings = {
       GTK = {

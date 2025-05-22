@@ -27,21 +27,21 @@ in
     fallbackDns = [ "1.0.0.1" "1.1.1.1" "2606:4700:4700::1111" "2606:4700:4700::1001" ];
   };
 
-  services.unbound = {
-    enable = false;
-    group = "networkmanager";
-    resolveLocalQueries = true;
-    settings = {
-      include = "/etc/unbound/resolvconf.conf";
-      server = {
-        private-domain = ["intranet" "internal" "private" "corp" "home" "lan"];
-        domain-insecure = ["intranet" "internal" "private" "corp" "home" "lan"];
+  # services.unbound = {
+  #   enable = true;
+  #   group = "networkmanager";
+  #   resolveLocalQueries = true;
+  #   settings = {
+  #     include = "/etc/unbound/resolvconf.conf";
+  #     server = {
+  #       private-domain = ["intranet" "internal" "private" "corp" "home" "lan"];
+  #       domain-insecure = ["intranet" "internal" "private" "corp" "home" "lan"];
 
-       	unblock-lan-zones = true;
-       	insecure-lan-zones = true;
-      };
-    };
-  };
+  #      	unblock-lan-zones = true;
+  #      	insecure-lan-zones = true;
+  #     };
+  #   };
+  # };
 
   services.openssh = lib.mkIf conditions.isServer {
     enable = true;
