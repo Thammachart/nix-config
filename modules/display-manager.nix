@@ -3,7 +3,8 @@ let
   cmp-customize = import ../packages/compositor-custom.nix;
   desktopSessions = config.services.displayManager.sessionData.desktops;
 
-  compositor = cmp-customize { inherit pkgs; cmp = "Hyprland"; };
+  sway = cmp-customize { inherit pkgs; cmp = "sway"; };
+  hyprland = cmp-customize { inherit pkgs; cmp = "Hyprland"; };
 in
 lib.mkIf conditions.graphicalUser {
   services.greetd = {
@@ -24,7 +25,7 @@ lib.mkIf conditions.graphicalUser {
   services.displayManager = {
     enable = true;
     execCmd = config.systemd.services.greetd.serviceConfig.ExecStart;
-    sessionPackages = [ compositor.custom-desktop-entry ];
+    sessionPackages = [ sway.custom-desktop-entry hyprland.custom-desktop-entry ];
   };
 
   programs.regreet = {
