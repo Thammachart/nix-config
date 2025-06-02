@@ -195,9 +195,8 @@ in
     qalculate-gtk
     imv
     qview
-    photoqt
-    vlc
     mpv
+    clapper
 
     # PDF Viewer
     zathura
