@@ -113,7 +113,7 @@ in
     curl wget
     xdg-user-dirs
     bash zsh
-    gnumake git
+    gnumake git git-cliff
     fastfetch gomplate
     duf bat ripgrep fd
     gping doggo
