@@ -29,7 +29,7 @@ in
     google-cloud-sql-proxy
     pgadmin4-desktopmode
     # rustdesk-flutter
-    bruno
+    # bruno
     google-cloud-sql-proxy
     filezilla
     caddy
