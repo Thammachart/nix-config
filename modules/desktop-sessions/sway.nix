@@ -17,7 +17,7 @@ in
   };
 
   config = lib.mkIf cfg.enable {
-    environment.systemPackages = with pkgs; [ cfg.package swaylock swayidle swaybg ];
+    environment.systemPackages = with pkgs; [ cfg.package swaylock swayidle swaybg grim slurp ];
 
     services.displayManager.sessionPackages = [ cmp.custom-desktop-entry ];
 

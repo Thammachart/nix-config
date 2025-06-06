@@ -179,7 +179,6 @@ in
     waybar
     wlsunset
 
-    grim slurp
     wl-clipboard
 
     fuzzel
