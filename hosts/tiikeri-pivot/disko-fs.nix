@@ -58,7 +58,7 @@
                 type = "filesystem";
                 format = "btrfs";
                 mountpoint = "/data/nvme1";
-                mountOptions = [ "noatime" "commit=120" "compress=zstd" ];
+                mountOptions = [ "nofail" "noatime" "commit=120" "compress=zstd" ];
               };
             };
           };
