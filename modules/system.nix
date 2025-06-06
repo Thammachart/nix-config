@@ -11,6 +11,8 @@ in
     ./systemd.nix
     ./fonts.nix
     ./display-manager.nix
+    ./desktop-sessions/sway.nix
+    ./desktop-sessions/hyprland.nix
   ];
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users."${configData.username}" = {
@@ -170,7 +172,8 @@ in
 
     glib
 
-    yaru-theme papirus-icon-theme
+    papirus-icon-theme
+    yaru-theme
 
     syncthing
     waybar
@@ -187,6 +190,8 @@ in
     keepassxc
     seahorse
 
+    nautilus
+
     lxqt.pcmanfm-qt
     lxqt.lximage-qt
     lxqt.lxqt-archiver
@@ -196,7 +201,7 @@ in
     imv
     qview
     mpv
-    clapper
+    # clapper
 
     # PDF Viewer
     zathura
@@ -241,6 +246,8 @@ in
     glxinfo
     # yubikey-manager-qt
     pinta
+
+    bustle
   ] ++ lib.optionals conditions.isWork [
     netbird
   ];
@@ -251,6 +258,7 @@ in
 
   services.dbus = {
     enable = true;
+    implementation = "broker";
   };
 
   services.scx = {
@@ -289,29 +297,9 @@ in
   xdg.portal = {
     enable = lib.mkDefault conditions.graphicalUser;
     xdgOpenUsePortal = false;
-    wlr = {
-      enable = true;
-    };
-    lxqt = {
-      enable = true;
-      styles = [
-        pkgs.kdePackages.qtstyleplugin-kvantum
-      ];
-    };
     extraPortals = [ pkgs.xdg-desktop-portal-gtk pkgs.oo7-portal ];
     config = {
-      sway = {
-        default = lib.mkForce [ "wlr" "lxqt" ];
-      };
-      river = {
-        default = [ "wlr" "gtk" ];
-      };
-      Hyprland = {
-        default = [ "hyprland" "lxqt" ];
-        "org.freedesktop.impl.portal.FileChooser" = [ "lxqt" ];
-        # "org.freedesktop.impl.portal.Secret" = [ "gnome-keyring" ];
-        # "org.freedesktop.impl.portal.Secret" = [ "oo7-portal" ];
-      };
+      common = { default = [ "gtk" ]; };
     };
   };
 
@@ -351,12 +339,15 @@ in
     };
   };
 
-  programs.sway = {
-    enable = lib.mkDefault conditions.graphicalUser;
-    package = pkgs.sway;
-    wrapperFeatures.gtk = true;
-    extraPackages = with pkgs; [ swaylock swayidle swaybg ];
-  };
+  desktop-sessions.sway.enable = lib.mkDefault conditions.graphicalUser;
+  desktop-sessions.hyprland.enable = lib.mkDefault conditions.hyprland;
+
+  # programs.sway = {
+  #   enable = lib.mkDefault conditions.graphicalUser;
+  #   package = pkgs.sway;
+  #   wrapperFeatures.gtk = true;
+  #   extraPackages = with pkgs; [ grim slurp swaylock swayidle swaybg ];
+  # };
 
   programs.river = {
     enable = false;
@@ -364,10 +355,10 @@ in
     extraPackages = with pkgs; [];
   };
 
-  programs.hyprland = {
-    enable = lib.mkDefault conditions.graphicalUser;
-    xwayland.enable = true;
-  };
+  # programs.hyprland = {
+  #   enable = lib.mkDefault conditions.graphicalUser;
+  #   xwayland.enable = true;
+  # };
 
   programs.hyprlock = {
     enable = config.programs.hyprland.enable;

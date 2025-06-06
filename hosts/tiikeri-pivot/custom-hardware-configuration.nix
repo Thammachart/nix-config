@@ -11,7 +11,9 @@
     enable = false;
 
     extraPackages = with pkgs; [
-      mesa_git.opencl intel-media-driver intel-ocl
+      mesa_git.opencl
+      intel-media-driver
+      intel-ocl
     ];
 
     extraPackages32 = with pkgs.pkgsi686Linux; [
@@ -24,7 +26,8 @@
     enable32Bit = true;
 
     extraPackages = with pkgs; [
-      intel-media-driver intel-ocl
+      intel-media-driver
+      intel-ocl
     ];
 
     extraPackages32 = with pkgs.pkgsi686Linux; [
