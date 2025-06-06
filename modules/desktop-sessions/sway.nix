@@ -1,22 +1,32 @@
-{pkgs, lib, ...}:
+{ pkgs, lib, config, ... }:
 let
   cmp-customize = import ../../packages/compositor-custom.nix;
-  cfg = config.desktop-sessions.sway;
 
-  cmp = cmp-customize { inherit pkgs; cmp = "sway"; };
+  cmp-name = "sway";
+
+  cfg = config.desktop-sessions."${cmp-name}";
+  cmp = cmp-customize { inherit pkgs; cmp = cmp-name; };
 in
 {
-  options.desktop-sessions.sway = {
+  options.desktop-sessions."${cmp-name}" = {
     enable = lib.mkOption {
       type = lib.types.bool;
       default = false;
     };
+    package = lib.mkPackageOption pkgs cmp-name {};
   };
 
   config = lib.mkIf cfg.enable {
-    environment.systemPackages = with pkgs; [ sway swaylock swayidle swaybg ];
+    environment.systemPackages = with pkgs; [ cfg.package swaylock swayidle swaybg ];
 
     services.displayManager.sessionPackages = [ cmp.custom-desktop-entry ];
+
+    environment.etc = {
+      "sway/config".source = lib.mkOptionDefault "${cfg.package}/etc/sway/config";
+      "sway/config.d/nixos.conf".text = ''
+        exec ${pkgs.dbus}/bin/dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK XDG_CURRENT_DESKTOP
+      '';
+    };
 
     xdg.portal = {
       enable = true;
@@ -26,8 +36,10 @@ in
         settings = {};
       };
       config = {
-        sway = {
+        "${cmp-name}" = {
           default = [ "wlr" "gtk" ];
+          "org.freedesktop.impl.portal.ScreenCast" = "wlr";
+          "org.freedesktop.impl.portal.Screenshot" = "wlr";
         };
       };
     };

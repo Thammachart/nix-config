@@ -1,6 +1,6 @@
 { pkgs, osConfig, lib, templateFile, configData, conditions, ...  }:
 
-lib.mkIf osConfig.programs.sway.enable {
+lib.mkIf osConfig.desktop-sessions.sway.enable {
   home.file.".config/sway/config".source = ./config;
   home.file.".config/sway/variables".source = templateFile "sway-vars-${configData.username}" ./variables.tmpl configData.homeSettings;
   home.file.".config/sway/autostart".source = templateFile "sway-autostart-${configData.username}" ./autostart.tmpl configData.homeSettings;
