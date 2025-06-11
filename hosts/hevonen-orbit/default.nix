@@ -60,9 +60,16 @@ in
   # security.pki.certificateFiles = [
   #   config.sops.secrets.shobshop_internal_ca_cert.path
   # ];
+  #
+
+  services.ananicy = {
+    enable = true;
+    package = pkgs.ananicy-cpp;
+    rulesProvider = config.services.ananicy.package;
+  };
 
   programs.auto-cpufreq = {
-    enable = true;
+    enable = false;
     settings = {
       charger = {
         governor = "performance";
