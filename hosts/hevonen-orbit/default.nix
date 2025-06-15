@@ -16,7 +16,7 @@ in
 
   boot.kernelPackages = pkgs.linuxPackages_cachyos-lto;
 
-  users.users."${configData.username}".extraGroups = [ "docker" "libvirtd" "adbusers" "kvm" ];
+  users.users."${configData.username}".extraGroups = [ "docker" ];
 
   environment.sessionVariables = {
     DEVSHELLS_PATH = "$HOME/shobshop-projects/common-dev-shells";
@@ -30,27 +30,10 @@ in
     pgadmin4-desktopmode
     # rustdesk-flutter
     # bruno
-    google-cloud-sql-proxy
     filezilla
     caddy
     libreoffice-fresh
   ]);
-
-  programs.virt-manager = {
-    enable = true;
-  };
-
-  virtualisation.libvirtd = {
-    enable = true;
-  };
-
-  virtualisation.spiceUSBRedirection = {
-    enable = true;
-  };
-
-  programs.adb = {
-    enable = true;
-  };
 
   # sops.secrets.shobshop_internal_ca_cert = {
   #   format = "binary";

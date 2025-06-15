@@ -359,13 +359,13 @@ in
   #   xwayland.enable = true;
   # };
 
-  programs.hyprlock = {
-    enable = config.programs.hyprland.enable;
-  };
+  # programs.hyprlock = {
+  #   enable = config.programs.hyprland.enable;
+  # };
 
-  services.hypridle = {
-    enable = config.programs.hyprland.enable;
-  };
+  # services.hypridle = {
+  #   enable = config.programs.hyprland.enable;
+  # };
 
   programs.xwayland = {
     enable = lib.mkDefault conditions.graphicalUser;
@@ -460,6 +460,6 @@ in
   # and migrated your data accordingly.
   #
   # For more information, see `man configuration.nix` or https://nixos.org/manual/nixos/stable/options#opt-system.stateVersion .
-  system.stateVersion = "24.11"; # Did you read the comment?
+  system.stateVersion = "25.05"; # Did you read the comment?
 
 }

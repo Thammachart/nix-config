@@ -8,6 +8,9 @@ let
   launch = pkgs.writeScriptBin "launch" ''
     source ${wl-enable}
 
+    # force volume to always be 70% upon startup
+    wpctl set-volume @DEFAULT_AUDIO_SINK@ 70%
+
     export XDG_SESSION_DESKTOP=${cmp}
     export XDG_CURRENT_DESKTOP=${cmp}
 
