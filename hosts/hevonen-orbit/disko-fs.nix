@@ -34,7 +34,7 @@
                 extraFormatArgs = [
                   "--type luks2"
                   "--use-random"
-                  "--hash sha512"
+                  "--hash blake2b-512"
                   "--iter-time 3000"
                 ];
                 extraOpenArgs = [ "--timeout 10" ];
