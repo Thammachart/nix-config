@@ -14,7 +14,7 @@
               content = {
                 type = "filesystem";
                 format = "vfat";
-                extraArgs = [ "-F 32" ];
+                extraArgs = [ "-F32" ];
                 mountpoint = "/boot";
                 mountOptions = [ "defaults" "noatime" ];
               };

@@ -169,6 +169,7 @@ in
     vscodium-with-patches.fhs
     geany
     zed-editor
+    gnome-text-editor
 
     glib
 

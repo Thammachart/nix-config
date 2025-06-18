@@ -13,7 +13,19 @@ in
       type = lib.types.bool;
       default = false;
     };
-    package = lib.mkPackageOption pkgs cmp-name {};
+    package = lib.mkPackageOption pkgs cmp-name {} // {
+      apply =
+        p:
+        if p == null then
+          null
+        else
+         p.override {
+           withBaseWrapper = true;
+           withGtkWrapper = true;
+           enableXWayland = true;
+           isNixOS = true;
+         };
+    };
   };
 
   config = lib.mkIf cfg.enable {
