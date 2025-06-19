@@ -40,6 +40,11 @@ in
       '';
     };
 
+    security = {
+      polkit.enable = true;
+      pam.services.swaylock = {};
+    };
+
     xdg.portal = {
       enable = true;
       extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
