@@ -258,7 +258,6 @@ in
 
   services.dbus = {
     enable = true;
-    implementation = "broker";
   };
 
   services.scx = {
