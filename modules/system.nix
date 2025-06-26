@@ -248,8 +248,6 @@ in
     pinta
 
     bustle
-  ] ++ lib.optionals conditions.isWork [
-    netbird
   ];
 
   qt = {
