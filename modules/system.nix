@@ -125,7 +125,7 @@ in
     htop bottom procs
     dbus
     age sops
-    devenv
+    # devenv
 
     yazi
 
