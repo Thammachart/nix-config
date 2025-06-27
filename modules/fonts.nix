@@ -27,7 +27,7 @@ lib.mkIf conditions.graphicalUser {
       iosevka
 
       # nerdfonts
-      nerd-fonts.zed-mono
+      nerd-fonts.adwaita-mono
       nerd-fonts.caskaydia-mono
     ];
 
