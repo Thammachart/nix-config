@@ -100,14 +100,37 @@ in
 
   security.sudo-rs = {
     enable = true;
-    wheelNeedsPassword = lib.mkDefault false;
+    wheelNeedsPassword = lib.mkDefault true;
     execWheelOnly = true;
   };
 
   security.doas = {
     enable = false;
-    wheelNeedsPassword = lib.mkDefault false;
+    wheelNeedsPassword = lib.mkDefault true;
   };
+
+  security.pam.services = {
+    login.u2fAuth = true;
+    sudo.u2fAuth = true;
+  };
+
+  security.pam.u2f = {
+    enable = !conditions.isServer;
+    settings = {
+      interactive = true;
+      cue = true;
+
+      origin = "pam://yubikey";
+      authfile = pkgs.writeText "u2f-mappings" (lib.concatStrings [
+        configData.username
+        ":xaClv5J1nazm/i6AhfKUfZ74aaQzQ2sRW3iX39k0GY90BQ3nIUrYWj3lOLjgiSHh2hqGSDYsb4RHQRLHVkH01Q==,HUgBLOWj7UqiTUqoWggyaflbC739JZSE0wyEaTDdrR0xyX/AnPYXeCCUD1M+erMCiYQy7GWuZPpKFrNDj+fcFQ==,es256,+presence"
+        ":rrZuyR/Ueu9oAuMAjj2BOD8ed6h9F/MgUHwy37FRn3qCyncrEW339NV47Al/6Q4XhQv54e7Z3HddKRgWs97IGg==,YXdUqi40YeTBzW0477AynlI0/y6RuEMMRVZC9s0cx2oRp2K7XuSiIKozjxUU+K+Yk09ZNDKv48oV1rTbJOAejw==,es256,+presence"
+        ":fEBcjbNDWkeypTctlCkdaEUahDlMc45k5a8FnWO6vukrH/QLOlCJafCZzQuFE3eAmuzbYGSVq2vctm2XjgaQPQ==,DLe+708BDNIG83UzgZHiMccNbHDSc+NNCDpzwhk8z6AIXJhDJ6T6hPdRFEcpKc/mXj5Ev2Bfl0jKn+P3FNrfpg==,es256,+presence"
+        ":722AYtTh+QVPmQVGmpFqmtbV5vq11HNh8vBctcXprY/7GfsDp7Jy3eBw3KvDC4FvVYjAVIwBFlX0+pLSE8R5Gg==,uHpAVoHY3IKr+w+dgL0t1MrORV4FlmyixTSNglmYfXXxiw1YUX5+2QNDnFgrhzq9N7aKaz5KHsZazjBDQsdtBw==,es256,+presence"
+      ]);
+    };
+  };
+
 
   environment.systemPackages = with pkgs; [
     btop

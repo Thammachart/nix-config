@@ -9,7 +9,7 @@
       ../../modules/system.nix
     ];
 
-    users.users."${configData.username}".extraGroups = [ "docker" ];
+    users.users."${configData.username}".extraGroups = [ "docker" "incus-admin" ];
 
     virtualisation.incus = {
       enable = true;
