@@ -2,6 +2,7 @@
 
 {
   imports = [
+    ./gpg.nix
     ./hypr
     ./sd
     ./foot

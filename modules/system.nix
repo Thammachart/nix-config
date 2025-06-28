@@ -100,24 +100,24 @@ in
 
   security.sudo-rs = {
     enable = true;
-    wheelNeedsPassword = lib.mkDefault true;
+    wheelNeedsPassword = true;
     execWheelOnly = true;
   };
 
   security.doas = {
     enable = false;
-    wheelNeedsPassword = lib.mkDefault true;
+    wheelNeedsPassword = true;
   };
 
   security.pam.services = {
-    login.u2fAuth = true;
-    sudo.u2fAuth = true;
+    login.u2fAuth = !conditions.isServer;
+    sudo.u2fAuth = !conditions.isServer;
   };
 
   security.pam.u2f = {
     enable = !conditions.isServer;
     settings = {
-      interactive = true;
+      interactive = false;
       cue = true;
 
       origin = "pam://yubikey";
@@ -130,7 +130,6 @@ in
       ]);
     };
   };
-
 
   environment.systemPackages = with pkgs; [
     btop
@@ -267,14 +266,19 @@ in
     libva-utils
     waypaper
     glxinfo
-    # yubikey-manager-qt
     pinta
+
+    yubikey-manager
 
     bustle
   ];
 
   qt = {
     enable = lib.mkDefault conditions.graphicalUser;
+  };
+
+  services.pcscd = {
+    enable = !conditions.isServer;
   };
 
   services.dbus = {
@@ -302,7 +306,9 @@ in
     };
   };
 
-  services.fwupd.enable = conditions.isLaptop;
+  services.fwupd = {
+    enable = conditions.isLaptop;
+  };
 
   services.fstrim = {
     enable = true;
