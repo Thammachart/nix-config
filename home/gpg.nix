@@ -1,9 +1,9 @@
 { pkgs, lib, configData, conditions, ... }:
-{
+lib.mkIf (!conditions.isServer) {
   home.packages = [ pkgs.gpg-tui ];
 
   programs.gpg = {
-    enable = !conditions.isServer;
+    enable = true;
 
     # https://support.yubico.com/hc/en-us/articles/4819584884124-Resolving-GPG-s-CCID-conflicts
     scdaemonSettings = {
@@ -35,7 +35,7 @@
   };
 
   services.gpg-agent = {
-    enable = !conditions.isServer;
+    enable = true;
 
     # https://github.com/drduh/config/blob/master/gpg-agent.conf
     defaultCacheTtl = 60;
