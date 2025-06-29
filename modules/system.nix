@@ -324,15 +324,14 @@ in
   xdg.portal = {
     enable = lib.mkDefault conditions.graphicalUser;
     xdgOpenUsePortal = false;
-    extraPortals = [ pkgs.xdg-desktop-portal-gtk pkgs.oo7-portal ];
+    extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
     config = {
       common = { default = [ "gtk" ]; };
     };
   };
 
-  # services.gnome.gnome-keyring = {
-  #   enable = lib.mkDefault conditions.graphicalUser;
-  # };
+  # secret-providers.gnome-keyring.enable = lib.mkDefault conditions.graphicalUser;
+  secret-providers.oo7-daemon.enable = lib.mkDefault conditions.graphicalUser;
 
   programs.gnome-disks = {
     enable = lib.mkDefault conditions.graphicalUser;
@@ -367,7 +366,7 @@ in
   };
 
   desktop-sessions.sway.enable = lib.mkDefault conditions.graphicalUser;
-  desktop-sessions.hyprland.enable = lib.mkDefault conditions.hyprland;
+  # desktop-sessions.hyprland.enable = lib.mkDefault conditions.hyprland;
 
   # programs.sway = {
   #   enable = lib.mkDefault conditions.graphicalUser;
