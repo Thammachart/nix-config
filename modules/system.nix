@@ -13,6 +13,7 @@ in
     ./display-manager.nix
     ./desktop-sessions/sway.nix
     ./desktop-sessions/hyprland.nix
+    ./secret-providers/gnome-keyring.nix
   ];
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users."${configData.username}" = {
@@ -329,9 +330,9 @@ in
     };
   };
 
-  services.gnome.gnome-keyring = {
-    enable = lib.mkDefault conditions.graphicalUser;
-  };
+  # services.gnome.gnome-keyring = {
+  #   enable = lib.mkDefault conditions.graphicalUser;
+  # };
 
   programs.gnome-disks = {
     enable = lib.mkDefault conditions.graphicalUser;
