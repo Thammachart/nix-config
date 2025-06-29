@@ -11,7 +11,7 @@ in
   };
 
   config = lib.mkIf cfg.enable {
-    environment.systemPackages = [ pkgs.oo7 ];
+    environment.systemPackages = [ pkgs.oo7 pkgs.oo7-server ];
 
     services.dbus.packages = [];
 
@@ -28,7 +28,7 @@ in
         Type = "dbus";
         Restart = "on-failure";
         RestartSec = 1;
-        ExecStart = "${pkgs.oo7-server}/bin/oo7-daemon --verbose --replace --login";
+        ExecStart = "+/bin/sh -c '${pkgs.age}/bin/age -d -i ~/.ssh/id_ed25519 ~/.local/share/keyrings/login.age | ${pkgs.oo7-server}/libexec/oo7-daemon --login'";
         ExecStartPost = "${pkgs.libsecret}/bin/secret-tool search att1 val1";
         BusName = "org.freedesktop.secrets";
         TimeoutStopSec = 10;

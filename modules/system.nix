@@ -14,6 +14,7 @@ in
     ./desktop-sessions/sway.nix
     ./desktop-sessions/hyprland.nix
     ./secret-providers/gnome-keyring.nix
+    ./secret-providers/oo7-daemon.nix
   ];
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users."${configData.username}" = {
@@ -165,10 +166,6 @@ in
     pciutils
 
     ] ++ lib.optionals conditions.graphicalUser [
-
-    oo7
-    oo7-server
-
     foot-with-patches
     xdg-utils
     # firefox
@@ -330,8 +327,8 @@ in
     };
   };
 
-  # secret-providers.gnome-keyring.enable = lib.mkDefault conditions.graphicalUser;
-  secret-providers.oo7-daemon.enable = lib.mkDefault conditions.graphicalUser;
+  secret-providers.gnome-keyring.enable = lib.mkDefault conditions.graphicalUser;
+  # secret-providers.oo7-daemon.enable = lib.mkDefault conditions.graphicalUser;
 
   programs.gnome-disks = {
     enable = lib.mkDefault conditions.graphicalUser;

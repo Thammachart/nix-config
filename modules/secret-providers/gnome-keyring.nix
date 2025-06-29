@@ -1,4 +1,4 @@
-{ pkgs, lib, config, ... }:
+{ pkgs, lib, config, configData, ... }:
 let
   providerName = "gnome-keyring";
   cfg = config.secret-providers."${providerName}";
@@ -23,8 +23,8 @@ in
     # security.pam.services.login.enableGnomeKeyring = true;
 
     security.wrappers.gnome-keyring-daemon = {
-      owner = "root";
-      group = "root";
+      owner = "${configData.username}";
+      group = "users";
       capabilities = "cap_ipc_lock=ep";
       source = "${pkgs.gnome-keyring}/bin/gnome-keyring-daemon";
     };
@@ -40,7 +40,7 @@ in
         Type = "dbus";
         Restart = "on-failure";
         RestartSec = 1;
-        ExecStart = "+/bin/sh -c '${pkgs.age}/bin/age -d -i ~/.ssh/id_ed25519 ~/.local/share/keyrings/login.age | exec ${pkgs.gnome-keyring}/bin/gnome-keyring-daemon --foreground --unlock'";
+        ExecStart = "/bin/sh -c '${pkgs.age}/bin/age -d -i %h/.ssh/id_ed25519 %h/.local/share/keyrings/login.age | exec ${pkgs.gnome-keyring}/bin/gnome-keyring-daemon --foreground --unlock'";
         ExecStartPost = "${pkgs.libsecret}/bin/secret-tool search att1 val1";
         BusName = "org.freedesktop.secrets";
         TimeoutStopSec = 10;
