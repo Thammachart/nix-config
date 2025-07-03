@@ -25,9 +25,10 @@ lib.mkIf conditions.graphicalUser {
       _0xproto
       geist-font
       iosevka
+      julia-mono
+      martian-mono
 
       # nerdfonts
-      nerd-fonts.adwaita-mono
       nerd-fonts.caskaydia-mono
     ];
 
