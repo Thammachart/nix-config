@@ -15,7 +15,7 @@ lib.mkIf conditions.graphicalUser {
       noto-fonts-color-emoji
       inter
       liberation_ttf
-      ubuntu_font_family
+      ubuntu-sans
       merriweather
       adwaita-fonts
 
@@ -27,6 +27,7 @@ lib.mkIf conditions.graphicalUser {
       iosevka
       julia-mono
       martian-mono
+      ubuntu-sans-mono
 
       # nerdfonts
       nerd-fonts.caskaydia-mono

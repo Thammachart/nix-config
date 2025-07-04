@@ -12,7 +12,7 @@
     fonts = {
       latin = {
         ui = "Inter Display";
-        ui_monospace = "Martian Mono";
+        ui_monospace = "Ubuntu Sans Mono";
         terminal_monospace = "Cascadia Mono NF";
       };
       thai = {
