@@ -68,9 +68,13 @@
   programs.git = {
     enable = true;
     userName = "Thammachart";
-    userEmail = "1731496+Thammachart@users.noreply.github.com";
+    userEmail = null;
 
-    signing.format = "ssh";
+    signing = {
+      format = "ssh";
+      key = "~/.ssh/id_ed25519.pub";
+    };
+
     extraConfig = {
       merge = {
         log = 100;
