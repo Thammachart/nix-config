@@ -3,7 +3,7 @@ lib.mkIf (!conditions.isServer) {
   home.packages = [ pkgs.gpg-tui ];
 
   programs.gpg = {
-    enable = true;
+    enable = false;
 
     # https://support.yubico.com/hc/en-us/articles/4819584884124-Resolving-GPG-s-CCID-conflicts
     scdaemonSettings = {
@@ -35,12 +35,13 @@ lib.mkIf (!conditions.isServer) {
   };
 
   services.gpg-agent = {
-    enable = true;
+    enable = false;
 
     # https://github.com/drduh/config/blob/master/gpg-agent.conf
     defaultCacheTtl = 60;
     maxCacheTtl = 120;
     pinentry.package = pkgs.pinentry-curses;
+    enableSshSupport = true;
     extraConfig = ''
       ttyname $GPG_TTY
     '';

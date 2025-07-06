@@ -72,7 +72,7 @@
 
     signing = {
       format = "ssh";
-      key = "~/.ssh/id_ed25519.pub";
+      key = "~/.ssh/id_ed25519_sk.pub";
     };
 
     extraConfig = {

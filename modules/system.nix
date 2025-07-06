@@ -276,7 +276,7 @@ in
   };
 
   services.pcscd = {
-    enable = !conditions.isServer;
+    enable = false;
   };
 
   services.dbus = {
