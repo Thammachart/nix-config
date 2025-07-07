@@ -23,10 +23,11 @@ lib.mkIf conditions.graphicalUser {
     executable = true;
   };
 
-  home.file.".sd/git-subcommands/git-author.sh" = {
+  home.file.".local/bin/git-author.sh" = {
     text = ''
       #!/bin/sh
       set -euo pipefail
+
       PROFILE=~/.config/git/profiles/$1
       USER=$(sed -n '1p' $PROFILE)
       EMAIL=$(sed -n '2p' $PROFILE)

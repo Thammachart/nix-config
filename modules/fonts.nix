@@ -17,7 +17,6 @@ lib.mkIf conditions.graphicalUser {
       liberation_ttf
       ubuntu-sans
       merriweather
-      adwaita-fonts
 
       monaspace
       jetbrains-mono
@@ -25,7 +24,6 @@ lib.mkIf conditions.graphicalUser {
       _0xproto
       geist-font
       iosevka
-      julia-mono
       martian-mono
       ubuntu-sans-mono
 

@@ -30,8 +30,8 @@ lib.mkIf conditions.graphicalUser {
   programs.regreet = {
     enable = true;
     font = {
-      name = "Adwaita Sans";
-      package = pkgs.adwaita-fonts;
+      name = "Ubuntu Sans";
+      package = pkgs.ubuntu-sans;
     };
     settings = {
       GTK = {
