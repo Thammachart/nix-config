@@ -23,7 +23,7 @@ lib.mkIf conditions.graphicalUser {
     executable = true;
   };
 
-  home.file.".local/bin/git-author.sh" = {
+  home.file.".local/bin/git-author" = {
     text = ''
       #!/bin/sh
       set -euo pipefail
