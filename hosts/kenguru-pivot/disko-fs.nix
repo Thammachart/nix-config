@@ -19,24 +19,42 @@
                 mountOptions = [ "defaults" "noatime" ];
               };
             };
-            root-system = {
+            luks = {
               size = "100%";
               content = {
-                type = "btrfs";
-                extraArgs = [ "-f" ];
+                type = "luks";
+                name = "crypted-nixos";
 
-                subvolumes = {
-                  "@" = {
-                    mountpoint = "/";
-                    mountOptions = [ "noatime" "commit=120" "compress=zstd" ];
-                  };
-                  "@home" = {
-                    mountpoint = "/home";
-                    mountOptions = [ "noatime" "commit=120" "compress=zstd" ];
-                  };
-                  "@nix" = {
-                    mountpoint = "/nix";
-                    mountOptions = [ "noatime" "commit=120" "compress=zstd" ];
+                settings = {
+                  allowDiscards = true;
+                  bypassWorkqueues = true;
+                  crypttabExtraOpts = ["tpm2-device=auto" "token-timeout=10"];
+                };
+
+                extraFormatArgs = [
+                  "--type luks2"
+                  "--use-random"
+                  "--hash blake2b-512"
+                  "--iter-time 3000"
+                ];
+                extraOpenArgs = [ "--timeout 10" ];
+
+                content = {
+                  type = "btrfs";
+                  extraArgs = [ "-f" ];
+                  subvolumes = {
+                    "@" = {
+                      mountpoint = "/";
+                      mountOptions = [ "noatime" "commit=120" "compress=zstd" ];
+                    };
+                    "@home" = {
+                      mountpoint = "/home";
+                      mountOptions = [ "noatime" "commit=120" "compress=zstd" ];
+                    };
+                    "@nix" = {
+                      mountpoint = "/nix";
+                      mountOptions = [ "noatime" "commit=120" "compress=zstd" ];
+                    };
                   };
                 };
               };
