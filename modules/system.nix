@@ -27,7 +27,7 @@ in
   };
 
   boot = {
-    initrd.systemd.enable = lib.mkDefault (conditions.isLaptop && !conditions.isServer);
+    initrd.systemd.enable = lib.mkDefault (conditions.isLaptop);
     # initrd.verbose = false;
     kernel.sysctl = {
       "kernel.sysrq" = lib.mkDefault 1;
