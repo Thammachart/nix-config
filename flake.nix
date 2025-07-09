@@ -73,6 +73,7 @@
     nixosConfigurations = builtins.mapAttrs (n: v:
     let
       currentSystem = v.system or defaultSystem;
+      u2fConfig = v.u2f;
       conditions = rec {
         isPersonal = builtins.elem "personal" v.tags;
         isWork = builtins.elem "work" v.tags;
@@ -92,6 +93,7 @@
         inherit (inputs) nixos-hardware;
         inherit templateFile;
         inherit configData;
+        inherit u2fConfig;
         inherit (inputs) nix-secrets;
 
         inherit conditions;
