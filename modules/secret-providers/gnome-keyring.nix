@@ -40,7 +40,7 @@ in
         Type = "dbus";
         Restart = "on-failure";
         RestartSec = 1;
-        ExecStart = "/bin/sh -c '${pkgs.age}/bin/age -d -i %h/.ssh/id_ed25519 %h/.local/share/keyrings/login.age | exec ${pkgs.gnome-keyring}/bin/gnome-keyring-daemon --foreground --unlock'";
+        ExecStart = "/bin/sh -c '${pkgs.age}/bin/age -d -i %h/.local/age/id-default.txt %h/.local/share/keyrings/login.age | exec ${pkgs.gnome-keyring}/bin/gnome-keyring-daemon --foreground --unlock'";
         ExecStartPost = "${pkgs.libsecret}/bin/secret-tool search att1 val1";
         BusName = "org.freedesktop.secrets";
         TimeoutStopSec = 10;
