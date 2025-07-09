@@ -38,7 +38,9 @@
     };
     "hevonen-orbit" = {
       tags = [ "work" "laptop" "netbird" "hyprland" ];
-      u2f = [];
+      u2f = [
+        ":BRP8MZU1G6k83CyeR5py2hV2Ptma++199+rVUbaXsjaknTAbbZJPV2IqsHUvOGaJ0hmdnND7AdgbGB1a5atKe7sBFEysG5TryX9gf1GlbWxFWs/Jb/CYlP+SVe0NGh7wP/C7C7eBO1F/pji8JRDH/Bg6C84eF8Q1LWPcK1fHz04=,XzciyuaDSb13LaMbMChZOk+MTiIn8mFpVdzVJaKu6yE=,eddsa,+presence"
+      ];
     };
   };
 }
