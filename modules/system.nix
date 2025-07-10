@@ -218,7 +218,7 @@ in
     # clapper
 
     # PDF Viewer
-    zathura
+    papers
     foliate
 
     libsForQt5.qt5.qtwayland
@@ -329,7 +329,7 @@ in
   };
 
   programs.evince = {
-    enable = lib.mkDefault conditions.graphicalUser;
+    enable = false;
   };
 
   programs.dconf = {
