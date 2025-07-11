@@ -39,7 +39,7 @@
       tags = [ "personal" "laptop" "server" ];
       u2f = [];
       starship = {
-        directoryStyle = "fg:#e3e5e5 bg:#2a7505";
+        directoryStyle = "fg:#e3e5e5 bg:#6e2266";
       };
     };
     "hevonen-orbit" = {
