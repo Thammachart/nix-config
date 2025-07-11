@@ -321,6 +321,11 @@ in
     };
   };
 
+  programs.kdeconnect = {
+    enable = false;
+    package = pkgs.kdePackages.kdeconnect-kde;
+  };
+
   secret-providers.gnome-keyring.enable = lib.mkDefault conditions.graphicalUser;
   # secret-providers.oo7-daemon.enable = lib.mkDefault conditions.graphicalUser;
 
