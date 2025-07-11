@@ -31,16 +31,25 @@
         ":BgoYbl89nhCXbBStZhwRiaIPgPia/FHL++YQpe3hX6RoQdgWjYm5NxCyg/7deD41cQjvuH3KP6DHLGQPwTzQmA==,ka0DZvkCzhaD3nrpLENiK5fU48rSgM2carKjwWxKzNNzNu3esJ1pj9hvFTHZkfCpxoTZxG9E8okE6KrBM5nHUA==,es256,+presence"
         ":pl0PwFp5kEFqfwYyjhdeUlr715jaLbcTxqloCj9Q7eps51GMAC55EVyyk/K0tKysgdgi3cwCiU0NG57/Kmy//A==,oaAdj3bl5p137Q+Vrf+KjFJbbo73YhHDTqMLTjMKcYDiRcEbmbwlNdZGYCwV5py8Bn7TR9upoTGHIn/lkQ3VeA==,es256,+presence"
       ];
+      starship = {
+        directoryStyle = "fg:#e3e5e5 bg:#2a7505";
+      };
     };
     "kenguru-pivot" = {
       tags = [ "personal" "laptop" "server" ];
       u2f = [];
+      starship = {
+        directoryStyle = "fg:#e3e5e5 bg:#2a7505";
+      };
     };
     "hevonen-orbit" = {
       tags = [ "work" "laptop" "netbird" "hyprland" ];
       u2f = [
         ":BRP8MZU1G6k83CyeR5py2hV2Ptma++199+rVUbaXsjaknTAbbZJPV2IqsHUvOGaJ0hmdnND7AdgbGB1a5atKe7sBFEysG5TryX9gf1GlbWxFWs/Jb/CYlP+SVe0NGh7wP/C7C7eBO1F/pji8JRDH/Bg6C84eF8Q1LWPcK1fHz04=,XzciyuaDSb13LaMbMChZOk+MTiIn8mFpVdzVJaKu6yE=,eddsa,+presence"
       ];
+      starship = {
+        directoryStyle = "fg:#e3e5e5 bg:#2a7505";
+      };
     };
   };
 }

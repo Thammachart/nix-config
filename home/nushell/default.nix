@@ -1,4 +1,4 @@
-{ pkgs, lib, conditions, templateFile, configData, ...  }:
+{ pkgs, lib, conditions, templateFile, configData, hostConfig, ...  }:
 
 {
   programs = {
@@ -20,8 +20,7 @@
       enable = true;
       enableNushellIntegration = true;
     };
-
   };
 
-  xdg.configFile."starship.toml".source = ./starship.toml;
+  xdg.configFile."starship.toml".source = templateFile "starship-${configData.username}" ./starship.toml.tmpl hostConfig.starship;
 }

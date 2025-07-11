@@ -1,5 +1,6 @@
-{ config, inputs, lib, pkgs, configData, u2fConfig, conditions , hostName, nix-secrets, betterfox, ... }:
+{ config, inputs, lib, pkgs, configData, hostConfig, conditions , hostName, nix-secrets, betterfox, ... }:
 let
+  u2fEnabled = hostConfig.u2fConfig != [];
   foot-with-patches = import ../packages/foot { inherit pkgs; };
   vscodium-with-patches = import ../packages/vscodium { inherit pkgs; };
 in
@@ -112,18 +113,18 @@ in
   };
 
   security.pam.services = {
-    login.u2fAuth = !conditions.isServer;
-    sudo.u2fAuth = !conditions.isServer;
+    login.u2fAuth = u2fEnabled;
+    sudo.u2fAuth = u2fEnabled;
   };
 
   security.pam.u2f = {
-    enable = !conditions.isServer;
+    enable = u2fEnabled;
     settings = {
       interactive = false;
       cue = true;
 
       origin = "pam://${hostName}";
-      authfile = pkgs.writeText "u2f-mappings" (lib.concatStrings ([ configData.username ] ++ u2fConfig) );
+      authfile = pkgs.writeText "u2f-mappings" (lib.concatStrings ([ configData.username ] ++ hostConfig.u2fConfig) );
     };
   };
 

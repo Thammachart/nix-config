@@ -73,7 +73,10 @@
     nixosConfigurations = builtins.mapAttrs (n: v:
     let
       currentSystem = v.system or defaultSystem;
-      u2fConfig = v.u2f;
+      hostConfig = {
+        u2fConfig = v.u2f;
+        starship = v.starship;
+      };
       conditions = rec {
         isPersonal = builtins.elem "personal" v.tags;
         isWork = builtins.elem "work" v.tags;
@@ -93,7 +96,7 @@
         inherit (inputs) nixos-hardware;
         inherit templateFile;
         inherit configData;
-        inherit u2fConfig;
+        inherit hostConfig;
         inherit (inputs) nix-secrets;
 
         inherit conditions;
@@ -124,6 +127,7 @@
             inherit inputs;
             inherit templateFile;
             inherit configData;
+            inherit hostConfig;
             inherit (inputs) betterfox;
             inherit (inputs) catppuccin-foot;
             inherit (inputs) nix-secrets;
