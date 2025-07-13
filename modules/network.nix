@@ -6,6 +6,9 @@ in
 {
   networking = {
     hostName = hostName;
+
+    dhcpcd.enable = false;
+
     networkmanager = {
       enable = lib.mkDefault true;
 
@@ -18,11 +21,14 @@ in
             permissions = "";
             type = "wifi";
             interface-name = hostConfig.networking.ifname;
+            autoconnect = true;
+            autoconnect-priority = 99;
           };
           ipv4 = {
             address1 = hostConfig.networking.v4.ipaddr;
             dns = lib.concatStringsSep ";" configData.networking.default.DNS4;
             gateway = configData.networking.default.Gateway4;
+            dns-search = "$SEARCH_DOMAIN";
             may-fail = false;
             method = "manual";
           };
@@ -31,6 +37,7 @@ in
             address1 = hostConfig.networking.v6.ipaddr;
             dns = lib.concatStringsSep ";" configData.networking.default.DNS6;
             ignore-auto-dns = true;
+            dns-search = "$SEARCH_DOMAIN";
             may-fail = false;
             method = "auto";
           };
@@ -47,7 +54,6 @@ in
         };
       };
     };
-
 
     # resolvconf = {
     #   enable = true;
