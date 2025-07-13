@@ -76,6 +76,7 @@
       hostConfig = {
         u2fConfig = v.u2f;
         starship = v.starship;
+        networking = v.networking;
       };
       conditions = rec {
         isPersonal = builtins.elem "personal" v.tags;

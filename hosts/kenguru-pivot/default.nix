@@ -1,6 +1,9 @@
-{config, configData, pkgs, ...}:
+{ lib, config, configData, hostConfig, pkgs, ... }:
 let
-  defaultInterface = "enp5s0";
+  defaultInterface = hostConfig.networking.ifname;
+  defaultBridge = "br0";
+  ipv4 = lib.splitString "/" hostConfig.networking.v4.ipaddr;
+  ipv6 = lib.splitString "/" hostConfig.networking.v6.ipaddr;
 in
 {
   imports =
@@ -30,24 +33,31 @@ in
   };
 
   networking = {
+    useDHCP = false;
+    dhcpcd.enable = false;
+
     networkmanager.enable = false;
 
     nftables.enable = true;
 
-    interfaces."${defaultInterface}" = {
+    nameservers = (configData.networking.default.DNS4 ++ configData.networking.default.DNS6);
+
+    interfaces."${defaultInterface}" = {};
+
+    interfaces."${defaultBridge}" = {
       ipv4.addresses = [{
-        address = "192.168.0.5";
-        prefixLength = 16;
+        address = lib.head ipv4;
+        prefixLength = lib.toInt (lib.last ipv4);
       }];
       ipv6.addresses = [{
-        address = "fd00::5";
-        prefixLength = 96;
+        address = lib.head ipv6;
+        prefixLength = lib.toInt (lib.last ipv6);
       }];
     };
 
     defaultGateway = {
-      address = "192.168.0.1";
-      interface = "${defaultInterface}";
+      address = configData.networking.default.Gateway4;
+      interface = "${defaultBridge}";
     };
 
     firewall = {
@@ -55,10 +65,10 @@ in
       allowedTCPPorts = [ 8443 ];
     };
 
-    bridges = {};
+    bridges = {
+      "${defaultBridge}" = {
+        interfaces = [ defaultInterface ];
+      };
+    };
   };
-
-
-
-
 }
