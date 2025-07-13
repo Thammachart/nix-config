@@ -63,7 +63,7 @@
     "hevonen-orbit" = {
       tags = [ "work" "laptop" "netbird" "hyprland" ];
       networking = {
-        ifname = "wlp8s0";
+        ifname = "wlp2s0";
         v4 = { ipaddr = "192.168.10.21/16"; };
         v6 = { ipaddr = "fd00::10:21/96"; };
       };
