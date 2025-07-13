@@ -1,4 +1,7 @@
 {config, configData, pkgs, ...}:
+let
+  defaultInterface = "enp5s0";
+in
 {
   imports =
     [
@@ -9,17 +12,53 @@
       ../../modules/system.nix
     ];
 
-    users.users."${configData.username}".extraGroups = [ "docker" "incus-admin" ];
+  users.users."${configData.username}".extraGroups = [ "incus-admin" ];
 
-    virtualisation.incus = {
-      enable = true;
-      ui.enable = true;
+  boot.kernelPackages = pkgs.linuxPackages;
+
+  virtualisation.docker = {
+    enable = false;
+  };
+
+  virtualisation.podman = {
+    enable = false;
+  };
+
+  virtualisation.incus = {
+    enable = true;
+    ui.enable = true;
+  };
+
+  networking = {
+    networkmanager.enable = false;
+
+    nftables.enable = true;
+
+    interfaces."${defaultInterface}" = {
+      ipv4.addresses = [{
+        address = "192.168.0.5";
+        prefixLength = 16;
+      }];
+      ipv6.addresses = [{
+        address = "fd00::5";
+        prefixLength = 96;
+      }];
     };
 
-    networking.nftables.enable = true;
+    defaultGateway = {
+      address = "192.168.0.1";
+      interface = "${defaultInterface}";
+    };
 
-    networking.firewall = {
+    firewall = {
       enable = true;
       allowedTCPPorts = [ 8443 ];
     };
+
+    bridges = {};
+  };
+
+
+
+
 }

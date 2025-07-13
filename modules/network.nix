@@ -6,7 +6,7 @@ in
   networking = {
     hostName = hostName;
     networkmanager = {
-      enable = true;
+      enable = lib.mkDefault true;
     };
     # resolvconf = {
     #   enable = true;

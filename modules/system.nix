@@ -411,7 +411,7 @@ in
   };
 
   virtualisation.docker = {
-    enable = true;
+    enable = lib.mkDefault true;
     enableOnBoot = conditions.isServer;
 
     storageDriver = "btrfs";
@@ -429,7 +429,7 @@ in
   };
 
   virtualisation.podman = {
-    enable = true;
+    enable = lib.mkDefault true;
   };
 
   services.zram-generator = {
