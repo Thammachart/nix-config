@@ -168,9 +168,7 @@ in
     floorp
     # qutebrowser
     (brave.override {
-      commandLineArgs = [
-        "--password-store=gnome-libsecret"
-      ];
+      commandLineArgs = [ "--password-store=gnome-libsecret" ];
     })
     pavucontrol
     libnotify
