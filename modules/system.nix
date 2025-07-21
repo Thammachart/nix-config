@@ -162,6 +162,7 @@ in
 
     ] ++ lib.optionals conditions.graphicalUser [
     foot-with-patches
+    neohtop
     xdg-utils
     # firefox
     # librewolf

@@ -48,6 +48,8 @@ in
     rpcs3
     # heroic
     # cryptomator
+
+    claude-code
   ];
 
   programs.steam = {

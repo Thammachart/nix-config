@@ -16,7 +16,7 @@
         terminal_monospace = "Cascadia Mono NF";
       };
       thai = {
-        ui = "Noto Sans Thai Looped";
+        ui = "Noto Sans Thai";
       };
     };
   };
