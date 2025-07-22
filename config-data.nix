@@ -12,11 +12,11 @@
     fonts = {
       latin = {
         ui = "Inter Display";
-        ui_monospace = "JetBrains Mono";
+        ui_monospace = "Martian Mono";
         terminal_monospace = "Cascadia Mono NF";
       };
       thai = {
-        ui = "Noto Sans Thai";
+        ui = "Noto Sans Thai Looped";
       };
     };
   };
