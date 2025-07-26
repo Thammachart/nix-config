@@ -1,8 +1,4 @@
 { lib, config, configData, hostConfig, pkgs, ... }:
-let
-  defaultInterface = hostConfig.networking.ifname;
-  defaultIncusBridge = "incusbr0";
-in
 {
   imports =
     [

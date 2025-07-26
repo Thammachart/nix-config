@@ -1,5 +1,6 @@
 { lib, config, configData, hostConfig, pkgs, ... }:
 let
+  defaultInterface = hostConfig.networking.ifname;
   defaultIncusBridge = hostConfig.networking.incusBridgeIfname;
   ipv4 = lib.splitString "/" hostConfig.networking.v4.ipaddr;
   ipv6 = lib.splitString "/" hostConfig.networking.v6.ipaddr;
