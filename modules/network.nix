@@ -9,6 +9,8 @@ in
 
     dhcpcd.enable = false;
 
+    nftables.enable = true;
+
     networkmanager = {
       enable = lib.mkDefault true;
 

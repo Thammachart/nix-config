@@ -49,11 +49,12 @@
       };
     };
     "kenguru-pivot" = {
-      tags = [ "personal" "laptop" "server" ];
+      tags = [ "personal" "laptop" "server" "incus" ];
       networking = {
         ifname = "enp5s0";
         v4 = { ipaddr = "192.168.0.5/16"; };
         v6 = { ipaddr = "fd00::5/96"; };
+        incusBridgeIfname = "incusbr0";
       };
       u2f = [];
       starship = {

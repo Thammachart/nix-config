@@ -84,6 +84,7 @@
         isDesktop = builtins.elem "desktop" v.tags;
         isLaptop = builtins.elem "laptop" v.tags;
         isServer = builtins.elem "server" v.tags;
+        incus = builtins.elem "incus" v.tags;
         netbird = builtins.elem "netbird" v.tags;
         hyprland = builtins.elem "hyprland" v.tags;
         graphicalUser = (isDesktop || isLaptop) && !isServer;
