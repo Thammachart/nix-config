@@ -35,8 +35,8 @@ in
       allowedTCPPorts = [ 8443 ];
 
       interfaces."${defaultIncusBridge}" = {
-        allowedTCPPorts = [ 53 67 ];
-        allowedUDPPorts = [ 53 67 ];
+        allowedTCPPorts = [ 53 67 547 ];
+        allowedUDPPorts = [ 53 67 547 ];
       };
     };
   };

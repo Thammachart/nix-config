@@ -49,7 +49,8 @@ in
     # heroic
     # cryptomator
 
-    claude-code
+    kubectl
+    google-cloud-sdk
   ];
 
   programs.steam = {

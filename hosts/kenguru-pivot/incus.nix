@@ -25,10 +25,12 @@ in
       networks = [
         {
           config = {
-            "ipv4.address" = "10.100.0.1/16";
+            "ipv4.address" = "192.168.100.1/24";
             "ipv4.nat" = "true";
-            "ipv6.address" = "fda0::1/96";
+            "ipv6.address" = "fd00::100:1/96";
             "ipv6.nat" = "true";
+            "ipv6.dhcp.ranges" = "fd00::100:50-fd00::100:70";
+            "ipv6.dhcp.stateful" = "true";
           };
           name = defaultIncusBridge;
           type = "bridge";
