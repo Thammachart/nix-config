@@ -29,12 +29,5 @@ in
       address = configData.networking.default.Gateway4;
       interface = "${defaultInterface}";
     };
-
-    firewall = {
-      enable = true;
-      allowedTCPPorts = [ 8443 ];
-
-      trustedInterfaces = [ defaultIncusBridge ];
-    };
   };
 }

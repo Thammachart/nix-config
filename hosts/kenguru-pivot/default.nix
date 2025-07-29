@@ -4,6 +4,7 @@
     [
       ./network.nix
       ./incus.nix
+      ./k3s.nix
       ./disko-fs.nix
       ./secrets.nix
       ./hardware-configuration.nix

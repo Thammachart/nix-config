@@ -23,9 +23,15 @@ let
     };
   };
 in
-{
+lib.mkIf conditions.incus {
+
+  networking.firewall = {
+    allowedTCPPorts = [ 8443 ];
+    trustedInterfaces = [ defaultIncusBridge ];
+  };
+
   virtualisation.incus = {
-    enable = lib.mkDefault conditions.incus;
+    enable = true;
     ui.enable = true;
     preseed = {
       config = {
