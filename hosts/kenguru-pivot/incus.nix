@@ -2,6 +2,12 @@
 let
   defaultIncusBridge = hostConfig.networking.incusBridgeIfname;
   defaultProfileSetting = {
+    config = {
+      "limits.cpu" = "2";
+      "limits.memory" = "4GiB";
+      "limits.memory.swap" = "false";
+    };
+
     devices = {
       eth0 = {
         name = "eth0";
@@ -22,14 +28,18 @@ in
     enable = lib.mkDefault conditions.incus;
     ui.enable = true;
     preseed = {
+      config = {
+        "core.https_address" = "0.0.0.0:8443";
+      };
       networks = [
         {
           config = {
-            "ipv4.address" = "192.168.100.1/24";
+            "ipv4.address" = "10.0.0.1/8";
             "ipv4.nat" = "true";
-            "ipv6.address" = "fd00::100:1/96";
+            "ipv4.dhcp.ranges" = "10.1.0.1-10.1.15.254";
+            "ipv6.address" = "fda0::1/96";
             "ipv6.nat" = "true";
-            "ipv6.dhcp.ranges" = "fd00::100:50-fd00::100:70";
+            "ipv6.dhcp.ranges" = "fda0::1:1-fda0::2:1";
             "ipv6.dhcp.stateful" = "true";
           };
           name = defaultIncusBridge;
@@ -46,8 +56,8 @@ in
       ];
       storage_pools = [
         {
-          driver = "btrfs";
           name = "local";
+          driver = "btrfs";
         }
       ];
     };
