@@ -166,7 +166,7 @@ in
     xdg-utils
     # firefox
     # librewolf
-    floorp
+    # floorp
     # qutebrowser
     (brave.override {
       commandLineArgs = [ "--password-store=gnome-libsecret" ];
