@@ -16,6 +16,13 @@
 
   boot.kernelPackages = pkgs.linuxPackages;
 
+  environment.systemPackages = (with pkgs; [
+    caddy
+    kubernetes-helm
+    k9s
+    kdash
+  ]);
+
   virtualisation.docker = {
     enable = false;
   };

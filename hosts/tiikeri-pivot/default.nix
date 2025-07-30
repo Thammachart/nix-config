@@ -45,7 +45,7 @@ in
 
     protonmail-desktop
 
-    rpcs3
+    # rpcs3
     # heroic
     # cryptomator
 

@@ -21,6 +21,7 @@ lib.mkIf conditions.k3s {
       "--service-cidr=10.51.0.0/16,fd09:51::/112"
       "--cluster-dns=10.51.0.10,fd09:51::a"
       "--flannel-ipv6-masq"
+      "--secrets-encryption"
     ];
   };
 }
