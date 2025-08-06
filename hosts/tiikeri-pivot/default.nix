@@ -49,7 +49,6 @@ in
     # heroic
     # cryptomator
 
-    kubectl
     google-cloud-sdk
   ];
 

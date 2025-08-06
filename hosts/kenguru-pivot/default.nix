@@ -18,9 +18,6 @@
 
   environment.systemPackages = (with pkgs; [
     caddy
-    kubernetes-helm
-    k9s
-    kdash
   ]);
 
   virtualisation.docker = {

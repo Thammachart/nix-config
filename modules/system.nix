@@ -160,6 +160,10 @@ in
     psmisc
     pciutils
 
+    kubectl
+    kubernetes-helm
+    k9s
+
     ] ++ lib.optionals conditions.graphicalUser [
     foot-with-patches
     neohtop
