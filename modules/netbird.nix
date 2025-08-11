@@ -5,10 +5,14 @@ in
 lib.mkIf conditions.netbird {
   environment.systemPackages = [ pkgs.netbird ];
 
-  services.netbird.clients = {
-    "${name}" = {
-      port = 51820;
+  services.netbird = {
+    ui.enable = false;
+    clients = {
+      "${name}" = {
+        port = 51820;
+      };
     };
   };
+
   systemd.services."netbird-${name}".wantedBy = [];
 }
