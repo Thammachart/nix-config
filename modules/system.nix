@@ -463,6 +463,7 @@ in
   services.logind.lidSwitch = if conditions.isServer then "lock" else "suspend";
 
   environment.sessionVariables = {
+    "GSK_RENDERER" = "ngl";
     # "ALACRITTY_SOCKET" = "$XDG_RUNTIME_DIR/alacritty-default.sock";
   };
 
