@@ -18,6 +18,7 @@ lib.mkIf conditions.k3s {
     role = "server";
     extraFlags = [
       "--write-kubeconfig-mode=644"
+      "--kube-proxy-arg=proxy-mode=nftables"
       "--cluster-cidr=10.50.0.0/16,fd09:50::/56"
       "--service-cidr=10.51.0.0/16,fd09:51::/112"
       "--cluster-dns=10.51.0.10,fd09:51::a"
