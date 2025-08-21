@@ -9,7 +9,8 @@ in
 
     dhcpcd.enable = false;
 
-    nftables.enable = true;
+    firewall.enable = lib.mkDefault true;
+    nftables.enable = lib.mkDefault true;
 
     networkmanager = {
       enable = lib.mkDefault true;
