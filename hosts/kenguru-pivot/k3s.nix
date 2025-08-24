@@ -18,6 +18,16 @@ in
 lib.mkIf conditions.k3s {
   networking.firewall.enable = false;
   networking.nftables.enable = false;
+  networking.nftables.tables.k3s = {
+    family = "inet";
+    content = ''
+      chain input {
+        ip saddr ${k3sConfig.cluster-cidr} accept
+        ip saddr ${k3sConfig.service-cidr} accept
+        ip daddr 192.168.0.5-192.168.0.7 accept
+      }
+    '';
+  };
 
   environment.systemPackages = [ pkgs.cilium-cli ];
 
@@ -26,6 +36,7 @@ lib.mkIf conditions.k3s {
     2379 # k3s, etcd clients: required if using a "High Availability Embedded etcd" configuration
     2380 # k3s, etcd peers: required if using a "High Availability Embedded etcd" configuration
     10250 # k8s metric server
+    80 443
   ];
   networking.firewall.allowedUDPPorts = [
     8472 # k3s, flannel: required if using multi-node for inter-node networking
@@ -35,8 +46,6 @@ lib.mkIf conditions.k3s {
     enable = true;
     clusterInit = true;
     role = "server";
-    extraFlags = [
-      "--config=${k3sConfigYaml}"
-    ];
+    configPath = "${k3sConfigYaml}";
   };
 }

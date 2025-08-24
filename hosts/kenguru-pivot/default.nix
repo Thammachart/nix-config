@@ -28,4 +28,11 @@
   virtualisation.podman = {
     enable = false;
   };
+
+  security.sudo-rs.extraRules = [
+    {
+      users = [ configData.username ];
+      commands = [ { command = "/run/current-system/sw/bin/systemctl reboot"; options = [ "SETENV" "NOPASSWD" ]; } ];
+    }
+  ];
 }
