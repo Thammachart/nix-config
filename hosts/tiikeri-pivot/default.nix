@@ -12,16 +12,7 @@ in
       ../../modules/system.nix
     ];
 
-  users.users."${configData.username}".extraGroups = [ "docker" ];
-
-  users.users."phim" = {
-    isNormalUser = true;
-    extraGroups = [ "network" "networkmanager" "audio" "video" "storage" "input" ];
-
-    shell = pkgs.nushell;
-
-    packages = with pkgs; [];
-  };
+  users.users."${configData.username}".extraGroups = [ "docker" "kvm" ];
 
   environment.systemPackages = with pkgs; [
     nvtopPackages.intel
