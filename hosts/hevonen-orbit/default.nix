@@ -16,7 +16,7 @@ in
 
   boot.kernelPackages = pkgs.linuxPackages_cachyos-lto;
 
-  users.users."${configData.username}".extraGroups = [ "docker" ];
+  users.users."${configData.username}".extraGroups = [ "docker" "kvm" ];
 
   environment.sessionVariables = {
     DEVSHELLS_PATH = "$HOME/shobshop-projects/common-dev-shells";
@@ -33,6 +33,9 @@ in
     filezilla
     caddy
     libreoffice-fresh
+
+    # android-tools
+    # android-studio
   ]);
 
   # sops.secrets.shobshop_internal_ca_cert = {
