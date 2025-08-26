@@ -203,7 +203,7 @@ in
     fuzzel
     mako
     wlr-randr wlopm shikane
-    nwg-displays
+    # nwg-displays
     nwg-bar
     keepassxc
     seahorse
