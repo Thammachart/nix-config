@@ -460,7 +460,7 @@ in
     settings = {};
   };
 
-  services.logind.lidSwitch = if conditions.isServer then "lock" else "suspend";
+  services.logind.settings.Login.HandleLidSwitch = if conditions.isServer then "lock" else "suspend";
 
   environment.sessionVariables = {
     "GSK_RENDERER" = "ngl";
