@@ -166,7 +166,7 @@ in
 
     ] ++ lib.optionals conditions.graphicalUser [
     foot-with-patches
-    neohtop
+    # neohtop
     xdg-utils
     # firefox
     # librewolf
@@ -375,11 +375,11 @@ in
   #   extraPackages = with pkgs; [ grim slurp swaylock swayidle swaybg ];
   # };
 
-  programs.river = {
-    enable = false;
-    xwayland.enable = true;
-    extraPackages = with pkgs; [];
-  };
+  # programs.river = {
+  #   enable = false;
+  #   xwayland.enable = true;
+  #   extraPackages = with pkgs; [];
+  # };
 
   # programs.hyprland = {
   #   enable = lib.mkDefault conditions.graphicalUser;

@@ -7,10 +7,11 @@ let
     cluster-dns = "10.51.0.10";
     secrets-encryption = true;
 
-    flannel-backend = "none";
-    disable-kube-proxy = true;
-    disable-network-policy = true;
-    disable = ["traefik" "servicelb"];
+    ## Disablement
+    # flannel-backend = "none";
+    # disable-kube-proxy = true;
+    # disable-network-policy = true;
+    # disable = ["traefik"];
   };
 
   k3sConfigYaml = pkgs.writeText "k3sConfig.yml" (lib.generators.toYAML {} k3sConfig);
@@ -29,7 +30,7 @@ lib.mkIf conditions.k3s {
     '';
   };
 
-  environment.systemPackages = [ pkgs.cilium-cli ];
+  environment.systemPackages = [];
 
   networking.firewall.allowedTCPPorts = [
     6443 # k3s: required so that pods can reach the API server (running on port 6443 by default)
