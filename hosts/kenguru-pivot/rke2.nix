@@ -19,7 +19,10 @@ lib.mkIf conditions.rke2 {
     10250 # k8s metric server
     80 443
   ] ++ lib.optionals (cni == "calico") [
+  	179 # Calico CNI with BGP
   	5473 # Calico networking with Typha enabled
+   	9098 # Calico Typha health checks
+    9099 # Calico health checks
   ];
 
   networking.firewall.allowedUDPPorts = [
