@@ -10,26 +10,13 @@ let
     ## Disablement
     # flannel-backend = "none";
     # disable-kube-proxy = true;
-    # disable-network-policy = true;
+    disable-network-policy = true;
     # disable = ["traefik"];
   };
 
   k3sConfigYaml = pkgs.writeText "k3sConfig.yml" (lib.generators.toYAML {} k3sConfig);
 in
 lib.mkIf conditions.k3s {
-  networking.firewall.enable = false;
-  networking.nftables.enable = false;
-  networking.nftables.tables.k3s = {
-    family = "inet";
-    content = ''
-      chain input {
-        ip saddr ${k3sConfig.cluster-cidr} accept
-        ip saddr ${k3sConfig.service-cidr} accept
-        ip daddr 192.168.0.5-192.168.0.7 accept
-      }
-    '';
-  };
-
   environment.systemPackages = [];
 
   networking.firewall.allowedTCPPorts = [
