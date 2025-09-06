@@ -49,7 +49,7 @@
       };
     };
     "kenguru-pivot" = {
-      tags = [ "personal" "laptop" "server" "k3s" ];
+      tags = [ "personal" "laptop" "server" "rke2" ];
       networking = {
         ifname = "enp5s0";
         v4 = { ipaddr = "192.168.0.5/16"; };
