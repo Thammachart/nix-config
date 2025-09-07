@@ -26,6 +26,7 @@ lib.mkIf conditions.graphicalUser {
       iosevka
       martian-mono
       ubuntu-sans-mono
+      julia-mono
 
       # nerdfonts
       nerd-fonts.caskaydia-mono
