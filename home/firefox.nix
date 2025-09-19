@@ -1,17 +1,17 @@
 { pkgs, lib, configData, conditions, betterfox, ... }:
 {
-  programs.floorp = {
+  programs.librewolf = {
     enable = false;
 
     package = null;
 
-    # settings = {
-    #   "webgl.disabled" = false;
-    #   "privacy.resistFingerprinting" = false;
-    #   "privacy.clearOnShutdown.history" = false;
-    #   "privacy.clearOnShutdown.cookies" = false;
-    #   "network.cookie.lifetimePolicy" = 0;
-    # };
+    settings = {
+      "webgl.disabled" = false;
+      "privacy.resistFingerprinting" = false;
+      "privacy.clearOnShutdown.history" = false;
+      "privacy.clearOnShutdown.cookies" = false;
+      "network.cookie.lifetimePolicy" = 0;
+    };
 
     profiles.default = {
       id = 0;
@@ -22,7 +22,9 @@
       ];
 
       settings = {
-        "floorp.panelSidebar.enabled" = false;
+        ## Floorp Settings
+        # "floorp.panelSidebar.enabled" = false;
+
         "browser.ctrlTab.sortByRecentlyUsed" = false;
         "browser.translations.neverTranslateLanguages" = "th";
         "privacy.clearOnShutdown.history" = false;

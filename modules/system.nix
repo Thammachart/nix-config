@@ -169,9 +169,8 @@ in
     # neohtop
     xdg-utils
     # firefox
-    # librewolf
-    # floorp
-    # qutebrowser
+    # floorp-bin
+    qutebrowser
     (brave.override {
       commandLineArgs = [ "--password-store=gnome-libsecret" ];
     })

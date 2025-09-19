@@ -3,6 +3,8 @@ let
 	cni = "calico";
   rke2Config = {
     write-kubeconfig-mode = "0644";
+    node-ip = "192.168.0.5";
+    node-external-ip = "100.65.120.67";
     cluster-cidr = "10.50.0.0/16";
     service-cidr = "10.51.0.0/16";
     cluster-dns = "10.51.0.10";
