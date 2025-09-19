@@ -21,12 +21,12 @@ lib.mkIf conditions.graphicalUser {
       monaspace
       jetbrains-mono
       cascadia-code
+      googlesans-code
       _0xproto
       geist-font
       iosevka
       martian-mono
       ubuntu-sans-mono
-      julia-mono
 
       # nerdfonts
       nerd-fonts.caskaydia-mono
