@@ -10,6 +10,20 @@ let
     cluster-dns = "10.51.0.10";
   };
   rke2ConfigYaml = pkgs.writeText "rke2Config.yml" (lib.generators.toYAML {} rke2Config);
+
+  ## calico iptables mask changed to avoid conflict with tailscale
+  rke2CalicoConfigYaml = pkgs.writeText "rke2-calico-config.yml" ''
+    ---
+    apiVersion: helm.cattle.io/v1
+    kind: HelmChartConfig
+    metadata:
+      name: rke2-calico
+      namespace: kube-system
+    spec:
+      valuesContent: |-
+        felixConfiguration:
+          iptablesMarkMask: 0x0000ffff
+  '';
 in
 lib.mkIf conditions.rke2 {
 	environment.systemPackages = [];
@@ -35,6 +49,17 @@ lib.mkIf conditions.rke2 {
   ] ++ lib.optionals (cni == "flannel") [
   	8472 # k3s, flannel: required if using multi-node for inter-node networking
   ];
+
+  systemd.tmpfiles.settings."10-rke2-calico-config" = {
+    "/var/lib/rancher/rke2/server/manifests/rke2-calico-config.yaml" = lib.optionals (cni == "calico") {
+      C = {
+        user = "root";
+        group = "root";
+        mode = "0744";
+        argument = "${rke2CalicoConfigYaml}";
+      };
+    };
+  };
 
   services.rke2 = {
 		enable = true;
