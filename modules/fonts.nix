@@ -5,10 +5,10 @@ in
 lib.mkIf conditions.graphicalUser {
   fonts = {
     packages = with pkgs; [
-      # icon fonts
+      ## icon fonts
       material-design-icons
 
-      # normal fonts
+      ## normal fonts
       noto-fonts
       noto-fonts-cjk-sans
       noto-fonts-cjk-serif
@@ -18,7 +18,7 @@ lib.mkIf conditions.graphicalUser {
       ubuntu-sans
       merriweather
 
-      monaspace
+      ## Monospace
       jetbrains-mono
       cascadia-code
       googlesans-code
@@ -27,9 +27,12 @@ lib.mkIf conditions.graphicalUser {
       iosevka
       martian-mono
       ubuntu-sans-mono
+      lilex
+      # monaspace
 
-      # nerdfonts
+      ## nerdfonts
       nerd-fonts.caskaydia-mono
+      nerd-fonts.monaspace
     ];
 
     fontDir = {
@@ -105,7 +108,7 @@ lib.mkIf conditions.graphicalUser {
 
           <edit name="family" mode="prepend" binding="strong">
             <string>${fontConfigData.latin.ui}</string>
-            <string>Ubuntu</string>
+            <string>Ubuntu Sans</string>
             <string>Liberation Sans</string>
           </edit>
         </match>
@@ -125,6 +128,28 @@ lib.mkIf conditions.graphicalUser {
             <string>Inter Display</string>
           </test>
           <edit name="fontfeatures" mode="append">
+          </edit>
+        </match>
+
+        <match target="font">
+          <test name="family" compare="eq" ignore-blanks="true">
+            <string>Martian</string>
+          </test>
+          <edit name="fontfeatures" mode="append">
+            <string>ss03</string>
+          </edit>
+        </match>
+
+        <match target="font">
+          <test name="family" compare="contains" ignore-blanks="true">
+            <string>Monaspice</string>
+          </test>
+          <edit name="fontfeatures" mode="append">
+            <string>ss03</string>
+            <string>ss04</string>
+            <string>ss07</string>
+            <string>liga</string>
+            <string>calt</string>
           </edit>
         </match>
 

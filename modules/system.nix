@@ -164,6 +164,9 @@ in
     kubernetes-helm
     k9s
 
+    ## Nix Tools for Contribution
+    nurl
+
     ] ++ lib.optionals conditions.graphicalUser [
     foot-with-patches
     # neohtop
