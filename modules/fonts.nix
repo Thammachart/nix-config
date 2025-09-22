@@ -22,17 +22,17 @@ lib.mkIf conditions.graphicalUser {
       jetbrains-mono
       cascadia-code
       googlesans-code
+      monaspace
       _0xproto
       geist-font
       iosevka
       martian-mono
       ubuntu-sans-mono
       lilex
-      # monaspace
 
       ## nerdfonts
       nerd-fonts.caskaydia-mono
-      nerd-fonts.monaspace
+      # nerd-fonts.monaspace
     ];
 
     fontDir = {
@@ -56,9 +56,9 @@ lib.mkIf conditions.graphicalUser {
       };
 
       antialias = true;
-      hinting = {
+      hinting = lib.mkDefault {
         enable = true;
-        style = "slight";
+        style = "none";
       };
 
       localConf = ''
