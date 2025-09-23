@@ -57,7 +57,7 @@ lib.mkIf conditions.graphicalUser {
 
       antialias = true;
       hinting = lib.mkDefault {
-        enable = true;
+        enable = false;
         style = "none";
       };
 
@@ -137,19 +137,6 @@ lib.mkIf conditions.graphicalUser {
           </test>
           <edit name="fontfeatures" mode="append">
             <string>ss03</string>
-          </edit>
-        </match>
-
-        <match target="font">
-          <test name="family" compare="contains" ignore-blanks="true">
-            <string>Monaspice</string>
-          </test>
-          <edit name="fontfeatures" mode="append">
-            <string>ss03</string>
-            <string>ss04</string>
-            <string>ss07</string>
-            <string>liga</string>
-            <string>calt</string>
           </edit>
         </match>
 
