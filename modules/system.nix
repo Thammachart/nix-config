@@ -142,6 +142,7 @@ in
     openssl
     unzip p7zip
     htop bottom procs
+    nmap
     dbus
     age sops
     # devenv
