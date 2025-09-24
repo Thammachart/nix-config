@@ -12,7 +12,7 @@ in
       ../../modules/system.nix
     ];
 
-  boot.kernelPackages = pkgs.linuxPackages_zen;
+  # boot.kernelPackages = pkgs.linuxPackages_zen;
 
   users.users."${configData.username}".extraGroups = [ "docker" "kvm" ];
 

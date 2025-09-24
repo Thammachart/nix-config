@@ -25,6 +25,11 @@
         ## Floorp Settings
         # "floorp.panelSidebar.enabled" = false;
 
+        "sidebar.verticalTabs" = true;
+        "sidebar.revamp" = true;
+        "sidebar.visibility" = "expand-on-hover";
+        "sidebar.animation.enabled" = false;
+
         "browser.ctrlTab.sortByRecentlyUsed" = false;
         "browser.translations.neverTranslateLanguages" = "th";
         "privacy.clearOnShutdown.history" = false;
@@ -50,7 +55,7 @@
 
         "browser.send_pings" = false;
 
-        "beacon.enabled" = false;
+        "beacon.enabled" = true;
         "device.sensors.enabled" = false;
         "geo.enabled" = false;
 

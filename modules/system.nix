@@ -174,7 +174,8 @@ in
     xdg-utils
     # firefox
     # floorp-bin
-    qutebrowser
+    # librewolf
+    # qutebrowser
     (brave.override {
       commandLineArgs = [ "--password-store=gnome-libsecret" ];
     })
@@ -369,7 +370,7 @@ in
   };
 
   desktop-sessions.sway.enable = lib.mkDefault conditions.graphicalUser;
-  # desktop-sessions.hyprland.enable = lib.mkDefault conditions.hyprland;
+  desktop-sessions.hyprland.enable = lib.mkDefault conditions.hyprland;
 
   # programs.sway = {
   #   enable = lib.mkDefault conditions.graphicalUser;
