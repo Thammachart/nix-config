@@ -1,4 +1,4 @@
-{ pkgs, osConfig, lib, conditions, templateFile, configData, ...  }:
+{ pkgs, config, osConfig, lib, conditions, templateFile, configData, ...  }:
 
 let
   plugins = [ pkgs.hyprlandPlugins.hy3 ];
@@ -14,6 +14,8 @@ lib.mkIf osConfig.desktop-sessions.hyprland.enable {
 
   home.file.".config/hypr/_init.conf".text = ''
     source = /etc/hyprland/nixos.conf
+    env = HYPRCURSOR_THEME,${config.home.pointerCursor.name}
+    env = HYPRCURSOR_SIZE,${builtins.toString config.home.pointerCursor.size}
     ${lib.concatMapStringsSep "\n" (entry:
       "exec-once = hyprctl plugin load ${entry}/lib/lib${entry.pname}.so"
     ) plugins}
