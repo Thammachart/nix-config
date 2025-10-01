@@ -6,7 +6,7 @@
 }
 
 window#waybar {
-  font-family: {{ .fonts.latin.terminal_monospace }}, sans-serif;
+  font-family: {{ .fonts.latin.ui_monospace }}, {{ .fonts.latin.terminal_monospace }}, sans-serif;
   background: rgba(43, 48, 59, 0.5);
   border-bottom: 3px solid rgba(100, 114, 125, 0.5);
   color: #ffffff;
@@ -38,7 +38,7 @@ window#waybar.hidden {
 }
 
 #window {
-  font-family: sans-serif;
+  font-family: {{ .fonts.latin.ui_monospace }}, sans-serif;
 }
 
 #clock, #battery, #cpu, #memory, #temperature, #backlight, #network, #pulseaudio, #custom-media, #tray, #mode, #privacy, #idle_inhibitor {
