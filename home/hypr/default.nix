@@ -14,6 +14,8 @@ lib.mkIf osConfig.desktop-sessions.hyprland.enable {
 
   home.file.".config/hypr/_init.conf".text = ''
     source = /etc/hyprland/nixos.conf
+    env = XCURSOR_THEME,${config.home.pointerCursor.name}
+    env = XCURSOR_SIZE,${builtins.toString config.home.pointerCursor.size}
     env = HYPRCURSOR_THEME,${config.home.pointerCursor.name}
     env = HYPRCURSOR_SIZE,${builtins.toString config.home.pointerCursor.size}
     ${lib.concatMapStringsSep "\n" (entry:

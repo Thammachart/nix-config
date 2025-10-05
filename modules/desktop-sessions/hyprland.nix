@@ -15,7 +15,7 @@ in
   };
 
   config = lib.mkIf cfg.enable {
-    environment.systemPackages = with pkgs; [ cfg.package ];
+    environment.systemPackages = with pkgs; [ cfg.package hypridle hyprlock hyprcursor ];
 
     services.displayManager.sessionPackages = [ cmp.custom-desktop-entry ];
 

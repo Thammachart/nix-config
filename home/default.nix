@@ -24,9 +24,9 @@
     homeDirectory = "/home/${configData.username}";
 
     pointerCursor = lib.mkIf conditions.graphicalUser {
-      name = "Yaru";
-      package = pkgs.yaru-theme;
-      size = 24;
+      name = "BreezeX-RosePine-Linux";
+      package = pkgs.rose-pine-cursor;
+      size = 28;
       gtk.enable = true;
     };
 
