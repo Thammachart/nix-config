@@ -23,7 +23,6 @@ in
     protonup-qt
 
     media-downloader
-    curl-impersonate
     yt-dlp
     gallery-dl
 
