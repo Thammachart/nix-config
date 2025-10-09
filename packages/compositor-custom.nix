@@ -1,4 +1,4 @@
-{ pkgs, cmp, exec ? null }:
+{ pkgs, config, cmp, exec ? null }:
 
 let
   wl-enable = import ./wl-enable.nix { inherit pkgs; };
@@ -10,6 +10,10 @@ let
 
     export XDG_SESSION_DESKTOP=${cmp}
     export XDG_CURRENT_DESKTOP=${cmp}
+
+    set -o allexport
+    source <(${config.systemd.package}/lib/systemd/user-environment-generators/30-systemd-environment-d-generator)
+    set +o allexport
 
     exec systemd-cat --identifier=${cmp} ${cmp-exec} $@
   '';

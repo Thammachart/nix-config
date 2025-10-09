@@ -5,7 +5,7 @@ let
   cmp-name = "sway";
 
   cfg = config.desktop-sessions."${cmp-name}";
-  cmp = cmp-customize { inherit pkgs; cmp = cmp-name; };
+  cmp = cmp-customize { inherit pkgs; inherit config; cmp = cmp-name; };
 in
 {
   options.desktop-sessions."${cmp-name}" = {
@@ -34,7 +34,7 @@ in
     environment.etc = {
       "sway/config".source = lib.mkOptionDefault "${cfg.package}/etc/sway/config";
       "sway/config.d/nixos.conf".text = ''
-        exec ${pkgs.dbus}/bin/dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK XDG_CURRENT_DESKTOP
+        exec ${config.services.dbus.dbusPackage}/bin/dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK XDG_CURRENT_DESKTOP
       '';
     };
 

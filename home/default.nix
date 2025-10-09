@@ -89,6 +89,12 @@
     ];
   };
 
+  # home.sessionVariables doesn't load with nushell
+  systemd.user.sessionVariables = lib.mkMerge [
+    config.home.sessionVariables
+    {}
+  ];
+
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 }

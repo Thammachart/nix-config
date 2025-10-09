@@ -5,7 +5,7 @@ let
   cmp-name = "hyprland";
 
   cfg = config.desktop-sessions."${cmp-name}";
-  cmp = cmp-customize { inherit pkgs; cmp = "Hyprland"; };
+  cmp = cmp-customize { inherit pkgs; inherit config; cmp = "Hyprland"; };
 in
 {
   options.desktop-sessions."${cmp-name}" = {
