@@ -7,6 +7,8 @@ in
   networking = {
     hostName = hostName;
 
+    timeServers = [ "time5.nimt.or.th" "time4.nimt.or.th" "time3.nimt.or.th" "time.cloudflare.com" ];
+
     dhcpcd.enable = false;
 
     firewall.enable = lib.mkDefault true;
