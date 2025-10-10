@@ -4,6 +4,11 @@ let
   defaultWifiId = "HOME-0";
 in
 {
+  services.timesyncd.extraConfig = ''
+    PollIntervalMinSec=43200
+    PollIntervalMaxSec=86400
+  '';
+
   networking = {
     hostName = hostName;
 
