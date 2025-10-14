@@ -27,10 +27,10 @@ in
     # };
 
     systemd.user.services."kwalletd" = {
-      enable = conditions.graphicalUser;
+      enable = true;
       wantedBy = [ "user-system-ready.target" ];
 
-      after = [ "xdg-desktop-portal.service" "graphical.target" ];
+      after = [ "xdg-desktop-portal.service" "polkit.service" "graphical.target" ];
 
       aliases = [ "secret-provider.service" ];
 

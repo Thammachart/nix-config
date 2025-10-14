@@ -25,7 +25,6 @@ lib.mkIf conditions.graphicalUser {
       monaspace
       _0xproto
       geist-font
-      iosevka
       martian-mono
       ubuntu-sans-mono
       lilex

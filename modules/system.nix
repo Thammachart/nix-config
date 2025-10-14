@@ -2,7 +2,8 @@
 let
   u2fEnabled = hostConfig.u2fConfig != [];
   foot-with-patches = import ../packages/foot { inherit pkgs; };
-  vscodium-with-patches = import ../packages/vscodium { inherit pkgs; };
+  vscodium-with-patches = import ../packages/vscodium { inherit pkgs configData; };
+  chromiumPasswordStore = "--password-store=${if config.secret-providers.kwallet.enable then "kwallet6" else "gnome-libsecret"}";
 in
 {
   imports = [
@@ -177,9 +178,7 @@ in
     # floorp-bin
     # librewolf
     # qutebrowser
-    (brave.override {
-      commandLineArgs = [ "--password-store=gnome-libsecret" ];
-    })
+    (brave.override { commandLineArgs = [ chromiumPasswordStore ]; })
     pavucontrol
     libnotify
     vulkan-tools
@@ -189,7 +188,7 @@ in
     obsidian
     logseq
 
-    vscodium-with-patches.fhs
+    (vscodium-with-patches.override { commandLineArgs = [ chromiumPasswordStore ]; }).fhs
     geany
     zed-editor
     gnome-text-editor
