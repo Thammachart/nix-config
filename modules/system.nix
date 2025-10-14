@@ -15,6 +15,7 @@ in
     ./desktop-sessions/sway.nix
     ./desktop-sessions/hyprland.nix
     ./secret-providers/gnome-keyring.nix
+    ./secret-providers/kwallet.nix
     ./secret-providers/oo7-daemon.nix
   ];
   # Define a user account. Don't forget to set a password with ‘passwd’.
@@ -243,20 +244,20 @@ in
     # kdePackages.kde-cli-tools
     # kdePackages.breeze
 
-    # kdePackages.kwalletmanager
+
 
     # kdePackages.kirigami
     # kdePackages.kirigami-addons
     # kdePackages.kservice
-    # kdePackages.dolphin
+    kdePackages.dolphin
     # kdePackages.dolphin-plugins
     # kdePackages.libplasma
     # kdePackages.kfilemetadata
     # kdePackages.kimageformats
-    # kdePackages.kio # provides helper service + a bunch of other stuff
+    kdePackages.kio # provides helper service + a bunch of other stuff
     # kdePackages.kio-admin # managing files as admin
-    # kdePackages.kio-extras # stuff for MTP, AFC, etc
-    # kdePackages.kio-fuse
+    kdePackages.kio-extras # stuff for MTP, AFC, etc
+    kdePackages.kio-fuse
     # kdePackages.kquickcharts
     # kdePackages.plasma-systemmonitor
     # kdePackages.ksystemstats
@@ -334,7 +335,8 @@ in
     package = pkgs.kdePackages.kdeconnect-kde;
   };
 
-  secret-providers.gnome-keyring.enable = lib.mkDefault conditions.graphicalUser;
+  # secret-providers.gnome-keyring.enable = lib.mkDefault conditions.graphicalUser;
+  secret-providers.kwallet.enable = lib.mkDefault conditions.graphicalUser;
   # secret-providers.oo7-daemon.enable = lib.mkDefault conditions.graphicalUser;
 
   programs.gnome-disks = {

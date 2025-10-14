@@ -28,23 +28,6 @@
       };
     };
 
-    # "kwalletd" = {
-    #   enable = conditions.graphicalUser;
-    #   wantedBy = [ "user-system-ready.target" ];
-
-    #   after = [ "xdg-desktop-portal.service" "graphical.target" ];
-
-    #   aliases = [ "secret-provider.service" ];
-
-    #   serviceConfig = {
-    #     Type = "dbus";
-    #     Restart = "on-failure";
-    #     RestartSec = 1;
-    #     ExecStart = "${pkgs.kdePackages.kwallet}/bin/kwalletd6";
-    #     ExecStartPost = "${pkgs.libsecret}/bin/secret-tool search att1 val1";
-    #     BusName = "org.freedesktop.secrets";
-    #   };
-    # };
 
     "nm-applet" = {
       enable = conditions.graphicalUser;
