@@ -273,6 +273,9 @@ in
     bustle
   ];
 
+  # Workaround for Dolphin MIME
+  environment.etc."/xdg/menus/applications.menu".text = builtins.readFile "${pkgs.kdePackages.plasma-workspace}/etc/xdg/menus/plasma-applications.menu";
+
   qt = {
     enable = lib.mkDefault conditions.graphicalUser;
   };
