@@ -1,6 +1,7 @@
 {config, lib, pkgs, conditions, configData, ...}:
 let
   shouldEnable = conditions.isPersonal;
+  chromiumPasswordStore = "--password-store=${if config.secret-providers.kwallet.enable then "kwallet6" else "gnome-libsecret"}";
 in
 {
   imports =
