@@ -41,8 +41,6 @@ in
     # rpcs3
     # heroic
     # cryptomator
-
-    google-cloud-sdk
   ];
 
   programs.steam = {
