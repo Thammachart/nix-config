@@ -212,7 +212,7 @@ in
     keepassxc
     seahorse
 
-    nautilus
+    # nautilus
 
     lxqt.pcmanfm-qt
     lxqt.lximage-qt
@@ -243,11 +243,9 @@ in
     # kdePackages.kde-cli-tools
     # kdePackages.breeze
 
-
-
     # kdePackages.kirigami
     # kdePackages.kirigami-addons
-    # kdePackages.kservice
+    kdePackages.kservice
     kdePackages.dolphin
     # kdePackages.dolphin-plugins
     # kdePackages.libplasma
