@@ -16,9 +16,8 @@ in
     enable = false;
 
     extraPackages = with pkgs; [
-      mesa_git.opencl
       intel-media-driver
-      intel-ocl
+      vpl-gpu-rt
     ];
 
     extraPackages32 = with pkgs.pkgsi686Linux; [
@@ -32,7 +31,7 @@ in
 
     extraPackages = with pkgs; [
       intel-media-driver
-      intel-ocl
+      vpl-gpu-rt
     ];
 
     extraPackages32 = with pkgs.pkgsi686Linux; [

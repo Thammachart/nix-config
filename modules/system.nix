@@ -245,20 +245,22 @@ in
 
     # kdePackages.kirigami
     # kdePackages.kirigami-addons
-    kdePackages.kservice
-    kdePackages.dolphin
+    # kdePackages.kservice
+    # kdePackages.dolphin
     # kdePackages.dolphin-plugins
     # kdePackages.libplasma
     # kdePackages.kfilemetadata
     # kdePackages.kimageformats
-    kdePackages.kio # provides helper service + a bunch of other stuff
+    # kdePackages.kio # provides helper service + a bunch of other stuff
     # kdePackages.kio-admin # managing files as admin
-    kdePackages.kio-extras # stuff for MTP, AFC, etc
-    kdePackages.kio-fuse
+    # kdePackages.kio-extras # stuff for MTP, AFC, etc
+    # kdePackages.kio-fuse
     # kdePackages.kquickcharts
     # kdePackages.plasma-systemmonitor
     # kdePackages.ksystemstats
     # kdePackages.libksysguard
+    # kdePackages.kate
+    # kdePackages.okular
 
     xorg.xprop
     libva-utils
