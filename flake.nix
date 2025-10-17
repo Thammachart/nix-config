@@ -89,6 +89,7 @@
         rke2 = builtins.elem "rke2" v.tags;
         netbird = builtins.elem "netbird" v.tags;
         hyprland = builtins.elem "hyprland" v.tags;
+        niri = builtins.elem "niri" v.tags;
         graphicalUser = (isDesktop || isLaptop) && !isServer;
       };
     in

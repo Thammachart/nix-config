@@ -31,7 +31,7 @@
 
   hosts = {
     "tiikeri-pivot" = {
-      tags = [ "personal" "desktop" "hyprland" ];
+      tags = [ "personal" "desktop" "hyprland" "niri" ];
       networking = {
         ifname = "wlp8s0";
         v4 = { ipaddr = "192.168.10.20/16"; };

@@ -1,0 +1,25 @@
+// Add lines like this to spawn processes at startup.
+// Note that running niri as a session supports xdg-desktop-autostart,
+// which may be more convenient to use.
+// See the binds section below for more spawn examples.
+
+spawn-at-startup "systemd-cat -t waybar waybar -c ~/.config/waybar/niri.json -s ~/.config/waybar/niri.css"
+spawn-at-start "systemd-cat -t mako mako"
+
+{{ if (eq .terminal "footclient") }}
+spawn-at-start "foot --server"
+{{ end }}
+
+spawn-at-start "waypaper --restore"
+
+spawn-at-start "systemd-cat -t wlsunset wlsunset -S 06:30 -s 18:30 -d 1800 -t 4000 -T 6500"
+
+# Shikane (Server mode due to hyprland conflict)
+spawn-at-start "systemd-cat -t shikane shikane"
+
+// spawn-at-start "systemd-cat -t hypridle hypridle"
+
+spawn-at-start "systemctl start --user user-system-ready.target"
+
+// To run a shell command (with variables, pipes, etc.), use spawn-sh-at-startup:
+// spawn-sh-at-startup "qs -c ~/source/qs/MyAwesomeShell"
