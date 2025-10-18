@@ -10,6 +10,7 @@
     ./firefox.nix
     ./mako
     ./sway
+    ./niri
     # ./river
     ./mpv
     ./waybar

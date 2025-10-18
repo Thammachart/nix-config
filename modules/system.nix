@@ -15,6 +15,7 @@ in
     ./display-manager.nix
     ./desktop-sessions/sway.nix
     ./desktop-sessions/hyprland.nix
+    ./desktop-sessions/niri.nix
     ./secret-providers/gnome-keyring.nix
     ./secret-providers/kwallet.nix
     ./secret-providers/oo7-daemon.nix

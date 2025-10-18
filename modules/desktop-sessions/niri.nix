@@ -5,7 +5,7 @@ let
   cmp-name = "niri";
 
   cfg = config.desktop-sessions."${cmp-name}";
-  cmp = cmp-customize { inherit pkgs; inherit config; cmp = cmp-name; cmp-exec = "niri --session"; };
+  cmp = cmp-customize { inherit pkgs; inherit config; cmp = cmp-name; exec = "niri --session"; };
 in
 {
   options.desktop-sessions."${cmp-name}" = {
