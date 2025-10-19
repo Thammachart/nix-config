@@ -69,14 +69,13 @@
   programs.git = {
     enable = true;
     userName = "Thammachart";
-    userEmail = null;
 
     signing = {
       format = "ssh";
       key = "~/.ssh/id_ed25519_sk.pub";
     };
 
-    extraConfig = {
+    settings = {
       merge = {
         log = 100;
       };
