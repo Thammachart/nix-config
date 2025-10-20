@@ -213,7 +213,7 @@ in
     keepassxc
     seahorse
 
-    # nautilus
+    nautilus
 
     lxqt.pcmanfm-qt
     lxqt.lximage-qt

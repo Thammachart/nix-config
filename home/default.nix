@@ -68,7 +68,6 @@
 
   programs.git = {
     enable = true;
-    userName = "Thammachart";
 
     signing = {
       format = "ssh";
@@ -76,6 +75,7 @@
     };
 
     settings = {
+      user.name = "Thammachart";
       merge = {
         log = 100;
       };
