@@ -30,7 +30,8 @@ lib.mkIf conditions.graphicalUser {
       lilex
 
       ## nerdfonts
-      nerd-fonts.caskaydia-mono
+      # nerd-fonts.caskaydia-mono
+      nerd-fonts.geist-mono
       # nerd-fonts.monaspace
     ];
 

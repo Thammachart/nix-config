@@ -13,7 +13,7 @@
       latin = {
         ui = "Inter Display";
         ui_monospace = "Google Sans Code";
-        terminal_monospace = "Cascadia Mono NF";
+        terminal_monospace = "GeistMono Nerd Font";
       };
       thai = {
         ui = "Noto Sans Thai Looped";
