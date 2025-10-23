@@ -215,10 +215,10 @@ in
 
     nautilus
 
-    lxqt.pcmanfm-qt
-    lxqt.lximage-qt
-    lxqt.lxqt-archiver
-    lxqt.qps
+    # lxqt.pcmanfm-qt
+    # lxqt.lximage-qt
+    # lxqt.lxqt-archiver
+    # lxqt.qps
 
     qalculate-gtk
     imv
@@ -238,6 +238,7 @@ in
     kdePackages.qt6ct
     kdePackages.qtstyleplugin-kvantum
 
+    kdePackages.ark
     # kdePackages.kcoreaddons
     # kdePackages.frameworkintegration
     # kdePackages.plasma-workspace
