@@ -40,6 +40,8 @@ in
 
     claude-code
 
+    kubectl-cnpg
+
     # android-tools
     # android-studio
   ]);
