@@ -1,4 +1,3 @@
-{pkgs, lib, config, ...}:
 let
   cmp-customize = import ../../packages/compositor-custom.nix;
 
@@ -8,13 +7,7 @@ let
   cmp = cmp-customize { inherit pkgs; inherit config; cmp = "Hyprland"; };
 in
 {
-  options.desktop-sessions."${cmp-name}" = {
-    enable = lib.mkEnableOption ''${cmp-name}'';
-
-    package = lib.mkPackageOption pkgs cmp-name {};
-  };
-
-  config = lib.mkIf cfg.enable {
+  flake.modules.{
     environment.systemPackages = with pkgs; [ cfg.package hypridle hyprlock hyprcursor ];
 
     services.displayManager.sessionPackages = [ cmp.custom-desktop-entry ];

@@ -1,17 +1,5 @@
 { config, lib, pkgs, conditions, ... }:
 {
-  imports = [
-    ./netbird.nix
-  ];
-
-  systemd.services."NetworkManager-wait-online".enable = false;
-
-  systemd.user.targets = {
-    "user-system-ready" = {
-      description = "Custom systemd target to signify system being ready for user";
-    };
-  };
-
   systemd.user.services = {
     # "lxqt-policykit" = {
     #   enable = conditions.graphicalUser;

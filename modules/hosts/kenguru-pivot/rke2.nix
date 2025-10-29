@@ -1,0 +1,72 @@
+{ lib, ... }:
+{
+  flake.modules.nixos."hosts/kenguru-pivot" = { pkgs, config, hostConfig, ... }:
+  let
+    cni = "calico";
+    ipv4 = lib.splitString "/" hostConfig.networking.v4.ipaddr;
+    rke2Config = {
+      write-kubeconfig-mode = "0644";
+      node-ip = lib.head ipv4;
+      node-external-ip = "100.65.120.67";
+      cluster-cidr = "10.50.0.0/16";
+      service-cidr = "10.51.0.0/16";
+      cluster-dns = "10.51.0.10";
+    };
+    rke2ConfigYaml = pkgs.writeText "rke2Config.yml" (lib.generators.toYAML {} rke2Config);
+
+    ## calico iptables mask changed to avoid conflict with tailscale
+    rke2CalicoConfigYaml = pkgs.writeText "rke2-calico-config.yml" ''
+      ---
+      apiVersion: helm.cattle.io/v1
+      kind: HelmChartConfig
+      metadata:
+        name: rke2-calico
+        namespace: kube-system
+      spec:
+        valuesContent: |-
+          felixConfiguration:
+            iptablesMarkMask: 0x0000ffff
+    '';
+  in
+  {
+    environment.systemPackages = [];
+    networking.firewall.allowedTCPPorts = [
+      6443 # required so that pods can reach the API server (running on port 6443 by default)
+      2379 # etcd clients
+      2380 # etcd peers
+      10250 # k8s metric server
+      80 443
+    ] ++ lib.optionals (cni == "calico") [
+      179 # Calico CNI with BGP
+      5473 # Calico networking with Typha enabled
+      9098 # Calico Typha health checks
+      9099 # Calico health checks
+    ];
+
+    networking.firewall.allowedUDPPorts = [] ++ lib.optionals (cni == "calico") [
+      4789 # Calico networking with VXLAN enabled
+      51820 # Calico networking with IPv4 Wireguard enabled
+      51821 # Calico networking with IPv6 Wireguard enabled
+     ] ++ lib.optionals (cni == "flannel") [
+      8472 # k3s, flannel: required if using multi-node for inter-node networking
+     ];
+
+    systemd.tmpfiles.settings."10-rke2-calico-config" = {
+      "/var/lib/rancher/rke2/server/manifests/rke2-calico-config.yaml" = lib.optionals (cni == "calico") {
+        C = {
+          user = "root";
+          group = "root";
+          mode = "0744";
+          argument = "${rke2CalicoConfigYaml}";
+        };
+      };
+    };
+
+    services.rke2 = {
+      enable = true;
+      role = "server";
+      cni = cni;
+      configPath = "${rke2ConfigYaml}";
+    };
+  };
+}

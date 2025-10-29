@@ -2,6 +2,18 @@
 {
   description = "Thammachart's NixOS Flake";
   inputs = {
+    flake-parts = {
+      url = "github:hercules-ci/flake-parts";
+    };
+
+    import-tree = {
+      url = "github:vic/import-tree";
+    };
+
+    pkgs-by-name-for-flake-parts = {
+      url = "github:drupol/pkgs-by-name-for-flake-parts";
+    };
+
     nixpkgs = {
       url = "github:NixOS/nixpkgs/nixos-unstable";
     };
@@ -57,100 +69,102 @@
     };
   };
 
-  outputs = { self, nixpkgs, ... } @ inputs:
-  let
-    defaultSystem = "x86_64-linux";
-    pkgs = import nixpkgs {
-      system = defaultSystem;
-      config = {
-        allowUnfree = true;
-      };
-    };
-    configData = import ./config-data.nix;
-    templateFile = import ./utils/template-engine.nix { inherit pkgs; };
-  in
-  {
-    nixosConfigurations = builtins.mapAttrs (n: v:
-    let
-      currentSystem = v.system or defaultSystem;
-      hostConfig = {
-        u2fConfig = v.u2f;
-        starship = v.starship;
-        networking = v.networking;
-      };
-      conditions = rec {
-        isPersonal = builtins.elem "personal" v.tags;
-        isWork = builtins.elem "work" v.tags;
-        isDesktop = builtins.elem "desktop" v.tags;
-        isLaptop = builtins.elem "laptop" v.tags;
-        isServer = builtins.elem "server" v.tags;
-        incus = builtins.elem "incus" v.tags;
-        k3s = builtins.elem "k3s" v.tags;
-        rke2 = builtins.elem "rke2" v.tags;
-        netbird = builtins.elem "netbird" v.tags;
-        hyprland = builtins.elem "hyprland" v.tags;
-        niri = builtins.elem "niri" v.tags;
-        graphicalUser = (isDesktop || isLaptop) && !isServer;
-      };
-    in
-    nixpkgs.lib.nixosSystem {
-      system = currentSystem;
+  outputs = inputs: inputs.flake-parts.lib.mkFlake { inherit inputs; } (inputs.import-tree ./modules);
 
-      specialArgs = {
-        inherit inputs;
-        inherit (inputs) nixos-hardware;
-        inherit templateFile;
-        inherit configData;
-        inherit hostConfig;
-        inherit (inputs) nix-secrets;
+  # outputs = { self, nixpkgs, ... } @ inputs:
+  # let
+  #   defaultSystem = "x86_64-linux";
+  #   pkgs = import nixpkgs {
+  #     system = defaultSystem;
+  #     config = {
+  #       allowUnfree = true;
+  #     };
+  #   };
+  #   configData = import ./config-data.nix;
+  #   templateFile = import ./utils/template-engine.nix { inherit pkgs; };
+  # in
+  # {
+  #   nixosConfigurations = builtins.mapAttrs (n: v:
+  #   let
+  #     currentSystem = v.system or defaultSystem;
+  #     hostConfig = {
+  #       u2fConfig = v.u2f;
+  #       starship = v.starship;
+  #       networking = v.networking;
+  #     };
+  #     conditions = rec {
+  #       isPersonal = builtins.elem "personal" v.tags;
+  #       isWork = builtins.elem "work" v.tags;
+  #       isDesktop = builtins.elem "desktop" v.tags;
+  #       isLaptop = builtins.elem "laptop" v.tags;
+  #       isServer = builtins.elem "server" v.tags;
+  #       incus = builtins.elem "incus" v.tags;
+  #       k3s = builtins.elem "k3s" v.tags;
+  #       rke2 = builtins.elem "rke2" v.tags;
+  #       netbird = builtins.elem "netbird" v.tags;
+  #       hyprland = builtins.elem "hyprland" v.tags;
+  #       niri = builtins.elem "niri" v.tags;
+  #       graphicalUser = (isDesktop || isLaptop) && !isServer;
+  #     };
+  #   in
+  #   nixpkgs.lib.nixosSystem {
+  #     system = currentSystem;
 
-        inherit conditions;
-        hostName = n;
-      };
+  #     specialArgs = {
+  #       inherit inputs;
+  #       inherit (inputs) nixos-hardware;
+  #       inherit templateFile;
+  #       inherit configData;
+  #       inherit hostConfig;
+  #       inherit (inputs) nix-secrets;
 
-      modules = [
-        inputs.chaotic.nixosModules.default
-        # inputs.chaotic.nixosModules.nyx-cache
-        # inputs.chaotic.nixosModules.nyx-overlay
-        # inputs.chaotic.nixosModules.nyx-registry
+  #       inherit conditions;
+  #       hostName = n;
+  #     };
 
-        inputs.disko.nixosModules.disko
+  #     modules = [
+  #       inputs.chaotic.nixosModules.default
+  #       # inputs.chaotic.nixosModules.nyx-cache
+  #       # inputs.chaotic.nixosModules.nyx-overlay
+  #       # inputs.chaotic.nixosModules.nyx-registry
 
-        inputs.sops-nix.nixosModules.sops
+  #       inputs.disko.nixosModules.disko
 
-        inputs.auto-cpufreq.nixosModules.default
+  #       inputs.sops-nix.nixosModules.sops
 
-        (import ./modules/overlays.nix)
+  #       inputs.auto-cpufreq.nixosModules.default
 
-        ./hosts/${n}
+  #       (import ./modules/overlays.nix)
 
-        inputs.home-manager.nixosModules.home-manager {
-          home-manager.useGlobalPkgs = true;
-          home-manager.useUserPackages = true;
+  #       ./hosts/${n}
 
-          home-manager.extraSpecialArgs = {
-            inherit inputs;
-            inherit templateFile;
-            inherit configData;
-            inherit hostConfig;
-            inherit (inputs) betterfox;
-            inherit (inputs) catppuccin-foot;
-            inherit (inputs) nix-secrets;
+  #       inputs.home-manager.nixosModules.home-manager {
+  #         home-manager.useGlobalPkgs = true;
+  #         home-manager.useUserPackages = true;
 
-            inherit (inputs) gitalias;
+  #         home-manager.extraSpecialArgs = {
+  #           inherit inputs;
+  #           inherit templateFile;
+  #           inherit configData;
+  #           inherit hostConfig;
+  #           inherit (inputs) betterfox;
+  #           inherit (inputs) catppuccin-foot;
+  #           inherit (inputs) nix-secrets;
 
-            inherit conditions;
-            hostName = n;
-          };
+  #           inherit (inputs) gitalias;
 
-          home-manager.sharedModules = [
-            inputs.sops-nix.homeManagerModules.sops
-          ];
+  #           inherit conditions;
+  #           hostName = n;
+  #         };
 
-          home-manager.users."${configData.username}" = import ./home;
-        }
+  #         home-manager.sharedModules = [
+  #           inputs.sops-nix.homeManagerModules.sops
+  #         ];
 
-      ];
-    }) configData.hosts;
-  };
+  #         home-manager.users."${configData.username}" = import ./home;
+  #       }
+
+  #     ];
+  #   }) configData.hosts;
+  # };
 }
