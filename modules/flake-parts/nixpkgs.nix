@@ -9,6 +9,6 @@
       };
       overlays = [];
     };
-    pkgsDirectory = ../../pkgs/by-name;
+    # pkgsDirectory = ../../pkgs/by-name;
   };
 }

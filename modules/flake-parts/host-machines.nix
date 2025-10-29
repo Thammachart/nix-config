@@ -2,10 +2,15 @@
 let
   configData = import ../../config-data.nix;
 
-  prefix = "hosts/";
+  prefix = "hosts_";
   collectHostsModules = modules: lib.filterAttrs (name: _: lib.hasPrefix prefix name) modules;
 in
 {
+  # All Systems to evaluate
+  systems = [
+    "x86_64-linux"
+  ];
+
   flake.nixosConfigurations = lib.pipe (collectHostsModules config.flake.modules.nixos) [
     (lib.mapAttrs' (
       name: module:

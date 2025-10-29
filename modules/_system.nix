@@ -256,22 +256,4 @@ in
     enable = lib.mkDefault conditions.graphicalUser;
     package = pkgs.thunderbird-latest;
   };
-
-  virtualisation.docker = {
-    enable = lib.mkDefault true;
-    enableOnBoot = conditions.isServer;
-
-    storageDriver = "btrfs";
-  };
-
-  services.syncthing = {
-    enable = conditions.isServer;
-    openDefaultPorts = true;
-    guiAddress = "127.0.0.1:8384";
-    overrideDevices = false;
-    overrideFolders = false;
-    settings = {};
-  };
-
-  services.logind.settings.Login.HandleLidSwitch = if conditions.isServer then "lock" else "suspend";
 }

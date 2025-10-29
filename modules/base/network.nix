@@ -1,5 +1,6 @@
+{ ... }:
 {
-  flake.modules.nixos.base = {
+  flake.modules.nixos.base = {...}: {
     systemd.services."NetworkManager-wait-online".enable = false;
   };
 }

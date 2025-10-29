@@ -1,8 +1,9 @@
+{ ... }:
 let
   username = "thammachart";
 in
 {
-  flake.modules.nixos."users/thammachart" = { pkgs, ... }:
+  flake.modules.nixos."users_thammachart" = { pkgs, ... }:
   {
     # Define a user account. Don't forget to set a password with ‘passwd’.
     users.users."${username}" = {

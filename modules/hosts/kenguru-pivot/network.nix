@@ -1,6 +1,6 @@
 { lib, ... }:
 {
-  flake.modules.nixos."hosts/kenguru-pivot" = { pkgs, config, hostConfig, ... }:
+  flake.modules.nixos.hosts_kenguru-pivot = { pkgs, config, hostConfig, ... }:
   let
     defaultInterface = hostConfig.networking.ifname;
     defaultIncusBridge = hostConfig.networking.incusBridgeIfname;

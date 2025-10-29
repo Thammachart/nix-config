@@ -1,7 +1,8 @@
 { lib, ... }:
 {
-  flake.modules.nixos.base = { config, hostConfig, ... }:
+  flake.modules.nixos.base = { pkgs, config, hostConfig, ... }:
   let
+    username = "thammachart";
     u2fEnabled = hostConfig.u2fConfig != [];
   in
   {
@@ -16,8 +17,8 @@
         interactive = false;
         cue = true;
 
-        origin = "pam://${hostName}";
-        authfile = pkgs.writeText "u2f-mappings" (lib.concatStrings ([ configData.username ] ++ hostConfig.u2fConfig) );
+        origin = "pam://${hostConfig.hostname}";
+        authfile = pkgs.writeText "u2f-mappings" (lib.concatStrings ([ username ] ++ hostConfig.u2fConfig) );
       };
     };
   };
