@@ -1,5 +1,4 @@
 { pkgs, lib, config, configData, conditions, gitalias, ... }:
-
 {
   imports = [
     ./gpg.nix
@@ -42,11 +41,6 @@
     stateVersion = "25.05";
   };
 
-  xdg.userDirs = {
-    enable = true;
-    createDirectories = true;
-  };
-
   gtk = {
     enable = conditions.graphicalUser;
     font = {
@@ -66,34 +60,6 @@
   #   "Kvantum/kvantum.kvconfig".text = "[General]\ntheme=KvArcDark";
   # };
 
-  programs.git = {
-    enable = true;
-
-    signing = {
-      format = "ssh";
-      key = "~/.ssh/id_ed25519_sk.pub";
-    };
-
-    settings = {
-      user.name = "Thammachart";
-      merge = {
-        log = 100;
-      };
-      init = {
-        defaultBranch = "main";
-      };
-    };
-
-    includes = [
-      { path = "${gitalias}/gitalias.txt"; }
-    ];
-  };
-
-  # home.sessionVariables doesn't load with nushell
-  systemd.user.sessionVariables = lib.mkMerge [
-    config.home.sessionVariables
-    {}
-  ];
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;

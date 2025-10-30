@@ -1,5 +1,5 @@
 {
-  flake.modules.nixos.hosts_kenguru-pivot = {
+  flake.diskoConfigurations.kenguru-pivot = {
     disko.devices = {
       disk = {
         main = {

@@ -6,12 +6,12 @@
     [
       base
       server
-      users_thammachart
     ]
     ++ [
       {
         home-manager.users.thammachart.imports = with config.flake.modules.homeManager; [
           base
+          nushell
         ];
       }
     ];

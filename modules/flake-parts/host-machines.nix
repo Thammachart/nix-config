@@ -18,6 +18,7 @@ in
         hostname = lib.removePrefix prefix name;
         specialArgs = {
           inherit inputs;
+          inherit configData;
 
           hostConfig = module // configData.hosts."${hostname}" // {
             hostname = hostname;

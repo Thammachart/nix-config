@@ -1,7 +1,16 @@
-{ ... }:
+{ inputs, ... }:
+let
+  username = "thammachart";
+in
 {
   flake.modules.nixos.base = { pkgs, lib, config, ... }:
     {
+      imports = [
+        inputs.chaotic.nixosModules.default
+        inputs.auto-cpufreq.nixosModules.default
+        inputs.sops-nix.nixosModules.sops
+      ];
+
       boot = {
         initrd.systemd.enable = lib.mkDefault false;
         # initrd.verbose = false;
@@ -18,6 +27,16 @@
         tmp = {
           cleanOnBoot = true;
         };
+      };
+
+      # Define a user account. Don't forget to set a password with ‘passwd’.
+      users.users."${username}" = {
+        isNormalUser = true;
+        extraGroups = [ "wheel" "network" "networkmanager" "audio" "video" "storage" "input" ];
+
+        shell = pkgs.nushell;
+
+        packages = with pkgs; [];
       };
 
       nix = {

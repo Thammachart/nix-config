@@ -1,8 +1,8 @@
 { lib, ... }:
 {
-  flake.modules.nixos.base = { pkgs, config, hostConfig, ... }:
+  flake.modules.nixos.base = { pkgs, config, configData, hostConfig, ... }:
   let
-    username = "thammachart";
+    username = configData.username;
     u2fEnabled = hostConfig.u2fConfig != [];
   in
   {
