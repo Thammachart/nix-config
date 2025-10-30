@@ -5,6 +5,10 @@
     username = configData.username;
   in
   {
+    nix.nixPath = [
+      "nixpkgs=${pkgs.path}"
+    ];
+
     home-manager.users."${username}" = {
       home = {
         username = "${username}";

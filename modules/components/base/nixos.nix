@@ -11,6 +11,8 @@ in
         inputs.sops-nix.nixosModules.sops
       ];
 
+      nix.nixPath = [ "nixpkgs=${pkgs.path}" ];
+
       boot = {
         initrd.systemd.enable = lib.mkDefault false;
         # initrd.verbose = false;
