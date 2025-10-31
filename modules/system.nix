@@ -267,7 +267,7 @@ in
     xorg.xprop
     libva-utils
     waypaper
-    glxinfo
+    # glxinfo
     pinta
 
     yubikey-manager
