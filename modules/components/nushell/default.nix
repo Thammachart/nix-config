@@ -1,6 +1,10 @@
-{ lib, ... }:
+{ lib, config, ... }:
 {
-  flake.modules.homeManager.nushell = { pkgs, config, configData, hostConfig, ... }: {
+  flake.modules.homeManager.nushell = { pkgs, hostConfig, ... }:
+  let
+    utils = config.utils { inherit pkgs; };
+  in
+  {
     programs = {
       nushell = {
         enable = true;
@@ -22,6 +26,6 @@
       };
     };
 
-    xdg.configFile."starship.toml".source = config.util.templateFile "starship" ./starship.toml.tmpl hostConfig.starship;
+    xdg.configFile."starship.toml".source = utils.templateFile "starship" ./starship.toml.tmpl hostConfig.starship;
   };
 }

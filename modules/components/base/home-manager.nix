@@ -1,36 +1,34 @@
-{ lib, ... }:
+{ inputs, lib, config, ... }:
+let
+  username = config.configData.username;
+in
 {
-  flake.modules.homeManager.base = { pkgs, config, inputs', configData, ... }:
-  let
-    username = configData.username;
-  in
+  flake.modules.homeManager.base = { pkgs, config, ... }:
   {
-    nix.nixPath = [
-      "nixpkgs=${pkgs.path}"
+    imports = [
+      ./utilities.nix
     ];
 
-    home-manager.users."${username}" = {
-      home = {
-        username = "${username}";
-        homeDirectory = "/home/${username}";
+    home = {
+      username = "${username}";
+      homeDirectory = "/home/${username}";
 
-        # pointerCursor = lib.mkIf conditions.graphicalUser {
-        #   name = "BreezeX-RosePine-Linux";
-        #   package = pkgs.rose-pine-cursor;
-        #   size = 28;
-        #   gtk.enable = true;
-        # };
+      # pointerCursor = lib.mkIf conditions.graphicalUser {
+      #   name = "BreezeX-RosePine-Linux";
+      #   package = pkgs.rose-pine-cursor;
+      #   size = 28;
+      #   gtk.enable = true;
+      # };
 
-        # This value determines the Home Manager release that your
-        # configuration is compatible with. This helps avoid breakage
-        # when a new Home Manager release introduces backwards
-        # incompatible changes.
-        #
-        # You can update Home Manager without changing this value. See
-        # the Home Manager release notes for a list of state version
-        # changes in each release.
-        stateVersion = "25.05";
-      };
+      # This value determines the Home Manager release that your
+      # configuration is compatible with. This helps avoid breakage
+      # when a new Home Manager release introduces backwards
+      # incompatible changes.
+      #
+      # You can update Home Manager without changing this value. See
+      # the Home Manager release notes for a list of state version
+      # changes in each release.
+      stateVersion = "25.05";
     };
 
     programs.git = {
@@ -52,7 +50,7 @@
       };
 
       includes = [
-        { path = "${inputs'.gitalias}/gitalias.txt"; }
+        { path = "${inputs.gitalias}/gitalias.txt"; }
       ];
     };
 

@@ -29,6 +29,8 @@
     '';
   in
   {
+    virtualisation.docker.enable = false;
+
     environment.systemPackages = [];
     networking.firewall.allowedTCPPorts = [
       6443 # required so that pods can reach the API server (running on port 6443 by default)

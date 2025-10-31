@@ -1,5 +1,10 @@
+{ inputs, ... }:
 {
-  flake.diskoConfigurations.kenguru-pivot = {
+  flake.modules.nixos.hosts_kenguru-pivot = {
+    imports = [
+      inputs.disko.nixosModules.default
+    ];
+
     disko.devices = {
       disk = {
         main = {

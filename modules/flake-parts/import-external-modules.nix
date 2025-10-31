@@ -7,8 +7,7 @@
     inputs.disko.flakeModules.default
   ];
 
-  # flake.nixosModules = [
-  # ] ++ config.flake.modules.nixos;
+  # flake.nixosModules = [] ++ config.flake.modules.nixos;
 
   # flake.homeModules = config.flake.modules.homeManager;
 }

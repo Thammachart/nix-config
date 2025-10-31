@@ -3,15 +3,13 @@ let
   username = "thammachart";
 in
 {
-  flake.modules.nixos.base = { pkgs, lib, config, ... }:
+  flake.modules.nixos.base = { pkgs, lib, ... }:
     {
       imports = [
         inputs.chaotic.nixosModules.default
         inputs.auto-cpufreq.nixosModules.default
         inputs.sops-nix.nixosModules.sops
       ];
-
-      nix.nixPath = [ "nixpkgs=${pkgs.path}" ];
 
       boot = {
         initrd.systemd.enable = lib.mkDefault false;
@@ -39,18 +37,6 @@ in
         shell = pkgs.nushell;
 
         packages = with pkgs; [];
-      };
-
-      nix = {
-        settings = {
-          experimental-features = [ "nix-command" "flakes" ];
-        };
-
-        gc = {
-          automatic = lib.mkDefault true;
-          dates = lib.mkDefault "weekly";
-          options = lib.mkDefault "--delete-older-than 7d";
-        };
       };
 
       time = {
@@ -177,7 +163,7 @@ in
     };
 
     virtualisation.containers = {
-      enable = true;
+      enable = lib.mkDefault true;
       containersConf.settings = {
         engine = {
           compose_warning_logs = false;
