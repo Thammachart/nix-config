@@ -1,5 +1,5 @@
 {
-  flake.modules.nixos.hosts_hevonen-pivot = {
+  flake.modules.nixos.hosts_hevonen-orbit = {
     disko.devices = {
       disk = {
         main = {
