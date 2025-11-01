@@ -1,12 +1,13 @@
-{ pkgs, config, cmp, exec ? null }:
+{ pkgs, config }:
+{ cmp, exec ? null }:
 
 let
-  wl-enable = import ./wl-enable.nix { inherit pkgs; };
+  # wl-enable = import ./wl-enable.nix { inherit pkgs; };
 
   cmp-exec = if exec != null then exec else cmp;
 
   launch = pkgs.writeScriptBin "launch" ''
-    source ${wl-enable}
+    source ${pkgs.local.wl-enable}
 
     export XDG_SESSION_DESKTOP=${cmp}
     export XDG_CURRENT_DESKTOP=${cmp}

@@ -1,41 +1,22 @@
-{ pkgs, lib, config, ... }:
-let
-  cmp-customize = import ../../packages/compositor-custom.nix;
-
-  cmp-name = "sway";
-
-  cfg = config.desktop-sessions."${cmp-name}";
-  cmp = cmp-customize { inherit pkgs; inherit config; cmp = cmp-name; };
-in
 {
-  options.desktop-sessions."${cmp-name}" = {
-    enable = lib.mkOption {
-      type = types.bool;
-      default = true;
+  flake.modules.nixos.base-graphical = { pkgs, lib, config, ... }:
+  let
+    cmp-name = "sway";
+    package = pkgs."${cmp-name}".override {
+      withBaseWrapper = true;
+      withGtkWrapper = true;
+      enableXWayland = true;
+      isNixOS = true;
     };
-
-    package = lib.mkPackageOption pkgs cmp-name {} // {
-      apply =
-        p:
-        if p == null then
-          null
-        else
-         p.override {
-           withBaseWrapper = true;
-           withGtkWrapper = true;
-           enableXWayland = true;
-           isNixOS = true;
-         };
-    };
-  };
-
-  config = lib.mkIf cfg.enable {
+    cmp = config.wl-cmp { cmp = cmp-name; };
+  in
+  {
     environment.systemPackages = with pkgs; [ cfg.package swaylock swayidle swaybg grim slurp ];
 
     services.displayManager.sessionPackages = [ cmp.custom-desktop-entry ];
 
     environment.etc = {
-      "sway/config".source = lib.mkOptionDefault "${cfg.package}/etc/sway/config";
+      "sway/config".source = lib.mkOptionDefault "${package}/etc/sway/config";
       "sway/config.d/nixos.conf".text = ''
         exec ${config.services.dbus.dbusPackage}/bin/dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK XDG_CURRENT_DESKTOP
       '';

@@ -1,14 +1,12 @@
-let
-  cmp-customize = import ../../packages/compositor-custom.nix;
-
-  cmp-name = "hyprland";
-
-  cfg = config.desktop-sessions."${cmp-name}";
-  cmp = cmp-customize { inherit pkgs; inherit config; cmp = "Hyprland"; };
-in
 {
-  flake.modules.{
-    environment.systemPackages = with pkgs; [ cfg.package hypridle hyprlock hyprcursor ];
+  flake.modules.nixos.base-graphical = { pkgs, config, ... }:
+  let
+    cmp-name = "hyprland";
+    package = pkgs."${cmp-name}";
+    cmp = config.wl-cmp { cmp = "Hyprland"; };
+  in
+  {
+    environment.systemPackages = with pkgs; [ package hypridle hyprlock hyprcursor ];
 
     services.displayManager.sessionPackages = [ cmp.custom-desktop-entry ];
 

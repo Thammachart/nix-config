@@ -1,7 +1,7 @@
 { pkgs }:
 
 let
-  wl-envs = pkgs.writeText "wl-enable" ''
+  wl-enable = pkgs.writeText "wl-enable" ''
     export NIXOS_OZONE_WL=1
     export XDG_SESSION_TYPE=wayland
     export MOZ_ENABLE_WAYLAND=1
@@ -15,4 +15,4 @@ let
     export NO_AT_BRIDGE=1
   '';
 in
-  wl-envs
+  wl-enable

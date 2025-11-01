@@ -1,3 +1,4 @@
+{ lib, ... }:
 {
   flake.modules.nixos.base-graphical = { pkgs, config, ... }: {
     security.rtkit.enable = true;
@@ -187,11 +188,11 @@
     };
 
     programs.xwayland = {
-      enable = lib.mkDefault conditions.graphicalUser;
+      enable = true;
     };
 
     programs.thunderbird = {
-      enable = lib.mkDefault conditions.graphicalUser;
+      enable = true;
       package = pkgs.thunderbird-latest;
     };
 
