@@ -1,7 +1,9 @@
 {
-  flake.modules.homeManager.base = { lib, ... }: {
+  flake.modules.nixos.base = { lib, ... }: {
     options = {
-      isLaptop = lib.mkEnableOption "is this laptop?";
+      conditions = {
+        isLaptop = lib.mkEnableOption "Laptop?";
+      };
     };
   };
 }

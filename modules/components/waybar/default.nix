@@ -3,9 +3,9 @@
     environment.systemPackages = with pkgs; [ waybar ];
   };
 
-  flake.modules.homeManager.waybar = { config, ... }:
+  flake.modules.homeManager.waybar = { config, osConfig, ... }:
   let
-    settings = config.configData.homeSettings // { isLaptop = config.isLaptop; };
+    settings = config.configData.homeSettings // { conditions = osConfig.conditions; };
   in
   {
     home.file.".config/waybar/global.jsonc".source = config.templateFile "waybar-global-jsonc" ./global.jsonc.tmpl settings;

@@ -6,6 +6,10 @@
         base
         base-graphical
         kwallet
+
+        nushell
+        foot
+        fuzzel
         waybar
 
         messaging
@@ -18,9 +22,9 @@
             base
             base-graphical
 
+            nushell
             foot
             fuzzel
-            nushell
             sway-config
             waybar
           ];

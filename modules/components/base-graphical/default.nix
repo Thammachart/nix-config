@@ -58,8 +58,6 @@ in
 
       wl-clipboard
 
-      fuzzel
-      mako
       wlr-randr wlopm shikane
       # nwg-displays
       nwg-bar

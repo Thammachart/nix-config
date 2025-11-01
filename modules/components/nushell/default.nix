@@ -1,10 +1,15 @@
 { lib, ... }:
 {
+  flake.modules.nixos.nushell = { pkgs, ... }: {
+    environment.systemPackages = with pkgs; [ nushell ];
+  };
+
   flake.modules.homeManager.nushell = { pkgs, config, hostConfig, ... }:
   {
     programs = {
       nushell = {
         enable = true;
+        pakage = null;
 
         configFile.source = ./config.nu;
         envFile.source = ./env.nu;
