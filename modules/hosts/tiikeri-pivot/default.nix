@@ -12,6 +12,9 @@
         fuzzel
         waybar
 
+        sway
+        hyprland
+
         messaging
         tailscale
         gaming
@@ -25,8 +28,10 @@
             nushell
             foot
             fuzzel
-            sway-config
             waybar
+
+            sway
+            hyprland
           ];
         }
       ];

@@ -1,5 +1,5 @@
 {
-  flake.modules.nixos.fuzzel = { config, ... }: {
+  flake.modules.nixos.fuzzel = { pkgs, ... }: {
     environment.systemPackages = with pkgs; [ fuzzel ];
   };
   flake.modules.homeManager.fuzzel = { config, ... }: {

@@ -9,7 +9,7 @@
     programs = {
       nushell = {
         enable = true;
-        pakage = null;
+        package = null;
 
         configFile.source = ./config.nu;
         envFile.source = ./env.nu;

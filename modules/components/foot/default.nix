@@ -1,4 +1,8 @@
 {
+  flake.modules.nixos.foot = { pkgs, ... }: {
+    environment.systemPackages = with pkgs; [ local.foot ];
+  };
+
   flake.modules.homeManager.foot = { inputs, pkgs, config, configData, ... }:
   let
     cattpuccin = (builtins.readFile "${inputs.catppuccin-foot}/themes/catppuccin-frappe.ini");
