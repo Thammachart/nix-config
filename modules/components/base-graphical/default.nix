@@ -29,14 +29,9 @@ in
     };
 
     environment.systemPackages = with pkgs; [
-      foot
-      # local.foot-with-patches
+      local.foot
       # neohtop
       xdg-utils
-      # firefox
-      # floorp-bin
-      # librewolf
-      # qutebrowser
       (brave.override { commandLineArgs = [ chromiumPasswordStore ]; })
       pavucontrol
       libnotify
@@ -47,7 +42,7 @@ in
       obsidian
       logseq
 
-      # (vscodium-with-patches.override { commandLineArgs = [ chromiumPasswordStore ]; }).fhs
+      (local.vscodium.override { commandLineArgs = [ chromiumPasswordStore ]; }).fhs
       geany
       zed-editor
       gnome-text-editor

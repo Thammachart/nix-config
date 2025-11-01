@@ -1,21 +1,9 @@
-{ pkgs, lib, config, configData, ... }:
-let
-  providerName = "kwallet";
-  cfg = config.secret-providers."${providerName}";
-in
 {
-  options.secret-providers."${providerName}" = {
-    enable = lib.mkEnableOption ''
-      KWallet daemon
-    '';
-  };
-
-  config = lib.mkIf cfg.enable {
+  flake.modules.nixos.kwallet = { pkgs, lib, ... }: {
     environment.systemPackages = [
       pkgs.kdePackages.kwallet
       pkgs.kdePackages.kwalletmanager
     ];
-
     # services.dbus.packages = [
     #   pkgs.kdePackages.kwallet
     # ];

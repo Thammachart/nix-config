@@ -1,16 +1,5 @@
-{ pkgs, lib, config, configData, ... }:
-let
-  providerName = "gnome-keyring";
-  cfg = config.secret-providers."${providerName}";
-in
 {
-  options.secret-providers."${providerName}" = {
-    enable = lib.mkEnableOption ''
-      GNOME Keyring daemon with AGE unlock
-    '';
-  };
-
-  config = lib.mkIf cfg.enable {
+  flake.modules.nixos.gnome-keyring = { pkgs, lib, configData, ... }: {
     environment.systemPackages = [ pkgs.gnome-keyring ];
 
     services.dbus.packages = [

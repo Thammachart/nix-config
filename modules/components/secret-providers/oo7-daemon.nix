@@ -1,16 +1,5 @@
-{ pkgs, lib, config, ... }:
-let
-  providerName = "oo7-daemon";
-  cfg = config.secret-providers."${providerName}";
-in
 {
-  options.secret-providers."${providerName}" = {
-    enable = lib.mkEnableOption ''
-      oo7 daemon
-    '';
-  };
-
-  config = lib.mkIf cfg.enable {
+  flake.modules.nixos.oo7 = { pkgs, lib, ... }: {
     environment.systemPackages = [ pkgs.oo7 pkgs.oo7-server ];
 
     services.dbus.packages = [];

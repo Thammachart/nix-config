@@ -5,6 +5,7 @@
       [
         base
         base-graphical
+        kwallet
 
         messaging
         tailscale
