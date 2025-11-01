@@ -1,10 +1,10 @@
-{ pkgs , config, ... }:
+{ pkgs, lib, config, configData, ... }:
 {
   options = {
     templateFile = lib.mkOption {
       type = lib.types.anything;
       readOnly = true;
-      description = "Project-specific system-dependent library functions.";
+      description = "Template Renderer (Gomplate)";
     };
 
     configData = lib.mkOption {
@@ -13,6 +13,7 @@
     };
   };
 
+  config.configData = configData;
   config.templateFile = name: template: data:
     # Run gomplate, using the JSON file as context (from stdin) and the template file as input.
     # The templateFile path is directly interpolated here. Nix handles copying it

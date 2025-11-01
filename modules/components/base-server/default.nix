@@ -1,6 +1,6 @@
 { lib, ... }:
 {
-  flake.modules.nixos.server = { pkgs,... }: {
+  flake.modules.nixos.base-server = { pkgs,... }: {
     boot.kernelParams = [ "consoleblank=120" ];
 
     services.syncthing = {
@@ -13,5 +13,7 @@
     };
 
     services.logind.settings.Login.HandleLidSwitch = "lock";
+
+    services.resolved.enable = false;
   };
 }

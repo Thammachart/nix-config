@@ -1,13 +1,15 @@
-{ inputs, lib, config, ... }:
-let
-  username = config.configData.username;
-in
+{ inputs, lib, ... }:
 {
-  flake.modules.homeManager.base = { pkgs, config, ... }:
+  flake.modules.homeManager.base = { pkgs, config, configData, ... }:
+  let
+    username = configData.username;
+  in
   {
     imports = [
       ./utilities.nix
     ];
+
+    programs.home-manager.enable = true;
 
     home = {
       username = "${username}";
@@ -53,8 +55,6 @@ in
         { path = "${inputs.gitalias}/gitalias.txt"; }
       ];
     };
-
-    programs.home-manager.enable = true;
 
     xdg.userDirs = {
       enable = true;

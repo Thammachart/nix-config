@@ -6,6 +6,7 @@ in
   flake.modules.nixos.base = { pkgs, lib, ... }:
     {
       imports = [
+        ./utilities.nix
         inputs.chaotic.nixosModules.default
         inputs.auto-cpufreq.nixosModules.default
         inputs.sops-nix.nixosModules.sops

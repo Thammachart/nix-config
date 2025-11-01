@@ -2,10 +2,6 @@
 {
 
   flake.modules.nixos.base = { pkgs, lib, config, ... }: {
-    imports = [
-      ./utilities.nix
-    ];
-
     nix = {
       settings = {
         experimental-features = [ "nix-command" "flakes" ];

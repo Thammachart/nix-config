@@ -1,9 +1,9 @@
 { lib, ... }:
 {
-  flake.modules.nixos.base = { pkgs, config, configData, hostConfig, ... }:
+  flake.modules.nixos.base = { pkgs, config, hostConfig, hostname, ... }:
   let
-    username = configData.username;
-    u2fEnabled = hostConfig.u2fConfig != [];
+    username = config.configData.username;
+    u2fEnabled = hostConfig.u2f != [];
   in
   {
     security.pam.services = {
@@ -17,8 +17,8 @@
         interactive = false;
         cue = true;
 
-        origin = "pam://${hostConfig.hostname}";
-        authfile = pkgs.writeText "u2f-mappings" (lib.concatStrings ([ username ] ++ hostConfig.u2fConfig) );
+        origin = "pam://${hostname}";
+        authfile = pkgs.writeText "u2f-mappings" (lib.concatStrings ([ username ] ++ hostConfig.u2f) );
       };
     };
   };

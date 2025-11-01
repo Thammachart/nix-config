@@ -3,7 +3,10 @@
   flake.modules.nixos.hosts_kenguru-pivot = { ... }: {
     imports = with (config.flake.modules.nixos); [
       base
-      server
+      base-server
+
+      ssh
+      tailscale
     ]
     ++ [
       {

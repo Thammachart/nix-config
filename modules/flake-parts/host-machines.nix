@@ -1,5 +1,7 @@
 { inputs, lib, config, ... }:
 let
+  configData = import ../../config-data.nix;
+
   prefix = "hosts_";
   collectHostsModules = modules: lib.filterAttrs (name: _: lib.hasPrefix prefix name) modules;
 in
@@ -16,10 +18,9 @@ in
         hostname = lib.removePrefix prefix name;
         specialArgs = {
           inherit inputs;
-
-          hostConfig = module // config.configData.hosts."${hostname}" // {
-            hostname = hostname;
-          };
+          inherit configData;
+          inherit hostname;
+          hostConfig = configData.hosts."${hostname}";
         };
       in
       {

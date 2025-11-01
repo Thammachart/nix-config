@@ -1,6 +1,6 @@
 { lib, ... }:
 {
-  flake.modules.nixos.hosts_kenguru-pivot = { pkgs, config, hostConfig, ... }:
+  flake.modules.nixos.hosts_kenguru-pivot = { pkgs, config, configData, hostConfig, ... }:
   let
     defaultInterface = hostConfig.networking.ifname;
     defaultIncusBridge = hostConfig.networking.incusBridgeIfname;
@@ -14,7 +14,7 @@
 
       networkmanager.enable = false;
 
-      nameservers = (config.configData.networking.default.DNS4 ++ config.configData.networking.default.DNS6);
+      nameservers = (configData.networking.default.DNS4 ++ configData.networking.default.DNS6);
 
       interfaces."${defaultInterface}" = {
         ipv4.addresses = [{
@@ -28,9 +28,10 @@
       };
 
       defaultGateway = {
-        address = config.configData.networking.default.Gateway4;
+        address = configData.networking.default.Gateway4;
         interface = "${defaultInterface}";
       };
     };
   };
+
 }
