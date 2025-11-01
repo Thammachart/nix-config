@@ -2,12 +2,14 @@ let
   xeDevice = "e20b";
 in
 {
-  flake.modules.nixos.hosts_tiikeri-pivot = { pkgs, inputs, config, modulesPath, ... }: {
+  flake.modules.nixos.hosts_tiikeri-pivot = { pkgs, lib, inputs, config, modulesPath, ... }: {
     imports =
       [
         (modulesPath + "/installer/scan/not-detected.nix")
         inputs.nixos-hardware.nixosModules.common-pc-ssd
       ];
+
+      nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
 
       boot.initrd.availableKernelModules = [ "nvme" "xhci_pci" "ahci" "usbhid" "usb_storage" "sd_mod" ];
       boot.initrd.kernelModules = [ ];
@@ -24,8 +26,6 @@ in
       # networking.interfaces.wlp8s0.useDHCP = lib.mkDefault true;
 
       hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
-
-      boot.initrd.kernelModules = [];
 
       ## Experimental Intel Xe Driver
       # boot.kernelParams = [ "i915.force_probe=!${xeDevice}" "xe.force_probe=${xeDevice}" ];

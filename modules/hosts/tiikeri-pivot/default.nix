@@ -12,7 +12,7 @@
       ]
       ++ [
         {
-          home-manager.users.mimi.imports = with config.flake.modules.homeManager; [
+          home-manager.users.thammachart.imports = with config.flake.modules.homeManager; [
             base
             nushell
           ];

@@ -11,7 +11,7 @@
     cmp = config.wl-cmp { cmp = cmp-name; };
   in
   {
-    environment.systemPackages = with pkgs; [ cfg.package swaylock swayidle swaybg grim slurp ];
+    environment.systemPackages = with pkgs; [ package swaylock swayidle swaybg grim slurp ];
 
     services.displayManager.sessionPackages = [ cmp.custom-desktop-entry ];
 

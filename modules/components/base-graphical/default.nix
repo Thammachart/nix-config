@@ -1,4 +1,7 @@
 { lib, ... }:
+let
+  chromiumPasswordStore = "--password-store=kwallet6";
+in
 {
   flake.modules.nixos.base-graphical = { pkgs, config, ... }: {
     security.rtkit.enable = true;
@@ -26,7 +29,8 @@
     };
 
     environment.systemPackages = with pkgs; [
-      local.foot-with-patches
+      foot
+      # local.foot-with-patches
       # neohtop
       xdg-utils
       # firefox
@@ -43,7 +47,7 @@
       obsidian
       logseq
 
-      (vscodium-with-patches.override { commandLineArgs = [ chromiumPasswordStore ]; }).fhs
+      # (vscodium-with-patches.override { commandLineArgs = [ chromiumPasswordStore ]; }).fhs
       geany
       zed-editor
       gnome-text-editor
@@ -121,7 +125,7 @@
       xorg.xprop
       libva-utils
       waypaper
-      glxinfo
+      # glxinfo
       pinta
 
       yubikey-manager
