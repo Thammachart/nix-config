@@ -1,4 +1,3 @@
-{}:
 {
   flake.modules.homeManager.gpg = { pkgs, lib, configData, ... }: {
     home.packages = [ pkgs.gpg-tui ];

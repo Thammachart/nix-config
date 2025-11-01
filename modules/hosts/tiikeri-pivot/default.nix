@@ -15,6 +15,9 @@
         {
           home-manager.users.thammachart.imports = with config.flake.modules.homeManager; [
             base
+            base-graphical
+
+            foot
             nushell
           ];
         }

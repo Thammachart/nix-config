@@ -196,4 +196,33 @@ in
     };
 
   };
+
+  flake.modules.homeManager.base-graphical = { pkgs, config, configData, ... }: {
+    home.pointerCursor = {
+      name = "BreezeX-RosePine-Linux";
+      package = pkgs.rose-pine-cursor;
+      size = 28;
+      gtk.enable = true;
+    };
+
+    gtk = {
+      enable = true;
+      font = {
+        name = configData.homeSettings.fonts.latin.ui;
+        size = 12;
+      };
+      iconTheme = {
+        name = "Papirus-Dark";
+      };
+      theme = {
+        name = "Yaru-prussiangreen-dark";
+        package = pkgs.yaru-theme;
+      };
+    };
+
+    # xdg.configFile = {
+    #   "Kvantum/kvantum.kvconfig".text = "[General]\ntheme=KvArcDark";
+    # };
+
+  };
 }
