@@ -18,7 +18,9 @@
             base-graphical
 
             foot
+            fuzzel
             nushell
+            sway-config
           ];
         }
       ];
