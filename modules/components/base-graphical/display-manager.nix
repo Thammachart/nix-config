@@ -1,0 +1,36 @@
+{
+  flake.modules.nixos.base-graphical = { pkgs, config, ... }: {
+    services.greetd = {
+      enable = true;
+      settings = {
+        # default_session = {
+        #   command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --remember-session --user-menu --sessions ${desktopSessions}/share/wayland-sessions";
+        #   user = "greeter";
+        # };
+
+        # initial_session = {
+        #   command = "${compositor.launch}/bin/launch";
+        #   user = configData.username;
+        # };
+      };
+    };
+
+    services.displayManager = {
+      enable = true;
+      execCmd = config.systemd.services.greetd.serviceConfig.ExecStart;
+    };
+
+    programs.regreet = {
+      enable = true;
+      font = {
+        name = "Ubuntu Sans";
+        package = pkgs.ubuntu-sans;
+      };
+      settings = {
+        GTK = {
+          application_prefer_dark_theme = true;
+        };
+      };
+    };
+  };
+}
