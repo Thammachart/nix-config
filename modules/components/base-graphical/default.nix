@@ -53,7 +53,7 @@ in
       yaru-theme
 
       syncthing
-      waybar
+      # waybar
       wlsunset
 
       wl-clipboard

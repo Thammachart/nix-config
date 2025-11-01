@@ -1,10 +1,8 @@
-{{ if .conditions.isLaptop -}}
 input "type:touchpad" {
   natural_scroll enabled
   tap enabled
   pointer_accel -0.1
 }
-{{ end -}}
 input "type:pointer" {
   accel_profile "flat"
   pointer_accel -0.1

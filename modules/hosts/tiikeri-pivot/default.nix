@@ -6,6 +6,7 @@
         base
         base-graphical
         kwallet
+        waybar
 
         messaging
         tailscale
@@ -21,6 +22,7 @@
             fuzzel
             nushell
             sway-config
+            waybar
           ];
         }
       ];
