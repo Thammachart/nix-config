@@ -1,8 +1,8 @@
 { inputs, lib, ... }:
 {
-  flake.modules.homeManager.base = { pkgs, config, configData, ... }:
+  flake.modules.homeManager.base = { pkgs, config, ... }:
   let
-    username = configData.username;
+    username = config.configData.username;
   in
   {
     imports = [
