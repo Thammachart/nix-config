@@ -11,6 +11,8 @@
         foot
         fuzzel
         waybar
+        mpv
+        nwg-bar
 
         sway
         hyprland
@@ -29,9 +31,15 @@
             foot
             fuzzel
             waybar
+            mpv
+            nwg-bar
+
+            go-config
 
             sway
             hyprland
+
+            custom-scripts
           ];
         }
       ];

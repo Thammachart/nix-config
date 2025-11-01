@@ -60,7 +60,6 @@ in
 
       wlr-randr wlopm shikane
       # nwg-displays
-      nwg-bar
       keepassxc
       seahorse
 
@@ -74,7 +73,6 @@ in
       qalculate-gtk
       imv
       qview
-      mpv
       # clapper
 
       # PDF Viewer
