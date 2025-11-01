@@ -9,7 +9,10 @@ let
 in
 {
   options.desktop-sessions."${cmp-name}" = {
-    enable = lib.mkEnableOption ''${cmp-name}'';
+    enable = lib.mkOption {
+      type = types.bool;
+      default = true;
+    };
 
     package = lib.mkPackageOption pkgs cmp-name {} // {
       apply =

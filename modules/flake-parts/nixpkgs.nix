@@ -1,14 +1,18 @@
-{ inputs, withSystem, ... }:
+{ inputs, ... }:
 {
-  perSystem = { system, ... }: {
+  perSystem = { system, config, ... }: {
     _module.args.pkgs = import inputs.nixpkgs {
       inherit system;
       config = {
         # allowUnfreePredicate = pkg: true;
         allowUnfree = true;
       };
-      overlays = [];
+      overlays = [
+        (final: prev: {
+          local = config.packages;
+        })
+      ];
     };
-    # pkgsDirectory = ../../pkgs/by-name;
+    pkgsDirectory = ../../pkgs/by-name;
   };
 }

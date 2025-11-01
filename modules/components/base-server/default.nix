@@ -1,7 +1,10 @@
 { lib, ... }:
 {
   flake.modules.nixos.base-server = { pkgs,... }: {
-    boot.kernelParams = [ "consoleblank=120" ];
+    boot = {
+      initrd.systemd.enable = true;
+      kernelParams = [ "consoleblank=120" ];
+    };
 
     services.syncthing = {
       enable = true;
@@ -15,5 +18,7 @@
     services.logind.settings.Login.HandleLidSwitch = "lock";
 
     services.resolved.enable = false;
+
+    tailscale.autostart = true;
   };
 }
