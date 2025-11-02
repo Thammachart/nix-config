@@ -15,6 +15,8 @@
         ../../modules/system.nix
       ];
 
+    conditions.isLaptop = true;
+
     boot.kernelPackages = pkgs.linuxPackages_cachyos-lto;
 
     users.users."${config.configData.username}".extraGroups = [ "docker" "kvm" ];
