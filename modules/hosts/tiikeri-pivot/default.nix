@@ -7,6 +7,7 @@
         base-graphical
         kwallet
 
+        mako
         nushell
         foot
         fuzzel
@@ -27,6 +28,7 @@
             base
             base-graphical
 
+            mako
             nushell
             foot
             fuzzel
