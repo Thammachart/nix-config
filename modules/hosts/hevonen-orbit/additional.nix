@@ -6,17 +6,9 @@
     ]);
   in
   {
-    imports =
-      [
-        ./disko-fs.nix
-        ./secrets.nix
-        ./hardware-configuration.nix
-        ./custom-hardware-configuration.nix
-        ../../modules/system.nix
-      ];
-
     conditions.isLaptop = true;
 
+    boot.initrd.systemd.enable = true;
     boot.kernelPackages = pkgs.linuxPackages_cachyos-lto;
 
     users.users."${config.configData.username}".extraGroups = [ "docker" "kvm" ];

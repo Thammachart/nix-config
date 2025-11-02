@@ -1,6 +1,7 @@
 {
   flake.modules.nixos.work = { pkgs, lib, config, ... }:
   let
+    providerName = "shobshop0";
     cfg = config.work;
   in
   {
@@ -21,6 +22,9 @@
 
       services.netbird = {
         ui.enable = false;
+        clients."${providerName}" = {
+          port = 51820;
+        };
       };
 
       systemd.services.netbird.wantedBy = if (!cfg.netbird.autostart) then lib.mkForce [] else [];
