@@ -4,6 +4,8 @@
       [ (modulesPath + "/installer/scan/not-detected.nix")
       ];
 
+    nixpkgs.hostPlatform = "x86_64-linux";
+
     boot.initrd.availableKernelModules = [ "nvme" "xhci_pci" "usb_storage" "sd_mod" "sdhci_pci" ];
     boot.initrd.kernelModules = [ "amdgpu"  ];
     boot.kernelModules = [ "kvm-amd" ];
@@ -18,7 +20,6 @@
     # networking.interfaces.enp5s0.useDHCP = lib.mkDefault true;
     # networking.interfaces.wlp3s0.useDHCP = lib.mkDefault true;
 
-    nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
     hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 
     hardware.graphics = {

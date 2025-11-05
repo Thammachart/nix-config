@@ -1,6 +1,6 @@
 { inputs, withSystem, ... }:
 {
-  perSystem = { system, config, ... }: {
+  perSystem = { config, ... }: {
     # _module.args.pkgs = import inputs.nixpkgs {
     #   inherit system;
     #   config.allowUnfree = true;

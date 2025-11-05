@@ -9,7 +9,7 @@ in
         inputs.nixos-hardware.nixosModules.common-pc-ssd
       ];
 
-      nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
+      nixpkgs.hostPlatform = "x86_64-linux";
 
       boot.initrd.availableKernelModules = [ "nvme" "xhci_pci" "ahci" "usbhid" "usb_storage" "sd_mod" ];
       boot.initrd.kernelModules = [ ];

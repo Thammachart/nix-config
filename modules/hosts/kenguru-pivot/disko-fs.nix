@@ -1,6 +1,10 @@
-{ inputs, ... }:
+{ config, ... }:
+let
+  hostname = "kenguru-pivot";
+  diskoCfg = config.flake.diskoConfigurations."${hostname}";
+in
 {
-  flake.modules.nixos.hosts_kenguru-pivot = {
+  flake.diskoConfigurations."${hostname}" = {
     disko.devices = {
       disk = {
         main = {
@@ -66,5 +70,9 @@
         };
       };
     };
+  };
+
+  flake.modules.nixos."hosts_${hostname}" = {
+    imports = [ diskoCfg ];
   };
 }

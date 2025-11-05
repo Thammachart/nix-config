@@ -1,5 +1,10 @@
+{ config, ... }:
+let
+  hostname = "hevonen-orbit";
+  diskoCfg = config.flake.diskoConfigurations."${hostname}";
+in
 {
-  flake.modules.nixos.hosts_hevonen-orbit = {
+  flake.diskoConfigurations."${hostname}" = {
     disko.devices = {
       disk = {
         main = {
@@ -65,5 +70,9 @@
         };
       };
     };
+  };
+
+  flake.modules.nixos."hosts_${hostname}" = {
+    imports = [ diskoCfg ];
   };
 }

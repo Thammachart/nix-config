@@ -1,6 +1,10 @@
-{ inputs, ... }:
+{ config, ... }:
+let
+  hostname = "tiikeri-pivot";
+  diskoCfg = config.flake.diskoConfigurations."${hostname}";
+in
 {
-  flake.modules.nixos.hosts_tiikeri-pivot = {
+  flake.diskoConfigurations."${hostname}" = {
     disko.devices = {
       disk = {
         main = {
@@ -68,5 +72,9 @@
         };
       };
     };
+  };
+
+  flake.modules.nixos."hosts_${hostname}" = {
+    imports = [ diskoCfg ];
   };
 }
