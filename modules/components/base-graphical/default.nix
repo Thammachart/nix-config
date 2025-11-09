@@ -65,10 +65,10 @@ in
 
       nautilus
 
-      # lxqt.pcmanfm-qt
+      lxqt.pcmanfm-qt
       # lxqt.lximage-qt
       # lxqt.lxqt-archiver
-      # lxqt.qps
+      lxqt.qps
 
       qalculate-gtk
       imv
@@ -78,6 +78,7 @@ in
       # PDF Viewer
       papers
       foliate
+      # kdePackages.okular
 
       libsForQt5.qt5.qtwayland
       # libsForQt5.qt5ct
@@ -88,6 +89,7 @@ in
       kdePackages.qtstyleplugin-kvantum
 
       kdePackages.ark
+      kdePackages.kate
       # kdePackages.kcoreaddons
       # kdePackages.frameworkintegration
       # kdePackages.plasma-workspace
@@ -110,8 +112,6 @@ in
       # kdePackages.plasma-systemmonitor
       # kdePackages.ksystemstats
       # kdePackages.libksysguard
-      # kdePackages.kate
-      # kdePackages.okular
 
       xorg.xprop
       libva-utils
