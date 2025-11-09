@@ -18,7 +18,6 @@
       gamescope
       mangohud
 
-      # local.tutanota-desktop
       protonmail-desktop
 
       # rpcs3

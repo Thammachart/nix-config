@@ -21,6 +21,8 @@
         messaging
         tailscale
         gaming
+
+        tuta
       ]
       ++ [
         {
@@ -42,6 +44,7 @@
             hyprland
 
             custom-scripts
+            tuta
           ];
         }
       ];
