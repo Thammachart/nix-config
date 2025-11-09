@@ -34,7 +34,9 @@
 
   flake.modules.homeManager.hyprland = { pkgs, lib, config, osConfig, ... }:
   let
-    plugins = [ pkgs.hyprlandPlugins.hy3 ];
+    plugins = [
+      # pkgs.hyprlandPlugins.hy3
+    ];
   in
   {
     home.file.".config/hypr/hypridle.conf".source = config.templateFile "hypridle-conf" ./hypridle.conf.tmpl config.configData.homeSettings;
