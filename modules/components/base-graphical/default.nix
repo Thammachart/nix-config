@@ -44,8 +44,8 @@ in
 
       (local.vscodium.override { commandLineArgs = [ chromiumPasswordStore ]; }).fhs
       geany
+      featherpad
       zed-editor
-      gnome-text-editor
 
       glib
 
@@ -66,8 +66,8 @@ in
       nautilus
 
       lxqt.pcmanfm-qt
-      # lxqt.lximage-qt
-      # lxqt.lxqt-archiver
+      lxqt.lximage-qt
+      lxqt.lxqt-archiver
       lxqt.qps
 
       qalculate-gtk
@@ -78,6 +78,7 @@ in
       # PDF Viewer
       papers
       foliate
+      zathura
       # kdePackages.okular
 
       libsForQt5.qt5.qtwayland
@@ -88,8 +89,8 @@ in
       kdePackages.qt6ct
       kdePackages.qtstyleplugin-kvantum
 
-      kdePackages.ark
-      kdePackages.kate
+      # kdePackages.ark
+      # kdePackages.kate
       # kdePackages.kcoreaddons
       # kdePackages.frameworkintegration
       # kdePackages.plasma-workspace
