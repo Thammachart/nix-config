@@ -1,6 +1,6 @@
 {
   flake.modules.nixos.hosts_tiikeri-pivot = { pkgs, ... }: {
-    boot.kernelPackages = pkgs.linuxPackages_cachyos;
+    boot.kernelPackages = pkgs.linuxPackages_zen;
 
     environment.systemPackages = with pkgs; [
       nvtopPackages.intel
