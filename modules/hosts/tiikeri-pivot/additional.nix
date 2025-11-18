@@ -21,6 +21,7 @@
       mangohud
 
       protonmail-desktop
+      protonmail-bridge-gui
 
       # rpcs3
       # heroic
