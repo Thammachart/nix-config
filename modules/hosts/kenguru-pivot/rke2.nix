@@ -66,6 +66,7 @@
 
     services.rke2 = {
       enable = true;
+      package = pkgs.rke2_1_33;
       role = "server";
       cni = cni;
       configPath = "${rke2ConfigYaml}";

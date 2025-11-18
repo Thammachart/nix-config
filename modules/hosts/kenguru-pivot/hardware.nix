@@ -9,6 +9,7 @@
 
     nixpkgs.hostPlatform = "x86_64-linux";
 
+    boot.kernelPackages = pkgs.linuxPackages_latest;
     boot.initrd.availableKernelModules = [ "nvme" "ehci_pci" "xhci_pci" "uas" "usb_storage" "sd_mod" "rtsx_pci_sdmmc" ];
     boot.initrd.kernelModules = [ "amdgpu" ];
     boot.kernelModules = [ "kvm-amd" ];
