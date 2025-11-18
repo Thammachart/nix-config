@@ -24,7 +24,7 @@
     environment.systemPackages = (with pkgs; [
       gcloud
       doctl
-      postgresql_16
+      postgresql_17
       google-cloud-sql-proxy
       pgadmin4-desktopmode
       # rustdesk-flutter
