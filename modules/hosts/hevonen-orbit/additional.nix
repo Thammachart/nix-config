@@ -9,7 +9,7 @@
     conditions.isLaptop = true;
 
     boot.initrd.systemd.enable = true;
-    boot.kernelPackages = pkgs.linuxPackages_cachyos-lto;
+    boot.kernelPackages = pkgs.linuxPackages_zen;
 
     users.users."${config.configData.username}".extraGroups = [ "docker" "kvm" ];
 
@@ -51,29 +51,23 @@
     # ];
     #
 
-    services.ananicy = {
-      enable = true;
-      package = pkgs.ananicy-cpp;
-      rulesProvider = config.services.ananicy.package;
-    };
+    # services.auto-cpufreq = {
+    #   enable = false;
+    #   settings = {
+    #     charger = {
+    #       governor = "performance";
+    #       turbo = "auto";
+    #     };
 
-    programs.auto-cpufreq = {
-      enable = false;
-      settings = {
-        charger = {
-          governor = "performance";
-          turbo = "auto";
-        };
+    #     battery = {
+    #       governor = "powersave";
+    #       turbo = "auto";
 
-        battery = {
-          governor = "powersave";
-          turbo = "auto";
-
-          enable_thresholds = true;
-          start_threshold = 30;
-          stop_threshold = 80;
-        };
-      };
-    };
+    #       enable_thresholds = true;
+    #       start_threshold = 30;
+    #       stop_threshold = 80;
+    #     };
+    #   };
+    # };
   };
 }

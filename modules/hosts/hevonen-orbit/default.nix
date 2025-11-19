@@ -5,6 +5,10 @@
       [
         base
         base-graphical
+
+        tlp
+        ananicy-cpp
+
         work
         kwallet
 
