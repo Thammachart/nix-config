@@ -191,11 +191,11 @@
     },
     "import-tree": {
       "locked": {
-        "lastModified": 1763263999,
-        "narHash": "sha256-AZ4UkBJQKfaL9sX+/mzc1xBtcJk8hDQGkhjWX0Py5hU=",
+        "lastModified": 1763695721,
+        "narHash": "sha256-tMfN/JkwWJ129cXDW+lK2gUcjklJ+LpTHj9LlneJRXg=",
         "owner": "vic",
         "repo": "import-tree",
-        "rev": "058bd03ac818ea349946323ae3c2837b4cab7f22",
+        "rev": "ca69d64711265c68cf71f6c029ab9f1a55a767f8",
         "type": "github"
       },
       "original": {
