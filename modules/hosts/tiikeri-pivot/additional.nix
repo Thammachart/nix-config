@@ -1,5 +1,6 @@
 {
   flake.modules.nixos.hosts_tiikeri-pivot = { pkgs, ... }: {
+    boot.initrd.systemd.enable = true;
     boot.kernelPackages = pkgs.linuxPackages_zen;
 
     environment.systemPackages = with pkgs; [
