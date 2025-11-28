@@ -1,6 +1,3 @@
-let
-  xeDevice = "e20b";
-in
 {
   flake.modules.nixos.hosts_tiikeri-pivot = { pkgs, lib, inputs, config, modulesPath, ... }: {
     imports =
