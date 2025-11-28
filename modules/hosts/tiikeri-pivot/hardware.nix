@@ -12,7 +12,7 @@ in
       nixpkgs.hostPlatform = "x86_64-linux";
 
       boot.initrd.availableKernelModules = [ "nvme" "xhci_pci" "ahci" "usbhid" "usb_storage" "sd_mod" ];
-      boot.initrd.kernelModules = [ ];
+      boot.initrd.kernelModules = [ "amdgpu" ];
       boot.kernelModules = [ "kvm-amd" ];
       boot.extraModulePackages = [ ];
 
@@ -38,12 +38,9 @@ in
         enable = false;
 
         extraPackages = with pkgs; [
-          intel-media-driver
-          vpl-gpu-rt
         ];
 
         extraPackages32 = with pkgs.pkgsi686Linux; [
-          intel-media-driver
         ];
       };
 
@@ -52,12 +49,9 @@ in
         enable32Bit = true;
 
         extraPackages = with pkgs; [
-          intel-media-driver
-          vpl-gpu-rt
         ];
 
         extraPackages32 = with pkgs.pkgsi686Linux; [
-          intel-media-driver
         ];
       };
 
