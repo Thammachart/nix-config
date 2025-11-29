@@ -75,8 +75,8 @@
     "asiantuntija-orbit" = {
       networking = {
         ifname = "wlp3s0";
-        v4 = { ipaddr = "192.168.10.20/16"; };
-        v6 = { ipaddr = "fd00::a:20/96"; };
+        v4 = { ipaddr = "192.168.10.22/16"; };
+        v6 = { ipaddr = "fd00::a:22/96"; };
       };
       u2f = [
         ":R6gc8H4bi/UUmluQkP1dQUVSsbV/ofNM3gH48xEGOvV8jvPLRSLvpCj3FQbqqk0hXlonKE9RqA0Ut9eDwU0RbQrmXC9PsxyakKJi+CdkxFjroBHx5hSiaB5HnmlBSTgYkVadOGi6b/EQm0Mq98CFGSs5kzgGEs1bxhoX8fFGm+g=,oV+LtC06ivUyk6I3vbuq0+W1RBSoUFumVzi6xMgdefU=,eddsa,+presence"
