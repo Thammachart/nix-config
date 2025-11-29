@@ -4,7 +4,10 @@
     conditions.isLaptop = true;
 
     boot.initrd.systemd.enable = true;
-    boot.kernelPackages = pkgs.linuxPackages_zen;
+    # boot.kernelPackages = pkgs.linuxPackages_zen;
 
+    environment.systemPackages = with pkgs; [
+      nvtopPackages.amd
+    ];
   };
 }
