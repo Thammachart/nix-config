@@ -79,11 +79,7 @@
         v6 = { ipaddr = "fd00::a:22/96"; };
       };
       u2f = [
-        ":R6gc8H4bi/UUmluQkP1dQUVSsbV/ofNM3gH48xEGOvV8jvPLRSLvpCj3FQbqqk0hXlonKE9RqA0Ut9eDwU0RbQrmXC9PsxyakKJi+CdkxFjroBHx5hSiaB5HnmlBSTgYkVadOGi6b/EQm0Mq98CFGSs5kzgGEs1bxhoX8fFGm+g=,oV+LtC06ivUyk6I3vbuq0+W1RBSoUFumVzi6xMgdefU=,eddsa,+presence"
-        ":JC1s6sfCjlJm/DeFWlXU9EAzWA52+iI27KmRymTkISjtm5M5sqh0KePUjfX5ed0BxXCT/7sGvdogHkJx5Y+VrEa/+UklxqDTOciujmFtB9+BiQKoeLAMNviumjNgQK8Qh72wVYn+nzQjJW7oWO5xTqZpTfq8y5YAC2hMhvY7QpA=,vj6Ba8uCDosV1lZ+LMR+xCHdF8Q64RCd4CzRpgPvoF8=,eddsa,+presence"
-
-        ":BgoYbl89nhCXbBStZhwRiaIPgPia/FHL++YQpe3hX6RoQdgWjYm5NxCyg/7deD41cQjvuH3KP6DHLGQPwTzQmA==,ka0DZvkCzhaD3nrpLENiK5fU48rSgM2carKjwWxKzNNzNu3esJ1pj9hvFTHZkfCpxoTZxG9E8okE6KrBM5nHUA==,es256,+presence"
-        ":pl0PwFp5kEFqfwYyjhdeUlr715jaLbcTxqloCj9Q7eps51GMAC55EVyyk/K0tKysgdgi3cwCiU0NG57/Kmy//A==,oaAdj3bl5p137Q+Vrf+KjFJbbo73YhHDTqMLTjMKcYDiRcEbmbwlNdZGYCwV5py8Bn7TR9upoTGHIn/lkQ3VeA==,es256,+presence"
+        ":BVyFM0MB4/UlZ32Hv3I+4B/Lr4D1ofpKSXuzOFmieNg4jLEjcLtreuR2GejSLsXKqQfTqzV9QZHKtYRr3BCdeg==,0ngIRk1avmfeuGej8orEexoRlytgiYa/WcXSOdd+fJRh+watGHPp46oCjq+ikMKb6pgw496JrUDBGu2VJOIhYA==,es256,+presence"
       ];
       starship = {
         directoryStyle = "fg:#e3e5e5 bg:#2a7505";
