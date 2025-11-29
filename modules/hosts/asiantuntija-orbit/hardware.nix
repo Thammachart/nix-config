@@ -1,5 +1,5 @@
 {
-  flake.modules.nixos.hosts_hevonen-orbit = { config, lib, pkgs, modulesPath, ... }: {
+  flake.modules.nixos.hosts_asiantuntija-orbit = { config, lib, pkgs, modulesPath, ... }: {
     imports =
       [ (modulesPath + "/installer/scan/not-detected.nix")
       ];
