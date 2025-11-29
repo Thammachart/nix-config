@@ -32,7 +32,14 @@ in
       local.foot
       # neohtop
       xdg-utils
-      (brave.override { commandLineArgs = [ chromiumPasswordStore ]; })
+      (brave.override {
+        commandLineArgs = [
+          chromiumPasswordStore
+          "--enable-features=AcceleratedVideoDecodeLinuxZeroCopyGL,AcceleratedVideoDecodeLinuxGL"
+          "--ignore-gpu-blocklist"
+          "--enable-zero-copy"
+        ];
+      })
       pavucontrol
       libnotify
       vulkan-tools
