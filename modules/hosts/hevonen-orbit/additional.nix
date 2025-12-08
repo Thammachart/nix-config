@@ -22,7 +22,7 @@
     };
 
     environment.systemPackages = (with pkgs; [
-      gcloud
+      # gcloud
       doctl
       postgresql_17
       google-cloud-sql-proxy
