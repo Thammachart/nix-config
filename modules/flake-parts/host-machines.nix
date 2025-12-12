@@ -27,7 +27,8 @@ in
         name = hostname;
         value = inputs.nixpkgs.lib.nixosSystem {
           inherit specialArgs;
-          modules = module.imports ++ [
+          # https://github.com/hercules-ci/flake-parts/commit/5635c32d666a59ec9a55cab87e898889869f7b71
+          modules = (module {}).imports ++ [
             inputs.home-manager.nixosModules.home-manager {
               home-manager.extraSpecialArgs = specialArgs;
             }
