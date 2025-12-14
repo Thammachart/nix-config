@@ -69,6 +69,7 @@ in
 
       environment.systemPackages = with pkgs; [
         btop
+        lm_sensors
         vim helix kakoune
         curl wget
         xdg-user-dirs
