@@ -21,6 +21,7 @@
   config.configData = configData;
 
   config.wl-cmp = import ./_custom-wayland-compositor.nix { inherit pkgs; inherit config; };
+
   config.templateFile = name: template: data:
     # Run gomplate, using the JSON file as context (from stdin) and the template file as input.
     # The templateFile path is directly interpolated here. Nix handles copying it

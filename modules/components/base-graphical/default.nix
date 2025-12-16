@@ -51,6 +51,7 @@ in
 
       (local.vscodium.override { commandLineArgs = [ chromiumPasswordStore ]; }).fhs
       geany
+
       featherpad
       zed-editor
 
@@ -72,6 +73,11 @@ in
 
       nautilus
 
+      cosmic-term
+      cosmic-edit
+      cosmic-files
+      cosmic-reader
+
       lxqt.pcmanfm-qt
       lxqt.lximage-qt
       lxqt.lxqt-archiver
@@ -85,7 +91,6 @@ in
       # PDF Viewer
       papers
       foliate
-      zathura
       # kdePackages.okular
 
       libsForQt5.qt5.qtwayland
