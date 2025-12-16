@@ -1,5 +1,5 @@
 {
-  flake.modules.nixos.mpv = { pkgs, ... }: {
+  flake.modules.nixos.zathura = { pkgs, ... }: {
     environment.systemPackages = with pkgs; [ zathura ];
   };
 

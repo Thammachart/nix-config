@@ -19,6 +19,7 @@
         waybar
         mpv
         nwg-bar
+        zathura
 
         sway
         hyprland
@@ -36,6 +37,7 @@
             waybar
             mpv
             nwg-bar
+            zathura
 
             go-config
 
