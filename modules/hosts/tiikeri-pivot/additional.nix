@@ -5,6 +5,7 @@
     # boot.kernelPackages = pkgs.linuxPackages_zen;
 
     environment.systemPackages = with pkgs; [
+      local.zen-browser
       nvtopPackages.amd
 
       protonup-qt
