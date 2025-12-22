@@ -3,7 +3,7 @@
 
   homeSettings = {
     terminal = "footclient";
-    browser = "zen";
+    browser = "brave";
     editor = "geany";
     launcher = "fuzzel";
     locker = "swaylock -f -c 089966";
