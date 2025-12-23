@@ -7,7 +7,6 @@ in
     {
       imports = [
         ./utilities.nix
-        inputs.chaotic.nixosModules.default
         inputs.auto-cpufreq.nixosModules.default
         inputs.sops-nix.nixosModules.sops
       ];
@@ -19,7 +18,7 @@ in
           "kernel.sysrq" = lib.mkDefault 1;
           "vm.max_map_count" = 1048576;
         };
-        kernelPackages = lib.mkDefault pkgs.linuxPackages_cachyos;
+        kernelPackages = lib.mkDefault pkgs.linuxPackages_zen;
         loader = {
           systemd-boot.enable = true;
           efi.canTouchEfiVariables = true;

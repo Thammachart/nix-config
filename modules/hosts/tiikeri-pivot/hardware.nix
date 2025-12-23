@@ -31,16 +31,6 @@
         enable = false;
       };
 
-      chaotic.mesa-git = {
-        enable = false;
-
-        extraPackages = with pkgs; [
-        ];
-
-        extraPackages32 = with pkgs.pkgsi686Linux; [
-        ];
-      };
-
       hardware.graphics = {
         enable = true;
         enable32Bit = true;
