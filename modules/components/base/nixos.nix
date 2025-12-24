@@ -113,8 +113,8 @@ in
     };
 
     services.scx = {
-      enable = false;
-      scheduler = "scx_rustland";
+      enable = lib.mkDefault false;
+      scheduler = lib.mkDefault "scx_rustland";
     };
 
     services.udisks2 = {

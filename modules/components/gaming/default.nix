@@ -2,6 +2,11 @@
 {
   flake.modules.nixos.gaming = { pkgs, ... }:
   {
+    services.scx = {
+      enable = true;
+      scheduler = "scx_lavd";
+    };
+
     programs.gamemode = {
       enable = true;
     };
