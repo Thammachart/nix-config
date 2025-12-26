@@ -81,7 +81,18 @@ in
     services.resolved = {
       enable = lib.mkDefault true;
       llmnr = "false";
-      fallbackDns = [ "1.0.0.1" "1.1.1.1" "2606:4700:4700::1111" "2606:4700:4700::1001" ];
+      dnsovertls = "false";
+      fallbackDns = [
+        "9.9.9.9#dns.quad9.net"
+        "149.112.112.112#dns.quad9.net"
+        "2620:fe::fe#dns.quad9.net"
+        "2620:fe::9#dns.quad9.net"
+
+        "1.0.0.1#one.one.one.one"
+        "1.1.1.1#one.one.one.one"
+        "2606:4700:4700::1111#one.one.one.one"
+        "2606:4700:4700::1001#one.one.one.one"
+      ];
     };
 
     systemd.services."NetworkManager-wait-online".enable = false;
