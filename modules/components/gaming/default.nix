@@ -25,5 +25,9 @@
       package = pkgs.steam;
       extraCompatPackages = [ pkgs.proton-ge-bin ];
     };
+
+    services.udev.extraRules = ''
+      SUBSYSTEM=="input", ATTRS{idVendor}=="fffe", ATTRS{idProduct}=="0098", ENV{ID_INPUT_JOYSTICK}=""
+    '';
   };
 }
