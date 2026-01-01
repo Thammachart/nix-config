@@ -3,7 +3,7 @@
   let
     cmp-name = "hyprland";
     package = pkgs."${cmp-name}";
-    cmp = config.wl-cmp { cmp = "Hyprland"; };
+    cmp = config.wl-cmp { cmp = "Hyprland"; exec = "start-hyprland"; };
   in
   {
     environment.systemPackages = with pkgs; [ package hypridle hyprlock hyprcursor ];
