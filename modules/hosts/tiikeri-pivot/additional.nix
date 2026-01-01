@@ -25,6 +25,10 @@
       protonmail-desktop
       protonmail-bridge-gui
 
+      (prismlauncher.override {
+        jdks = [ javaPackages.compiler.temurin-bin.jre-21 ];
+      })
+
       # rpcs3
       # heroic
       # cryptomator

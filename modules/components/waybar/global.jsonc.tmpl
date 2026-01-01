@@ -48,8 +48,10 @@
     "format": "{}% "
   },
   "temperature": {
+    "hwmon-path": "/sys/devices/pci0000:00/0000:00:18.3/hwmon/hwmon4/temp3_input",
+    "interval": 5,
     "critical-threshold": 80,
-    "format": "{temperatureC}°C {icon}",
+    "format": " {temperatureC}°C {icon}",
     "format-icons": ["", "", ""]
   },
   "backlight": {
@@ -115,6 +117,17 @@
   			"tooltip-icon-size": 16
   		}
   	]
+  },
+  "group/audio": {
+        "modules" : [
+            "pulseaudio",
+            "pulseaudio/slider"
+        ],
+        "orientation": "inherit",
+        "drawer": {
+            "transition-duration": 500,
+            "transition-left-to-right": true
+        }
   },
   "custom/notification": {
     "tooltip": false,
