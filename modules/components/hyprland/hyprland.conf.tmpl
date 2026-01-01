@@ -75,6 +75,17 @@ misc {
   focus_on_activate = true
 }
 
-windowrule = idleinhibit fullscreen, class:.*
+windowrule {
+    name = idleinhibit-fullscreen
+    match:class = *
+    # match:fullscreen = true
 
-windowrule = float, class:(xdg-desktop-portal-gtk)
+    idle_inhibit = fullscreen
+}
+
+windowrule {
+    name = floating-dialog
+    match:class = (xdg-desktop-portal-gtk)
+
+    float = on
+}
