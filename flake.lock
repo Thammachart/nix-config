@@ -96,11 +96,11 @@
     "gitalias": {
       "flake": false,
       "locked": {
-        "lastModified": 1752772333,
-        "narHash": "sha256-dJSAsdKaeCXZT0w4JVfYiVj0V1QNv5m01ajM3TbFvUY=",
+        "lastModified": 1767379997,
+        "narHash": "sha256-hNuv3BjUsXEd+k6xR92F3XCsvoQrcutNxyNUsK7UYnk=",
         "owner": "GitAlias",
         "repo": "gitalias",
-        "rev": "b6980478e27e53baced06154ef86843bbf08b137",
+        "rev": "08b0fb7d4be46a4cca8e5b33df60b02f3b05ad02",
         "type": "github"
       },
       "original": {
@@ -117,11 +117,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1767104570,
-        "narHash": "sha256-GKgwu5//R+cLdKysZjGqvUEEOGXXLdt93sNXeb2M/Lk=",
+        "lastModified": 1767365803,
+        "narHash": "sha256-5k07cAPVcMWx2P0zSfBQ9KqpMA6La1rz4dy/pl9GzDw=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "e4e78a2cbeaddd07ab7238971b16468cc1d14daf",
+        "rev": "d4e4d5cfa30455f50d034f24aa9bc0ab05388fcd",
         "type": "github"
       },
       "original": {
