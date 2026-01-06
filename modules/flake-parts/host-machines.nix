@@ -31,6 +31,7 @@ in
           modules = (module {}).imports ++ [
             inputs.home-manager.nixosModules.home-manager {
               home-manager.extraSpecialArgs = specialArgs;
+              home-manager.useGlobalPkgs = true;
             }
           ];
         };

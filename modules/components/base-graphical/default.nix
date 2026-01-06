@@ -207,11 +207,11 @@ in
 
   };
 
-  flake.modules.homeManager.base-graphical = { pkgs, config, configData, ... }: {
+  flake.modules.homeManager.base-graphical = { pkgs, config, osConfig, configData, ... }: {
     home.pointerCursor = {
-      name = "McMojave-hyprcursor";
-      package = pkgs.local.mcmojave-hyprcursor;
-      size = 28;
+      name = "macOS (SVG)";
+      package = pkgs.local.macos-hyprcursor;
+      size = 32;
       gtk.enable = true;
     };
 

@@ -9,7 +9,6 @@
     pkgsDirectory = ../../pkgs/by-name;
 
     packages.zen-browser = inputs.zen-browser.packages."${system}".beta;
-    # packages.mcmojave-cursor = inputs.mcmojave-hyprcursor.packages."${system}".default;
   };
 
   flake = {

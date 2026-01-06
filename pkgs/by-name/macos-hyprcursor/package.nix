@@ -1,10 +1,10 @@
-{ stdenvNoCC, lib, ... }:
+{ stdenvNoCC, fetchFromGitHub, lib, ... }:
 
 stdenvNoCC.mkDerivation {
   pname = "mcmojave-hyprcursor";
   version = "7ed49d9";
 
-  src = lib.fetchFromGitHub {
+  src = fetchFromGitHub {
     "owner" = "OtaK";
     "repo" = "McMojave-hyprcursor";
     "rev" = "7ed49d93f7c56df81d085fa8f70c4129956884b2";
@@ -12,7 +12,7 @@ stdenvNoCC.mkDerivation {
   };
 
   installPhase = ''
-    mkdir -p $out/share/icons
+    mkdir -p $out/share/icons/McMojave-hyprcursor/
     cp -r dist/* $out/share/icons/McMojave-hyprcursor/
   '';
 }
