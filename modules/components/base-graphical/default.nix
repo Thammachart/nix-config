@@ -209,8 +209,8 @@ in
 
   flake.modules.homeManager.base-graphical = { pkgs, config, configData, ... }: {
     home.pointerCursor = {
-      name = "BreezeX-RosePine-Linux";
-      package = pkgs.rose-pine-cursor;
+      name = "Nordzy-hyprcursors";
+      package = pkgs.nordzy-cursor-theme;
       size = 28;
       gtk.enable = true;
     };
