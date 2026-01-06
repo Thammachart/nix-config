@@ -9,5 +9,7 @@
 
   # flake.nixosModules = [] ++ config.flake.modules.nixos;
 
-  # flake.homeModules = config.flake.modules.homeManager;
+  flake.homeModules = [
+    inputs.pkgs-by-name-for-flake-parts.flakeModule
+  ];
 }

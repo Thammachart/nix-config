@@ -209,8 +209,8 @@ in
 
   flake.modules.homeManager.base-graphical = { pkgs, config, configData, ... }: {
     home.pointerCursor = {
-      name = "Nordzy-hyprcursors";
-      package = pkgs.nordzy-cursor-theme;
+      name = "McMojave-hyprcursor";
+      package = pkgs.local.mcmojave-hyprcursor;
       size = 28;
       gtk.enable = true;
     };
