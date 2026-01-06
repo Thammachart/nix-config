@@ -1,18 +1,19 @@
 { stdenvNoCC, fetchFromGitHub, lib, ... }:
 
 stdenvNoCC.mkDerivation {
-  pname = "mcmojave-hyprcursor";
+  pname = "macos-hyprcursor";
   version = "7ed49d9";
 
   src = fetchFromGitHub {
-    "owner" = "OtaK";
-    "repo" = "McMojave-hyprcursor";
-    "rev" = "7ed49d93f7c56df81d085fa8f70c4129956884b2";
-    "hash" = "sha256-+Qo88EJC0nYDj9FDsNtoA4nttck81J9CQFgtrP4eBjk=";
+    "owner"= "driedpampas";
+    "repo"= "macOS-hyprcursor";
+    "rev"= "c5c2bd698b681c6548fc35b0504df13ef5565145";
+    "hash"= "sha256-W7Uglem1qcneRFg/eR6D20p+ggkSFwh5QJYfq8OisLk=";
   };
 
   installPhase = ''
-    mkdir -p $out/share/icons/McMojave-hyprcursor/
-    cp -r dist/* $out/share/icons/McMojave-hyprcursor/
+    mkdir -p $out/share/icons/
+    cp -r themes/SVG/* $out/share/icons/
+    cp -r themes/PNG/* $out/share/icons/
   '';
 }

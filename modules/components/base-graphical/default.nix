@@ -211,7 +211,7 @@ in
     home.pointerCursor = {
       name = "macOS (SVG)";
       package = pkgs.local.macos-hyprcursor;
-      size = 32;
+      size = 24;
       gtk.enable = true;
     };
 
