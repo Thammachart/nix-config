@@ -1,4 +1,4 @@
-up: update-flake rebuild
+up: update-flake switch
 
 git:
 	git pull --ff-only
@@ -6,8 +6,11 @@ git:
 update-flake:
 	nix flake update
 
-rebuild:
+switch:
 	sudo nixos-rebuild switch --flake . --show-trace
+
+rebuild-only:
+	sudo nixos-rebuild boot --flake . --show-trace
 
 gc:
 	sudo nix store gc --debug
