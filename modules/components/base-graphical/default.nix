@@ -209,8 +209,8 @@ in
 
   flake.modules.homeManager.base-graphical = { pkgs, config, osConfig, configData, ... }: {
     home.pointerCursor = {
-      name = "macOS (SVG)";
-      package = pkgs.local.macos-hyprcursor;
+      name = "Adwaita";
+      package = pkgs.adwaita-icon-theme;
       size = 24;
       gtk.enable = true;
     };
