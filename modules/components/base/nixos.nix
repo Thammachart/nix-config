@@ -100,10 +100,11 @@ in
         psmisc
         pciutils
 
+        rclone
+
         kubectl
         kubernetes-helm
         k9s
-        velero
 
         ## Nix Tools for Contribution
         nurl
