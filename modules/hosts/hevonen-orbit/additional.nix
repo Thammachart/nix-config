@@ -15,10 +15,6 @@
 
     environment.sessionVariables = {
       DEVSHELLS_PATH = "$HOME/shobshop-projects/common-dev-shells";
-      CLAUDE_CODE_USE_VERTEX = 1;
-      CLOUD_ML_REGION = "asia-southeast1";
-      ANTHROPIC_VERTEX_PROJECT_ID = "shobshop-development";
-      ANTHROPIC_MODEL = "claude-sonnet-4-5@20250929";
     };
 
     environment.systemPackages = (with pkgs; [
@@ -32,8 +28,6 @@
       filezilla
       caddy
       libreoffice-fresh
-
-      claude-code
 
       kubectl-cnpg
 

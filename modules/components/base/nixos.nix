@@ -106,6 +106,8 @@ in
         kubernetes-helm
         k9s
 
+        opencode
+
         ## Nix Tools for Contribution
         nurl
       ];
