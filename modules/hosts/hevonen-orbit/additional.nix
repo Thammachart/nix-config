@@ -9,7 +9,7 @@
     conditions.isLaptop = true;
 
     boot.initrd.systemd.enable = true;
-    boot.kernelPackages = pkgs.linuxPackages_zen;
+    # boot.kernelPackages = pkgs.linuxPackages_zen;
 
     users.users."${config.configData.username}".extraGroups = [ "docker" "kvm" ];
 

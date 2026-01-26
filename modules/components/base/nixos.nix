@@ -18,7 +18,7 @@ in
           "kernel.sysrq" = lib.mkDefault 1;
           "vm.max_map_count" = 1048576;
         };
-        kernelPackages = lib.mkDefault pkgs.linuxPackages_zen;
+        kernelPackages = lib.mkDefault pkgs.linuxPackages_latest;
         loader = {
           systemd-boot.enable = true;
           efi.canTouchEfiVariables = true;
