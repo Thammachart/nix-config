@@ -15,10 +15,10 @@
       };
     };
 
-    services.displayManager = {
-      enable = true;
-      execCmd = config.systemd.services.greetd.serviceConfig.ExecStart;
-    };
+    # services.displayManager = {
+    #   enable = true;
+    #   execCmd = config.systemd.services.greetd.serviceConfig.ExecStart;
+    # };
 
     programs.regreet = {
       enable = true;
