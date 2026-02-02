@@ -8,6 +8,16 @@
 
     environment.systemPackages = with pkgs; [
       nvtopPackages.amd
+
+      media-downloader
+      yt-dlp
+      gallery-dl
+
+      # xivlauncher
+
+      qbittorrent-enhanced
+
+      aria2
     ];
   };
 }
