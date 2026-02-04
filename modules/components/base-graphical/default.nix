@@ -32,7 +32,6 @@ in
       local.foot
       # neohtop
       xdg-utils
-      local.zen-browser
       (brave.override {
         commandLineArgs = [
           chromiumPasswordStore

@@ -24,6 +24,8 @@
         gaming
 
         tuta
+
+        firefox
       ]
       ++ [
         {
@@ -47,6 +49,8 @@
 
             custom-scripts
             tuta
+
+            firefox
           ];
         }
       ];

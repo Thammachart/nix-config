@@ -8,7 +8,7 @@
     # };
     pkgsDirectory = ../../pkgs/by-name;
 
-    packages.zen-browser = inputs.zen-browser.packages."${system}".beta;
+    # packages.zen-browser = inputs.zen-browser.packages."${system}".beta;
   };
 
   flake = {
