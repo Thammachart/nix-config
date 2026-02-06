@@ -20,5 +20,8 @@
 
     home.file.".config/waybar/river.css".source = config.templateFile "waybar-river-css" ./river.css.tmpl settings;
     home.file.".config/waybar/river.json".source = config.templateFile "waybar-river-json" ./river.json.tmpl settings;
+
+    home.file.".config/waybar/niri.css".source = config.templateFile "waybar-niri-css" ./niri.css.tmpl settings;
+    home.file.".config/waybar/niri.json".source = config.templateFile "waybar-niri-json" ./niri.json.tmpl settings;
   };
 }

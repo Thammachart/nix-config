@@ -12,14 +12,13 @@ input {
             layout "us,th"
             options "grp:alt_shift_toggle"
 
-            repeat_rate 39
-            repeat_delay 250
-
-
             // If this section is empty, niri will fetch xkb settings
             // from org.freedesktop.locale1. You can control these using
             // localectl set-x11-keymap.
         }
+
+        repeat-rate 39
+        repeat-delay 250
 
         // Enable numlock on startup, omitting this setting disables it.
         numlock

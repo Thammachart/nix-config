@@ -1,0 +1,44 @@
+{
+  "include": "~/.config/waybar/global.jsonc",
+  "position": "top",
+  "height": 24,
+
+  "modules-left": [
+  ],
+  "modules-center": [
+  ],
+  "modules-right": [
+    "idle_inhibitor",
+    "pulseaudio",
+    "temperature",
+    {{ if .conditions.isLaptop -}}
+    "backlight",
+    "battery",
+    {{ end -}}
+    "privacy",
+    "clock",
+    "tray",
+    "custom/power"
+  ],
+  "hyprland/window": {
+    "icon": true,
+    "format": "{}",
+    "max-length": 50
+  },
+  "hyprland/workspaces": {
+    "format": "{name}",
+    "format-icons": {},
+    "show-special": true,
+    "special-visible-only": true
+  },
+  "hyprland/language": {
+    "format": "{}",
+    "format-en": "us",
+    "format-th": "th"
+  },
+  "pulseaudio/slider": {
+    "min": 0,
+    "max": 100,
+    "orientation": "vertical"
+  }
+}

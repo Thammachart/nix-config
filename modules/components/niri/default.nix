@@ -7,7 +7,7 @@
     cmp = config.wl-cmp { cmp = "niri"; exec = "niri-session"; };
   in
   {
-    environment.systemPackages = with pkgs; [ package hypridle hyprlock hyprcursor ];
+    environment.systemPackages = with pkgs; [ package xwayland-satellite hypridle hyprlock hyprcursor ];
 
     services.displayManager.sessionPackages = [ cmp.custom-desktop-entry ];
 
@@ -33,9 +33,9 @@
 
   flake.modules.homeManager.niri = { pkgs, lib, config, osConfig, ... }: {
     # home.file.".config/hypr/variables.conf".source = templateFile "hyprland-vars-${configData.username}" ./variables.conf.tmpl configData.homeSettings;
-    home.file.".config/niri/autostart.kdl".source = config.templateFile "niri-autostart-rendered" ./autostart.kdl.tmpl config.configData.homeSettings;
-    home.file.".config/niri/inputs.kdl".source = config.templateFile "niri-inputs-rendered" ./inputs.kdl.tmpl { inherit (osConfig) conditions; };
-    home.file.".config/niri/binds.kdl".source = config.templateFile "niri-binds-rendered" ./binds.kdl.tmpl config.configData.homeSettings;
-    home.file.".config/niri/config.kdl".source = config.templateFile "niri-config-rendered" ./config.kdl.tmpl config.configData.homeSettings;
+    home.file.".config/niri/autostart.kdl".source = config.templateFile "niri-autostart" ./autostart.kdl.tmpl config.configData.homeSettings;
+    home.file.".config/niri/inputs.kdl".source = config.templateFile "niri-inputs" ./inputs.kdl.tmpl { inherit (osConfig) conditions; };
+    home.file.".config/niri/binds.kdl".source = config.templateFile "niri-binds" ./binds.kdl.tmpl config.configData.homeSettings;
+    home.file.".config/niri/config.kdl".source = config.templateFile "niri-config" ./config.kdl.tmpl config.configData.homeSettings;
   };
 }
