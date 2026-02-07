@@ -18,6 +18,7 @@
 
         sway
         hyprland
+        niri
 
         messaging
         tailscale
@@ -46,6 +47,7 @@
 
             sway
             hyprland
+            niri
 
             custom-scripts
             tuta

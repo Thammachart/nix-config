@@ -23,6 +23,7 @@
 
         sway
         hyprland
+        niri
       ]
       ++ [
         {
@@ -43,6 +44,7 @@
 
             sway
             hyprland
+            niri
 
             custom-scripts
           ];
