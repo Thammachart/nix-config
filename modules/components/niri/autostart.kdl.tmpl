@@ -3,20 +3,20 @@
 // which may be more convenient to use.
 // See the binds section below for more spawn examples.
 
-spawn-at-startup "systemd-cat -t waybar waybar -c ~/.config/waybar/niri.json -s ~/.config/waybar/niri.css"
-spawn-at-startup "systemd-cat -t mako mako"
+spawn-sh-at-startup "systemd-cat -t waybar waybar -c ~/.config/waybar/niri.json -s ~/.config/waybar/niri.css"
+spawn-sh-at-startup "systemd-cat -t mako mako"
 
 {{ if (eq .terminal "footclient") }}
-spawn-at-startup "foot --server"
+spawn-sh-at-startup "foot --server"
 {{ end }}
 
-spawn-at-startup "waypaper --restore"
+spawn-sh-at-startup "waypaper --restore"
 
-spawn-at-startup "systemd-cat -t wlsunset wlsunset -S 06:30 -s 18:30 -d 1800 -t 4000 -T 6500"
+spawn-sh-at-startup "systemd-cat -t wlsunset wlsunset -S 06:30 -s 18:30 -d 1800 -t 4000 -T 6500"
 
 // Shikane (Server mode due to hyprland conflict)
-spawn-at-startup "systemd-cat -t shikane shikane"
+spawn-sh-at-startup "systemd-cat -t shikane shikane"
 
-spawn-at-startup "systemd-cat -t hypridle hypridle"
+spawn-sh-at-startup "systemd-cat -t hypridle hypridle"
 
-spawn-at-startup "systemctl start --user user-system-ready.target"
+spawn-sh-at-startup "systemctl start --user user-system-ready.target"

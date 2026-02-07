@@ -4,12 +4,15 @@
   "height": 24,
 
   "modules-left": [
+    "niri/workspaces"
   ],
   "modules-center": [
+    "niri/window"
   ],
   "modules-right": [
     "idle_inhibitor",
     "pulseaudio",
+    "niri/language",
     "temperature",
     {{ if .conditions.isLaptop -}}
     "backlight",
@@ -20,21 +23,29 @@
     "tray",
     "custom/power"
   ],
-  "hyprland/window": {
-    "icon": true,
-    "format": "{}",
-    "max-length": 50
+  "niri/window": {
+	"format": "{}",
+	"rewrite": {
+		"(.*) - Mozilla Firefox": "🌎 $1",
+		"(.*) - zsh": "> [$1]"
+	}
   },
-  "hyprland/workspaces": {
-    "format": "{name}",
-    "format-icons": {},
-    "show-special": true,
-    "special-visible-only": true
+  "niri/workspaces": {
+	"format": "{icon}",
+	"format-icons": {
+		// Named workspaces
+		// (you need to configure them in niri)
+		"browser": "",
+		"discord": "",
+		"chat": "<b></b>",
+
+		// Icons by state
+		"active": "",
+		"default": ""
+	}
   },
-  "hyprland/language": {
-    "format": "{}",
-    "format-en": "us",
-    "format-th": "th"
+  "niri/language": {
+	"format": "{short}"
   },
   "pulseaudio/slider": {
     "min": 0,

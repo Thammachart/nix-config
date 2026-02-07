@@ -36,6 +36,7 @@
     home.file.".config/niri/autostart.kdl".source = config.templateFile "niri-autostart" ./autostart.kdl.tmpl config.configData.homeSettings;
     home.file.".config/niri/inputs.kdl".source = config.templateFile "niri-inputs" ./inputs.kdl.tmpl { inherit (osConfig) conditions; };
     home.file.".config/niri/binds.kdl".source = config.templateFile "niri-binds" ./binds.kdl.tmpl config.configData.homeSettings;
+    home.file.".config/niri/animation.kdl".source = config.templateFile "niri-animation" ./animation.kdl.tmpl config.configData.homeSettings;
     home.file.".config/niri/config.kdl".source = config.templateFile "niri-config" ./config.kdl.tmpl config.configData.homeSettings;
   };
 }
