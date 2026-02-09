@@ -126,7 +126,7 @@ in
       # kdePackages.ksystemstats
       # kdePackages.libksysguard
 
-      xorg.xprop
+      xprop
       libva-utils
       waypaper
       # glxinfo
