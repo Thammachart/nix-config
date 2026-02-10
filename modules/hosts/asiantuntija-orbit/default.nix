@@ -14,6 +14,7 @@
         mako
         nushell
         foot
+        ghostty
         fuzzel
         waybar
         mpv
@@ -38,6 +39,7 @@
             mako
             nushell
             foot
+            ghostty
             fuzzel
             waybar
             mpv
