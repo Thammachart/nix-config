@@ -30,6 +30,7 @@
       libreoffice-fresh
 
       kubectl-cnpg
+      cilium-cli
 
       # android-tools
       # android-studio
