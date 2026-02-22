@@ -9,6 +9,7 @@
     security.pam.services = {
       login.u2fAuth = u2fEnabled;
       sudo.u2fAuth = u2fEnabled;
+      polkit-1.u2fAuth = u2fEnabled;
     };
 
     security.pam.u2f = {
