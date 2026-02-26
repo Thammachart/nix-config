@@ -12,8 +12,6 @@
 
     "modules-left": [
         "group/power",
-        "custom/playpause",
-        "custom/wallpaper",
         "niri/workspaces"
     ],
 
@@ -25,6 +23,9 @@
         "network",
         "group/apps",
         "group/stats",
+        "niri/language",
+        "tray",
+        "privacy",
         "clock"
     ],
 
@@ -35,6 +36,10 @@
         "format": "{:%H\n%M}",
         "interval": 60
     },
+
+    "privacy": {
+	    "icon-spacing": 2,
+	},
 
     "pulseaudio": {
         // "scroll-step": 1, // %, can be a float
@@ -143,6 +148,21 @@
         }
     },
 
+    "niri/workspaces": {
+    	"format": "{icon}",
+    	"format-icons": {
+    		// Icons by state
+    		"active": "󰻃",
+    		"default": "󰄰"
+    	}
+    },
+
+    "niri/language": {
+    	"format": "{}",
+        "format-en": "us",
+        "format-th": "th"
+    },
+
     "custom/appmenu": {
         "format": "󰀻",
         "on-click": "niri msg action toggle-overview",
@@ -167,13 +187,18 @@
         }
     },
 
+    "tray": {
+        "icon-size": 16,
+        "spacing": 5
+    },
+
     "network": {
         // "interface": "wlp2*", // (Optional) To force the use of this interface
-        "format-wifi": " ",
+        "format-wifi": "󰖩",
         "format-ethernet": "{ipaddr}/{cidr} ",
         //"tooltip-format": "{ifname} via {gwaddr} ",
         "tooltip-format": "{essid}: {ipaddr}",
-        "format-linked": "{ifname} (No IP) ",
+        "format-linked": "{ifname} (No IP) ⚠",
         "format-disconnected": "Disconnected ⚠",
         "format-alt": "{ifname}: {ipaddr}/{cidr}: {essid}",
         "rotate": 270

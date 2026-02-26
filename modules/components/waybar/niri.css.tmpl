@@ -78,6 +78,10 @@ window#waybar.empty #window {
     opacity: 0;
 }
 
+#tray {
+    box-shadow: inset 2px 0 @gruv-grey;
+}
+
 #clock {
     box-shadow: inset 2px 0 @gruv-blue;
 }
@@ -281,14 +285,15 @@ window#waybar.empty #custom-powerbutton {
     background-color: transparent;
     color: @text-white;
     border-radius: 0px;
-    transition: 0.2s ease-in-out;
+    /*transition: 0.2s ease-in-out;*/
     font-size: 15px;
+    font-weight: 900;
 }
 
 #workspaces button.active {
     background-color: @mute-black;
     border-radius: 0px;
-    font-weight: 900;
+    /* font-weight: 900; */
 }
 
 #workspaces button.active:hover {
@@ -309,6 +314,15 @@ window#waybar.empty #custom-powerbutton {
     border-radius: 10px;
 }
 
+#workspaces button.empty {
+    color: rgb(113, 121, 126);
+}
+
+#language {
+    box-shadow: inset 2px 0px @gruv-magenta;
+    padding: 5px 0;
+}
+
 #custom-playpause:hover {
     color: @gruv-yellow;
     background-color: @hover-black;
@@ -320,6 +334,12 @@ window#waybar.empty #custom-powerbutton {
 
 #network.disconnected {
     background-color: @gruv-red;
+}
+
+#privacy {
+    padding: 5px 0;
+    background-color: @gruv-yellow;
+    color: black;
 }
 
 #custom-wallpaper:hover {
