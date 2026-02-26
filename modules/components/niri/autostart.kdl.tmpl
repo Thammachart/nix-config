@@ -3,7 +3,7 @@
 // which may be more convenient to use.
 // See the binds section below for more spawn examples.
 
-spawn-sh-at-startup "systemd-cat -t waybar waybar -c ~/.config/waybar/niri.json -s ~/.config/waybar/niri.css"
+spawn-sh-at-startup "systemd-cat -t waybar waybar -c ~/.config/waybar/niri.jsonc -s ~/.config/waybar/niri.css"
 spawn-sh-at-startup "systemd-cat -t mako mako"
 
 {{ if (eq .terminal "footclient") }}
