@@ -13,12 +13,12 @@
       media-downloader
       yt-dlp
       gallery-dl
-
-      # xivlauncher
-
       qbittorrent-enhanced
-
       aria2
+
+      protonmail-desktop
     ];
+
+    tailscale.autostart = true;
   };
 }

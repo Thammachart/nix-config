@@ -9,21 +9,12 @@
 
       protonup-qt
 
-      media-downloader
-      yt-dlp
-      gallery-dl
-
       # xivlauncher
 
       qbittorrent-enhanced
 
-      aria2
-
       gamescope
       mangohud
-
-      protonmail-desktop
-      protonmail-bridge-gui
 
       (prismlauncher.override {
         jdks = [ javaPackages.compiler.temurin-bin.jre-21 ];
