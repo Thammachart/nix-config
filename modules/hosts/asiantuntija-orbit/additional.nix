@@ -4,7 +4,7 @@
     conditions.isLaptop = true;
 
     boot.initrd.systemd.enable = true;
-    boot.kernelParams = [ "amdgpu.cwsr_enable=0" ];
+    boot.kernelParams = [];
     # boot.kernelPackages = pkgs.linuxPackages_zen;
 
     environment.systemPackages = with pkgs; [
