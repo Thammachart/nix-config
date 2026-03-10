@@ -2,7 +2,7 @@
   username = "thammachart";
 
   homeSettings = {
-    terminal = "footclient";
+    terminal = "ghostty +new-window";
     browser = "brave";
     editor = "geany";
     launcher = "fuzzel";

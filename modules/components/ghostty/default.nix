@@ -3,10 +3,23 @@
     # environment.systemPackages = with pkgs; [ ghostty ];
   };
 
-  flake.modules.homeManager.ghostty = { inputs, pkgs, config, configData, ... }: {
+  flake.modules.homeManager.ghostty = { inputs, pkgs, config, configData, ... }:
+  let
+    s = configData.homeSettings;
+  in
+  {
     programs.ghostty = {
       enable = true;
       systemd.enable = true;
+
+      settings = {
+        theme = "Ayu";
+        font-family = s.fonts.latin.terminal_monospace;
+        font-size = 13;
+
+        quit-after-last-window-closed = true;
+        quit-after-last-window-closed-delay = "10m";
+      };
     };
   };
 }
