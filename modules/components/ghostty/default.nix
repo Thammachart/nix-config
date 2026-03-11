@@ -19,13 +19,18 @@
         font-family = s.fonts.latin.terminal_monospace;
         font-size = 13;
 
+        scrollback-limit = 5243000;
 
         shell-integration = "detect";
 
-        quit-after-last-window-closed = true;
-        quit-after-last-window-closed-delay = "10m";
+        quit-after-last-window-closed = false;
+        # quit-after-last-window-closed-delay = "10m";
 
-        keybind = "ctrl+l=reset";
+        keybind = [
+          "ctrl+l=reset"
+          "ctrl+shift+c=copy_to_clipboard"
+          "ctrl+shift+v=paste_from_clipboard"
+        ];
       };
     };
   };
