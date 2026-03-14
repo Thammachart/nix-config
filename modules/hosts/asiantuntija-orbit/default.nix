@@ -16,6 +16,7 @@
         # foot
         fuzzel
         waybar
+        ironbar
         mpv
         nwg-bar
         zathura
@@ -41,6 +42,7 @@
             ghostty
             fuzzel
             waybar
+            ironbar
             mpv
             nwg-bar
             zathura
