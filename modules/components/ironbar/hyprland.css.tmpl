@@ -15,6 +15,7 @@
     box-shadow: none;
     background-image: none;
     font-family: monospace;
+    transform: rotate(-270deg);
 }
 
 scale > trough {
@@ -41,14 +42,19 @@ switch:checked {
 }
 
 switch:not(:checked) {
-  background-color: var(--color-dark-secondary);
+    background-color: var(--color-dark-secondary);
 }
 
-#bar, popover, popover contents, calendar {
+#bar,
+popover,
+popover contents,
+calendar {
     background-color: var(--color-dark-primary);
 }
 
-box, button, label {
+box,
+button,
+label {
     background-color: #0000;
     color: var(--color-white);
 }
@@ -58,7 +64,8 @@ button {
     padding-right: var(--margin-sm);
 }
 
-button:hover, button:active {
+button:hover,
+button:active {
     background-color: var(--color-dark-secondary);
 }
 
@@ -75,7 +82,7 @@ button:hover, button:active {
 }
 
 .popup-clock .calendar-clock {
-    font-size: 2.0em;
+    font-size: 2em;
 }
 
 .popup-clock .calendar .today {
