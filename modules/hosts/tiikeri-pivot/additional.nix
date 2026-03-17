@@ -2,26 +2,13 @@
 {
   flake.modules.nixos.hosts_tiikeri-pivot = { pkgs, ... }: {
     boot.initrd.systemd.enable = true;
-    # boot.kernelPackages = pkgs.linuxPackages_zen;
+    boot.kernelPackages = pkgs.linuxPackages_xanmod_latest;
 
     environment.systemPackages = with pkgs; [
       nvtopPackages.amd
 
-      protonup-qt
-
-      # xivlauncher
-
       qbittorrent-enhanced
 
-      gamescope
-      mangohud
-
-      (prismlauncher.override {
-        jdks = [ javaPackages.compiler.temurin-bin.jre-21 ];
-      })
-
-      # rpcs3
-      # heroic
       # cryptomator
     ];
 

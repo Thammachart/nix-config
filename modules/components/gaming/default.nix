@@ -2,6 +2,22 @@
 {
   flake.modules.nixos.gaming = { pkgs, ... }:
   {
+    environment.systemPackages = with pkgs; [
+      protonup-qt
+
+      gamescope
+      mangohud
+
+      # xivlauncher
+
+      (prismlauncher.override {
+        jdks = [ javaPackages.compiler.temurin-bin.jre-21 ];
+      })
+
+      # rpcs3
+      # heroic
+    ];
+
     services.scx = {
       enable = true;
       scheduler = "scx_lavd";
