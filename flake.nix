@@ -42,11 +42,6 @@
       url = "github:NixOS/nixos-hardware/master";
     };
 
-    catppuccin-foot = {
-      url = "github:catppuccin/foot/main";
-      flake = false;
-    };
-
     betterfox = {
       url = "github:yokoffing/Betterfox/main";
       flake = false;

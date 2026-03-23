@@ -9,7 +9,7 @@
 
         mako
         nushell
-        # foot
+
         fuzzel
         waybar
         mpv
@@ -36,7 +36,7 @@
 
             mako
             nushell
-            # foot
+
             ghostty
             fuzzel
             waybar

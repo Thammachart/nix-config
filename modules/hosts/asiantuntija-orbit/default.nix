@@ -13,7 +13,7 @@
 
         mako
         nushell
-        # foot
+
         fuzzel
         waybar
         ironbar
@@ -38,7 +38,7 @@
 
             mako
             nushell
-            # foot
+
             ghostty
             fuzzel
             waybar

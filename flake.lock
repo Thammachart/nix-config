@@ -38,23 +38,6 @@
         "type": "github"
       }
     },
-    "catppuccin-foot": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1752980058,
-        "narHash": "sha256-bpGVDESE6Pr7kaFgfAWJ/5KC9mRPlv2ciYwRr6jcIKs=",
-        "owner": "catppuccin",
-        "repo": "foot",
-        "rev": "8d263e0e6b58a6b9ea507f71e4dbf6870aaf8507",
-        "type": "github"
-      },
-      "original": {
-        "owner": "catppuccin",
-        "ref": "main",
-        "repo": "foot",
-        "type": "github"
-      }
-    },
     "disko": {
       "inputs": {
         "nixpkgs": [
@@ -230,7 +213,6 @@
       "inputs": {
         "auto-cpufreq": "auto-cpufreq",
         "betterfox": "betterfox",
-        "catppuccin-foot": "catppuccin-foot",
         "disko": "disko",
         "flake-parts": "flake-parts",
         "gitalias": "gitalias",

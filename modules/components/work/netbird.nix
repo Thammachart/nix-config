@@ -21,6 +21,7 @@
       environment.systemPackages = [ pkgs.netbird ];
 
       services.netbird = {
+        package = pkgs.local.netbird;
         ui.enable = false;
         clients."${providerName}" = {
           port = 51820;
