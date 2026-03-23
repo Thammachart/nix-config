@@ -29,7 +29,6 @@ in
     };
 
     environment.systemPackages = with pkgs; [
-      local.foot
       # neohtop
       xdg-utils
       (brave.override {
