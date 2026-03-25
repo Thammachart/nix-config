@@ -46,6 +46,7 @@
             mpv
             nwg-bar
             zathura
+            vscodium
 
             go-config
 

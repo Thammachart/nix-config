@@ -1,6 +1,8 @@
 {
   username = "thammachart";
 
+  secretService = "kwallet6";
+
   homeSettings = {
     terminal = "ghostty +new-window";
     browser = "brave";

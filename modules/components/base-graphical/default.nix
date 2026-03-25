@@ -48,7 +48,6 @@ in
       obsidian
       logseq
 
-      (local.vscodium.override { commandLineArgs = [ chromiumPasswordStore ]; }).fhs
       geany
 
       featherpad
