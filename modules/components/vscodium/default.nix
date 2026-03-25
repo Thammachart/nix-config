@@ -10,6 +10,8 @@
 
       argvSettings = {
         password-store = configData.secretService;
+        enable-crash-reporter = false;
+        crash-reporter-id = "d4e9f7cd-7c83-44cb-bf06-ab3181be23d2";
       };
     };
   };

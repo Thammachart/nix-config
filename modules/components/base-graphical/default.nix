@@ -1,9 +1,8 @@
 { lib, ... }:
 let
-  chromiumPasswordStore = "--password-store=kwallet6";
 in
 {
-  flake.modules.nixos.base-graphical = { pkgs, config, ... }: {
+  flake.modules.nixos.base-graphical = { pkgs, config, configData, ... }: {
     security.rtkit.enable = true;
 
     services.pipewire = {
@@ -33,7 +32,7 @@ in
       xdg-utils
       (brave.override {
         commandLineArgs = [
-          chromiumPasswordStore
+          "--password-store=${configData.secretService}"
           "--enable-features=AcceleratedVideoDecodeLinuxZeroCopyGL,AcceleratedVideoDecodeLinuxGL"
           "--ignore-gpu-blocklist"
           "--enable-zero-copy"
