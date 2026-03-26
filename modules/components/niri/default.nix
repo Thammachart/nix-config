@@ -11,10 +11,6 @@
 
     services.displayManager.sessionPackages = [ cmp.custom-desktop-entry ];
 
-    # environment.etc."hyprland/nixos.conf".text = ''
-    #   exec-once = ${pkgs.dbus}/bin/dbus-update-activation-environment --systemd DISPLAY HYPRLAND_INSTANCE_SIGNATURE WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
-    # '';
-
     security = {
       polkit.enable = true;
       pam.services.hyprlock = {};
