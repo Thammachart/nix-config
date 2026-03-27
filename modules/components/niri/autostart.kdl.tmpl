@@ -10,7 +10,7 @@ spawn-sh-at-startup "systemd-cat -t mako mako"
 spawn-sh-at-startup "foot --server"
 {{ end }}
 
-spawn-sh-at-startup "waypaper --restore"
+spawn-at-startup "waypaper" "--restore"
 
 spawn-sh-at-startup "systemd-cat -t wlsunset wlsunset -S 06:30 -s 18:30 -d 1800 -t 4000 -T 6500"
 
