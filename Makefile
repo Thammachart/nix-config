@@ -9,6 +9,9 @@ update-flake:
 switch:
 	sudo nixos-rebuild switch --flake . --show-trace
 
+boot:
+	sudo nixos-rebuild boot --flake . --show-trace
+
 rebuild-only:
 	sudo nixos-rebuild boot --flake . --show-trace
 
