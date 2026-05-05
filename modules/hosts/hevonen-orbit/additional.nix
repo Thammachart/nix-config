@@ -23,6 +23,8 @@
       postgresql_17
       google-cloud-sql-proxy
       pgadmin4-desktopmode
+
+      distrobox
       # rustdesk-flutter
       # bruno
       filezilla
